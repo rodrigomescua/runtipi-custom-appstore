@@ -1,0 +1,43 @@
+version: "3.9"
+services:
+  wallabag: # Should be exact same name as "id" field in config.json
+    container_name: wallabag # Should be exact same name as "id" field in config.json
+    image: wallabag/wallabag:2.6.12 # Try to avoid "latest" tag. As it may break configs in the future.
+    restart: unless-stopped # Do not change this
+    environment:
+      - TZ=${TZ} # Can use any env variable. See "environment variables" section in the docs
+      - SYMFONY__ENV__DOMAIN_NAME=https://${APP_DOMAIN}
+      - SYMFONY__ENV__FOSUSER_REGISTRATION=${ALLOW_USER_REGISTRATION}
+    volumes:
+      - ${APP_DATA_DIR}/data/data:/var/www/wallabag/data # Always start the path with ${APP_DATA_DIR}/data/. This will put all data inside app-data/my-app/data
+      - ${APP_DATA_DIR}/data/images:/var/www/wallabag/web/assets/images # Always start the path with ${APP_DATA_DIR}/data/. This will put all data inside app-data/my-app/data
+    ports:
+      - ${APP_PORT}:80
+    networks:
+      - tipi_main_network # That should not be changed
+    labels: # Use your editors search and replace feature to replace all instances of "wallabag" with your app name in the traefik labels
+      # Main
+      traefik.enable: true
+      traefik.http.middlewares.wallabag-web-redirect.redirectscheme.scheme: https
+      traefik.http.services.wallabag.loadbalancer.server.port: 80 # Should be the same as the app internal port so for this example 9443
+      # Web
+      traefik.http.routers.wallabag-insecure.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.wallabag-insecure.entrypoints: web
+      traefik.http.routers.wallabag-insecure.service: wallabag
+      traefik.http.routers.wallabag-insecure.middlewares: wallabag-web-redirect
+      # Websecure
+      traefik.http.routers.wallabag.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.wallabag.entrypoints: websecure
+      traefik.http.routers.wallabag.service: wallabag
+      traefik.http.routers.wallabag.tls.certresolver: myresolver
+      # Local domain
+      traefik.http.routers.wallabag-local-insecure.rule: Host(`wallabag.${LOCAL_DOMAIN}`)
+      traefik.http.routers.wallabag-local-insecure.entrypoints: web
+      traefik.http.routers.wallabag-local-insecure.service: wallabag
+      traefik.http.routers.wallabag-local-insecure.middlewares: wallabag-web-redirect
+      # Local domain secure
+      traefik.http.routers.wallabag-local.rule: Host(`wallabag.${LOCAL_DOMAIN}`)
+      traefik.http.routers.wallabag-local.entrypoints: websecure
+      traefik.http.routers.wallabag-local.service: wallabag
+      traefik.http.routers.wallabag-local.tls: true
+      runtipi.managed: true

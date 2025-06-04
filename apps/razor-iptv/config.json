@@ -1,0 +1,37 @@
+{
+  "name": "Razor IPTV",
+  "id": "razor-iptv",
+  "available": true,
+  "short_desc": "Razor IPTV",
+  "author": "Rodrigo Mescua",
+  "port": 8821,
+  "categories": [ "featured" ],
+  "description": "Aplicativo para gerenciar IPTV.",
+  "tipi_version": 1,
+  "version": "1741565661",
+  "source": "https://github.com/romesc/RazorIptvDocker",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": [ "amd64" ],
+  "created_at": 1731806735001,
+  "updated_at": 1731806735001,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "IPTV Url",
+      "max": 100,
+      "min": 3,
+      "required": true,
+      "env_variable": "IPTV_URL"
+    },
+    {
+      "type": "text",
+      "label": "Flag",
+      "required": false,
+      "default": "false",
+      "max": 5,
+      "min": 1,
+      "env_variable": "IS_TOP"
+    }
+  ]
+}

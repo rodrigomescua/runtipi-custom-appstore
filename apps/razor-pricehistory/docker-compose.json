@@ -1,0 +1,19 @@
+{
+  "services": [
+    {
+      "name": "razor-pricehistory",
+      "image": "romesc/razorpricehistory:1743737648",
+      "isMain": true,
+      "internalPort": 8080,
+      "environment": {
+        "TZ": "${TZ}"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/db",
+          "containerPath": "/app/db"
+        }
+      ]
+    }
+  ]
+}

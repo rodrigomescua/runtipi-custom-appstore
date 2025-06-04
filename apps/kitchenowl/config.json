@@ -1,0 +1,28 @@
+{
+  "name": "KitchenOwl",
+  "id": "kitchenowl",
+  "available": true,
+  "exposable": true,
+  "dynamic_config": true,
+  "short_desc": "KitchenOwl",
+  "author": "tombursch",
+  "port": 8828,
+  "categories": [ "featured" ],
+  "description": "A smart grocery list and recipe manager.",
+  "tipi_version": 1,
+  "version": "v0.6.15",
+  "source": "https://github.com/tombursch/kitchenowl",
+  "supported_architectures": [ "amd64" ],
+  "created_at": 1731806734301,
+  "updated_at": 1731806734301,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "JWT_SECRET_KEY",
+      "max": 100,
+      "min": 3,
+      "required": true,
+      "env_variable": "JWT_SECRET_KEY"
+    }
+  ]
+}

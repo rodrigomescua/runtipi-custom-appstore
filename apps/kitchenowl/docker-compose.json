@@ -1,0 +1,20 @@
+{
+  "services": [
+    {
+      "name": "kitchenowl",
+      "image": "tombursch/kitchenowl:v0.6.15",
+      "isMain": true,
+      "internalPort": 8080,
+      "environment": {
+        "TZ": "${TZ}",
+        "JWT_SECRET_KEY": "${JWT_SECRET_KEY}"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data",
+          "containerPath": "/data"
+        }
+      ]
+    }
+  ]
+}
