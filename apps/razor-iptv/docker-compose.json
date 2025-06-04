@@ -1,0 +1,21 @@
+{
+  "services": [
+    {
+      "name": "razor-iptv",
+      "image": "romesc/razoriptvdocker:1741565661",
+      "isMain": true,
+      "internalPort": 8080,
+      "environment": {
+        "IPTV_URL": "${IPTV_URL}",
+        "IS_TOP": "${IS_TOP}",
+        "TZ": "${TZ}"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/db",
+          "containerPath": "/app/db"
+        }
+      ]
+    }
+  ]
+}

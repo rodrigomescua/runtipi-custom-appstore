@@ -1,0 +1,26 @@
+{
+  "services": [
+    {
+      "name": "razor-miniflux",
+      "image": "romesc/razorminiflux:1748617911",
+      "isMain": true,
+      "internalPort": 8080,
+      "environment": {
+        "FRESHRSS_CONNECTIONSTRING": "${FRESHRSS_CONNECTIONSTRING}",
+        "FRESHRSS_TABLE_PREFIX": "${FRESHRSS_TABLE_PREFIX}",
+        "FRESHRSS_TOP_TABLE_PREFIX": "${FRESHRSS_TOP_TABLE_PREFIX}",
+        "PAGE_SIZE": "${PAGE_SIZE}",
+        "SERVER_PAGE_SIZE": "${SERVER_PAGE_SIZE}",
+        "IS_TOP": "${IS_TOP}",
+        "MARK_STARRED_READ": "${MARK_STARRED_READ}",
+        "TZ": "${TZ}"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/db",
+          "containerPath": "/app/db"
+        }
+      ]
+    }
+  ]
+}

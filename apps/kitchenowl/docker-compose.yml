@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  kitchenowl: # Should be exact same name as "id" field in config.json
+    container_name: kitchenowl # Should be exact same name as "id" field in config.json
+    image: tombursch/kitchenowl:v0.6.15 # Try to avoid "latest" tag. As it may break configs in the future.
+    restart: unless-stopped # Do not change this
+    environment:
+      - TZ=${TZ} # Can use any env variable. See "environment variables" section in the docs
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+    volumes:
+      - ${APP_DATA_DIR}/data:/data # Always start the path with ${APP_DATA_DIR}/data/. This will put all data inside app-data/my-app/data
+    ports:
+      - ${APP_PORT}:8080
+    networks:
+      - tipi_main_network # That should not be changed
+    labels: # Use your editors search and replace feature to replace all instances of "kitchenowl" with your app name in the traefik labels
+      # Main
+      traefik.enable: true
+      traefik.http.middlewares.kitchenowl-web-redirect.redirectscheme.scheme: https
+      traefik.http.services.kitchenowl.loadbalancer.server.port: 8080 # Should be the same as the app internal port so for this example 9443
+      # Web
+      traefik.http.routers.kitchenowl-insecure.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.kitchenowl-insecure.entrypoints: web
+      traefik.http.routers.kitchenowl-insecure.service: kitchenowl
+      traefik.http.routers.kitchenowl-insecure.middlewares: kitchenowl-web-redirect
+      # Websecure
+      traefik.http.routers.kitchenowl.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.kitchenowl.entrypoints: websecure
+      traefik.http.routers.kitchenowl.service: kitchenowl
+      traefik.http.routers.kitchenowl.tls.certresolver: myresolver
+      # Local domain
+      traefik.http.routers.kitchenowl-local-insecure.rule: Host(`kitchenowl.${LOCAL_DOMAIN}`)
+      traefik.http.routers.kitchenowl-local-insecure.entrypoints: web
+      traefik.http.routers.kitchenowl-local-insecure.service: kitchenowl
+      traefik.http.routers.kitchenowl-local-insecure.middlewares: kitchenowl-web-redirect
+      # Local domain secure
+      traefik.http.routers.kitchenowl-local.rule: Host(`kitchenowl.${LOCAL_DOMAIN}`)
+      traefik.http.routers.kitchenowl-local.entrypoints: websecure
+      traefik.http.routers.kitchenowl-local.service: kitchenowl
+      traefik.http.routers.kitchenowl-local.tls: true
+      runtipi.managed: true
