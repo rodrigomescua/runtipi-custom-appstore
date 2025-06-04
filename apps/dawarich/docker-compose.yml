@@ -1,0 +1,84 @@
+version: "3.7"
+services:
+  dawarich:
+    image: freikin/dawarich:0.27.2
+    container_name: dawarich
+    entrypoint: web-entrypoint.sh
+    command:
+      ["bin/rails", "server", "-p", "3000", "-b", "::"]
+    stdin_open: true
+    tty: true
+    environment:
+      - TZ=${TZ}
+      - RAILS_ENV=development
+      - DATABASE_HOST=dawarich-db
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=password
+      - DATABASE_NAME=dawarich_development
+      - MIN_MINUTES_SPENT_IN_CITY=10
+      - APPLICATION_HOSTS=localhost,dawarich.murkmesc.top
+      - TIME_ZONE=${TZ}
+      - APPLICATION_PROTOCOL=http
+      - DISTANCE_UNIT=km
+      - PROMETHEUS_EXPORTER_ENABLED=false
+      - PROMETHEUS_EXPORTER_HOST=0.0.0.0
+      - PROMETHEUS_EXPORTER_PORT=9394
+      - SELF_HOSTED=true
+      - QUEUE_DATABASE_PATH=/dawarich_db_data/dawarich_development_queue.sqlite3
+      - CACHE_DATABASE_PATH=/dawarich_db_data/dawarich_development_cache.sqlite3
+      - CABLE_DATABASE_PATH=/dawarich_db_data/dawarich_development_cable.sqlite3
+    volumes:
+      - ${APP_DATA_DIR}/data/public:/var/app/public
+      - ${APP_DATA_DIR}/data/imports/watched:/var/app/tmp/imports/watched
+      - ${APP_DATA_DIR}/data/storage:/var/app/storage
+      - ${APP_DATA_DIR}/data/db:/dawarich_db_data
+    dns:
+      - ${DNS_IP}
+    ports:
+      - ${APP_PORT}:3000
+    restart: unless-stopped
+    depends_on:
+      - dawarich-db
+    networks:
+      - tipi_main_network
+    labels:
+      # Main
+      traefik.enable: true
+      traefik.http.middlewares.dawarich-web-redirect.redirectscheme.scheme: https
+      traefik.http.services.dawarich.loadbalancer.server.port: 3000
+      # Web
+      traefik.http.routers.dawarich-insecure.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.dawarich-insecure.entrypoints: web
+      traefik.http.routers.dawarich-insecure.service: dawarich
+      traefik.http.routers.dawarich-insecure.middlewares: dawarich-web-redirect
+      # Websecure
+      traefik.http.routers.dawarich.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.dawarich.entrypoints: websecure
+      traefik.http.routers.dawarich.service: dawarich
+      traefik.http.routers.dawarich.tls.certresolver: myresolver
+      # Local domain
+      traefik.http.routers.dawarich-local-insecure.rule: Host(`dawarich.${LOCAL_DOMAIN}`)
+      traefik.http.routers.dawarich-local-insecure.entrypoints: web
+      traefik.http.routers.dawarich-local-insecure.service: dawarich
+      traefik.http.routers.dawarich-local-insecure.middlewares: dawarich-web-redirect
+      # Local domain secure
+      traefik.http.routers.dawarich-local.rule: Host(`dawarich.${LOCAL_DOMAIN}`)
+      traefik.http.routers.dawarich-local.entrypoints: websecure
+      traefik.http.routers.dawarich-local.service: dawarich
+      traefik.http.routers.dawarich-local.tls: true
+      runtipi.managed: true
+  dawarich-db:
+    image: postgis/postgis:17-3.5-alpine
+    container_name: dawarich-db
+    environment:
+      - TZ=${TZ}
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ${APP_DATA_DIR}/data/db:/var/lib/postgresql/data
+      - ${APP_DATA_DIR}/data/shared:/var/shared
+    restart: unless-stopped
+    networks:
+      - tipi_main_network
+    labels:
+      runtipi.managed: true

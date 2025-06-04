@@ -1,0 +1,73 @@
+{
+  "services": [
+    {
+      "name": "dawarich",
+      "image": "freikin/dawarich:0.27.2",
+      "internalPort": 3000,
+      "isMain": true,
+      "dependsOn": ["dawarich-db"],
+      "entrypoint": "web-entrypoint.sh",
+      "command": ["bin/rails", "server", "-p", "3000", "-b", "::"],
+      "tty": true,
+      "stdinOpen": true,
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/public",
+          "containerPath": "/var/app/public"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/imports/watched",
+          "containerPath": "/var/app/tmp/imports/watched"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/storage",
+          "containerPath": "/var/app/storage"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/db",
+          "containerPath": "/dawarich_db_data"
+        }
+      ],
+      "environment": {
+        "TZ": "${TZ}",
+        "RAILS_ENV": "development",
+        "DATABASE_HOST": "dawarich-db",
+        "DATABASE_USERNAME": "postgres",
+        "DATABASE_PASSWORD": "password",
+        "DATABASE_NAME": "dawarich_development",
+        "MIN_MINUTES_SPENT_IN_CITY": "10",
+        "APPLICATION_HOSTS": "localhost,dawarich.murkmesc.top",
+        "TIME_ZONE": "${TZ}",
+        "APPLICATION_PROTOCOL": "http",
+        "DISTANCE_UNIT": "km",
+        "PROMETHEUS_EXPORTER_ENABLED": "false",
+        "PROMETHEUS_EXPORTER_HOST": "0.0.0.0",
+        "PROMETHEUS_EXPORTER_PORT": "9394",
+        "SELF_HOSTED": "true",
+        "QUEUE_DATABASE_PATH": "/dawarich_db_data/dawarich_development_queue.sqlite3",
+        "CACHE_DATABASE_PATH": "/dawarich_db_data/dawarich_development_cache.sqlite3",
+        "CABLE_DATABASE_PATH": "/dawarich_db_data/dawarich_development_cable.sqlite3"
+      }
+    },
+    {
+      "name": "dawarich-db",
+      "image": "postgis/postgis:17-3.5-alpine",
+      "isMain": false,
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/db",
+          "containerPath": "/var/lib/postgresql/data"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/shared",
+          "containerPath": "/var/shared"
+        }
+      ],
+      "environment": {
+        "TZ": "${TZ}",
+        "POSTGRES_USERNAME": "postgres",
+        "POSTGRES_PASSWORD": "password"
+      }
+    }
+  ]
+}
