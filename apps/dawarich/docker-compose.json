@@ -2,7 +2,7 @@
   "services": [
     {
       "name": "dawarich",
-      "image": "freikin/dawarich:0.27.3",
+      "image": "freikin/dawarich:0.27.2",
       "internalPort": 3000,
       "isMain": true,
       "dependsOn": ["dawarich-db"],
