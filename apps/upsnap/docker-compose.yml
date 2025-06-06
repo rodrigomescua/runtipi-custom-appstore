@@ -4,6 +4,7 @@ services:
     container_name: upsnap # Should be exact same name as "id" field in config.json
     image: ghcr.io/seriousm4x/upsnap:5.1.0 # Try to avoid "latest" tag. As it may break configs in the future.
     restart: unless-stopped # Do not change this
+    network_mode: host # Do not change this
     environment:
       - TZ=${TZ} # Can use any env variable. See "environment variables" section in the docs
       - UPSNAP_INTERVAL=*/10 * * * * * # Sets the interval in which the devices are pinged
