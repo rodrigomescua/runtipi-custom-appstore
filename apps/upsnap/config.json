@@ -5,7 +5,7 @@
   "short_desc": "A simple wake on lan web app written with SvelteKit, Go and PocketBase.",
   "author": "seriousm4x",
   "port": 8825,
-  "categories": [ "featured", "utility" ],
+  "categories": [ "featured", "utilities" ],
   "description": "A simple wake on lan web app written with SvelteKit, Go and PocketBase.",
   "tipi_version": 1,
   "version": "5.1.0",
