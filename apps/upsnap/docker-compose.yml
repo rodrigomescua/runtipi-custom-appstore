@@ -1,0 +1,45 @@
+version: "3.9"
+services:
+  upsnap: # Should be exact same name as "id" field in config.json
+    container_name: upsnap # Should be exact same name as "id" field in config.json
+    image: ghcr.io/seriousm4x/upsnap:5.1.0 # Try to avoid "latest" tag. As it may break configs in the future.
+    restart: unless-stopped # Do not change this
+    network_mode: host
+    environment:
+      - TZ=${TZ} # Can use any env variable. See "environment variables" section in the docs
+      - UPSNAP_INTERVAL=*/10 * * * * * # Sets the interval in which the devices are pinged
+      - UPSNAP_SCAN_RANGE=192.168.0.0/24 # Scan range is used for device discovery on local network
+      - UPSNAP_SCAN_TIMEOUT=500ms # Scan timeout is nmap's --host-timeout value to wait for devices (https://nmap.org/book/man-performance.html)
+      - UPSNAP_PING_PRIVILEGED=true # Set to false if you don't have root user permissions
+    volumes:
+      - ${APP_DATA_DIR}/data/pb_data:/app/pb_data # Always start the path with ${APP_DATA_DIR}/data/. This will put all data inside app-data/my-app/data
+    ports:
+      - ${APP_PORT}:8090
+    networks:
+      - tipi_main_network # That should not be changed
+    labels: # Use your editors search and replace feature to replace all instances of "razor-pricehistory" with your app name in the traefik labels
+      # Main
+      traefik.enable: true
+      traefik.http.middlewares.upsnap-web-redirect.redirectscheme.scheme: https
+      traefik.http.services.upsnap.loadbalancer.server.port: 8090 # Should be the same as the app internal port so for this example 9443
+      # Web
+      traefik.http.routers.upsnap-insecure.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.upsnap-insecure.entrypoints: web
+      traefik.http.routers.upsnap-insecure.service: upsnap
+      traefik.http.routers.upsnap-insecure.middlewares: upsnap-web-redirect
+      # Websecure
+      traefik.http.routers.upsnap.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.upsnap.entrypoints: websecure
+      traefik.http.routers.upsnap.service: upsnap
+      traefik.http.routers.upsnap.tls.certresolver: myresolver
+      # Local domain
+      traefik.http.routers.upsnap-local-insecure.rule: Host(`upsnap.${LOCAL_DOMAIN}`)
+      traefik.http.routers.upsnap-local-insecure.entrypoints: web
+      traefik.http.routers.upsnap-local-insecure.service: upsnap
+      traefik.http.routers.upsnap-local-insecure.middlewares: upsnap-web-redirect
+      # Local domain secure
+      traefik.http.routers.upsnap-local.rule: Host(`upsnap.${LOCAL_DOMAIN}`)
+      traefik.http.routers.upsnap-local.entrypoints: websecure
+      traefik.http.routers.upsnap-local.service: upsnap
+      traefik.http.routers.upsnap-local.tls: true
+      runtipi.managed: true
