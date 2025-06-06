@@ -1,0 +1,27 @@
+{
+  "services": [
+    {
+      "name": "upsnap",
+      "image": "ghcr.io/seriousm4x/upsnap:5.1.0",
+      "environment": {
+        "TZ": "${TZ}",
+        "UPSNAP_INTERVAL": "*/10 * * * * *",
+        "UPSNAP_SCAN_RANGE": "192.168.0.0/24",
+        "UPSNAP_SCAN_TIMEOUT": "500ms",
+        "UPSNAP_PING_PRIVILEGED": "true"
+      },
+      "internalPort": 8090,
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/pb_data",
+          "containerPath": "/app/pb_data",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ],
+      "networkMode": "host",
+      "isMain": true
+    }
+  ]
+}
