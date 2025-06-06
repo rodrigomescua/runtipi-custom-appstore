@@ -20,7 +20,6 @@
           "private": false
         }
       ],
-      "networkMode": "host",
       "isMain": true
     }
   ]
