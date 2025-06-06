@@ -11,6 +11,13 @@
         "UPSNAP_PING_PRIVILEGED": "true"
       },
       "internalPort": 8090,
+      "networkMode": "host",
+      "addPorts": [
+        {
+          "hostPort": "${APP_PORT}",
+          "containerPort": 8090
+        }
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/pb_data",
