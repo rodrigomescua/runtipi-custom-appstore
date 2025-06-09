@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   dawarich:
-    image: freikin/dawarich:0.27.2
+    image: freikin/dawarich:0.27.4
     container_name: dawarich
     entrypoint: web-entrypoint.sh
     command:
@@ -15,7 +15,16 @@ services:
       - DATABASE_USERNAME=postgres
       - DATABASE_PASSWORD=password
       - DATABASE_NAME=dawarich_development
-      - MIN_MINUTES_SPENT_IN_CITY=10
+     # PostgreSQL database name for solid_queue
+      - QUEUE_DATABASE_NAME=dawarich_development_queue
+      - QUEUE_DATABASE_PASSWORD=password
+      - QUEUE_DATABASE_USERNAME=postgres
+      - QUEUE_DATABASE_PORT=5432
+      - QUEUE_DATABASE_HOST=dawarich_db
+      # SQLite database paths for cache and cable databases
+      - CACHE_DATABASE_PATH=/dawarich_sqlite_data/dawarich_development_cache.sqlite3
+      - CABLE_DATABASE_PATH=/dawarich_sqlite_data/dawarich_development_cable.sqlite3
+      - MIN_MINUTES_SPENT_IN_CITY=3
       - APPLICATION_HOSTS=localhost,dawarich.murkmesc.top
       - TIME_ZONE=${TZ}
       - APPLICATION_PROTOCOL=http
@@ -24,14 +33,13 @@ services:
       - PROMETHEUS_EXPORTER_HOST=0.0.0.0
       - PROMETHEUS_EXPORTER_PORT=9394
       - SELF_HOSTED=true
-      - QUEUE_DATABASE_PATH=/dawarich_db_data/dawarich_development_queue.sqlite3
-      - CACHE_DATABASE_PATH=/dawarich_db_data/dawarich_development_cache.sqlite3
-      - CABLE_DATABASE_PATH=/dawarich_db_data/dawarich_development_cable.sqlite3
+      - STORE_GEODATA=true
     volumes:
       - ${APP_DATA_DIR}/data/public:/var/app/public
       - ${APP_DATA_DIR}/data/imports/watched:/var/app/tmp/imports/watched
       - ${APP_DATA_DIR}/data/storage:/var/app/storage
       - ${APP_DATA_DIR}/data/db:/dawarich_db_data
+      - ${APP_DATA_DIR}/data/sqlite_data:/dawarich_sqlite_data
     dns:
       - ${DNS_IP}
     ports:
@@ -70,10 +78,12 @@ services:
   dawarich-db:
     image: postgis/postgis:17-3.5-alpine
     container_name: dawarich-db
+    shm_size: 1G
     environment:
       - TZ=${TZ}
       - POSTGRES_USERNAME=postgres
       - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=dawarich_development
     volumes:
       - ${APP_DATA_DIR}/data/db:/var/lib/postgresql/data
       - ${APP_DATA_DIR}/data/shared:/var/shared
