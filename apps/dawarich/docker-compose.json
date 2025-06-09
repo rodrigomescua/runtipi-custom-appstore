@@ -63,7 +63,7 @@
         "TIME_ZONE": "${TZ}",
         "TZ": "${TZ}",
         "APPLICATION_PROTOCOL": "http",
-        "PROMETHEUS_EXPORTER_ENABLED": false,
+        "PROMETHEUS_EXPORTER_ENABLED": "false",
         "PROMETHEUS_EXPORTER_HOST": "0.0.0.0",
         "PROMETHEUS_EXPORTER_PORT": 9394,
         "SELF_HOSTED": "true",
