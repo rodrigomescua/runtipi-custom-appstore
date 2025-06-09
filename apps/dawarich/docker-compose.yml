@@ -1,52 +1,87 @@
 version: "3.7"
 services:
+  dawarich_db:
+    image: postgis/postgis:17-3.5-alpine
+    shm_size: 1G
+    container_name: dawarich_db
+    volumes:
+      - ${APP_DATA_DIR}/data/dawarich_db_data:/var/lib/postgresql/data
+      - ${APP_DATA_DIR}/data/dawarich_shared:/var/shared
+      # - ./postgresql.conf:/etc/postgresql/postgresql.conf # Optional, uncomment if you want to use a custom config
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: dawarich_development
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d dawarich_development" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    # command: postgres -c config_file=/etc/postgresql/postgresql.conf # Use custom config, uncomment if you want to use a custom config
+    networks:
+      - tipi_main_network
+    labels:
+      runtipi.managed: true
   dawarich:
     image: freikin/dawarich:0.27.4
     container_name: dawarich
-    entrypoint: web-entrypoint.sh
-    command:
-      ["bin/rails", "server", "-p", "3000", "-b", "::"]
-    stdin_open: true
-    tty: true
-    environment:
-      - TZ=${TZ}
-      - RAILS_ENV=development
-      - DATABASE_HOST=dawarich-db
-      - DATABASE_USERNAME=postgres
-      - DATABASE_PASSWORD=password
-      - DATABASE_NAME=dawarich_development
-     # PostgreSQL database name for solid_queue
-      - QUEUE_DATABASE_NAME=dawarich_development_queue
-      - QUEUE_DATABASE_PASSWORD=password
-      - QUEUE_DATABASE_USERNAME=postgres
-      - QUEUE_DATABASE_PORT=5432
-      - QUEUE_DATABASE_HOST=dawarich_db
-      # SQLite database paths for cache and cable databases
-      - CACHE_DATABASE_PATH=/dawarich_sqlite_data/dawarich_development_cache.sqlite3
-      - CABLE_DATABASE_PATH=/dawarich_sqlite_data/dawarich_development_cable.sqlite3
-      - MIN_MINUTES_SPENT_IN_CITY=3
-      - APPLICATION_HOSTS=localhost,dawarich.murkmesc.top
-      - TIME_ZONE=${TZ}
-      - APPLICATION_PROTOCOL=http
-      - DISTANCE_UNIT=km
-      - PROMETHEUS_EXPORTER_ENABLED=false
-      - PROMETHEUS_EXPORTER_HOST=0.0.0.0
-      - PROMETHEUS_EXPORTER_PORT=9394
-      - SELF_HOSTED=true
-      - STORE_GEODATA=true
     volumes:
-      - ${APP_DATA_DIR}/data/public:/var/app/public
-      - ${APP_DATA_DIR}/data/imports/watched:/var/app/tmp/imports/watched
-      - ${APP_DATA_DIR}/data/storage:/var/app/storage
-      - ${APP_DATA_DIR}/data/db:/dawarich_db_data
-      - ${APP_DATA_DIR}/data/sqlite_data:/dawarich_sqlite_data
-    dns:
-      - ${DNS_IP}
+      - ${APP_DATA_DIR}/data/dawarich_public:/var/app/public
+      - ${APP_DATA_DIR}/data/dawarich_watched:/var/app/tmp/imports/watched
+      - ${APP_DATA_DIR}/data/dawarich_storage:/var/app/storage
+      - ${APP_DATA_DIR}/data/dawarich_db_data:/dawarich_db_data
+      - ${APP_DATA_DIR}/data/dawarich_sqlite_data:/dawarich_sqlite_data
     ports:
       - ${APP_PORT}:3000
-    restart: unless-stopped
+      # - 9394:9394 # Prometheus exporter, uncomment if needed
+    stdin_open: true
+    tty: true
+    entrypoint: web-entrypoint.sh
+    command: ['bin/rails', 'server', '-p', '3000', '-b', '::']
+    restart: on-failure
+    environment:
+      RAILS_ENV: development
+      DATABASE_HOST: dawarich_db
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: dawarich_development
+      # PostgreSQL database name for solid_queue
+      QUEUE_DATABASE_NAME: dawarich_development_queue
+      QUEUE_DATABASE_PASSWORD: password
+      QUEUE_DATABASE_USERNAME: postgres
+      QUEUE_DATABASE_HOST: dawarich_db
+      QUEUE_DATABASE_PORT: 5432
+      # SQLite database paths for cache and cable databases
+      CACHE_DATABASE_PATH: /dawarich_sqlite_data/dawarich_development_cache.sqlite3
+      CABLE_DATABASE_PATH: /dawarich_sqlite_data/dawarich_development_cable.sqlite3
+      MIN_MINUTES_SPENT_IN_CITY: 6
+      APPLICATION_HOSTS: localhost,dawarich.murkmesc.top
+      DISTANCE_UNIT: km
+      TIME_ZONE: ${TZ}
+      TZ: ${TZ}
+      APPLICATION_PROTOCOL: http
+      PROMETHEUS_EXPORTER_ENABLED: false
+      PROMETHEUS_EXPORTER_HOST: 0.0.0.0
+      PROMETHEUS_EXPORTER_PORT: 9394
+      SELF_HOSTED: "true"
+      STORE_GEODATA: "true"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "5"
+    healthcheck:
+      test: [ "CMD-SHELL", "wget -qO - http://127.0.0.1:3000/api/v1/health | grep -q '\"status\"\\s*:\\s*\"ok\"'" ]
+      interval: 10s
+      retries: 30
+      start_period: 30s
+      timeout: 10s
     depends_on:
-      - dawarich-db
+      dawarich_db:
+        condition: service_healthy
+        restart: true
     networks:
       - tipi_main_network
     labels:
@@ -74,21 +109,4 @@ services:
       traefik.http.routers.dawarich-local.entrypoints: websecure
       traefik.http.routers.dawarich-local.service: dawarich
       traefik.http.routers.dawarich-local.tls: true
-      runtipi.managed: true
-  dawarich-db:
-    image: postgis/postgis:17-3.5-alpine
-    container_name: dawarich-db
-    shm_size: 1G
-    environment:
-      - TZ=${TZ}
-      - POSTGRES_USERNAME=postgres
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=dawarich_development
-    volumes:
-      - ${APP_DATA_DIR}/data/db:/var/lib/postgresql/data
-      - ${APP_DATA_DIR}/data/shared:/var/shared
-    restart: unless-stopped
-    networks:
-      - tipi_main_network
-    labels:
       runtipi.managed: true
