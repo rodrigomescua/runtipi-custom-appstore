@@ -83,6 +83,7 @@ services:
       - TZ=${TZ}
       - POSTGRES_USERNAME=postgres
       - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=dawarich_development
     volumes:
       - ${APP_DATA_DIR}/data/db:/var/lib/postgresql/data
       - ${APP_DATA_DIR}/data/shared:/var/shared

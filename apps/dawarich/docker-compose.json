@@ -90,7 +90,8 @@
       "environment": {
         "TZ": "${TZ}",
         "POSTGRES_USERNAME": "postgres",
-        "POSTGRES_PASSWORD": "password"
+        "POSTGRES_PASSWORD": "password",
+        "POSTGRES_DB": "dawarich_development"
       },
       "volumes": [
         {
