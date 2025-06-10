@@ -76,10 +76,8 @@ services:
       retries: 30
       timeout: 10s
     depends_on:
-      dawarich_db:
-        condition: service_healthy
-      dawarich_redis:
-        condition: service_healthy
+      - dawarich_db
+      - dawarich_redis
     networks:
       - tipi_main_network
     labels:
@@ -150,9 +148,6 @@ services:
     labels:
       runtipi.managed: true
     depends_on:
-      dawarich_db:
-        condition: service_healthy
-      dawarich_redis:
-        condition: service_healthy
-      dawarich:
-        condition: service_healthy
+      - dawarich_db
+      - dawarich_redis
+      - dawarich

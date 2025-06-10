@@ -124,10 +124,10 @@
       },
       "dependsOn": {
         "dawarich_db": {
-          "condition": "service_healthy"
+          "condition": "service_started"
         },
         "dawarich_redis": {
-          "condition": "service_healthy"
+          "condition": "service_started"
         }
       },
       "isMain": true
@@ -195,13 +195,13 @@
       },
       "dependsOn": {
         "dawarich_db": {
-          "condition": "service_healthy"
+          "condition": "service_started"
         },
         "dawarich_redis": {
-          "condition": "service_healthy"
+          "condition": "service_started"
         },
         "dawarich": {
-          "condition": "service_healthy"
+          "condition": "service_started"
         }
       }
     }
