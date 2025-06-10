@@ -1,5 +1,21 @@
 version: "3.7"
 services:
+  dawarich_redis:
+    image: redis:7.4-alpine
+    container_name: dawarich_redis
+    command: redis-server
+    volumes:
+      - ${APP_DATA_DIR}/data/dawarich_shared:/data
+    restart: always
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 10s
+      retries: 5
+      timeout: 10s
+    networks:
+      - tipi_main_network
+    labels:
+      runtipi.managed: true
   dawarich_db:
     image: postgis/postgis:17-3.5-alpine
     shm_size: 1G
@@ -7,7 +23,6 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/dawarich_db_data:/var/lib/postgresql/data
       - ${APP_DATA_DIR}/data/dawarich_shared:/var/shared
-      # - ./postgresql.conf:/etc/postgresql/postgresql.conf # Optional, uncomment if you want to use a custom config
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
@@ -17,22 +32,19 @@ services:
       test: [ "CMD-SHELL", "pg_isready -U postgres -d dawarich_development" ]
       interval: 10s
       retries: 5
-      start_period: 30s
       timeout: 10s
-    # command: postgres -c config_file=/etc/postgresql/postgresql.conf # Use custom config, uncomment if you want to use a custom config
     networks:
       - tipi_main_network
     labels:
       runtipi.managed: true
   dawarich:
-    image: freikin/dawarich:0.27.4
+    image: freikin/dawarich:0.28.0
     container_name: dawarich
     volumes:
       - ${APP_DATA_DIR}/data/dawarich_public:/var/app/public
       - ${APP_DATA_DIR}/data/dawarich_watched:/var/app/tmp/imports/watched
       - ${APP_DATA_DIR}/data/dawarich_storage:/var/app/storage
       - ${APP_DATA_DIR}/data/dawarich_db_data:/dawarich_db_data
-      - ${APP_DATA_DIR}/data/dawarich_sqlite_data:/dawarich_sqlite_data
     ports:
       - ${APP_PORT}:3000
       # - 9394:9394 # Prometheus exporter, uncomment if needed
@@ -43,26 +55,17 @@ services:
     restart: on-failure
     environment:
       RAILS_ENV: development
+      REDIS_URL: redis://dawarich_redis:6379
       DATABASE_HOST: dawarich_db
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: password
       DATABASE_NAME: dawarich_development
-      # PostgreSQL database name for solid_queue
-      QUEUE_DATABASE_NAME: dawarich_development_queue
-      QUEUE_DATABASE_PASSWORD: password
-      QUEUE_DATABASE_USERNAME: postgres
-      QUEUE_DATABASE_HOST: dawarich_db
-      QUEUE_DATABASE_PORT: 5432
-      # SQLite database paths for cache and cable databases
-      CACHE_DATABASE_PATH: /dawarich_sqlite_data/dawarich_development_cache.sqlite3
-      CABLE_DATABASE_PATH: /dawarich_sqlite_data/dawarich_development_cable.sqlite3
       MIN_MINUTES_SPENT_IN_CITY: 6
       APPLICATION_HOSTS: localhost,dawarich.murkmesc.top
       DISTANCE_UNIT: km
       TIME_ZONE: ${TZ}
-      TZ: ${TZ}
       APPLICATION_PROTOCOL: http
-      PROMETHEUS_EXPORTER_ENABLED: false
+      PROMETHEUS_EXPORTER_ENABLED: "false"
       PROMETHEUS_EXPORTER_HOST: 0.0.0.0
       PROMETHEUS_EXPORTER_PORT: 9394
       SELF_HOSTED: "true"
@@ -76,12 +79,12 @@ services:
       test: [ "CMD-SHELL", "wget -qO - http://127.0.0.1:3000/api/v1/health | grep -q '\"status\"\\s*:\\s*\"ok\"'" ]
       interval: 10s
       retries: 30
-      start_period: 30s
       timeout: 10s
     depends_on:
       dawarich_db:
         condition: service_healthy
-        restart: true
+      dawarich_redis:
+        condition: service_healthy
     networks:
       - tipi_main_network
     labels:
@@ -110,3 +113,51 @@ services:
       traefik.http.routers.dawarich-local.service: dawarich
       traefik.http.routers.dawarich-local.tls: true
       runtipi.managed: true
+  dawarich_sidekiq:
+    image: freikin/dawarich:0.28.0
+    container_name: dawarich_sidekiq
+    volumes:
+      - ${APP_DATA_DIR}/data/dawarich_public:/var/app/public
+      - ${APP_DATA_DIR}/data/dawarich_watched:/var/app/tmp/imports/watched
+      - ${APP_DATA_DIR}/data/dawarich_storage:/var/app/storage
+    stdin_open: true
+    tty: true
+    entrypoint: sidekiq-entrypoint.sh
+    command: ['sidekiq']
+    restart: on-failure
+    environment:
+      RAILS_ENV: development
+      REDIS_URL: redis://dawarich_redis:6379
+      DATABASE_HOST: dawarich_db
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: dawarich_development
+      APPLICATION_HOSTS: localhost
+      BACKGROUND_PROCESSING_CONCURRENCY: 10
+      APPLICATION_PROTOCOL: http
+      PROMETHEUS_EXPORTER_ENABLED: "false"
+      PROMETHEUS_EXPORTER_HOST: dawarich
+      PROMETHEUS_EXPORTER_PORT: 9394
+      SELF_HOSTED: "true"
+      STORE_GEODATA: "true"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "5"
+    healthcheck:
+      test: [ "CMD-SHELL", "pgrep -f sidekiq" ]
+      interval: 10s
+      retries: 30
+      timeout: 10s
+    networks:
+      - tipi_main_network
+    labels:
+      runtipi.managed: true
+    depends_on:
+      dawarich_db:
+        condition: service_healthy
+      dawarich_redis:
+        condition: service_healthy
+      dawarich:
+        condition: service_healthy

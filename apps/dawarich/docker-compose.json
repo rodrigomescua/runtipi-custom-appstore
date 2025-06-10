@@ -1,6 +1,26 @@
 {
   "services": [
     {
+      "name": "dawarich_redis",
+      "image": "redis:7.4-alpine",
+      "command": "redis-server",
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/dawarich_shared",
+          "containerPath": "/data",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ],
+      "healthCheck": {
+        "test": "CMD redis-cli --raw incr ping",
+        "interval": "10s",
+        "timeout": "10s",
+        "retries": 5
+      }
+    },
+    {
       "name": "dawarich_db",
       "image": "postgis/postgis:17-3.5-alpine",
       "environment": {
@@ -28,14 +48,13 @@
         "test": "pg_isready -U postgres -d dawarich_development",
         "interval": "10s",
         "timeout": "10s",
-        "retries": 5,
-        "start_period": "30s"
+        "retries": 5
       },
       "shmSize": "1G"
     },
     {
       "name": "dawarich",
-      "image": "freikin/dawarich:0.27.4",
+      "image": "freikin/dawarich:0.28.0",
       "command": [
         "bin/rails",
         "server",
@@ -46,22 +65,15 @@
       ],
       "environment": {
         "RAILS_ENV": "development",
+        "REDIS_URL": "redis://dawarich_redis:6379",
         "DATABASE_HOST": "dawarich_db",
         "DATABASE_USERNAME": "postgres",
         "DATABASE_PASSWORD": "password",
         "DATABASE_NAME": "dawarich_development",
-        "QUEUE_DATABASE_NAME": "dawarich_development_queue",
-        "QUEUE_DATABASE_PASSWORD": "password",
-        "QUEUE_DATABASE_USERNAME": "postgres",
-        "QUEUE_DATABASE_HOST": "dawarich_db",
-        "QUEUE_DATABASE_PORT": 5432,
-        "CACHE_DATABASE_PATH": "/dawarich_sqlite_data/dawarich_development_cache.sqlite3",
-        "CABLE_DATABASE_PATH": "/dawarich_sqlite_data/dawarich_development_cable.sqlite3",
         "MIN_MINUTES_SPENT_IN_CITY": 6,
         "APPLICATION_HOSTS": "localhost,dawarich.murkmesc.top",
         "DISTANCE_UNIT": "km",
         "TIME_ZONE": "${TZ}",
-        "TZ": "${TZ}",
         "APPLICATION_PROTOCOL": "http",
         "PROMETHEUS_EXPORTER_ENABLED": "false",
         "PROMETHEUS_EXPORTER_HOST": "0.0.0.0",
@@ -98,21 +110,13 @@
           "readOnly": false,
           "shared": false,
           "private": false
-        },
-        {
-          "hostPath": "${APP_DATA_DIR}/data/dawarich_sqlite_data",
-          "containerPath": "/dawarich_sqlite_data",
-          "readOnly": false,
-          "shared": false,
-          "private": false
         }
       ],
       "healthCheck": {
         "test": "wget -qO - http://127.0.0.1:3000/api/v1/health | grep -q '\"status\"\\s*:\\s*\"ok\"'",
         "interval": "10s",
         "timeout": "10s",
-        "retries": 30,
-        "start_period": "30s"
+        "retries": 30
       },
       "entrypoint": "web-entrypoint.sh",
       "tty": true,
@@ -126,11 +130,86 @@
       },
       "dependsOn": {
         "dawarich_db": {
-          "condition": "service_healthy",
-          "restart": true
+          "condition": "service_healthy"
+        },
+        "dawarich_redis": {
+          "condition": "service_healthy"
         }
       },
       "isMain": true
+    },
+    {
+      "name": "dawarich_sidekiq",
+      "image": "freikin/dawarich:0.28.0",
+      "command": [
+        "sidekiq"
+      ],
+      "environment": {
+        "RAILS_ENV": "development",
+        "REDIS_URL": "redis://dawarich_redis:6379",
+        "DATABASE_HOST": "dawarich_db",
+        "DATABASE_USERNAME": "postgres",
+        "DATABASE_PASSWORD": "password",
+        "DATABASE_NAME": "dawarich_development",
+        "APPLICATION_HOSTS": "localhost,dawarich.murkmesc.top",
+        "BACKGROUND_PROCESSING_CONCURRENCY": 10,
+        "APPLICATION_PROTOCOL": "http",
+        "PROMETHEUS_EXPORTER_ENABLED": "false",
+        "PROMETHEUS_EXPORTER_HOST": "dawarich",
+        "PROMETHEUS_EXPORTER_PORT": 9394,
+        "SELF_HOSTED": "true",
+        "STORE_GEODATA": "true"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/dawarich_public",
+          "containerPath": "/var/app/public",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/dawarich_watched",
+          "containerPath": "/var/app/tmp/imports/watched",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/dawarich_storage",
+          "containerPath": "/var/app/storage",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ],
+      "healthCheck": {
+        "test": "pgrep -f sidekiq",
+        "interval": "10s",
+        "timeout": "10s",
+        "retries": 30
+      },
+      "entrypoint": "sidekiq-entrypoint.sh",
+      "tty": true,
+      "stdinOpen": true,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "100m",
+          "max-file": "5"
+        }
+      },
+      "dependsOn": {
+        "dawarich_db": {
+          "condition": "service_healthy"
+        },
+        "dawarich_redis": {
+          "condition": "service_healthy"
+        },
+        "dawarich": {
+          "condition": "service_healthy"
+        }
+      }
     }
   ]
 }
