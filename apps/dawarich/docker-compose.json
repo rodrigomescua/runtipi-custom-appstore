@@ -12,13 +12,7 @@
           "shared": false,
           "private": false
         }
-      ],
-      "healthCheck": {
-        "test": "CMD redis-cli --raw incr ping",
-        "interval": "10s",
-        "timeout": "10s",
-        "retries": 5
-      }
+      ]
     },
     {
       "name": "dawarich_db",

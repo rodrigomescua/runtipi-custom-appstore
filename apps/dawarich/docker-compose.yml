@@ -7,11 +7,6 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/dawarich_shared:/data
     restart: always
-    healthcheck:
-      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
-      interval: 10s
-      retries: 5
-      timeout: 10s
     networks:
       - tipi_main_network
     labels:
