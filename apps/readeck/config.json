@@ -1,0 +1,20 @@
+{
+  "name": "Readeck",
+  "available": true,
+  "exposable": true,
+  "dynamic_config": true,
+  "port": 8827,
+  "id": "readeck",
+  "tipi_version": 1,
+  "version": "0.19.2",
+  "description": "Readeck helps you keep all that web content you will want to revisit in an hour, tomorrow, or in 20 years.",
+  "short_desc": "Self-hostable alternative to Pocket",
+  "author": "Readeck",
+  "categories": ["utilities", "featured"],
+  "website": "https://readeck.org/",
+  "source": "https://codeberg.org/readeck/readeck",
+  "form_fields": [],
+  "supported_architectures": ["arm64", "amd64"],
+  "created_at": 1745844034001,
+  "updated_at": 1745844034001
+}
