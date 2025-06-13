@@ -6,7 +6,7 @@
       "isMain": true,
       "environment": {
         "READECK_LOG_LEVEL": "debug",
-        "READECK_SERVER_HOST": "192.168.0.20",
+        "READECK_SERVER_HOST": "127.0.0.1",
         "READECK_SERVER_PORT": "8000",
         "READECK_ALLOWED_HOSTS": "${APP_DOMAIN},192.168.0.20"
       },
