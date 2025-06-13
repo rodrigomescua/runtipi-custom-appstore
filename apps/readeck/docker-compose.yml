@@ -6,10 +6,11 @@ services:
     restart: unless-stopped # Do not change this
     environment:
       - READECK_LOG_LEVEL=debug
-      - READECK_SERVER_HOST": 0.0.0.0
+      - READECK_SERVER_HOST=0.0.0.0
       - READECK_SERVER_PORT=8000
-      - READECK_ALLOWED_HOSTS=${APP_DOMAIN},192.168.0.20,0.0.0.0,127.0.0.1
-      - READECK_TRUSTED_PROXIES=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
+      - READECK_ALLOWED_HOSTS=${APP_DOMAIN},192.168.0.20
+      - READECK_TRUSTED_PROXIES=127.0.0.0/8
+      - READECK_USE_X_FORWARDED=true 
     volumes:
       - ${APP_DATA_DIR}/data/readeck:/readeck # Always start the path with ${APP_DATA_DIR}/data/. This will put all data inside app-data/my-app/data
     ports:
