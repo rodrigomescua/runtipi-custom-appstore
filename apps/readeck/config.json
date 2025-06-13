@@ -5,7 +5,7 @@
   "dynamic_config": true,
   "port": 8827,
   "id": "readeck",
-  "tipi_version": 7,
+  "tipi_version": 8,
   "version": "0.19.2",
   "description": "Readeck helps you keep all that web content you will want to revisit in an hour, tomorrow, or in 20 years.",
   "short_desc": "Self-hostable alternative to Pocket",
@@ -16,5 +16,5 @@
   "form_fields": [],
   "supported_architectures": ["arm64", "amd64"],
   "created_at": 1745844034001,
-  "updated_at": 1745844034007
+  "updated_at": 1745844034008
 }
