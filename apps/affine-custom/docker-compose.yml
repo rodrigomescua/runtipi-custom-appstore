@@ -31,6 +31,7 @@ services:
       - AFFINE_ADMIN_EMAIL=${AFFINE_ADMIN_EMAIL}
       - AFFINE_ADMIN_PASSWORD=${AFFINE_ADMIN_PASSWORD}
       - TELEMETRY_ENABLE=${AFFINE_TELEMETRY_ENABLE}
+      - AFFINE_INDEXER_ENABLED=false
     networks:
       - tipi_main_network
     labels:

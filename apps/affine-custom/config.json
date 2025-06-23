@@ -8,13 +8,13 @@
   "port": 3010,
   "categories": ["utilities"],
   "description": "AFFiNE is a workspace with fully merged docs, whiteboards and databases. A privacy-focused, local-first, open-source, and ready-to-use alternative for Notion & Miro. Docs, canvas and tables are hyper-merged with AFFiNE - just like the word affine",
-  "tipi_version": 4,
+  "tipi_version": 5,
   "version": "stable",
   "source": "https://github.com/toeverything/affine",
   "website": "https://affine.pro",
   "exposable": true,
   "created_at": 1691943801422,
-  "updated_at": 1691943802003,
+  "updated_at": 1691943802005,
   "form_fields": [
     {
       "env_variable": "AFFINE_ADMIN_EMAIL",

@@ -15,7 +15,8 @@
         "NODE_ENV": "production",
         "AFFINE_ADMIN_EMAIL": "${AFFINE_ADMIN_EMAIL}",
         "AFFINE_ADMIN_PASSWORD": "${AFFINE_ADMIN_PASSWORD}",
-        "TELEMETRY_ENABLE": "${AFFINE_TELEMETRY_ENABLE}"
+        "TELEMETRY_ENABLE": "${AFFINE_TELEMETRY_ENABLE}",
+        "AFFINE_INDEXER_ENABLED": "false"
       },
       "internalPort": 3010,
       "volumes": [
