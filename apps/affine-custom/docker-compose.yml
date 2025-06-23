@@ -3,7 +3,7 @@ services:
     image: ghcr.io/toeverything/affine-graphql:stable
     container_name: affine-custom
     command:
-      ["sh", "-c", "node ./scripts/self-host-predeploy.js"]
+      ["sh", "-c", "node ./scripts/self-host-predeploy && node ./dist/main.js"]
     ports:
       - ${APP_PORT}:3010
     depends_on:
@@ -11,8 +11,6 @@ services:
         condition: service_healthy
       affine-custom-postgres:
         condition: service_healthy
-      affine-custom-migration:
-        condition: service_completed_successfully
     volumes:
       # Custom configurations
       - ${APP_DATA_DIR}/data/config:/root/.affine/config
@@ -24,6 +22,7 @@ services:
         max-size: "1000m"
     restart: unless-stopped
     environment:
+      # - NODE_OPTIONS="--import=./scripts/register.js"
       - AFFINE_CONFIG_PATH=/root/.affine/config
       - REDIS_SERVER_HOST=affine-custom-redis
       - DATABASE_URL=postgresql://tipi:${AFFINE_POSTGRES_PASSWORD}@affine-custom-postgres:5432/affine
@@ -31,7 +30,6 @@ services:
       - AFFINE_ADMIN_EMAIL=${AFFINE_ADMIN_EMAIL}
       - AFFINE_ADMIN_PASSWORD=${AFFINE_ADMIN_PASSWORD}
       - TELEMETRY_ENABLE=${AFFINE_TELEMETRY_ENABLE}
-      - AFFINE_INDEXER_ENABLED=false
     networks:
       - tipi_main_network
     labels:
@@ -60,30 +58,6 @@ services:
       traefik.http.routers.affine-custom-local.service: affine-custom
       traefik.http.routers.affine-custom-local.tls: true
       runtipi.managed: true
-  affine-custom-migration:
-    image: ghcr.io/toeverything/affine-graphql:stable
-    container_name: affine-custom-migration
-    volumes:
-      # Custom configurations
-      - ${APP_DATA_DIR}/data/config:/root/.affine/config
-      # Blob storage
-      - ${APP_DATA_DIR}/data/storage:/root/.affine/storage
-    command: ['sh', '-c', 'node ./scripts/self-host-predeploy.js']
-    env_file:
-      - .env
-    environment:
-      - REDIS_SERVER_HOST=affine-custom-redis
-      - DATABASE_URL=postgresql://tipi:${AFFINE_POSTGRES_PASSWORD}@affine-custom-postgres:5432/affine
-      - AFFINE_INDEXER_ENABLED=false
-    depends_on:
-      affine-custom-redis:
-        condition: service_healthy
-      affine-custom-postgres:
-        condition: service_healthy
-    networks:
-      - tipi_main_network
-    labels:
-      runtipi.managed: true
   affine-custom-redis:
     image: redis
     container_name: affine-custom-redis
@@ -91,7 +65,7 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/redis:/data
     healthcheck:
-      test: ["redis-cli", "--raw", "incr", "ping"]
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -118,7 +92,6 @@ services:
       POSTGRES_USER: tipi
       POSTGRES_PASSWORD: ${AFFINE_POSTGRES_PASSWORD}
       POSTGRES_DB: affine
-      POSTGRES_INITDB_ARGS: "--data-checksums"
     networks:
       - tipi_main_network
     labels:
