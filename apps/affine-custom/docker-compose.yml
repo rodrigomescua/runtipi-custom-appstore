@@ -3,7 +3,7 @@ services:
     image: ghcr.io/toeverything/affine-graphql:stable
     container_name: affine-custom
     command:
-      ["sh", "-c", "node ./scripts/self-host-predeploy && node ./dist/main.js"]
+      ["sh", "-c", "node ./scripts/self-host-predeploy.js"]
     ports:
       - ${APP_PORT}:3010
     depends_on:
@@ -22,10 +22,9 @@ services:
         max-size: "1000m"
     restart: unless-stopped
     environment:
-      #- NODE_OPTIONS="--import=./scripts/register.js"
       - AFFINE_CONFIG_PATH=/root/.affine/config
       - REDIS_SERVER_HOST=affine-custom-redis
-      - DATABASE_URL=postgres://tipi:${AFFINE_POSTGRES_PASSWORD}@affine-custom-postgres:5432/affine
+      - DATABASE_URL=postgresql://tipi:${AFFINE_POSTGRES_PASSWORD}@affine-custom-postgres:5432/affine
       - NODE_ENV=production
       - AFFINE_ADMIN_EMAIL=${AFFINE_ADMIN_EMAIL}
       - AFFINE_ADMIN_PASSWORD=${AFFINE_ADMIN_PASSWORD}
@@ -74,7 +73,7 @@ services:
     labels:
       runtipi.managed: true
   affine-custom-postgres:
-    image: postgres:16
+    image: pgvector/pgvector:pg16
     container_name: affine-custom-postgres
     restart: unless-stopped
     volumes:
@@ -83,7 +82,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "pg_isready -d postgres://tipi:${AFFINE_POSTGRES_PASSWORD}@affine-custom-postgres:5432/affine",
+          "pg_isready -d postgresql://tipi:${AFFINE_POSTGRES_PASSWORD}@affine-custom-postgres:5432/affine",
         ]
       interval: 10s
       timeout: 5s
@@ -92,6 +91,7 @@ services:
       POSTGRES_USER: tipi
       POSTGRES_PASSWORD: ${AFFINE_POSTGRES_PASSWORD}
       POSTGRES_DB: affine
+      POSTGRES_INITDB_ARGS: "--data-checksums"
     networks:
       - tipi_main_network
     labels:
