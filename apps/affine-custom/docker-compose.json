@@ -104,7 +104,7 @@
         }
       ],
       "healthCheck": {
-        "test": "CMD redis-cli --raw incr ping",
+        "test": "redis-cli --raw incr ping",
         "interval": "10s",
         "timeout": "5s",
         "retries": 5
