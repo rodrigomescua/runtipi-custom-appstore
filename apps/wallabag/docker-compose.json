@@ -2,7 +2,7 @@
   "services": [
     {
       "name": "wallabag",
-      "image": "wallabag/wallabag:2.6.12",
+      "image": "wallabag/wallabag:2.6.13",
       "isMain": true,
       "internalPort": 80,
       "environment": {
