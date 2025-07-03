@@ -7,14 +7,14 @@
   "port": 8821,
   "categories": [ "featured" ],
   "description": "Aplicativo para gerenciar IPTV.",
-  "tipi_version": 7,
-  "version": "1751550452",
+  "tipi_version": 8,
+  "version": "1751564063",
   "source": "https://github.com/romesc/RazorIptvDocker",
   "exposable": true,
   "dynamic_config": true,
   "supported_architectures": [ "amd64" ],
   "created_at": 1731806735001,
-  "updated_at": 1731806735007,
+  "updated_at": 1731806735008,
   "form_fields": [
     {
       "type": "text",
