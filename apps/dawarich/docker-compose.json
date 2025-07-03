@@ -48,7 +48,7 @@
     },
     {
       "name": "dawarich",
-      "image": "freikin/dawarich:0.28.1",
+      "image": "freikin/dawarich:0.29.1",
       "command": [
         "bin/rails",
         "server",
@@ -134,7 +134,7 @@
     },
     {
       "name": "dawarich_sidekiq",
-      "image": "freikin/dawarich:0.28.1",
+      "image": "freikin/dawarich:0.29.1",
       "command": [
         "sidekiq"
       ],
