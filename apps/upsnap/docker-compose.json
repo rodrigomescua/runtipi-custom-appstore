@@ -2,7 +2,7 @@
   "services": [
     {
       "name": "upsnap",
-      "image": "ghcr.io/seriousm4x/upsnap:5.1.2",
+      "image": "ghcr.io/seriousm4x/upsnap:5.1.3",
       "environment": {
         "TZ": "${TZ}",
         "UPSNAP_INTERVAL": "*/10 * * * * *",

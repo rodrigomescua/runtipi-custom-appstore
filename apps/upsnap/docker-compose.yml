@@ -2,7 +2,7 @@ version: "3.9"
 services:
   upsnap: # Should be exact same name as "id" field in config.json
     container_name: upsnap # Should be exact same name as "id" field in config.json
-    image: ghcr.io/seriousm4x/upsnap:5.1.2 # Try to avoid "latest" tag. As it may break configs in the future.
+    image: ghcr.io/seriousm4x/upsnap:5.1.3 # Try to avoid "latest" tag. As it may break configs in the future.
     restart: unless-stopped # Do not change this
     network_mode: host # Do not change this
     environment:
