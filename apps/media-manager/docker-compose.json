@@ -13,7 +13,7 @@
       "name": "media-manager-backend",
       "image": "ghcr.io/maxdorninger/mediamanager/backend:1.5.0",
       "environment": {
-        "CONFIG_FILE": "/app/config.toml",
+        "CONFIG_FILE": "/app/config/config.toml",
         "PUID": "1000",
         "PGID": "1000",
         "TZ": "${TZ}"
@@ -35,8 +35,8 @@
           "private": false
         },
         {
-          "hostPath": "${APP_DATA_DIR}/data/config/config.toml",
-          "containerPath": "/app/config.toml",
+          "hostPath": "${APP_DATA_DIR}/data/config",
+          "containerPath": "/app/config",
           "readOnly": false,
           "shared": false,
           "private": false
