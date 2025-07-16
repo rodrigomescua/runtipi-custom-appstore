@@ -7,7 +7,7 @@
   "port": 8029,
   "categories": ["media", "utilities"],
   "description": "MediaManager is modern software to manage your TV and movie library. It is designed to be a replacement for Sonarr, Radarr, Overseer, and Jellyseer.",
-  "tipi_version": 1,
+  "tipi_version": 2,
   "version": "1.5.0",
   "source": "https://github.com/maxdorninger/MediaManager",
   "exposable": true,
@@ -15,5 +15,5 @@
   "supported_architectures": [ "amd64" ],
   "form_fields": [],
   "created_at": 1752623773436,
-  "updated_at": 1752623774001
+  "updated_at": 1752623774002
 }
