@@ -7,14 +7,14 @@
   "port": 8821,
   "categories": [ "featured" ],
   "description": "Aplicativo para gerenciar IPTV.",
-  "tipi_version": 16,
-  "version": "1752678350",
+  "tipi_version": 17,
+  "version": "1752868304",
   "source": "https://github.com/romesc/RazorIptvDocker",
   "exposable": true,
   "dynamic_config": true,
   "supported_architectures": [ "amd64" ],
   "created_at": 1731806735001,
-  "updated_at": 1731806735016,
+  "updated_at": 1731806735017,
   "form_fields": [
     {
       "type": "text",
@@ -23,6 +23,30 @@
       "min": 3,
       "required": true,
       "env_variable": "IPTV_URL"
+    },
+    {
+      "type": "text",
+      "label": "Webhook Url",
+      "max": 200,
+      "min": 3,
+      "required": false,
+      "env_variable": "WEBHOOK_URL"
+    },
+    {
+      "type": "text",
+      "label": "Webhook User",
+      "max": 40,
+      "min": 3,
+      "required": false,
+      "env_variable": "WEBHOOK_USER"
+    },
+    {
+      "type": "password",
+      "label": "Webhook Password",
+      "max": 200,
+      "min": 3,
+      "required": false,
+      "env_variable": "WEBHOOK_PASSWORD"
     },
     {
       "type": "text",

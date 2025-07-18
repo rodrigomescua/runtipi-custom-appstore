@@ -2,11 +2,12 @@
   "services": [
     {
       "name": "razor-iptv",
-      "image": "romesc/razoriptvdocker:1752678350",
+      "image": "romesc/razoriptvdocker:1752868304",
       "isMain": true,
       "internalPort": 8080,
       "environment": {
         "IPTV_URL": "${IPTV_URL}",
+        "WEBHOOK_URL": "${WEBHOOK_URL}",
         "IS_TOP": "${IS_TOP}",
         "TZ": "${TZ}"
       },

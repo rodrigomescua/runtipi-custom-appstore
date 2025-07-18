@@ -2,11 +2,12 @@ version: "3.9"
 services:
   razor-iptv: # Should be exact same name as "id" field in config.json
     container_name: razor-iptv # Should be exact same name as "id" field in config.json
-    image: romesc/razoriptvdocker:1752678350 # Try to avoid "latest" tag. As it may break configs in the future.
+    image: romesc/razoriptvdocker:1752868304 # Try to avoid "latest" tag. As it may break configs in the future.
     restart: unless-stopped # Do not change this
     environment:
       - TZ=${TZ} # Can use any env variable. See "environment variables" section in the docs
       - IPTV_URL=${IPTV_URL}
+      - WEBHOOK_URL=${WEBHOOK_URL}
       - IS_TOP=${IS_TOP}
     volumes:
       - ${APP_DATA_DIR}/data/db:/app/db # Always start the path with ${APP_DATA_DIR}/data/. This will put all data inside app-data/my-app/data
