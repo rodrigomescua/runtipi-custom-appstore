@@ -8,6 +8,8 @@
       "environment": {
         "IPTV_URL": "${IPTV_URL}",
         "WEBHOOK_URL": "${WEBHOOK_URL}",
+        "WEBHOOK_USER": "${WEBHOOK_USER}",
+        "WEBHOOK_PASSWORD": "${WEBHOOK_PASSWORD}",
         "IS_TOP": "${IS_TOP}",
         "TZ": "${TZ}"
       },
