@@ -7,13 +7,13 @@
   "port": 8831,
   "categories": [ "featured", "utilities" ],
   "description": "Blinko is the next generation of open-source AI-powered card notes designed to help you quickly capture and organize inspiration so that ideas never run out.",
-  "tipi_version": 2,
+  "tipi_version": 3,
   "version": "1.2.2",
   "source": "https://github.com/blinkospace/blinko",
   "exposable": true,
   "dynamic_config": true,
   "supported_architectures": [ "amd64" ],
   "created_at": 1731806735001,
-  "updated_at": 1731806735002,
+  "updated_at": 1731806735003,
   "form_fields": []
 }
