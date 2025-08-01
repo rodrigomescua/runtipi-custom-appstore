@@ -1,0 +1,67 @@
+{
+  "services": [
+    {
+      "name": "blinko",
+      "image": "blinkospace/blinko:1.2.2",
+      "environment": {
+        "NODE_ENV": "production",
+        "NEXTAUTH_SECRET": "my_ultra_secure_nextauth_secret",
+        "DATABASE_URL": "postgresql://postgres:blinko@blinko-postgres:5432/postgres"
+      },
+      "internalPort": 1111,
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/blinko",
+          "containerPath": "/app/.blinko",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ],
+      "healthCheck": {
+        "test": "CMD curl -f http://blinko:1111/",
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 5
+      },
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      },
+      "dependsOn": {
+        "blinko-postgres": {
+          "condition": "service_healthy"
+        }
+      }
+    },
+    {
+      "name": "blinko-postgres",
+      "image": "postgres:14",
+      "environment": {
+        "POSTGRES_DB": "postgres",
+        "POSTGRES_USER": "postgres",
+        "POSTGRES_PASSWORD": "blinko",
+        "TZ": "${TZ}"
+      },
+      "internalPort": 5432,
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/db",
+          "containerPath": "/var/lib/postgresql/data",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ],
+      "healthCheck": {
+        "test": "CMD pg_isready -U postgres -d postgres",
+        "interval": "5s",
+        "timeout": "10s",
+        "retries": 5
+      }
+    }
+  ]
+}
