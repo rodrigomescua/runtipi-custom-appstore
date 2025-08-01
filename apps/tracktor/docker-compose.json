@@ -1,0 +1,39 @@
+{
+  "services": [
+    {
+      "name": "tracktor",
+      "image": "ghcr.io/javedh-dev/tracktor:latest",
+      "environment": {
+        "NODE_ENV": "production"
+      },
+      "internalPort": 3000,
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/app",
+          "containerPath": "/app",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ],
+      "dependsOn": {
+        "tracktor-db": {
+          "condition": "service_started"
+        }
+      }
+    },
+    {
+      "name": "tracktor-db",
+      "image": "nouchka/sqlite3:latest",
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/server/vehicles.db",
+          "containerPath": "/data/vehicles.db",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ]
+    }
+  ]
+}
