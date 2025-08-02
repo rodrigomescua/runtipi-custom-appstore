@@ -33,7 +33,7 @@ services:
     labels:
       runtipi.managed: true
   dawarich:
-    image: freikin/dawarich:0.30.6
+    image: freikin/dawarich:0.30.7
     container_name: dawarich
     volumes:
       - ${APP_DATA_DIR}/data/dawarich_public:/var/app/public
@@ -107,7 +107,7 @@ services:
       traefik.http.routers.dawarich-local.tls: true
       runtipi.managed: true
   dawarich_sidekiq:
-    image: freikin/dawarich:0.30.6
+    image: freikin/dawarich:0.30.7
     container_name: dawarich_sidekiq
     volumes:
       - ${APP_DATA_DIR}/data/dawarich_public:/var/app/public
