@@ -2,7 +2,7 @@
   "services": [
     {
       "name": "razor-iptv",
-      "image": "romesc/razoriptvdocker:1752871790",
+      "image": "romesc/razoriptvdocker:1754310884",
       "isMain": true,
       "internalPort": 8080,
       "environment": {
