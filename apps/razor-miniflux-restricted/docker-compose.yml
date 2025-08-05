@@ -2,7 +2,7 @@ version: "3.9"
 services:
   razor-miniflux-restricted: # Should be exact same name as "id" field in config.json
     container_name: razor-miniflux-restricted # Should be exact same name as "id" field in config.json
-    image: romesc/razorminiflux:1751480200 # Try to avoid "latest" tag. As it may break configs in the future.
+    image: romesc/razorminiflux:1754363192 # Try to avoid "latest" tag. As it may break configs in the future.
     restart: unless-stopped # Do not change this
     environment:
       - TZ=${TZ} # Can use any env variable. See "environment variables" section in the docs
