@@ -2,7 +2,7 @@
   "services": [
     {
       "name": "razor-miniflux",
-      "image": "romesc/razorminiflux:1754363192",
+      "image": "romesc/razorminiflux:1754482913",
       "isMain": true,
       "internalPort": 8080,
       "environment": {
