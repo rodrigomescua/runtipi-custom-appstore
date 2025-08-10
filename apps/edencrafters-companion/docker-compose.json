@@ -1,0 +1,21 @@
+{
+  "services": [
+    {
+      "name": "edencrafters-companion",
+      "image": "ghcr.io/rodrigomescua/edencrafterscompanion:v1.0.2",
+      "isMain": true,
+      "internalPort": 3000,
+      "environment": {
+        "DATABASE_URL": "file:/app/data/dev.db",
+        "NODE_ENV": "production",
+        "TZ": "${TZ}"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data",
+          "containerPath": "/app/data"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Eden Crafters Companion",
+  "id": "edencrafters-companion",
+  "available": true,
+  "short_desc": "Eden Crafters Companion",
+  "author": "Rodrigo Mescua",
+  "port": 3000,
+  "categories": [ "featured" ],
+  "description": "Companion for Eden Crafters game",
+  "tipi_version": 1,
+  "version": "v1.0.2",
+  "source": "https://github.com/rodrigomescua/EdenCraftersCompanion",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": [ "amd64" ],
+  "created_at": 1731806735001,
+  "updated_at": 1731806735001,
+  "form_fields": []
+}
