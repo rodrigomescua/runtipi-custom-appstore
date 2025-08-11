@@ -9,7 +9,7 @@
       "environment": {
         "DATABASE_URL": "file:/app/data/dev.db",
         "NODE_ENV": "production",
-        "HOSTNAME": "${APP_HOST}",
+        "HOSTNAME": "0.0.0.0",
         "TZ": "${TZ}"
       },
       "volumes": [
