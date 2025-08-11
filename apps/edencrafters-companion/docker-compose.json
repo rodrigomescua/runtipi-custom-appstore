@@ -2,7 +2,7 @@
   "services": [
     {
       "name": "edencrafters-companion",
-      "image": "ghcr.io/rodrigomescua/edencrafterscompanion:v1.0.3",
+      "image": "ghcr.io/rodrigomescua/edencrafterscompanion:v1.0.4",
       "isMain": true,
       "internalPort": 3000,
       "command": "sh -c \"npx prisma migrate deploy && node server.js\"",
