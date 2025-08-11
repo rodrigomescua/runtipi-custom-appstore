@@ -7,13 +7,13 @@
   "port": 8834,
   "categories": [ "featured" ],
   "description": "Companion for Eden Crafters game",
-  "tipi_version": 9,
-  "version": "v1.0.5",
+  "tipi_version": 10,
+  "version": "v1.0.6",
   "source": "https://github.com/rodrigomescua/EdenCraftersCompanion",
   "exposable": true,
   "dynamic_config": true,
   "supported_architectures": [ "amd64" ],
   "created_at": 1731806735001,
-  "updated_at": 1731806735009,
+  "updated_at": 1731806735010,
   "form_fields": []
 }
