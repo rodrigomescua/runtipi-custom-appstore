@@ -2,13 +2,14 @@
   "services": [
     {
       "name": "edencrafters-companion",
-      "image": "ghcr.io/rodrigomescua/edencrafterscompanion:v1.0.7",
+      "image": "ghcr.io/rodrigomescua/edencrafterscompanion:v1.0.8",
       "isMain": true,
       "internalPort": 3000,
       "command": "sh -c \"npx prisma migrate deploy && node server.js\"",
       "environment": {
         "DATABASE_URL": "file:/app/data/dev.db",
         "NODE_ENV": "production",
+        "HOSTNAME": "${APP_HOST}",
         "TZ": "${TZ}"
       },
       "volumes": [
