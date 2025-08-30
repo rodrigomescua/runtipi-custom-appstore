@@ -91,7 +91,8 @@
         "STORAGE_S3_BUCKET": "colanode",
         "STORAGE_S3_REGION": "us-east-1",
         "STORAGE_S3_FORCE_PATH_STYLE": "true",
-        "SMTP_ENABLED": "false"
+        "SMTP_ENABLED": "false",
+        "SERVER_CORS_ORIGIN": "https://colanode.murkmesc.top"
       },
       "internalPort": 3000,
       "addPorts": [
