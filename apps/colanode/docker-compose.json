@@ -109,7 +109,8 @@
     {
       "name": "colanode-web",
       "image": "ghcr.io/colanode/web:0.3.4",
-      "internalPort": 80
+      "internalPort": 80,
+      "isMain": true
     }
   ]
 }
