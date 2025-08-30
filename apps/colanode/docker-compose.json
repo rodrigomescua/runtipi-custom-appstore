@@ -83,7 +83,7 @@
         "USER_STORAGE_LIMIT": "10737418240",
         "USER_MAX_FILE_SIZE": "104857600",
         "POSTGRES_URL": "postgres://colanode_user:postgrespass123@postgres:5432/colanode_db",
-        "REDIS_URL": "redis://:your_valkey_password@valkey:6379/0",
+        "REDIS_URL": "redis://:your_valkey_password@colanode-valkey:6379/0",
         "REDIS_DB": "0",
         "STORAGE_S3_ENDPOINT": "http://minio:9000",
         "STORAGE_S3_ACCESS_KEY": "minioadmin",
