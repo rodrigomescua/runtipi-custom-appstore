@@ -94,6 +94,14 @@
         "SMTP_ENABLED": "false"
       },
       "internalPort": 3000,
+      "addPorts": [
+        {
+          "containerPort": 9001,
+          "hostPort": 8834,
+          "tcp": true,
+          "udp": false
+        }
+      ],
       "dependsOn": {
         "colanode-postgres": {
           "condition": "service_started"
