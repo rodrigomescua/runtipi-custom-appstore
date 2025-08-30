@@ -99,7 +99,7 @@
           "containerPort": 3000,
           "hostPort": 8834,
           "tcp": true,
-          "udp": false
+          "udp": true
         }
       ],
       "dependsOn": {
