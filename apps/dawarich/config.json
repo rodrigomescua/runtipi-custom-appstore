@@ -5,8 +5,8 @@
   "dynamic_config": true,
   "port": 8824,
   "id": "dawarich",
-  "tipi_version": 24,
-  "version": "0.31.0",
+  "tipi_version": 25,
+  "version": "0.30.12",
   "description": "Dawarich offers a comprehensive suite of tools to help you track, visualize, and understand your movements. Default login: demo@dawarich.app password: password",
   "short_desc": "Self-hostable alternative to Google Location History (Google Maps Timeline)",
   "author": "Freika",
@@ -16,5 +16,5 @@
   "form_fields": [],
   "supported_architectures": ["arm64", "amd64"],
   "created_at": 1745844033706,
-  "updated_at": 1745844034024
+  "updated_at": 1745844034025
 }
