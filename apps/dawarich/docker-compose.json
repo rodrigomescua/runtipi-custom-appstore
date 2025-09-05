@@ -6,7 +6,8 @@
       "environment": {
         "UPDATE_STRATEGY": "PARALLEL",
         "UPDATE_INTERVAL": "720h",
-        "COUNTRY_CODE": "br"
+        "COUNTRY_CODE": "br",
+        "LOG_LEVEL": "DEBUG"
       },
       "volumes": [
         {
