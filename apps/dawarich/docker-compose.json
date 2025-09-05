@@ -1,6 +1,24 @@
 {
   "services": [
     {
+      "name": "dawarich_photon",
+      "image": "rtuszik/photon-docker:latest",
+      "environment": {
+        "UPDATE_STRATEGY": "PARALLEL",
+        "UPDATE_INTERVAL": "720h",
+        "COUNTRY_CODE": "br"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/proton_data",
+          "containerPath": "/photon/photon_data",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ]
+    },
+    {
       "name": "dawarich_redis",
       "image": "redis:7.4-alpine",
       "command": "redis-server",
@@ -73,7 +91,9 @@
         "PROMETHEUS_EXPORTER_HOST": "0.0.0.0",
         "PROMETHEUS_EXPORTER_PORT": 9394,
         "SELF_HOSTED": "true",
-        "STORE_GEODATA": "true"
+        "STORE_GEODATA": "true",
+        "PHOTON_API_HOST": "dawarich_photon:2322",
+        "PHOTON_API_USE_HTTPS": "false"
       },
       "internalPort": 3000,
       "volumes": [
@@ -128,6 +148,9 @@
         },
         "dawarich_redis": {
           "condition": "service_started"
+        },
+        "dawarich_photon": {
+          "condition": "service_started"
         }
       },
       "isMain": true
@@ -152,7 +175,9 @@
         "PROMETHEUS_EXPORTER_HOST": "dawarich",
         "PROMETHEUS_EXPORTER_PORT": 9394,
         "SELF_HOSTED": "true",
-        "STORE_GEODATA": "true"
+        "STORE_GEODATA": "true",
+        "PHOTON_API_HOST": "dawarich_photon:2322",
+        "PHOTON_API_USE_HTTPS": "false"
       },
       "volumes": [
         {
@@ -198,6 +223,9 @@
           "condition": "service_started"
         },
         "dawarich_redis": {
+          "condition": "service_started"
+        },
+        "dawarich_photon": {
           "condition": "service_started"
         },
         "dawarich": {
