@@ -4,7 +4,10 @@
       "name": "owntracks-recorder",
       "image": "owntracks/recorder:latest",
       "environment": {
-        "TZ": "${TZ}"
+        "TZ": "${TZ}",
+        "OTR_HOST": "192.168.0.20",
+        "OTR_USER": "owntracks",
+        "OTR_PASS": "ade2000NICE!"
       },
       "internalPort": 8083,
       "isMain": true,
