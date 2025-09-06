@@ -5,7 +5,7 @@
   "exposable": true,
   "dynamic_config": true,
   "id": "owntracks-recorder",
-  "tipi_version": 5,
+  "tipi_version": 6,
   "version": "latest",
   "categories": ["utilities", "automation"],
   "description": "The OwnTracks Recorder is a lightweight program for storing and accessing location data published via MQTT (or HTTP) by the OwnTracks apps.",
@@ -15,5 +15,39 @@
   "website": "https://github.com/owntracks",
   "supported_architectures": ["arm64", "amd64"],
   "created_at": 1691943801422,
-  "updated_at": 1752333503630
+  "updated_at": 1752333503630,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "OTR_HOST",
+      "max": 50,
+      "min": 6,
+      "required": true,
+      "env_variable": "OTR_HOST"
+    },
+    {
+      "type": "text",
+      "label": "OTR_USER",
+      "max": 50,
+      "min": 6,
+      "required": true,
+      "env_variable": "OTR_USER"
+    },
+    {
+      "type": "text",
+      "label": "OTR_CLIENTID",
+      "max": 50,
+      "min": 6,
+      "required": true,
+      "env_variable": "OTR_CLIENTID"
+    },
+    {
+      "type": "password",
+      "label": "OTR_PASS",
+      "max": 50,
+      "min": 6,
+      "required": true,
+      "env_variable": "OTR_PASS"
+    }
+  ]
 }
