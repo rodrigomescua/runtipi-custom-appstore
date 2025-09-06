@@ -6,9 +6,8 @@
       "environment": {
         "TZ": "${TZ}",
         "OTR_HOST": "192.168.0.20",
-        "OTR_USER": "owntracks",
-        "OTR_PASS": "adenice1",
-        "OTR_CLIENTID": "owntracks"
+        "OTR_USER": "admin",
+        "OTR_PASS": "ade2000NICE!"
       },
       "internalPort": 8083,
       "isMain": true,
