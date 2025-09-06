@@ -6,6 +6,7 @@
       "environment": {
         "TZ": "${TZ}",
         "OTR_HOST": "${OTR_HOST}",
+        "OTR_PORT": "${OTR_PORT}",
         "OTR_USER": "${OTR_USER}",
         "OTR_PASS": "${OTR_PASS}",
         "OTR_CLIENTID": "${OTR_CLIENTID}"
