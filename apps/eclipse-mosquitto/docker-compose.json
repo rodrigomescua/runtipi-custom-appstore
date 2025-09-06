@@ -24,6 +24,12 @@
         }
       ],
       "internalPort": 9001,
+      "addPorts": [
+        {
+          "hostPort": 1883,
+          "containerPort": 1883
+        }
+      ],
       "isMain": true
     },
     {
