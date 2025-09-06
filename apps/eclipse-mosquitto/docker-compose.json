@@ -23,7 +23,7 @@
           "containerPath": "/dynsec-setup.sh"
         }
       ],
-      "internalPort": 1883,
+      "internalPort": 9001,
       "isMain": true
     }
   ]
