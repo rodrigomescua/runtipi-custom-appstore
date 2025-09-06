@@ -1,11 +1,12 @@
 {
+  "$schema": "../app-info-schema.json",
   "name": "Eclipse Mosquitto",
   "port": 1883,
   "available": true,
   "exposable": true,
   "dynamic_config": true,
   "id": "eclipse-mosquitto",
-  "tipi_version": 2,
+  "tipi_version": 8,
   "version": "2.0.22",
   "categories": ["utilities", "automation"],
   "description": "Eclipse Mosquitto is an open source message broker that implements the MQTT protocol.",
@@ -21,9 +22,17 @@
       "min": 6,
       "required": true,
       "env_variable": "MQTT_ADMIN_PASSWORD"
+    },
+    {
+      "type": "password",
+      "label": "Cedalo Management Center Password",
+      "max": 50,
+      "min": 6,
+      "required": true,
+      "env_variable": "CEDALO_MC_PASSWORD"
     }
   ],
   "supported_architectures": ["arm64", "amd64"],
   "created_at": 1691943801422,
-  "updated_at": 1752333503632
+  "updated_at": 1752333503630
 }

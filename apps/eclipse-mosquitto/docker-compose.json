@@ -25,6 +25,27 @@
       ],
       "internalPort": 9001,
       "isMain": true
+    },
+    {
+      "name": "mosquitto-management-center",
+      "image": "cedalo/management-center:2",
+      "environment": {
+        "TZ": "${TZ}",
+        "CEDALO_MC_BROKER_ID": "mosquitto-broker",
+        "CEDALO_MC_BROKER_NAME": "mosquitto-broker-2",
+        "CEDALO_MC_BROKER_URL": "mqtt://eclipse-mosquitto:1883",
+        "CEDALO_MC_BROKER_USERNAME": "admin",
+        "CEDALO_MC_BROKER_PASSWORD": "${MQTT_ADMIN_PASSWORD}",
+        "CEDALO_MC_USERNAME": "admin",
+        "CEDALO_MC_PASSWORD": "${CEDALO_MC_PASSWORD}"
+      },
+      "dependsOn": ["eclipse-mosquitto"],
+      "addPorts": [
+        {
+          "hostPort": 8288,
+          "containerPort": 8088
+        }
+      ]
     }
   ]
 }
