@@ -1,0 +1,19 @@
+{
+  "name": "Owntracks Recorder",
+  "port": 8311,
+  "available": true,
+  "exposable": true,
+  "dynamic_config": true,
+  "id": "owntracks-recorder",
+  "tipi_version": 1,
+  "version": "latest",
+  "categories": ["utilities", "automation"],
+  "description": "The OwnTracks Recorder is a lightweight program for storing and accessing location data published via MQTT (or HTTP) by the OwnTracks apps.",
+  "short_desc": "Store and access data published by OwnTracks apps",
+  "author": "owntracks",
+  "source": "https://github.com/owntracks/docker-recorder",
+  "website": "https://github.com/owntracks",
+  "supported_architectures": ["arm64", "amd64"],
+  "created_at": 1691943801422,
+  "updated_at": 1752333503630
+}
