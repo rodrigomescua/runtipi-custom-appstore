@@ -86,8 +86,8 @@
         "REDIS_USERNAME": "",
         "REDIS_PASSWORD": "",
         "PHOTON_BASE_URL": "http://${PHOTON_HOST}:${PHOTON_PORT}",
-        "PROCESSING_WAIT_TIME": 8,
-        "DANGEROUS_LIFE": false,
+        "PROCESSING_WAIT_TIME": "8",
+        "DANGEROUS_LIFE": "false",
         "SERVER_PORT": "8080",
         "APP_UID": "1000",
         "APP_GID": "1000"
