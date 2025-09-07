@@ -92,24 +92,20 @@
         "APP_UID": "1000",
         "APP_GID": "1000"
       },
-      "dependsOn": [
-        {
-          "name": "reitti_postgis",
+      "dependsOn": {
+        "reitti_postgis": {
           "condition": "service_healthy"
         },
-        {
-          "name": "reitti_rabbitmq",
+        "reitti_rabbitmq": {
           "condition": "service_healthy"
         },
-        {
-          "name": "reitti_redis",
+        "reitti_redis": {
           "condition": "service_healthy"
         },
-        {
-          "name": "reitti_photon",
+        "reitti_photon": {
           "condition": "service_started"
         }
-      ]
+      }
     }
   ]
 }
