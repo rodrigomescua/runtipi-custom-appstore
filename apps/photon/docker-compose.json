@@ -1,0 +1,23 @@
+{
+  "services": [
+    {
+      "name": "photon",
+      "image": "rtuszik/photon-docker:0.7.2",
+      "isMain": true,
+      "environment": {
+        "UPDATE_STRATEGY": "PARALLEL",
+        "UPDATE_INTERVAL": "720h",
+        "COUNTRY_CODE": "br"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/proton_data",
+          "containerPath": "/photon/photon_data",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ]
+    }
+  ]
+}
