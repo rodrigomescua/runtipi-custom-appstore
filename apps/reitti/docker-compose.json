@@ -101,9 +101,6 @@
         },
         "reitti_redis": {
           "condition": "service_healthy"
-        },
-        "reitti_photon": {
-          "condition": "service_started"
         }
       }
     }
