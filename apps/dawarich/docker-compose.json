@@ -1,25 +1,6 @@
 {
   "services": [
     {
-      "name": "dawarich_photon",
-      "image": "rtuszik/photon-docker:latest",
-      "environment": {
-        "UPDATE_STRATEGY": "PARALLEL",
-        "UPDATE_INTERVAL": "720h",
-        "COUNTRY_CODE": "br",
-        "LOG_LEVEL": "DEBUG"
-      },
-      "volumes": [
-        {
-          "hostPath": "${APP_DATA_DIR}/data/proton_data",
-          "containerPath": "/photon/photon_data",
-          "readOnly": false,
-          "shared": false,
-          "private": false
-        }
-      ]
-    },
-    {
       "name": "dawarich_redis",
       "image": "redis:7.4-alpine",
       "command": "redis-server",
@@ -67,7 +48,7 @@
     },
     {
       "name": "dawarich",
-      "image": "freikin/dawarich:0.30.12",
+      "image": "freikin/dawarich:0.31.0",
       "command": [
         "bin/rails",
         "server",
@@ -93,7 +74,7 @@
         "PROMETHEUS_EXPORTER_PORT": 9394,
         "SELF_HOSTED": "true",
         "STORE_GEODATA": "true",
-        "PHOTON_API_HOST": "dawarich_photon:2322",
+        "PHOTON_API_HOST": "${PHOTON_URL}:${PHOTON_PORT}",
         "PHOTON_API_USE_HTTPS": "false"
       },
       "internalPort": 3000,
@@ -149,16 +130,13 @@
         },
         "dawarich_redis": {
           "condition": "service_started"
-        },
-        "dawarich_photon": {
-          "condition": "service_started"
         }
       },
       "isMain": true
     },
     {
       "name": "dawarich_sidekiq",
-      "image": "freikin/dawarich:0.30.12",
+      "image": "freikin/dawarich:0.31.0",
       "command": [
         "sidekiq"
       ],
@@ -177,7 +155,7 @@
         "PROMETHEUS_EXPORTER_PORT": 9394,
         "SELF_HOSTED": "true",
         "STORE_GEODATA": "true",
-        "PHOTON_API_HOST": "dawarich_photon:2322",
+        "PHOTON_API_HOST": "${PHOTON_URL}:${PHOTON_PORT}",
         "PHOTON_API_USE_HTTPS": "false"
       },
       "volumes": [
@@ -224,9 +202,6 @@
           "condition": "service_started"
         },
         "dawarich_redis": {
-          "condition": "service_started"
-        },
-        "dawarich_photon": {
           "condition": "service_started"
         },
         "dawarich": {
