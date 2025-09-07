@@ -1,0 +1,114 @@
+{
+  "services": [
+    {
+      "name": "reitti_postgis",
+      "image": "postgis/postgis:17-3.5-alpine",
+      "environment": {
+        "POSTGRES_USER": "reitti",
+        "POSTGRES_PASSWORD": "reitti",
+        "POSTGRES_DB": "reittidb"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/postgis",
+          "containerPath": "/var/lib/postgresql/data",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ],
+      "healthCheck": {
+        "test": "pg_isready -U reitti -d reittidb",
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 5
+      }
+    },
+    {
+      "name": "reitti_rabbitmq",
+      "image": "rabbitmq:3-management-alpine",
+      "environment": {
+        "RABBITMQ_DEFAULT_USER": "reitti",
+        "RABBITMQ_DEFAULT_PASS": "reitti"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/rabbitmq",
+          "containerPath": "/var/lib/rabbitmq",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ],
+      "healthCheck": {
+        "test": "rabbitmq-diagnostics check_port_connectivity",
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 5
+      }
+    },
+    {
+      "name": "reitti_redis",
+      "image": "redis:7-alpine",
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/redis",
+          "containerPath": "/data",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ],
+      "healthCheck": {
+        "test": "redis-cli ping",
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 5
+      }
+    },
+    {
+      "name": "reitti",
+      "image": "dedicatedcode/reitti:1.4.0",
+      "internalPort": 8080,
+      "environment": {
+        "POSTGIS_HOST": "reitti_postgis",
+        "POSTGIS_PORT": "5432",
+        "POSTGIS_DB": "reittidb",
+        "POSTGIS_USER": "reitti",
+        "POSTGIS_PASSWORD": "reitti",
+        "RABBITMQ_HOST": "reitti_rabbitmq",
+        "RABBITMQ_PORT": "5672",
+        "RABBITMQ_USER": "reitti",
+        "RABBITMQ_PASSWORD": "reitti",
+        "REDIS_HOST": "reitti_redis",
+        "REDIS_PORT": "6379",
+        "REDIS_USERNAME": "",
+        "REDIS_PASSWORD": "",
+        "PHOTON_BASE_URL": "http://${PHOTON_HOST}:${PHOTON_PORT}",
+        "PROCESSING_WAIT_TIME": 8,
+        "DANGEROUS_LIFE": false,
+        "SERVER_PORT": "8080",
+        "APP_UID": "1000",
+        "APP_GID": "1000"
+      },
+      "dependsOn": [
+        {
+          "name": "reitti_postgis",
+          "condition": "service_healthy"
+        },
+        {
+          "name": "reitti_rabbitmq",
+          "condition": "service_healthy"
+        },
+        {
+          "name": "reitti_redis",
+          "condition": "service_healthy"
+        },
+        {
+          "name": "reitti_photon",
+          "condition": "service_started"
+        }
+      ]
+    }
+  ]
+}
