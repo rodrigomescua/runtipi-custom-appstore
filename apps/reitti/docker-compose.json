@@ -68,6 +68,7 @@
     },
     {
       "name": "reitti",
+      "isMain": true,
       "image": "dedicatedcode/reitti:1.4.0",
       "internalPort": 8080,
       "environment": {
