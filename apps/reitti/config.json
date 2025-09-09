@@ -5,7 +5,7 @@
   "dynamic_config": true,
   "port": 8826,
   "id": "reitti",
-  "tipi_version": 6,
+  "tipi_version": 7,
   "version": "1.5.0",
   "description": "Reitti is a comprehensive personal location tracking and analysis application that helps you understand your movement patterns and significant places. The name 'Reitti' comes from Finnish, meaning 'route' or 'path'. Default credentials: admin:admin",
   "short_desc": "Personal Location Tracking & Analysis - Self-hosted alternative to Google Timeline",
