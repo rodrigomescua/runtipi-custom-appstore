@@ -8,7 +8,8 @@
       "environment": {
         "UPDATE_STRATEGY": "PARALLEL",
         "UPDATE_INTERVAL": "720h",
-        "REGION": "south-america"
+        "REGION": "south-america",
+        "FORCE_UPDATE": "TRUE"
       },
       "volumes": [
         {
