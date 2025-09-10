@@ -1,0 +1,38 @@
+{
+  "services": [
+    {
+      "name": "freshrss-image-cache",
+      "image": "ghcr.io/s373r/freshrss-image-cache-service-rs:0.2.6",
+      "isMain": true,
+      "internalPort": 3000,
+      "environment": {
+        "APP_PORT": "3000",
+        "APP_ACCESS_TOKEN": "${APP_ACCESS_TOKEN}",
+        "APP_IMAGES_DIR": "/usr/src/app/images",
+        "APP_NO_ANSI_COLORS": "1"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/images",
+          "containerPath": "/usr/src/app/images",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ],
+      "healthCheck": {
+        "test": "curl -f http://localhost:3000/health || exit 1",
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3
+      },
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    }
+  ]
+}
