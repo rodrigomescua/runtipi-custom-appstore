@@ -2,14 +2,14 @@
   "services": [
     {
       "name": "photon",
-      "image": "rtuszik/photon-docker:1.0.0",
+      "image": "rtuszik/photon-docker:1.0.1",
       "isMain": true,
       "internalPort": 2322,
       "environment": {
         "UPDATE_STRATEGY": "PARALLEL",
         "UPDATE_INTERVAL": "720h",
         "REGION": "south-america",
-        "FORCE_UPDATE": "TRUE"
+        "FORCE_UPDATE": "FALSE"
       },
       "volumes": [
         {
