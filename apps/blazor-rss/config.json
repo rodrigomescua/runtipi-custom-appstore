@@ -1,0 +1,82 @@
+{
+  "name": "Blazor RSS",
+  "id": "blazor-rss",
+  "available": true,
+  "short_desc": "Blazor RSS",
+  "author": "Rodrigo Mescua",
+  "port": 8822,
+  "categories": ["featured"],
+  "description": "Aplicativo para gerenciar feed RSS hospedado no Miniflux.",
+  "tipi_version": 1,
+  "version": "20250928-055530",
+  "source": "https://github.com/rodrigomescua/BlazorRssDocker",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64"],
+  "created_at": 1731806736001,
+  "updated_at": 1731806736001,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "FreshRSS Pg Connection String",
+      "max": 300,
+      "min": 3,
+      "required": true,
+      "env_variable": "FRESHRSS_CONNECTIONSTRING"
+    },
+    {
+      "type": "text",
+      "label": "FreshRSS Table Prefix",
+      "max": 120,
+      "min": 5,
+      "default": "rssrodrigo",
+      "required": true,
+      "env_variable": "FRESHRSS_TABLE_PREFIX"
+    },
+    {
+      "type": "text",
+      "label": "FreshRSS Top Table Prefix",
+      "max": 120,
+      "min": 5,
+      "default": "rssmurkmesc",
+      "required": true,
+      "env_variable": "FRESHRSS_TOP_TABLE_PREFIX"
+    },
+    {
+      "type": "text",
+      "label": "Page Size",
+      "required": false,
+      "default": "10",
+      "max": 2,
+      "min": 1,
+      "env_variable": "PAGE_SIZE"
+    },
+    {
+      "type": "text",
+      "label": "Server Page Size",
+      "required": false,
+      "default": "500",
+      "max": 5,
+      "min": 1,
+      "env_variable": "SERVER_PAGE_SIZE"
+    },
+    {
+      "type": "text",
+      "label": "Flag",
+      "required": false,
+      "default": "false",
+      "max": 5,
+      "min": 1,
+      "env_variable": "IS_TOP"
+    },
+    {
+      "type": "text",
+      "label": "Mark Starred as Read",
+      "required": false,
+      "default": "true",
+      "max": 5,
+      "min": 1,
+      "env_variable": "MARK_STARRED_READ"
+    }
+  ]
+}
