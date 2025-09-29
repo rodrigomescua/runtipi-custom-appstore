@@ -52,7 +52,7 @@
     },
     {
       "name": "maxun-backend",
-      "image": "getmaxun/maxun-backend:latest",
+      "image": "getmaxun/maxun-backend:v0.0.35",
       "environment": {
         "BACKEND_URL": "http://${APP_PORT}:8837",
         "PLAYWRIGHT_BROWSERS_PATH": "/ms-playwright",
@@ -107,7 +107,7 @@
     },
     {
       "name": "maxun-frontend",
-      "image": "getmaxun/maxun-frontend:latest",
+      "image": "getmaxun/maxun-frontend:v0.0.31",
       "environment": {
         "PUBLIC_URL": "http://${INTERNAL_IP}:${APP_PORT}",
         "BACKEND_URL": "http://${INTERNAL_IP}:8837",
