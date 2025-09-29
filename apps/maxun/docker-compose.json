@@ -54,7 +54,7 @@
       "name": "maxun-backend",
       "image": "getmaxun/maxun-backend:latest",
       "environment": {
-        "BACKEND_URL": "http://localhost:8080",
+        "BACKEND_URL": "http://${APP_PORT}:8837",
         "PLAYWRIGHT_BROWSERS_PATH": "/ms-playwright",
         "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "0",
         "CONTAINER": "true",
@@ -76,9 +76,9 @@
         "MINIO_SECRET_KEY": "maxun_minio_secret_2024",
         "BACKEND_PORT": "8080",
         "FRONTEND_PORT": "5173",
-        "PUBLIC_URL": "http://localhost:5173",
-        "VITE_BACKEND_URL": "http://localhost:8080",
-        "VITE_PUBLIC_URL": "http://localhost:5173",
+        "PUBLIC_URL": "http://${INTERNAL_IP}:${APP_PORT}",
+        "VITE_BACKEND_URL": "http://${INTERNAL_IP}:8837",
+        "VITE_PUBLIC_URL": "http://${INTERNAL_IP}:${APP_PORT}",
         "MAXUN_TELEMETRY": "true",
         "GOOGLE_CLIENT_ID": "${GOOGLE_CLIENT_ID}",
         "GOOGLE_CLIENT_SECRET": "${GOOGLE_CLIENT_SECRET}",
@@ -100,7 +100,7 @@
       ],
       "addPorts": [
         {
-          "hostPort": 8080,
+          "hostPort": 8837,
           "containerPort": 8080
         }
       ]
@@ -109,10 +109,11 @@
       "name": "maxun-frontend",
       "image": "getmaxun/maxun-frontend:latest",
       "environment": {
-        "PUBLIC_URL": "http://localhost:5173",
-        "BACKEND_URL": "http://localhost:8080",
-        "VITE_BACKEND_URL": "http://localhost:8080",
-        "VITE_PUBLIC_URL": "http://localhost:5173",
+        "PUBLIC_URL": "http://${INTERNAL_IP}:${APP_PORT}",
+        "BACKEND_URL": "http://${INTERNAL_IP}:8837",
+        "VITE_BACKEND_URL": "http://${INTERNAL_IP}:8837",
+        "VITE_PUBLIC_URL": "http://${INTERNAL_IP}:${APP_PORT}",
+        "FRONTEND_PORT": "5173",
         "TZ": "${TZ}"
       },
       "restart": "unless-stopped",
