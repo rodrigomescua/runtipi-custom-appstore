@@ -69,7 +69,7 @@
     {
       "name": "reitti",
       "isMain": true,
-      "image": "dedicatedcode/reitti:1.7.0",
+      "image": "dedicatedcode/reitti:1.8.0",
       "internalPort": 8080,
       "environment": {
         "POSTGIS_HOST": "reitti_postgis",
