@@ -1,0 +1,65 @@
+{
+  "name": "MediaManager",
+  "id": "mediamanager",
+  "available": true,
+  "exposable": true,
+  "dynamic_config": true,
+  "short_desc": "Media Manager",
+  "author": "maxdorninger",
+  "port": 8838,
+  "categories": ["featured"],
+  "description": "A manager for your media files.",
+  "tipi_version": 1,
+  "version": "sha-91df5ce",
+  "source": "https://github.com/maxdorninger/MediaManager",
+  "supported_architectures": ["amd64"],
+  "created_at": 1728651600000,
+  "updated_at": 1728651600000,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "Admin Email",
+      "max": 100,
+      "min": 16,
+      "required": true,
+      "env_variable": "APP_ADMIN_EMAIL",
+      "hint": "The email address of the admin user."
+    },
+    {
+      "type": "text",
+      "label": "qBittorrent Host",
+      "max": 100,
+      "min": 16,
+      "required": true,
+      "env_variable": "APP_QBITTORRENT_HOST",
+      "hint": "The hostname or IP address of the qBittorrent instance."
+    },
+    {
+      "type": "text",
+      "label": "qBittorrent Port",
+      "max": 5,
+      "min": 2,
+      "required": true,
+      "env_variable": "APP_QBITTORRENT_PORT",
+      "hint": "The port number of the qBittorrent instance."
+    },
+    {
+      "type": "text",
+      "label": "qBittorrent Username",
+      "max": 100,
+      "min": 1,
+      "required": true,
+      "env_variable": "APP_QBITTORRENT_USERNAME",
+      "hint": "The username for the qBittorrent instance."
+    },
+    {
+      "type": "password",
+      "label": "qBittorrent Password",
+      "max": 100,
+      "min": 1,
+      "required": true,
+      "env_variable": "APP_QBITTORRENT_PASSWORD",
+      "hint": "The password for the qBittorrent instance."
+    }
+  ]
+}
