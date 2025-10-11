@@ -7,8 +7,8 @@
 
 [misc]
 # it's very likely that you need to change this for MediaManager to work
-frontend_url = "${APP_DOMAIN}/web/" # note the trailing slash
-cors_urls = ["${APP_DOMAIN}"] # note the lack of a trailing slash
+frontend_url = "{{APP_DOMAIN}}/web/" # note the trailing slash
+cors_urls = ["{{APP_DOMAIN}}"] # note the lack of a trailing slash
 
 image_directory = "/data/images"
 tv_directory = "/media/tv"
@@ -32,9 +32,9 @@ development = false
 [database]
 host = "mediamanager_db"
 port = 5432
-user = "MediaManager"
-password = "MediaManager"
-dbname = "MediaManager"
+user = "mediamanager"
+password = "mediamanager"
+dbname = "mediamanager"
 
 [auth]
 email_password_resets = false # if true, you also need to set up SMTP (notifications.smtp_config)
@@ -44,7 +44,7 @@ session_lifetime = 86400  # this is how long you will be logged in after loggin 
 
 # Admin users: Users who register with these email addresses will automatically become administrators
 # If no users exist in the database, a default admin user will be created with the first email in this list
-admin_emails = ["${APP_ADMIN_EMAIL}"]
+admin_emails = ["{{APP_ADMIN_EMAIL}}"]
 
 # OpenID Connect settings
 #[auth.openid_connect]
@@ -90,10 +90,10 @@ admin_emails = ["${APP_ADMIN_EMAIL}"]
 # qBittorrent settings
 [torrents.qbittorrent]
 enabled = true
-host = "http://${APP_QBITTORRENT_HOST}"
-port = "${APP_QBITTORRENT_PORT}"
-username = "${APP_QBITTORRENT_USERNAME}"
-password = "${APP_QBITTORRENT_PASSWORD}"
+host = "http://{{APP_QBITTORRENT_HOST}}"
+port = "{{APP_QBITTORRENT_PORT}}"
+username = "{{APP_QBITTORRENT_USERNAME}}"
+password = "{{APP_QBITTORRENT_PASSWORD}}"
 
 # Transmission settings
 [torrents.transmission]
