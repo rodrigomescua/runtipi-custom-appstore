@@ -9,12 +9,12 @@
   "port": 8838,
   "categories": ["featured"],
   "description": "A manager for your media files.",
-  "tipi_version": 4,
+  "tipi_version": 5,
   "version": "sha-91df5ce",
   "source": "https://github.com/maxdorninger/MediaManager",
   "supported_architectures": ["amd64"],
   "created_at": 1728651600000,
-  "updated_at": 1728651600004,
+  "updated_at": 1728651600005,
   "form_fields": [
     {
       "type": "text",
