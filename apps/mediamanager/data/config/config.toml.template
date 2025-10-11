@@ -7,8 +7,8 @@
 
 [misc]
 # it's very likely that you need to change this for MediaManager to work
-frontend_url = "{{APP_DOMAIN}}/web/" # note the trailing slash
-cors_urls = ["{{APP_DOMAIN}}"] # note the lack of a trailing slash
+frontend_url = "${APP_PROTOCOL:-http}://${APP_DOMAIN}/web/" # note the trailing slash
+cors_urls = ["${APP_PROTOCOL:-http}://${APP_DOMAIN}"] # note the lack of a trailing slash
 
 image_directory = "/data/images"
 tv_directory = "/media/tv"
