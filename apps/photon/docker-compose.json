@@ -2,7 +2,7 @@
   "services": [
     {
       "name": "photon",
-      "image": "rtuszik/photon-docker:1.1.0",
+      "image": "rtuszik/photon-docker:1.2.0",
       "isMain": true,
       "internalPort": 2322,
       "environment": {
