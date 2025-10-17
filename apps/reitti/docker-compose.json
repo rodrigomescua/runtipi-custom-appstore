@@ -72,7 +72,23 @@
       "image": "dedicatedcode/reitti:1.9.3",
       "internalPort": 8080,
       "environment": {
-        "PHOTON_BASE_URL": "http://${PHOTON_HOST}:${PHOTON_PORT}"
+        "POSTGIS_HOST": "reitti_postgis",
+        "POSTGIS_PORT": "5432",
+        "POSTGIS_DB": "reittidb",
+        "POSTGIS_USER": "reitti",
+        "POSTGIS_PASSWORD": "reitti",
+        "RABBITMQ_HOST": "reitti_rabbitmq",
+        "RABBITMQ_PORT": "5672",
+        "RABBITMQ_USER": "reitti",
+        "RABBITMQ_PASSWORD": "reitti",
+        "REDIS_HOST": "reitti_redis",
+        "REDIS_PORT": "6379",
+        "PHOTON_BASE_URL": "http://${PHOTON_HOST}:${PHOTON_PORT}",
+        "PROCESSING_WAIT_TIME": "8",
+        "DANGEROUS_LIFE": "false",
+        "SERVER_PORT": "8080",
+        "APP_UID": "1000",
+        "APP_GID": "1000"
       },
       "dependsOn": {
         "reitti_postgis": {
