@@ -1,15 +1,32 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
       "name": "upsnap",
       "image": "ghcr.io/seriousm4x/upsnap:5.1.9",
-      "environment": {
-        "TZ": "${TZ}",
-        "UPSNAP_INTERVAL": "*/10 * * * * *",
-        "UPSNAP_SCAN_RANGE": "192.168.0.0/24",
-        "UPSNAP_SCAN_TIMEOUT": "500ms",
-        "UPSNAP_PING_PRIVILEGED": "true"
-      },
+      "environment": [
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        },
+        {
+          "key": "UPSNAP_INTERVAL",
+          "value": "*/10 * * * * *"
+        },
+        {
+          "key": "UPSNAP_SCAN_RANGE",
+          "value": "192.168.0.0/24"
+        },
+        {
+          "key": "UPSNAP_SCAN_TIMEOUT",
+          "value": "500ms"
+        },
+        {
+          "key": "UPSNAP_PING_PRIVILEGED",
+          "value": "true"
+        }
+      ],
       "internalPort": 8090,
       "networkMode": "host",
       "volumes": [
