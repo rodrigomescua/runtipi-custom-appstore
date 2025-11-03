@@ -86,7 +86,7 @@
     {
       "name": "reitti",
       "isMain": true,
-      "image": "dedicatedcode/reitti:1.9.3",
+      "image": "dedicatedcode/reitti:2.1.0",
       "internalPort": 8080,
       "volumes": [
         {
