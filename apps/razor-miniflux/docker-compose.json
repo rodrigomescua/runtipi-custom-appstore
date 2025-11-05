@@ -7,7 +7,7 @@
       "image": "romesc/razorminiflux:1758305236",
       "isMain": true,
       "internalPort": 8080,
-      "env": [
+      "environment": [
         {
           "key": "FRESHRSS_CONNECTIONSTRING",
           "value": "${FRESHRSS_CONNECTIONSTRING}"
