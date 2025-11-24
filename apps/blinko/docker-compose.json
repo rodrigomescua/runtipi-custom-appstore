@@ -54,14 +54,14 @@
       ],
       "volumes": [
         {
-          "hostPath": "${APP_DATA_DIR}/data",
+          "hostPath": "${APP_DATA_DIR}/data/db",
           "containerPath": "/var/lib/postgresql/data"
         }
       ],
       "healthCheck": {
         "test": "pg_isready -U postgres -d postgres",
-        "interval": "10s",
-        "timeout": "5s",
+        "interval": "30s",
+        "timeout": "10s",
         "retries": 5
       }
     }

@@ -360,16 +360,12 @@ Define volumes para persistência de dados e compartilhamento de arquivos.
 ```json
 "volumes": [
   {
-    "hostPath": "${APP_DATA_DIR}/config",
-    "containerPath": "/etc/app",
-    "readOnly": true,
-    "shared": false,
-    "private": false
+    "hostPath": "${APP_DATA_DIR}/data/etc/app",
+    "containerPath": "/etc/app"
   },
   {
-    "hostPath": "${APP_DATA_DIR}/data",
-    "containerPath": "/data",
-    "readOnly": false
+    "hostPath": "${APP_DATA_DIR}/data/data",
+    "containerPath": "/data"
   }
 ]
 ```
@@ -570,7 +566,7 @@ Sobrescreve o comando padrão executado no container.
 // Como string
 "command": "python app.py --port 8080"
 
-// Como array (recomendado)
+// Como array
 "command": ["python", "app.py", "--port", "8080"]
 
 // Executar shell script

@@ -9,10 +9,7 @@
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_shared",
-          "containerPath": "/data",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/data"
         }
       ]
     },
@@ -36,17 +33,11 @@
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_db_data",
-          "containerPath": "/var/lib/postgresql/data",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/lib/postgresql/data"
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_shared",
-          "containerPath": "/var/shared",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/shared"
         }
       ],
       "healthCheck": {
@@ -54,7 +45,8 @@
         "interval": "10s",
         "timeout": "10s",
         "retries": 5
-      }
+      },
+      "shmSize": "1G"
     },
     {
       "name": "dawarich",
@@ -145,31 +137,19 @@
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_public",
-          "containerPath": "/var/app/public",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/app/public"
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_watched",
-          "containerPath": "/var/app/tmp/imports/watched",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/app/tmp/imports/watched"
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_storage",
-          "containerPath": "/var/app/storage",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/app/storage"
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_db_data",
-          "containerPath": "/dawarich_db_data",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/dawarich_db_data"
         }
       ],
       "healthCheck": {
@@ -266,24 +246,15 @@
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_public",
-          "containerPath": "/var/app/public",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/app/public"
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_watched",
-          "containerPath": "/var/app/tmp/imports/watched",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/app/tmp/imports/watched"
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_storage",
-          "containerPath": "/var/app/storage",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/app/storage"
         }
       ],
       "healthCheck": {
