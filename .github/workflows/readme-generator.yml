@@ -26,7 +26,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
           commit-message: |
             docs: regenerate readme app list
           committer: GitHub <noreply@github.com>
@@ -34,4 +34,7 @@ jobs:
           branch: bot/readme-update
           title: |
             readme-generator: update readme
+          body: |
+            Automated README update with latest apps
           labels: bot
+          draft: false
