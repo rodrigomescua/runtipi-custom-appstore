@@ -12,7 +12,7 @@
   "version": "1743737648",
   "source": "https://github.com/romesc/RazorPriceHistory",
   "exposable": true,
-  "dynamic_config": true,
+  "dynamic": true,
   "supported_architectures": [ "amd64" ],
   "created_at": 1733750038001,
   "updated_at": 1733750038001

@@ -12,7 +12,7 @@
   "version": "1761309973",
   "source": "https://github.com/romesc/RazorIptvDocker",
   "exposable": true,
-  "dynamic_config": true,
+  "dynamic": true,
   "supported_architectures": [ "amd64" ],
   "created_at": 1731806735001,
   "updated_at": 1731806735022,

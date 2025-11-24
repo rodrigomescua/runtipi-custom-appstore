@@ -12,7 +12,7 @@
   "version": "v1.1.0",
   "source": "https://github.com/rodrigomescua/EdenCraftersCompanion",
   "exposable": true,
-  "dynamic_config": true,
+  "dynamic": true,
   "supported_architectures": [ "amd64" ],
   "created_at": 1731806735001,
   "updated_at": 1731806735014,

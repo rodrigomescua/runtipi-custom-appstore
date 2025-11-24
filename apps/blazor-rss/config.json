@@ -12,7 +12,7 @@
   "version": "20250928-055530",
   "source": "https://github.com/rodrigomescua/BlazorRssDocker",
   "exposable": true,
-  "dynamic_config": true,
+  "dynamic": true,
   "supported_architectures": ["amd64"],
   "created_at": 1731806736001,
   "updated_at": 1731806736001,

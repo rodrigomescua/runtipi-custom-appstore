@@ -22,7 +22,7 @@
   ],
   "created_at": 1748599504632,
   "updated_at": 1757126583002,
-  "dynamic_config": true,
+  "dynamic": true,
   "no_gui": true,
   "uid": 1000,
   "gid": 1000,

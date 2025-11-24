@@ -15,7 +15,7 @@
   "version": "1.6.6",
   "source": "https://github.com/blinkospace/blinko",
   "exposable": true,
-  "dynamic_config": true,
+  "dynamic": true,
   "supported_architectures": [
     "amd64"
   ],

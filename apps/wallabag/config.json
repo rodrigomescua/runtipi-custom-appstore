@@ -12,7 +12,7 @@
   "version": "2.6.14",
   "source": "https://github.com/wallabag/wallabag",
   "exposable": true,
-  "dynamic_config": true,
+  "dynamic": true,
   "supported_architectures": ["amd64"],
   "created_at": 1744636790001,
   "updated_at": 1744636790003,

@@ -15,7 +15,7 @@
   "version": "5.2.4",
   "source": "https://github.com/seriousm4x/UpSnap",
   "exposable": true,
-  "dynamic_config": true,
+  "dynamic": true,
   "supported_architectures": [
     "amd64"
   ],
