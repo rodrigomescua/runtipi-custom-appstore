@@ -9,6 +9,7 @@
   ],
   "enabledManagers": ["custom.regex"],
   "automergeStrategy": "rebase",
+  "prCreation": "in-range",
   "customManagers": [
     {
       "customType": "regex",
