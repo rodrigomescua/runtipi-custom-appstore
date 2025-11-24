@@ -3,20 +3,21 @@ name: Readme Generator
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 1 1 * *'
+    - cron: 0 8 * * *  # 5 da manhã (horário de Brasília UTC-3)
+    - cron: 0 20 * * * # 5 da tarde (horário de Brasília UTC-3)
 
 jobs:
   generate-readme-file:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v5
 
       - name: Install Bun
         uses: oven-sh/setup-bun@v2
 
       - name: Generate new README.md file
-        run: bun scripts/readme-generator.ts
+        run: bun .github/scripts/readme-generator.ts
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
