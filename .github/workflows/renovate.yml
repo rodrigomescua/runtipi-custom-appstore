@@ -1,4 +1,8 @@
 name: Renovate
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
 on:
   workflow_dispatch:
     inputs:
