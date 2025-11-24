@@ -22,12 +22,20 @@
         },
         {
           "key": "APP_NO_ANSI_COLORS",
+          "value": "false"
+        },
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/images",
+          "containerPath": "/usr/src/app/images"
+        }
+      ],
       "healthCheck": {
-        "test": "curl -f http://localhost:3000/health || exit 1",
-        "interval": "30s",
-        "timeout": "10s",
-        "retries": 3
-      }healthCheck": {
         "test": "curl -f http://localhost:3000/health || exit 1",
         "interval": "30s",
         "timeout": "10s",

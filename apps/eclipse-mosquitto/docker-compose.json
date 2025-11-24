@@ -5,6 +5,8 @@
     {
       "name": "eclipse-mosquitto",
       "image": "eclipse-mosquitto:2.0.22",
+      "isMain": true,
+      "internalPort": 1883,
       "command": ["/dynsec-setup.sh", "/usr/sbin/mosquitto", "-c", "/mosquitto/config/mosquitto.conf"],
       "environment": [
         {
@@ -33,7 +35,8 @@
           "hostPath": "${APP_DATA_DIR}/data/scripts/dynsec-setup.sh",
           "containerPath": "/dynsec-setup.sh"
         }
-      ],
+      ]
+    },
     {
       "name": "mosquitto-management-center",
       "image": "cedalo/management-center:2",
@@ -70,17 +73,12 @@
           "key": "CEDALO_MC_PASSWORD",
           "value": "${CEDALO_MC_PASSWORD}"
         }
-      ],nvironment": {
-        "TZ": "${TZ}",
-        "CEDALO_MC_BROKER_ID": "mosquitto-broker",
-        "CEDALO_MC_BROKER_NAME": "mosquitto-broker-2",
-        "CEDALO_MC_BROKER_URL": "mqtt://eclipse-mosquitto:1883",
-        "CEDALO_MC_BROKER_USERNAME": "admin",
-        "CEDALO_MC_BROKER_PASSWORD": "${MQTT_ADMIN_PASSWORD}",
-        "CEDALO_MC_USERNAME": "admin",
-        "CEDALO_MC_PASSWORD": "${CEDALO_MC_PASSWORD}"
+      ],
+      "dependsOn": {
+        "eclipse-mosquitto": {
+          "condition": "service_started"
+        }
       },
-      "dependsOn": ["eclipse-mosquitto"],
       "addPorts": [
         {
           "hostPort": 8288,

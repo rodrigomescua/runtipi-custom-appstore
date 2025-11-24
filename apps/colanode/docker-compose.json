@@ -19,14 +19,10 @@
           "value": "colanode_db"
         }
       ],
-      "internalPort": 5432,
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/postgres_data",
-          "containerPath": "/var/lib/postgresql/data",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/lib/postgresql/data"
         }
       ]
     },
@@ -38,14 +34,10 @@
         "--requirepass",
         "your_valkey_password"
       ],
-      "internalPort": 6379,
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/valkey_data",
-          "containerPath": "/data",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/data"
         }
       ]
     },
@@ -79,8 +71,19 @@
           "value": ":9001"
         }
       ],
-      "internalPort": 9000,
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/minio_data",
+          "containerPath": "/data"
+        }
+      ],
       "addPorts": [
+        {
+          "hostPort": 9001,
+          "containerPort": 9001
+        }
+      ]
+    },
     {
       "name": "colanode-server",
       "image": "ghcr.io/colanode/server:0.3.4",
@@ -161,32 +164,12 @@
           "key": "SERVER_CORS_ORIGIN",
           "value": "https://${APP_DOMAIN}"
         }
-      ],"SERVER_NAME": "Colanode Local",
-        "SERVER_AVATAR": "",
-        "SERVER_MODE": "standalone",
-        "ACCOUNT_VERIFICATION_TYPE": "automatic",
-        "ACCOUNT_OTP_TIMEOUT": "600",
-        "USER_STORAGE_LIMIT": "10737418240",
-        "USER_MAX_FILE_SIZE": "104857600",
-        "POSTGRES_URL": "postgres://colanode_user:postgrespass123@colanode-postgres:5432/colanode_db",
-        "REDIS_URL": "redis://:your_valkey_password@colanode-valkey:6379/0",
-        "REDIS_DB": "0",
-        "STORAGE_S3_ENDPOINT": "http://colanode-minio:9000",
-        "STORAGE_S3_ACCESS_KEY": "minioadmin",
-        "STORAGE_S3_SECRET_KEY": "your_minio_password",
-        "STORAGE_S3_BUCKET": "colanode",
-        "STORAGE_S3_REGION": "us-east-1",
-        "STORAGE_S3_FORCE_PATH_STYLE": "true",
-        "SMTP_ENABLED": "false",
-        "SERVER_CORS_ORIGIN": "https://${APP_DOMAIN}"
-      },
+      ],
       "internalPort": 3000,
       "addPorts": [
         {
-          "containerPort": 3000,
           "hostPort": 8834,
-          "tcp": true,
-          "udp": true
+          "containerPort": 3000
         }
       ],
       "dependsOn": {
@@ -205,7 +188,12 @@
       "name": "colanode-web",
       "image": "ghcr.io/colanode/web:0.3.4",
       "internalPort": 80,
-      "isMain": true
+      "isMain": true,
+      "dependsOn": {
+        "colanode-server": {
+          "condition": "service_started"
+        }
+      }
     }
   ]
 }
