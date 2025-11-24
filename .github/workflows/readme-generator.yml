@@ -6,6 +6,10 @@ on:
     - cron: 0 8 * * *  # 5 da manhã (horário de Brasília UTC-3)
     - cron: 0 20 * * * # 5 da tarde (horário de Brasília UTC-3)
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   generate-readme-file:
     runs-on: ubuntu-latest
