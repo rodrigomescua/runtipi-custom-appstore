@@ -43,10 +43,11 @@
         "mysql",
         "monogdb",
         "postgres",
-        "redis"
+        "redis",
+        "rabbitmq"
       ],
       "enabled": false
-    }
+    },
   ],
   "postUpgradeTasks": {
     "commands": [
