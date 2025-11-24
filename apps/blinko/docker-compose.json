@@ -23,7 +23,7 @@
       ],
       "volumes": [
         {
-          "hostPath": "/data/blinko",
+          "hostPath": "${APP_DATA_DIR}/data/blinko",
           "containerPath": "/app/.blinko"
         }
       ],

@@ -378,7 +378,9 @@ Define volumes para persistência de dados e compartilhamento de arquivos.
 - `hostPath` (string, obrigatório): Caminho no host. Use `${APP_DATA_DIR}` para dados do app
   - **⚠️ IMPORTANTE - Padrão obrigatório:** Todos os `hostPath` **DEVEM** começar com `${APP_DATA_DIR}/data/` ou ser caminho relativo dentro deste diretório
   - Exemplos corretos: `${APP_DATA_DIR}/data/postgres`, `${APP_DATA_DIR}/data/config`, `${APP_DATA_DIR}/data/uploads`
-  - Exceção: Apenas para caminhos do sistema como `/var/run/dbus` (raro)
+  - Exceções raras:
+    - Caminhos do sistema: `/var/run/dbus`
+    - Caminhos de mídia compartilhada: `${ROOT_FOLDER_HOST}/media` (documentar quando necessário)
 - `containerPath` (string, obrigatório): Caminho dentro do container
 - `readOnly` (boolean, opcional): Se true, volume é somente leitura. Padrão: `false`
 - `shared` (boolean, opcional): Se true, permite compartilhamento entre múltiplos containers. Padrão: `false`
@@ -972,7 +974,9 @@ Permitem diferentes configurações para arquiteturas específicas (arm64, amd64
 - Sempre defina explicitamente as portas e variáveis de ambiente necessárias.
 - **Volumes - PADRÃO OBRIGATÓRIO:** Todos os `hostPath` nos volumes **DEVEM começar com `${APP_DATA_DIR}/data/`**
   - Exemplo correto: `"hostPath": "${APP_DATA_DIR}/data/postgres"`, `"${APP_DATA_DIR}/data/config"`
-  - Exceção rara: Caminhos do sistema como `/var/run/dbus` (documentar o por quê)
+  - Exceções raras (documentar o por quê):
+    - Caminhos do sistema: `/var/run/dbus`
+    - Mídia compartilhada: `${ROOT_FOLDER_HOST}/media`
 - Utilize `dependsOn` para garantir ordem de inicialização entre serviços.
 - Adicione `healthCheck` para monitorar o estado dos serviços principais.
 - Prefira imagens oficiais e tags específicas.
