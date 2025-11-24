@@ -47,7 +47,7 @@
         "rabbitmq"
       ],
       "enabled": false
-    },
+    }
   ],
   "postUpgradeTasks": {
     "commands": [
