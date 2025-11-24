@@ -4,7 +4,7 @@
   "id": "kitchenowl",
   "available": true,
   "exposable": true,
-  "dynamic": true,
+  "dynamic_config": true,
   "short_desc": "KitchenOwl",
   "author": "tombursch",
   "port": 8828,

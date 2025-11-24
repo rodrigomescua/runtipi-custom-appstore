@@ -3,7 +3,7 @@
   "name": "Reitti",
   "available": true,
   "exposable": true,
-  "dynamic": true,
+  "dynamic_config": true,
   "port": 8826,
   "id": "reitti",
   "tipi_version": 19,

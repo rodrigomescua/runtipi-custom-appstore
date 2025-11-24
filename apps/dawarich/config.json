@@ -3,7 +3,7 @@
   "name": "Dawarich",
   "available": true,
   "exposable": true,
-  "dynamic": true,
+  "dynamic_config": true,
   "port": 8824,
   "id": "dawarich",
   "tipi_version": 31,

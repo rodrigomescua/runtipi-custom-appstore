@@ -4,7 +4,7 @@
   "id": "mediamanager",
   "available": true,
   "exposable": true,
-  "dynamic": true,
+  "dynamic_config": true,
   "short_desc": "Media Manager",
   "author": "maxdorninger",
   "port": 8838,

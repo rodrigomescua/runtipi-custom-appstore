@@ -14,7 +14,7 @@
   "version": "20241019213308",
   "source": "https://github.com/romesc/RazorMinifluxDocker",
   "exposable": true,
-  "dynamic": true,
+  "dynamic_config": true,
   "supported_architectures": [
     "amd64"
   ],

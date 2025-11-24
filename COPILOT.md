@@ -232,7 +232,7 @@ featured, utilities, automation, network, media, productivity, security, monitor
   "exposable": true,
   "force_expose": false,
   "https": true,
-  "dynamic": true,
+  "dynamic_config": true,
   "form_fields": [
     {
       "type": "text",
