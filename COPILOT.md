@@ -376,6 +376,9 @@ Define volumes para persistência de dados e compartilhamento de arquivos.
 
 **Campos:**
 - `hostPath` (string, obrigatório): Caminho no host. Use `${APP_DATA_DIR}` para dados do app
+  - **⚠️ IMPORTANTE - Padrão obrigatório:** Todos os `hostPath` **DEVEM** começar com `${APP_DATA_DIR}/data/` ou ser caminho relativo dentro deste diretório
+  - Exemplos corretos: `${APP_DATA_DIR}/data/postgres`, `${APP_DATA_DIR}/data/config`, `${APP_DATA_DIR}/data/uploads`
+  - Exceção: Apenas para caminhos do sistema como `/var/run/dbus` (raro)
 - `containerPath` (string, obrigatório): Caminho dentro do container
 - `readOnly` (boolean, opcional): Se true, volume é somente leitura. Padrão: `false`
 - `shared` (boolean, opcional): Se true, permite compartilhamento entre múltiplos containers. Padrão: `false`
@@ -967,7 +970,9 @@ Permitem diferentes configurações para arquiteturas específicas (arm64, amd64
 ### Recomendações gerais
 
 - Sempre defina explicitamente as portas e variáveis de ambiente necessárias.
-- Use volumes para persistência de dados com `${APP_DATA_DIR}`.
+- **Volumes - PADRÃO OBRIGATÓRIO:** Todos os `hostPath` nos volumes **DEVEM começar com `${APP_DATA_DIR}/data/`**
+  - Exemplo correto: `"hostPath": "${APP_DATA_DIR}/data/postgres"`, `"${APP_DATA_DIR}/data/config"`
+  - Exceção rara: Caminhos do sistema como `/var/run/dbus` (documentar o por quê)
 - Utilize `dependsOn` para garantir ordem de inicialização entre serviços.
 - Adicione `healthCheck` para monitorar o estado dos serviços principais.
 - Prefira imagens oficiais e tags específicas.
