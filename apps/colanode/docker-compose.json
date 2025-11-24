@@ -98,7 +98,7 @@
         },
         {
           "key": "SERVER_AVATAR",
-          "value": ""
+          "value": "default-avatar"
         },
         {
           "key": "SERVER_MODE",

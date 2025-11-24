@@ -11,7 +11,7 @@
       "environment": [
         {
           "key": "NODE_OPTIONS",
-          "value": ""
+          "value": "--max-old-space-size=2048"
         },
         {
           "key": "AFFINE_CONFIG_PATH",
