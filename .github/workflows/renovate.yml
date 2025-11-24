@@ -13,7 +13,8 @@ on:
           - ERROR
           - FATAL
   schedule:
-    - cron: 0 2 * * *
+    - cron: 0 6 * * *  # 4 da manhã (horário de Brasília)
+    - cron: 0 18 * * * # 4 da tarde (horário de Brasília)
 
 jobs:
   renovate:
