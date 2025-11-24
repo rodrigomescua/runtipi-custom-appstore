@@ -22,10 +22,7 @@
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/postgis",
-          "containerPath": "/var/lib/postgresql/data",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/lib/postgresql/data"
         }
       ],
       "healthCheck": {
@@ -51,10 +48,7 @@
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/rabbitmq_mnesia",
-          "containerPath": "/var/lib/rabbitmq/mnesia",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/lib/rabbitmq/mnesia"
         }
       ],
       "healthCheck": {
@@ -70,10 +64,7 @@
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/redis",
-          "containerPath": "/data",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/data"
         }
       ],
       "healthCheck": {
@@ -91,10 +82,7 @@
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/data",
-          "containerPath": "/data",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/data"
         }
       ],
       "environment": [

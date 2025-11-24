@@ -32,10 +32,7 @@
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/pb_data",
-          "containerPath": "/app/pb_data",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/app/pb_data"
         }
       ],
       "isMain": true

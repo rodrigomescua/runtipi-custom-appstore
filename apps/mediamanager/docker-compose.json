@@ -1,14 +1,22 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
       "name": "mediamanager",
       "image": "ghcr.io/maxdorninger/mediamanager/mediamanager:sha-91df5ce",
       "isMain": true,
       "internalPort": 8000,
-      "environment": {
-        "TZ": "${TZ}",
-        "CONFIG_DIR": "/app/config"
-      },
+      "environment": [
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        },
+        {
+          "key": "CONFIG_DIR",
+          "value": "/app/config"
+        }
+      ],
       "volumes": [
         {
           "hostPath": "${ROOT_FOLDER_HOST}/media",
@@ -22,17 +30,31 @@
           "hostPath": "${APP_DATA_DIR}/data/images",
           "containerPath": "/data/images"
         }
-      ]
+      ],
+      "dependsOn": {
+        "mediamanager_db": {
+          "condition": "service_started"
+        }
+      }
     },
     {
       "name": "mediamanager_db",
       "image": "postgres:17",
       "isMain": false,
-      "environment": {
-        "POSTGRES_USER": "mediamanager",
-        "POSTGRES_DB": "mediamanager",
-        "POSTGRES_PASSWORD": "mediamanager"
-      },
+      "environment": [
+        {
+          "key": "POSTGRES_USER",
+          "value": "mediamanager"
+        },
+        {
+          "key": "POSTGRES_DB",
+          "value": "mediamanager"
+        },
+        {
+          "key": "POSTGRES_PASSWORD",
+          "value": "mediamanager"
+        }
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/postgres",

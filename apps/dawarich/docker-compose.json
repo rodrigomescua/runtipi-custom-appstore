@@ -1,4 +1,6 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
       "name": "dawarich_redis",
@@ -7,35 +9,35 @@
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_shared",
-          "containerPath": "/data",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/data"
         }
       ]
     },
     {
       "name": "dawarich_db",
       "image": "postgis/postgis:17-3.5-alpine",
-      "environment": {
-        "POSTGRES_USER": "postgres",
-        "POSTGRES_PASSWORD": "password",
-        "POSTGRES_DB": "dawarich_development"
-      },
+      "environment": [
+        {
+          "key": "POSTGRES_USER",
+          "value": "postgres"
+        },
+        {
+          "key": "POSTGRES_PASSWORD",
+          "value": "password"
+        },
+        {
+          "key": "POSTGRES_DB",
+          "value": "dawarich_development"
+        }
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_db_data",
-          "containerPath": "/var/lib/postgresql/data",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/lib/postgresql/data"
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_shared",
-          "containerPath": "/var/shared",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/shared"
         }
       ],
       "healthCheck": {
@@ -57,59 +59,101 @@
         "-b",
         "::"
       ],
-      "environment": {
-        "RAILS_ENV": "development",
-        "REDIS_URL": "redis://dawarich_redis:6379",
-        "DATABASE_HOST": "dawarich_db",
-        "DATABASE_USERNAME": "postgres",
-        "DATABASE_PASSWORD": "password",
-        "DATABASE_NAME": "dawarich_development",
-        "MIN_MINUTES_SPENT_IN_CITY": 6,
-        "APPLICATION_HOSTS": "localhost,dawarich.murkmesc.top",
-        "DISTANCE_UNIT": "km",
-        "TIME_ZONE": "${TZ}",
-        "APPLICATION_PROTOCOL": "http",
-        "PROMETHEUS_EXPORTER_ENABLED": "false",
-        "PROMETHEUS_EXPORTER_HOST": "0.0.0.0",
-        "PROMETHEUS_EXPORTER_PORT": 9394,
-        "SELF_HOSTED": "true",
-        "STORE_GEODATA": "true",
-        "PHOTON_API_HOST": "${PHOTON_URL}:${PHOTON_PORT}",
-        "PHOTON_API_USE_HTTPS": "false"
-      },
+      "environment": [
+        {
+          "key": "RAILS_ENV",
+          "value": "development"
+        },
+        {
+          "key": "REDIS_URL",
+          "value": "redis://dawarich_redis:6379"
+        },
+        {
+          "key": "DATABASE_HOST",
+          "value": "dawarich_db"
+        },
+        {
+          "key": "DATABASE_USERNAME",
+          "value": "postgres"
+        },
+        {
+          "key": "DATABASE_PASSWORD",
+          "value": "password"
+        },
+        {
+          "key": "DATABASE_NAME",
+          "value": "dawarich_development"
+        },
+        {
+          "key": "MIN_MINUTES_SPENT_IN_CITY",
+          "value": "6"
+        },
+        {
+          "key": "APPLICATION_HOSTS",
+          "value": "localhost,dawarich.murkmesc.top"
+        },
+        {
+          "key": "DISTANCE_UNIT",
+          "value": "km"
+        },
+        {
+          "key": "TIME_ZONE",
+          "value": "${TZ}"
+        },
+        {
+          "key": "APPLICATION_PROTOCOL",
+          "value": "http"
+        },
+        {
+          "key": "PROMETHEUS_EXPORTER_ENABLED",
+          "value": "false"
+        },
+        {
+          "key": "PROMETHEUS_EXPORTER_HOST",
+          "value": "0.0.0.0"
+        },
+        {
+          "key": "PROMETHEUS_EXPORTER_PORT",
+          "value": "9394"
+        },
+        {
+          "key": "SELF_HOSTED",
+          "value": "true"
+        },
+        {
+          "key": "STORE_GEODATA",
+          "value": "true"
+        },
+        {
+          "key": "PHOTON_API_HOST",
+          "value": "${PHOTON_URL}:${PHOTON_PORT}"
+        },
+        {
+          "key": "PHOTON_API_USE_HTTPS",
+          "value": "false"
+        }
+      ],
       "internalPort": 3000,
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_public",
-          "containerPath": "/var/app/public",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/app/public"
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_watched",
-          "containerPath": "/var/app/tmp/imports/watched",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/app/tmp/imports/watched"
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_storage",
-          "containerPath": "/var/app/storage",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/app/storage"
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_db_data",
-          "containerPath": "/dawarich_db_data",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/dawarich_db_data"
         }
       ],
       "healthCheck": {
-        "test": "wget -qO - http://127.0.0.1:3000/api/v1/health | grep -q '\"status\"\\s*:\\s*\"ok\"'",
+        "test": "wget -qO - http://127.0.0.1:3000/api/v1/health | grep -q \"status.*ok\"",
         "interval": "10s",
         "timeout": "10s",
         "retries": 30
@@ -117,13 +161,6 @@
       "entrypoint": "web-entrypoint.sh",
       "tty": true,
       "stdinOpen": true,
-      "logging": {
-        "driver": "json-file",
-        "options": {
-          "max-size": "100m",
-          "max-file": "5"
-        }
-      },
       "dependsOn": {
         "dawarich_db": {
           "condition": "service_started"
@@ -140,45 +177,84 @@
       "command": [
         "sidekiq"
       ],
-      "environment": {
-        "RAILS_ENV": "development",
-        "REDIS_URL": "redis://dawarich_redis:6379",
-        "DATABASE_HOST": "dawarich_db",
-        "DATABASE_USERNAME": "postgres",
-        "DATABASE_PASSWORD": "password",
-        "DATABASE_NAME": "dawarich_development",
-        "APPLICATION_HOSTS": "localhost,dawarich.murkmesc.top",
-        "BACKGROUND_PROCESSING_CONCURRENCY": 10,
-        "APPLICATION_PROTOCOL": "http",
-        "PROMETHEUS_EXPORTER_ENABLED": "false",
-        "PROMETHEUS_EXPORTER_HOST": "dawarich",
-        "PROMETHEUS_EXPORTER_PORT": 9394,
-        "SELF_HOSTED": "true",
-        "STORE_GEODATA": "true",
-        "PHOTON_API_HOST": "${PHOTON_URL}:${PHOTON_PORT}",
-        "PHOTON_API_USE_HTTPS": "false"
-      },
+      "environment": [
+        {
+          "key": "RAILS_ENV",
+          "value": "development"
+        },
+        {
+          "key": "REDIS_URL",
+          "value": "redis://dawarich_redis:6379"
+        },
+        {
+          "key": "DATABASE_HOST",
+          "value": "dawarich_db"
+        },
+        {
+          "key": "DATABASE_USERNAME",
+          "value": "postgres"
+        },
+        {
+          "key": "DATABASE_PASSWORD",
+          "value": "password"
+        },
+        {
+          "key": "DATABASE_NAME",
+          "value": "dawarich_development"
+        },
+        {
+          "key": "APPLICATION_HOSTS",
+          "value": "localhost,dawarich.murkmesc.top"
+        },
+        {
+          "key": "BACKGROUND_PROCESSING_CONCURRENCY",
+          "value": "10"
+        },
+        {
+          "key": "APPLICATION_PROTOCOL",
+          "value": "http"
+        },
+        {
+          "key": "PROMETHEUS_EXPORTER_ENABLED",
+          "value": "false"
+        },
+        {
+          "key": "PROMETHEUS_EXPORTER_HOST",
+          "value": "dawarich"
+        },
+        {
+          "key": "PROMETHEUS_EXPORTER_PORT",
+          "value": "9394"
+        },
+        {
+          "key": "SELF_HOSTED",
+          "value": "true"
+        },
+        {
+          "key": "STORE_GEODATA",
+          "value": "true"
+        },
+        {
+          "key": "PHOTON_API_HOST",
+          "value": "${PHOTON_URL}:${PHOTON_PORT}"
+        },
+        {
+          "key": "PHOTON_API_USE_HTTPS",
+          "value": "false"
+        }
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_public",
-          "containerPath": "/var/app/public",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/app/public"
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_watched",
-          "containerPath": "/var/app/tmp/imports/watched",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/app/tmp/imports/watched"
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/dawarich_storage",
-          "containerPath": "/var/app/storage",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/var/app/storage"
         }
       ],
       "healthCheck": {
@@ -190,13 +266,6 @@
       "entrypoint": "sidekiq-entrypoint.sh",
       "tty": true,
       "stdinOpen": true,
-      "logging": {
-        "driver": "json-file",
-        "options": {
-          "max-size": "100m",
-          "max-file": "5"
-        }
-      },
       "dependsOn": {
         "dawarich_db": {
           "condition": "service_started"
