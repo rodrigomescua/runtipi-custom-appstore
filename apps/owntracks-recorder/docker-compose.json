@@ -1,16 +1,36 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
       "name": "owntracks-recorder",
       "image": "owntracks/recorder:latest",
-      "environment": {
-        "TZ": "${TZ}",
-        "OTR_HOST": "${OTR_HOST}",
-        "OTR_PORT": "${OTR_PORT}",
-        "OTR_USER": "${OTR_USER}",
-        "OTR_PASS": "${OTR_PASS}",
-        "OTR_CLIENTID": "${OTR_CLIENTID}"
-      },
+      "environment": [
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        },
+        {
+          "key": "OTR_HOST",
+          "value": "${OTR_HOST}"
+        },
+        {
+          "key": "OTR_PORT",
+          "value": "${OTR_PORT}"
+        },
+        {
+          "key": "OTR_USER",
+          "value": "${OTR_USER}"
+        },
+        {
+          "key": "OTR_PASS",
+          "value": "${OTR_PASS}"
+        },
+        {
+          "key": "OTR_CLIENTID",
+          "value": "${OTR_CLIENTID}"
+        }
+      ],
       "internalPort": 8083,
       "isMain": true,
       "volumes": [

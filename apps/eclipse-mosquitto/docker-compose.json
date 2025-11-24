@@ -1,14 +1,25 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
       "name": "eclipse-mosquitto",
       "image": "eclipse-mosquitto:2.0.22",
       "command": ["/dynsec-setup.sh", "/usr/sbin/mosquitto", "-c", "/mosquitto/config/mosquitto.conf"],
-      "environment": {
-        "TZ": "${TZ}",
-        "MQTT_DYNSEC_ADMIN_USER": "admin",
-        "MQTT_DYNSEC_ADMIN_PASSWORD": "${MQTT_ADMIN_PASSWORD}"
-      },
+      "environment": [
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        },
+        {
+          "key": "MQTT_DYNSEC_ADMIN_USER",
+          "value": "admin"
+        },
+        {
+          "key": "MQTT_DYNSEC_ADMIN_PASSWORD",
+          "value": "${MQTT_ADMIN_PASSWORD}"
+        }
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/data",
@@ -23,19 +34,43 @@
           "containerPath": "/dynsec-setup.sh"
         }
       ],
-      "internalPort": 9001,
-      "addPorts": [
-        {
-          "hostPort": 1883,
-          "containerPort": 1883
-        }
-      ],
-      "isMain": true
-    },
     {
       "name": "mosquitto-management-center",
       "image": "cedalo/management-center:2",
-      "environment": {
+      "environment": [
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        },
+        {
+          "key": "CEDALO_MC_BROKER_ID",
+          "value": "mosquitto-broker"
+        },
+        {
+          "key": "CEDALO_MC_BROKER_NAME",
+          "value": "mosquitto-broker-2"
+        },
+        {
+          "key": "CEDALO_MC_BROKER_URL",
+          "value": "mqtt://eclipse-mosquitto:1883"
+        },
+        {
+          "key": "CEDALO_MC_BROKER_USERNAME",
+          "value": "admin"
+        },
+        {
+          "key": "CEDALO_MC_BROKER_PASSWORD",
+          "value": "${MQTT_ADMIN_PASSWORD}"
+        },
+        {
+          "key": "CEDALO_MC_USERNAME",
+          "value": "admin"
+        },
+        {
+          "key": "CEDALO_MC_PASSWORD",
+          "value": "${CEDALO_MC_PASSWORD}"
+        }
+      ],nvironment": {
         "TZ": "${TZ}",
         "CEDALO_MC_BROKER_ID": "mosquitto-broker",
         "CEDALO_MC_BROKER_NAME": "mosquitto-broker-2",

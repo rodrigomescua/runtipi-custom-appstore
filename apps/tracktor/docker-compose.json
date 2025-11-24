@@ -1,12 +1,20 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
       "name": "tracktor",
       "image": "ghcr.io/javedh-dev/tracktor:0.0.1",
-      "environment": {
-        "NODE_ENV": "production",
-        "PUBLIC_DEMO_MODE": "false"
-      },
+      "environment": [
+        {
+          "key": "NODE_ENV",
+          "value": "production"
+        },
+        {
+          "key": "PUBLIC_DEMO_MODE",
+          "value": "false"
+        }
+      ],
       "isMain": true,
       "internalPort": 3000,
       "volumes": [

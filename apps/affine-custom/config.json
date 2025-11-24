@@ -1,8 +1,9 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
   "name": "AFFiNE Custom",
   "id": "affine-custom",
   "available": true,
-  "dynamic_config": true,
+  "dynamic": true,
   "short_desc": "AFFiNE is a workspace with fully merged docs, whiteboards and databases.",
   "author": "https://github.com/toeverything",
   "port": 3010,
