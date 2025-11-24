@@ -25,21 +25,21 @@ If you want to see new apps on Tipi you can either:
 
 ## Apps available (16)
 
-| Name                                                                              | Description                                                                        | Port | Dynamic (0) |
-| --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---- | ----------- |
-| [Blazor RSS](https://github.com/rodrigomescua/BlazorRssDocker)                    | Blazor RSS                                                                         | 8822 | no          |
-| [Blazor RSS - Restricted](https://github.com/rodrigomescua/BlazorRssDocker)       | Blazor RSS Restricted                                                              | 8823 | no          |
-| [Blinko](https://github.com/blinkospace/blinko)                                   | Bring Your Ideas to Life with AI                                                   | 8831 | no          |
-| [Byparr](https://github.com/ThePhaseless/Byparr)                                  | Bypass Cloudflare and DDoS-GuARD.                                                  | 8191 | no          |
-| [Dawarich](https://github.com/Freika/dawarich)                                    | Self-hostable alternative to Google Location History (Google Maps Timeline)        | 8824 | no          |
-| [Eden Crafters Companion](https://github.com/rodrigomescua/EdenCraftersCompanion) | Eden Crafters Companion                                                            | 8832 | no          |
-| [KitchenOwl](https://github.com/tombursch/kitchenowl)                             | KitchenOwl                                                                         | 8828 | no          |
-| [MediaManager](https://github.com/maxdorninger/MediaManager)                      | Media Manager                                                                      | 8838 | no          |
-| [Photon](https://github.com/rtuszik/photon-docker)                                | This is an unofficial docker image for Photon                                      | 8825 | no          |
-| [Razor IPTV](https://github.com/romesc/RazorIptvDocker)                           | Razor IPTV                                                                         | 8821 | no          |
-| [Razor Miniflux](https://github.com/romesc/RazorMinifluxDocker)                   | Razor Miniflux                                                                     | 8822 | no          |
-| [Razor Miniflux - Restricted](https://github.com/romesc/RazorMinifluxDocker)      | Razor Miniflux Restricted                                                          | 8823 | no          |
-| [Razor Price History](https://github.com/romesc/RazorPriceHistory)                | Razor Price History                                                                | 8820 | no          |
-| [Reitti](https://github.com/dedicatedcode/reitti)                                 | Personal Location Tracking & Analysis - Self-hosted alternative to Google Timeline | 8826 | no          |
-| [Upsnap](https://github.com/seriousm4x/UpSnap)                                    | A simple wake on lan web app written with SvelteKit, Go and PocketBase.            | 8090 | no          |
-| [Wallabag](https://github.com/wallabag/wallabag)                                  | Wallabag                                                                           | 8829 | no          |
+| Name                                                                              | Description                                                                        | Port | Dynamic (16) |
+| --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---- | ------------ |
+| [Blazor RSS](https://github.com/rodrigomescua/BlazorRssDocker)                    | Blazor RSS                                                                         | 8822 | yes          |
+| [Blazor RSS - Restricted](https://github.com/rodrigomescua/BlazorRssDocker)       | Blazor RSS Restricted                                                              | 8823 | yes          |
+| [Blinko](https://github.com/blinkospace/blinko)                                   | Bring Your Ideas to Life with AI                                                   | 8831 | yes          |
+| [Byparr](https://github.com/ThePhaseless/Byparr)                                  | Bypass Cloudflare and DDoS-GuARD.                                                  | 8191 | yes          |
+| [Dawarich](https://github.com/Freika/dawarich)                                    | Self-hostable alternative to Google Location History (Google Maps Timeline)        | 8824 | yes          |
+| [Eden Crafters Companion](https://github.com/rodrigomescua/EdenCraftersCompanion) | Eden Crafters Companion                                                            | 8832 | yes          |
+| [KitchenOwl](https://github.com/tombursch/kitchenowl)                             | KitchenOwl                                                                         | 8828 | yes          |
+| [MediaManager](https://github.com/maxdorninger/MediaManager)                      | Media Manager                                                                      | 8838 | yes          |
+| [Photon](https://github.com/rtuszik/photon-docker)                                | This is an unofficial docker image for Photon                                      | 8825 | yes          |
+| [Razor IPTV](https://github.com/romesc/RazorIptvDocker)                           | Razor IPTV                                                                         | 8821 | yes          |
+| [Razor Miniflux](https://github.com/romesc/RazorMinifluxDocker)                   | Razor Miniflux                                                                     | 8822 | yes          |
+| [Razor Miniflux - Restricted](https://github.com/romesc/RazorMinifluxDocker)      | Razor Miniflux Restricted                                                          | 8823 | yes          |
+| [Razor Price History](https://github.com/romesc/RazorPriceHistory)                | Razor Price History                                                                | 8820 | yes          |
+| [Reitti](https://github.com/dedicatedcode/reitti)                                 | Personal Location Tracking & Analysis - Self-hosted alternative to Google Timeline | 8826 | yes          |
+| [Upsnap](https://github.com/seriousm4x/UpSnap)                                    | A simple wake on lan web app written with SvelteKit, Go and PocketBase.            | 8090 | yes          |
+| [Wallabag](https://github.com/wallabag/wallabag)                                  | Wallabag                                                                           | 8829 | yes          |
