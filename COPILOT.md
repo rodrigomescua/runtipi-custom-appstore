@@ -21,7 +21,7 @@
 - `available` (boolean): true/false. Indica se o app está disponível na loja.
 - `short_desc` (string): Descrição curta do app. Exemplo: "Servidor web de alto desempenho"
 - `author` (string): Nome do autor ou organização. Exemplo: "nginx" ou "https://nextcloud.com"
-- `port` (number): Porta pública no host onde o app será acessível. Exemplo: 8754
+- `port` (number): Porta pública no host onde o app será acessível. **Para novos apps neste repositório, sempre use uma porta no intervalo 8800-8999, nunca repetindo portas já utilizadas em outros apps.** Exemplo: 8820, 8821, etc. Apps antigos podem manter suas portas originais.
 - `categories` (array de string): Categorias do app. Veja lista completa abaixo.
 - `description` (string): Descrição longa do app.
 - `tipi_version` (number): Versão do app para o Runtipi. Sempre 1 para novo app, incremente ao atualizar.
@@ -288,7 +288,7 @@ featured, utilities, automation, network, media, productivity, security, monitor
 
 **Campos obrigatórios por serviço:**
 - `name`: nome do serviço (ex: "nginx")
-- `image`: nome e tag da imagem Docker (evite `latest`)
+- `image`: nome e tag da imagem Docker. **NUNCA use `latest` como tag** - sempre use uma versão específica (ex: `nginx:1.25.3`, `postgres:16.2`). Tags genéricas comprometem reprodutibilidade e segurança.
 - `internalPort`: porta interna do container
 
 **Campos opcionais importantes por serviço:**
@@ -975,7 +975,8 @@ Permitem diferentes configurações para arquiteturas específicas (arm64, amd64
     - Mídia compartilhada: `${ROOT_FOLDER_HOST}/media`
 - Utilize `dependsOn` para garantir ordem de inicialização entre serviços.
 - Adicione `healthCheck` para monitorar o estado dos serviços principais.
-- Prefira imagens oficiais e tags específicas.
+- **Imagens Docker: OBRIGATÓRIO usar tags específicas** (nunca `latest`, `main`, `dev`, etc.). Exemplos corretos: `jez500/pricebuddy:1.0.40`, `mysql:8.2`. Isso garante versões consistentes e previsíveis.
+- Prefira imagens oficiais de repositórios confiáveis.
 - Documente configurações customizadas no `description.md`.
 - **NÃO use** `networks`, `labels`, `restart`, ou campos não-documentados aqui.
 

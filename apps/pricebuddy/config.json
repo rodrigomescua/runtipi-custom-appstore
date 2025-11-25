@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "PriceBuddy",
+  "id": "pricebuddy",
+  "available": true,
+  "short_desc": "Self-hosted price tracker with notifications",
+  "author": "jez500",
+  "port": 8839,
+  "categories": ["utilities"],
+  "description": "A self-hostable application that tracks prices and sends you notifications when prices match your preferences. Create and manage stores, track product prices, visualize price history, and get notifications via the app, email or pushover/gotify.",
+  "tipi_version": 1,
+  "version": "1.0.40",
+  "source": "https://github.com/jez500/pricebuddy",
+  "website": "https://pricebuddy.jez.me",
+  "exposable": true,
+  "force_expose": false,
+  "https": true,
+  "dynamic_config": true,
+  "form_fields": [],
+  "supported_architectures": ["amd64"],
+  "created_at": 1732452278000,
+  "updated_at": 1732452278000
+}

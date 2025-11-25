@@ -1,0 +1,101 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
+  "services": [
+    {
+      "name": "pricebuddy",
+      "image": "jez500/pricebuddy:1.0.40",
+      "isMain": true,
+      "internalPort": 80,
+      "environment": [
+        {
+          "key": "DB_HOST",
+          "value": "pricebuddy-db"
+        },
+        {
+          "key": "DB_USERNAME",
+          "value": "pricebuddy"
+        },
+        {
+          "key": "DB_PASSWORD",
+          "value": "pricebuddy_password"
+        },
+        {
+          "key": "DB_DATABASE",
+          "value": "pricebuddy"
+        },
+        {
+          "key": "APP_USER_EMAIL",
+          "value": "admin@example.com"
+        },
+        {
+          "key": "APP_USER_PASSWORD",
+          "value": "admin"
+        },
+        {
+          "key": "SCRAPER_BASE_URL",
+          "value": "http://pricebuddy-scraper:3000"
+        },
+        {
+          "key": "AFFILIATE_ENABLED",
+          "value": "true"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/storage",
+          "containerPath": "/app/storage"
+        }
+      ],
+      "healthCheck": {
+        "test": "curl --fail http://localhost/health || exit 1",
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3,
+        "startPeriod": "60s"
+      },
+      "dependsOn": ["pricebuddy-db"]
+    },
+    {
+      "name": "pricebuddy-db",
+      "image": "mysql:8.2",
+      "environment": [
+        {
+          "key": "MYSQL_DATABASE",
+          "value": "pricebuddy"
+        },
+        {
+          "key": "MYSQL_USER",
+          "value": "pricebuddy"
+        },
+        {
+          "key": "MYSQL_PASSWORD",
+          "value": "pricebuddy_password"
+        },
+        {
+          "key": "MYSQL_ROOT_PASSWORD",
+          "value": "root_password"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/database",
+          "containerPath": "/var/lib/mysql"
+        }
+      ],
+      "healthCheck": {
+        "test": "mysqladmin ping -h localhost",
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 5,
+        "startPeriod": "30s"
+      }
+    },
+    {
+      "name": "pricebuddy-scraper",
+      "image": "jez500/seleniumbase-scrapper:1.4.16",
+      "internalPort": 3000,
+      "displayName": "PriceBuddy Scraper"
+    }
+  ]
+}
