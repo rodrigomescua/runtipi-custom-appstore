@@ -109,7 +109,7 @@
         }
       ],
       "healthCheck": {
-        "test": "CMD mysqladmin ping -h localhost",
+        "test": "mysqladmin ping -h localhost -p${MYSQL_ROOT_PASSWORD}",
         "interval": "10s",
         "timeout": "5s",
         "retries": 5,
