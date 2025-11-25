@@ -25,7 +25,7 @@
 - `categories` (array de string): Categorias do app. Veja lista completa abaixo.
 - `description` (string): Descrição longa do app.
 - `tipi_version` (number): Versão do app para o Runtipi. Sempre 1 para novo app, incremente ao atualizar.
-- `version` (string): Versão do app, siga semver. Exemplo: "1.25.3"
+- `version` (string): Versão do app. **IMPORTANTE: Esta versão DEVE ser idêntica à tag da imagem Docker utilizada em `docker-compose.json`.** Sempre consulte no GitHub ou Docker Hub o formato correto da tag (ex: `v1.0.40` com prefixo `v`, ou `1.25.3` sem prefixo). Exemplos corretos: "v1.0.40", "1.25.3", "latest" apenas em desenvolvimento (nunca em produção).
 - `source` (string): URL do repositório do app. Exemplo: "https://github.com/nginx/nginx"
 - `exposable` (boolean): true/false. Permite expor o app por domínio.
 - `form_fields` (array): Campos de formulário para configuração. Pode ser vazio ([]). Veja seção detalhada abaixo.
