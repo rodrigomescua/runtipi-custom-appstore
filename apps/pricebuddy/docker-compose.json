@@ -13,6 +13,10 @@
           "value": "${APP_PROTOCOL:-http}://${APP_DOMAIN}"
         },
         {
+          "key": "APP_TIMEZONE",
+          "value": "${TZ}"
+        },
+        {
           "key": "APP_LOCALE",
           "value": "br"
         },
