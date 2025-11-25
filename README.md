@@ -23,9 +23,9 @@ If you want to see new apps on Tipi you can either:
 - [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
 - Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
 
-## Apps available (16)
+## Apps available (17)
 
-| Name                                                                              | Description                                                                        | Port | Dynamic (16) |
+| Name                                                                              | Description                                                                        | Port | Dynamic (17) |
 | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---- | ------------ |
 | [Blazor RSS](https://github.com/rodrigomescua/BlazorRssDocker)                    | Blazor RSS                                                                         | 8822 | yes          |
 | [Blazor RSS - Restricted](https://github.com/rodrigomescua/BlazorRssDocker)       | Blazor RSS Restricted                                                              | 8823 | yes          |
@@ -36,6 +36,7 @@ If you want to see new apps on Tipi you can either:
 | [KitchenOwl](https://github.com/tombursch/kitchenowl)                             | KitchenOwl                                                                         | 8828 | yes          |
 | [MediaManager](https://github.com/maxdorninger/MediaManager)                      | Media Manager                                                                      | 8838 | yes          |
 | [Photon](https://github.com/rtuszik/photon-docker)                                | This is an unofficial docker image for Photon                                      | 8825 | yes          |
+| [PriceBuddy](https://github.com/jez500/pricebuddy)                                | Self-hosted price tracker with notifications                                       | 8839 | yes          |
 | [Razor IPTV](https://github.com/romesc/RazorIptvDocker)                           | Razor IPTV                                                                         | 8821 | yes          |
 | [Razor Miniflux](https://github.com/romesc/RazorMinifluxDocker)                   | Razor Miniflux                                                                     | 8822 | yes          |
 | [Razor Miniflux - Restricted](https://github.com/romesc/RazorMinifluxDocker)      | Razor Miniflux Restricted                                                          | 8823 | yes          |
