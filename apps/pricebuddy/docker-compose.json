@@ -93,7 +93,7 @@
     },
     {
       "name": "pricebuddy-scraper",
-      "image": "jez500/seleniumbase-scrapper:1.4.16",
+      "image": "jez500/seleniumbase-scrapper:latest",
       "internalPort": 3000,
       "displayName": "PriceBuddy Scraper"
     }
