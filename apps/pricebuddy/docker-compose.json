@@ -9,6 +9,26 @@
       "internalPort": 80,
       "environment": [
         {
+          "key": "APP_URL",
+          "value": "${APP_PROTOCOL:-http}://${APP_DOMAIN}"
+        },
+        {
+          "key": "APP_LOCALE",
+          "value": "br"
+        },
+        {
+          "key": "APP_CURRENCY_LOCALE",
+          "value": "pt_BR"
+        },
+        {
+          "key": "APP_FALLBACK_LOCALE",
+          "value": "en"
+        },
+        {
+          "key": "APP_FAKER_LOCALE",
+          "value": "en_US"
+        },
+        {
           "key": "DB_HOST",
           "value": "pricebuddy-db"
         },
@@ -45,6 +65,10 @@
         {
           "hostPath": "${APP_DATA_DIR}/data/storage",
           "containerPath": "/app/storage"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/env/.env",
+          "containerPath": "/app/.env"
         }
       ],
       "dependsOn": ["pricebuddy-db"]
