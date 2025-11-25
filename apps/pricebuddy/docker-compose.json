@@ -13,12 +13,16 @@
           "value": "${APP_PROTOCOL:-http}://${APP_DOMAIN}"
         },
         {
+          "key": "ASSET_URL",
+          "value": "${APP_PROTOCOL:-http}://${APP_DOMAIN}"
+        },
+        {
           "key": "APP_TIMEZONE",
           "value": "${TZ}"
         },
         {
           "key": "APP_LOCALE",
-          "value": "br"
+          "value": "pt_BR"
         },
         {
           "key": "APP_CURRENCY_LOCALE",
@@ -26,7 +30,7 @@
         },
         {
           "key": "APP_FALLBACK_LOCALE",
-          "value": "en"
+          "value": "en_US"
         },
         {
           "key": "APP_FAKER_LOCALE",
