@@ -1,0 +1,279 @@
+{
+  "version": "1.0",
+  "description": "Regras essenciais para criação de apps no Runtipi - Formato estruturado para parsing rápido",
+  "lastUpdated": "2025-11-26",
+  "rules": {
+    "appStructure": {
+      "description": "Estrutura obrigatória de cada app",
+      "requiredFiles": [
+        "config.json",
+        "docker-compose.json",
+        "metadata/description.md",
+        "metadata/logo.jpg"
+      ],
+      "forbiddenFiles": [
+        "docker-compose.yml",
+        "docker-compose.yaml"
+      ],
+      "idFormat": {
+        "description": "O 'id' no config.json deve ser igual ao nome da pasta",
+        "example": "if folder is 'apps/linkding', then config.json id must be 'linkding'"
+      }
+    },
+    "configJson": {
+      "description": "Campos obrigatórios e regras para config.json",
+      "mandatoryFields": {
+        "name": "Nome do app (string)",
+        "id": "Deve igualar nome da pasta (string)",
+        "available": "true/false (boolean)",
+        "short_desc": "Descrição curta (string)",
+        "author": "Autor ou organização (string)",
+        "port": "Porta pública do host (number)",
+        "categories": "Array de categorias (array<string>)",
+        "description": "Descrição longa (string)",
+        "tipi_version": "Versão para Runtipi, inicie com 1 (number)",
+        "version": "Versão do app - DEVE IGUALAR a tag Docker em docker-compose.json (string)",
+        "source": "URL do repositório (string)",
+        "exposable": "true/false (boolean)",
+        "form_fields": "Array de campos de config, pode ser vazio [] (array)",
+        "supported_architectures": "Array com 'amd64' e/ou 'arm64' (array<string>)",
+        "dynamic_config": "SEMPRE true para este repositório (boolean)"
+      },
+      "portingRules": {
+        "rule": "Sempre use porta no intervalo 8800-8999 para novos apps",
+        "exception": "Apps antigos podem manter portas originais",
+        "verification": "Verifique quais portas já estão em uso em outros apps"
+      },
+      "versionRules": {
+        "CRITICAL": "OBRIGATÓRIO consultar GitHub Releases ou Docker Hub ANTES de criar/atualizar app",
+        "rule1": "Versão em config.json DEVE SER IDÊNTICA à tag em docker-compose.json",
+        "rule2": "Use versão mais recente estável",
+        "rule3": "Nunca use versões desatualizada ou arbitrárias",
+        "rule4": "Nunca use 'latest' como tag (apenas em desenvolvimento)",
+        "sourceResearch": {
+          "github": "https://github.com/{owner}/{repo}/releases",
+          "dockerHub": "https://hub.docker.com/r/{image}/tags"
+        }
+      }
+    },
+    "dockerCompose": {
+      "description": "Regras para docker-compose.json (formato dynamic)",
+      "schemaVersion": 2,
+      "mandatoryServiceFields": {
+        "name": "Nome do serviço (string)",
+        "image": "Nome:tag da imagem Docker (string) - NUNCA use 'latest'",
+        "internalPort": "Porta interna do container (number)"
+      },
+      "imageRules": {
+        "CRITICAL": "NUNCA use tag 'latest' - sempre versão específica",
+        "rule1": "Tag em 'image' DEVE SER IDÊNTICA ao 'version' em config.json",
+        "rule2": "Use versão mais recente estável",
+        "rule3": "Pesquise em GitHub Releases antes de usar qualquer tag",
+        "examples": [
+          "sissbruecker/linkding:1.44.1 ✓",
+          "postgres:16.2 ✓",
+          "nginx:latest ✗ PROIBIDO"
+        ]
+      },
+      "volumeRules": {
+        "CRITICAL": "Padrão OBRIGATÓRIO: ${APP_DATA_DIR}/data/{última-parte-do-containerPath}",
+        "rule": "hostPath = ${APP_DATA_DIR}/data/ + apenas a ÚLTIMA PARTE do containerPath",
+        "examples": [
+          {
+            "containerPath": "/etc/linkding/data",
+            "lastPart": "data",
+            "hostPath": "${APP_DATA_DIR}/data/data",
+            "reason": "última parte = 'data'"
+          },
+          {
+            "containerPath": "/var/lib/postgresql/data",
+            "lastPart": "data",
+            "hostPath": "${APP_DATA_DIR}/data/data",
+            "reason": "última parte = 'data'"
+          },
+          {
+            "containerPath": "/config/app.yml",
+            "lastPart": "app.yml",
+            "hostPath": "${APP_DATA_DIR}/data/app.yml",
+            "reason": "última parte = 'app.yml'"
+          }
+        ],
+        "exceptions": [
+          "Caminhos do sistema: /var/run/dbus",
+          "Mídia compartilhada: ${ROOT_FOLDER_HOST}/media (documentar quando necessário)"
+        ]
+      },
+      "isMainField": {
+        "rule": "isMain: true APENAS no serviço principal que será exposto",
+        "note": "Serviços de suporte (DB, cache, etc) não devem ter 'isMain' ou devem ter 'isMain: false'"
+      },
+      "environmentVariables": {
+        "rule": "Use variáveis de form_fields com sintaxe ${VARIABLE_NAME}",
+        "examples": [
+          "${LD_SUPERUSER_NAME}",
+          "${APP_DOMAIN}",
+          "${APP_PORT}"
+        ]
+      },
+      "healthCheck": {
+        "recommendation": "Adicione healthCheck quando apropriado",
+        "fields": {
+          "test": "Comando para verificar saúde",
+          "interval": "Intervalo entre checks (ex: 30s)",
+          "timeout": "Timeout do comando (ex: 10s)",
+          "retries": "Número de retentativas (ex: 3)",
+          "startPeriod": "Período antes de começar checks (ex: 10s)"
+        }
+      }
+    },
+    "metadata": {
+      "description": "Arquivos na pasta metadata/",
+      "files": {
+        "description.md": {
+          "format": "Markdown",
+          "required": true,
+          "suggestedSections": [
+            "Overview/Description",
+            "Features",
+            "Getting Started",
+            "System Requirements",
+            "Documentation links",
+            "License"
+          ]
+        },
+        "logo.jpg": {
+          "format": "JPG",
+          "required": true,
+          "resolution": "512x512 pixels",
+          "maxSize": "200KB recommended",
+          "notes": "Imagem clara, bem centrada, preferencialmente com logo do projeto"
+        }
+      }
+    },
+    "formFields": {
+      "description": "Campos de configuração (form_fields em config.json)",
+      "allowedTypes": [
+        "text",
+        "password",
+        "email",
+        "number",
+        "fqdn",
+        "ip",
+        "fqdnip",
+        "random",
+        "boolean"
+      ],
+      "mandatoryFieldProperties": [
+        "type",
+        "label",
+        "required",
+        "env_variable"
+      ],
+      "optionalFieldProperties": [
+        "hint",
+        "placeholder",
+        "default",
+        "min",
+        "max",
+        "regex",
+        "pattern_error",
+        "options",
+        "encoding"
+      ],
+      "bestPractices": {
+        "passwordFields": {
+          "type": "password",
+          "minLength": 8,
+          "shouldHaveMinConstraint": true
+        },
+        "randomSecrets": {
+          "type": "random",
+          "minSize": 32,
+          "encodingOptions": [
+            "base64",
+            "hex"
+          ]
+        },
+        "selectFields": {
+          "rule": "Use 'options' APENAS para valores pré-definidos específicos",
+          "note": "Para valores customizáveis, use tipo 'text' com exemplos na label"
+        }
+      }
+    },
+    "categories": {
+      "available": [
+        "featured",
+        "utilities",
+        "automation",
+        "network",
+        "media",
+        "productivity",
+        "security",
+        "monitoring",
+        "backup",
+        "development",
+        "dashboard",
+        "cloud",
+        "database",
+        "social",
+        "tools",
+        "home",
+        "entertainment",
+        "storage",
+        "communication"
+      ]
+    },
+    "appCreationChecklist": {
+      "phase1_research": [
+        "Consulte documentação oficial do app",
+        "Visite GitHub Releases para versão mais recente estável",
+        "Verifique tags disponíveis no Docker Hub",
+        "Confirme suporte a arquiteturas (amd64, arm64)"
+      ],
+      "phase2_structure": [
+        "Crie pasta em apps/{app-id} (minúsculas, sem espaços)",
+        "Crie subpasta metadata/",
+        "Verifique ausência de docker-compose.yml/.yaml"
+      ],
+      "phase3_configJson": [
+        "Use versão mais recente estável",
+        "Garanta que version = tag Docker em docker-compose.json",
+        "Escolha porta em 8800-8999",
+        "Defina dynamic_config: true",
+        "Preencha categorias apropriadas",
+        "Configure form_fields",
+        "Inclua $schema",
+        "Configure supported_architectures"
+      ],
+      "phase4_dockerCompose": [
+        "Use schemaVersion: 2",
+        "Verifique image com mesma versão de config.json",
+        "Configure internalPort corretamente",
+        "isMain: true APENAS no serviço principal",
+        "Configure environment com variáveis necessárias",
+        "Adicione healthCheck se apropriado",
+        "Configure volumes com padrão hostPath correto",
+        "Configure dependsOn para múltiplos serviços"
+      ],
+      "phase5_metadata": [
+        "Escreva description.md completa",
+        "Inclua Features, Getting Started, System Requirements",
+        "Adicione links para documentação oficial",
+        "Prepare logo.jpg 512x512"
+      ],
+      "phase6_validation": [
+        "Valide JSONs (use editor com validação)",
+        "Confirme ausência de portas duplicadas",
+        "Teste configuração localmente se possível",
+        "Verifique correspondência de env_variables",
+        "Confirme id = nome da pasta"
+      ],
+      "phase7_security": [
+        "Nunca use 'latest' como tag Docker",
+        "Sempre use versão específica e recente",
+        "Para senhas/secrets use type 'password' ou 'random'",
+        "Considere usar 'random' para gerar chaves seguras"
+      ]
+    }
+  }
+}

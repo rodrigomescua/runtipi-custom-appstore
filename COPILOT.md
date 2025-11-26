@@ -25,7 +25,10 @@
 - `categories` (array de string): Categorias do app. Veja lista completa abaixo.
 - `description` (string): Descrição longa do app.
 - `tipi_version` (number): Versão do app para o Runtipi. Sempre 1 para novo app, incremente ao atualizar.
-- `version` (string): Versão do app. **IMPORTANTE: Esta versão DEVE ser idêntica à tag da imagem Docker utilizada em `docker-compose.json`.** Sempre consulte no GitHub ou Docker Hub o formato correto da tag (ex: `v1.0.40` com prefixo `v`, ou `1.25.3` sem prefixo). Exemplos corretos: "v1.0.40", "1.25.3", "latest" apenas em desenvolvimento (nunca em produção).
+- `version` (string): Versão do app. **IMPORTANTE: Esta versão DEVE ser idêntica à tag da imagem Docker utilizada em `docker-compose.json`.** 
+  - **OBRIGATÓRIO:** Sempre consulte a versão mais recente disponível no **GitHub Releases** (página oficial do repositório em `https://github.com/{owner}/{repo}/releases`) ou no **Docker Hub** antes de criar/atualizar um app.
+  - **Nunca use versões desatualizada ou arbitrárias.** Verifique qual é a versão mais recente estável e use-a.
+  - **Formato da tag:** Consulte o formato correto da tag (ex: `v1.0.40` com prefixo `v`, ou `1.25.3` sem prefixo). Exemplos corretos: "v1.0.40", "1.25.3", "latest" apenas em desenvolvimento (nunca em produção).
 - `source` (string): URL do repositório do app. Exemplo: "https://github.com/nginx/nginx"
 - `exposable` (boolean): true/false. Permite expor o app por domínio.
 - `form_fields` (array): Campos de formulário para configuração. Pode ser vazio ([]). Veja seção detalhada abaixo.
@@ -289,6 +292,11 @@ featured, utilities, automation, network, media, productivity, security, monitor
 **Campos obrigatórios por serviço:**
 - `name`: nome do serviço (ex: "nginx")
 - `image`: nome e tag da imagem Docker. **NUNCA use `latest` como tag** - sempre use uma versão específica (ex: `nginx:1.25.3`, `postgres:16.2`). Tags genéricas comprometem reprodutibilidade e segurança.
+  - **OBRIGATÓRIO:** Sempre consulte qual é a versão mais recente **estável** disponível antes de usar. Verifique em:
+    - **GitHub Releases:** `https://github.com/{owner}/{repo}/releases` (página oficial do projeto)
+    - **Docker Hub:** `https://hub.docker.com/r/{image}/tags` (tags disponíveis)
+  - **Boa prática:** Use a versão mais recente no momento da criação/atualização do app para garantir segurança e compatibilidade.
+  - **Nunca use versões arbitrárias ou desatualizada.** Isso compromete a segurança e a estabilidade do app.
 - `internalPort`: porta interna do container
 
 **Campos opcionais importantes por serviço:**
@@ -360,23 +368,24 @@ Define volumes para persistência de dados e compartilhamento de arquivos.
 ```json
 "volumes": [
   {
-    "hostPath": "${APP_DATA_DIR}/data/etc/app",
-    "containerPath": "/etc/app"
-  },
-  {
     "hostPath": "${APP_DATA_DIR}/data/data",
-    "containerPath": "/data"
+    "containerPath": "/etc/linkding/data"
   }
 ]
 ```
 
 **Campos:**
 - `hostPath` (string, obrigatório): Caminho no host. Use `${APP_DATA_DIR}` para dados do app
-  - **⚠️ IMPORTANTE - Padrão obrigatório:** Todos os `hostPath` **DEVEM** começar com `${APP_DATA_DIR}/data/` ou ser caminho relativo dentro deste diretório
-  - Exemplos corretos: `${APP_DATA_DIR}/data/postgres`, `${APP_DATA_DIR}/data/config`, `${APP_DATA_DIR}/data/uploads`
-  - Exceções raras:
+  - **⚠️ IMPORTANTE - Padrão OBRIGATÓRIO do Runtipi:** Todos os `hostPath` **DEVEM** seguir o formato `${APP_DATA_DIR}/data/{última-parte-do-containerPath}`
+  - **Regra:** Use `${APP_DATA_DIR}/data/` + apenas a **última parte** (último diretório/arquivo) do `containerPath`
+  - Exemplos:
+    - Container `/etc/linkding/data` → Host `${APP_DATA_DIR}/data/data` (última parte = `data`)
+    - Container `/var/lib/postgresql/data` → Host `${APP_DATA_DIR}/data/data` (última parte = `data`)
+    - Container `/data` → Host `${APP_DATA_DIR}/data/data` (última parte = `data`)
+    - Container `/config/app.yml` → Host `${APP_DATA_DIR}/data/app.yml` (última parte = `app.yml`)
+  - **Exceções raras (devem ser justificadas):**
     - Caminhos do sistema: `/var/run/dbus`
-    - Caminhos de mídia compartilhada: `${ROOT_FOLDER_HOST}/media` (documentar quando necessário)
+    - Caminhos de mídia compartilhada: `${ROOT_FOLDER_HOST}/media`
 - `containerPath` (string, obrigatório): Caminho dentro do container
 - `readOnly` (boolean, opcional): Se true, volume é somente leitura. Padrão: `false`
 - `shared` (boolean, opcional): Se true, permite compartilhamento entre múltiplos containers. Padrão: `false`
@@ -387,28 +396,39 @@ Define volumes para persistência de dados e compartilhamento de arquivos.
 **Exemplos comuns:**
 ```json
 // Banco de dados com persistência (leitura/escrita)
+// Container: /var/lib/postgresql/data → última parte: data
 {
-  "hostPath": "${APP_DATA_DIR}/postgres",
+  "hostPath": "${APP_DATA_DIR}/data/data",
   "containerPath": "/var/lib/postgresql/data"
 }
 
-// Config read-only
+// Linkding - bookmark storage
+// Container: /etc/linkding/data → última parte: data
 {
-  "hostPath": "${APP_DATA_DIR}/config.yml",
+  "hostPath": "${APP_DATA_DIR}/data/data",
+  "containerPath": "/etc/linkding/data"
+}
+
+// Config read-only
+// Container: /etc/app/config.yml → última parte: config.yml
+{
+  "hostPath": "${APP_DATA_DIR}/data/config.yml",
   "containerPath": "/etc/app/config.yml",
   "readOnly": true
 }
 
 // Volume compartilhado entre múltiplos serviços
+// Container: /app/shared → última parte: shared
 {
-  "hostPath": "${APP_DATA_DIR}/shared",
+  "hostPath": "${APP_DATA_DIR}/data/shared",
   "containerPath": "/app/shared",
   "shared": true
 }
 
 // Volume com bind propagation
+// Container: /data → última parte: data
 {
-  "hostPath": "${APP_DATA_DIR}/data",
+  "hostPath": "${APP_DATA_DIR}/data/data",
   "containerPath": "/data",
   "bind": {
     "propagation": "rprivate"
@@ -1149,3 +1169,66 @@ Permitem diferentes configurações para arquiteturas específicas (arm64, amd64
   ]
 }
 ```
+
+---
+
+## Checklist para Criar um Novo App
+
+Siga estes passos para garantir que seu app atenda a todos os requisitos:
+
+### 1. Pesquisa e Preparação
+- [ ] Consulte a documentação oficial do app em seu site ou repositório GitHub
+- [ ] **OBRIGATÓRIO:** Visite o GitHub Releases (`https://github.com/{owner}/{repo}/releases`) para identificar a versão mais recente **estável**
+- [ ] Verifique no Docker Hub (`https://hub.docker.com/r/{image}/tags`) quais tags estão disponíveis
+- [ ] Confirme que a imagem Docker suporta as arquiteturas desejadas (amd64, arm64, etc)
+
+### 2. Estrutura de Pastas
+- [ ] Crie uma pasta em `apps/{app-id}` (use nome em minúsculas, sem espaços)
+- [ ] Crie subpasta `metadata/` dentro da pasta do app
+- [ ] Verifique que **não existem** arquivos `docker-compose.yml` ou `docker-compose.yaml` - apenas `docker-compose.json`
+
+### 3. Arquivo `config.json`
+- [ ] Use a versão **mais recente estável** encontrada nas buscas anteriores
+- [ ] Garanta que `version` e a tag da imagem Docker em `docker-compose.json` sejam idênticas
+- [ ] Escolha uma porta no intervalo **8800-8999** (verifique quais portas já estão em uso)
+- [ ] Defina `dynamic_config: true`
+- [ ] Preencha todas as categorias apropriadas
+- [ ] Configure `form_fields` com todos os parâmetros necessários
+- [ ] Inclua `$schema` para validação
+- [ ] Configure `supported_architectures` baseado na pesquisa anterior
+
+### 4. Arquivo `docker-compose.json`
+- [ ] Use `schemaVersion: 2`
+- [ ] Verifique que a imagem Docker usa a **mesma versão** do `config.json`
+- [ ] Configure `internalPort` corretamente (é a porta interna do container, não a porta pública)
+- [ ] Defina `isMain: true` apenas no serviço principal
+- [ ] Configure `environment` com todas as variáveis necessárias
+- [ ] Adicione `healthCheck` se apropriado
+- [ ] Configure `volumes` para persistência de dados
+- [ ] Se houver múltiplos serviços, configure `dependsOn` corretamente
+
+### 5. Arquivo `metadata/description.md`
+- [ ] Escreva uma descrição clara e completa em Markdown
+- [ ] Inclua seções: Features, Getting Started, System Requirements, License
+- [ ] Adicione links para documentação oficial
+
+### 6. Arquivo `metadata/logo.jpg`
+- [ ] Resolução: **512x512 pixels**
+- [ ] Formato: **JPG**
+- [ ] Tamanho recomendado: < 200KB
+- [ ] Imagem clara, bem centrada, preferencialmente com logo do projeto
+
+### 7. Validação Final
+- [ ] Verifique que todos os JSONs estão válidos (use editor com validação JSON)
+- [ ] Confirme que não há portas duplicadas com outros apps
+- [ ] Teste se a configuração funciona localmente (se possível)
+- [ ] Verifique se as variáveis de ambiente definidas em `form_fields` correspondem às usadas em `docker-compose.json`
+- [ ] Garanta que o `id` no `config.json` coincida exatamente com o nome da pasta
+
+### 8. Considerações de Segurança e Boas Práticas
+- [ ] **Nunca use `latest` como tag da imagem Docker** - sempre use versão específica
+- [ ] **Sempre use a versão mais recente estável** - isso garante segurança, performance e compatibilidade
+- [ ] **CRÍTICO:** Antes de criar qualquer app, pesquise qual é a versão mais recente no GitHub Releases ou Docker Hub
+- [ ] Para apps com senhas/secrets, use `form_fields` com tipo `password` ou `random`
+- [ ] Considere usar `random` para gerar chaves seguras automaticamente
+- [ ] Mantenha os apps atualizados - se encontrar uma versão mais recente, considere atualizar o app já existente
