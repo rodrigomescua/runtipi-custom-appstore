@@ -77,7 +77,9 @@ const updateAppConfig = async (packageFile: string, newVersion: string) => {
     config.tipi_version = config.tipi_version + 1;
     config.updated_at = Date.now();
 
-    await fs.writeFile(dockerComposeYmlPath, yaml.dump(dockerComposeYml, { lineWidth: -1, noRefs: true, sortKeys: false, indent: 2 }));
+    if (dockerComposeYml) {
+      await fs.writeFile(dockerComposeYmlPath, yaml.dump(dockerComposeYml, { lineWidth: -1, noRefs: true, sortKeys: false, indent: 2 }));
+    }
     await fs.writeFile(configPath, JSON.stringify(config, null, 2));
   } catch (e) {
     console.error(`Failed to update app config, error: ${e}`);

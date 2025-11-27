@@ -1,0 +1,1677 @@
+﻿2025-11-27T18:14:11.5892126Z Current runner version: '2.329.0'
+2025-11-27T18:14:11.5917394Z ##[group]Runner Image Provisioner
+2025-11-27T18:14:11.5918285Z Hosted Compute Agent
+2025-11-27T18:14:11.5918803Z Version: 20251016.436
+2025-11-27T18:14:11.5919399Z Commit: 8ab8ac8bfd662a3739dab9fe09456aba92132568
+2025-11-27T18:14:11.5920085Z Build Date: 2025-10-15T20:44:12Z
+2025-11-27T18:14:11.5920687Z ##[endgroup]
+2025-11-27T18:14:11.5921203Z ##[group]Operating System
+2025-11-27T18:14:11.5921790Z Ubuntu
+2025-11-27T18:14:11.5922535Z 24.04.3
+2025-11-27T18:14:11.5923016Z LTS
+2025-11-27T18:14:11.5923414Z ##[endgroup]
+2025-11-27T18:14:11.5923990Z ##[group]Runner Image
+2025-11-27T18:14:11.5924567Z Image: ubuntu-24.04
+2025-11-27T18:14:11.5925022Z Version: 20251112.124.1
+2025-11-27T18:14:11.5926088Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251112.124/images/ubuntu/Ubuntu2404-Readme.md
+2025-11-27T18:14:11.5927585Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251112.124
+2025-11-27T18:14:11.5928595Z ##[endgroup]
+2025-11-27T18:14:11.5929761Z ##[group]GITHUB_TOKEN Permissions
+2025-11-27T18:14:11.5931633Z Contents: write
+2025-11-27T18:14:11.5932534Z Issues: write
+2025-11-27T18:14:11.5932990Z Metadata: read
+2025-11-27T18:14:11.5933575Z PullRequests: write
+2025-11-27T18:14:11.5934086Z ##[endgroup]
+2025-11-27T18:14:11.5936460Z Secret source: Actions
+2025-11-27T18:14:11.5937446Z Prepare workflow directory
+2025-11-27T18:14:11.6276718Z Prepare all required actions
+2025-11-27T18:14:11.6316856Z Getting action download info
+2025-11-27T18:14:12.0903701Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2025-11-27T18:14:12.7268292Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2025-11-27T18:14:12.8784895Z Download action repository 'oven-sh/setup-bun@v2' (SHA:735343b667d3e6f658f44d0eca948eb6282f2b76)
+2025-11-27T18:14:13.3483517Z Download action repository 'actions/cache@v4' (SHA:0057852bfaa89a56745cba8c7296529d2fc39830)
+2025-11-27T18:14:13.5523361Z Complete job name: renovate
+2025-11-27T18:14:13.6331064Z ##[group]Run actions/checkout@v4
+2025-11-27T18:14:13.6332620Z with:
+2025-11-27T18:14:13.6333551Z   repository: rodrigomescua/runtipi-custom-appstore
+2025-11-27T18:14:13.6335017Z   token: ***
+2025-11-27T18:14:13.6335795Z   ssh-strict: true
+2025-11-27T18:14:13.6336591Z   ssh-user: git
+2025-11-27T18:14:13.6337413Z   persist-credentials: true
+2025-11-27T18:14:13.6338314Z   clean: true
+2025-11-27T18:14:13.6339131Z   sparse-checkout-cone-mode: true
+2025-11-27T18:14:13.6340128Z   fetch-depth: 1
+2025-11-27T18:14:13.6340935Z   fetch-tags: false
+2025-11-27T18:14:13.6341769Z   show-progress: true
+2025-11-27T18:14:13.6342769Z   lfs: false
+2025-11-27T18:14:13.6343537Z   submodules: false
+2025-11-27T18:14:13.6344361Z   set-safe-directory: true
+2025-11-27T18:14:13.6345528Z ##[endgroup]
+2025-11-27T18:14:13.7434965Z Syncing repository: rodrigomescua/runtipi-custom-appstore
+2025-11-27T18:14:13.7438115Z ##[group]Getting Git version info
+2025-11-27T18:14:13.7440009Z Working directory is '/home/runner/work/runtipi-custom-appstore/runtipi-custom-appstore'
+2025-11-27T18:14:13.7442620Z [command]/usr/bin/git version
+2025-11-27T18:14:13.7497899Z git version 2.51.2
+2025-11-27T18:14:13.7525048Z ##[endgroup]
+2025-11-27T18:14:13.7540207Z Temporarily overriding HOME='/home/runner/work/_temp/13edc8a7-6e9a-479f-b182-7700572ab8ef' before making global git config changes
+2025-11-27T18:14:13.7543490Z Adding repository directory to the temporary git global config as a safe directory
+2025-11-27T18:14:13.7554784Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/runtipi-custom-appstore/runtipi-custom-appstore
+2025-11-27T18:14:13.7593662Z Deleting the contents of '/home/runner/work/runtipi-custom-appstore/runtipi-custom-appstore'
+2025-11-27T18:14:13.7598162Z ##[group]Initializing the repository
+2025-11-27T18:14:13.7602552Z [command]/usr/bin/git init /home/runner/work/runtipi-custom-appstore/runtipi-custom-appstore
+2025-11-27T18:14:13.7707844Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-11-27T18:14:13.7710141Z hint: is subject to change. To configure the initial branch name to use in all
+2025-11-27T18:14:13.7713081Z hint: of your new repositories, which will suppress this warning, call:
+2025-11-27T18:14:13.7715572Z hint:
+2025-11-27T18:14:13.7717272Z hint: 	git config --global init.defaultBranch <name>
+2025-11-27T18:14:13.7719336Z hint:
+2025-11-27T18:14:13.7721228Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-11-27T18:14:13.7724761Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-11-27T18:14:13.7727322Z hint:
+2025-11-27T18:14:13.7728586Z hint: 	git branch -m <name>
+2025-11-27T18:14:13.7730026Z hint:
+2025-11-27T18:14:13.7732161Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-11-27T18:14:13.7734737Z Initialized empty Git repository in /home/runner/work/runtipi-custom-appstore/runtipi-custom-appstore/.git/
+2025-11-27T18:14:13.7740053Z [command]/usr/bin/git remote add origin https://github.com/rodrigomescua/runtipi-custom-appstore
+2025-11-27T18:14:13.7764890Z ##[endgroup]
+2025-11-27T18:14:13.7767519Z ##[group]Disabling automatic garbage collection
+2025-11-27T18:14:13.7769815Z [command]/usr/bin/git config --local gc.auto 0
+2025-11-27T18:14:13.7798835Z ##[endgroup]
+2025-11-27T18:14:13.7801161Z ##[group]Setting up auth
+2025-11-27T18:14:13.7806517Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-11-27T18:14:13.7840697Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-11-27T18:14:13.8172203Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-11-27T18:14:13.8206553Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-11-27T18:14:13.8424032Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-11-27T18:14:13.8455672Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-11-27T18:14:13.8681368Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-11-27T18:14:13.8715303Z ##[endgroup]
+2025-11-27T18:14:13.8716703Z ##[group]Fetching the repository
+2025-11-27T18:14:13.8723737Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +f89ed61c980fde68453a4869d1e9cc300ab69b5a:refs/remotes/origin/main
+2025-11-27T18:14:14.3295437Z From https://github.com/rodrigomescua/runtipi-custom-appstore
+2025-11-27T18:14:14.3298162Z  * [new ref]         f89ed61c980fde68453a4869d1e9cc300ab69b5a -> origin/main
+2025-11-27T18:14:14.3326085Z ##[endgroup]
+2025-11-27T18:14:14.3326895Z ##[group]Determining the checkout info
+2025-11-27T18:14:14.3329412Z ##[endgroup]
+2025-11-27T18:14:14.3335170Z [command]/usr/bin/git sparse-checkout disable
+2025-11-27T18:14:14.3375017Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-11-27T18:14:14.3399986Z ##[group]Checking out the ref
+2025-11-27T18:14:14.3404406Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-11-27T18:14:14.3518135Z Switched to a new branch 'main'
+2025-11-27T18:14:14.3520765Z branch 'main' set up to track 'origin/main'.
+2025-11-27T18:14:14.3527236Z ##[endgroup]
+2025-11-27T18:14:14.3561278Z [command]/usr/bin/git log -1 --format=%H
+2025-11-27T18:14:14.3582858Z f89ed61c980fde68453a4869d1e9cc300ab69b5a
+2025-11-27T18:14:14.3813589Z ##[group]Run actions/setup-node@v4
+2025-11-27T18:14:14.3813915Z with:
+2025-11-27T18:14:14.3814135Z   node-version: 22
+2025-11-27T18:14:14.3814371Z   always-auth: false
+2025-11-27T18:14:14.3814872Z   check-latest: false
+2025-11-27T18:14:14.3815261Z   token: ***
+2025-11-27T18:14:14.3815482Z ##[endgroup]
+2025-11-27T18:14:14.5605608Z Found in cache @ /opt/hostedtoolcache/node/22.21.1/x64
+2025-11-27T18:14:14.5611808Z ##[group]Environment details
+2025-11-27T18:14:14.8914550Z node: v22.21.1
+2025-11-27T18:14:14.8915065Z npm: 10.9.4
+2025-11-27T18:14:14.8915417Z yarn: 1.22.22
+2025-11-27T18:14:14.8916284Z ##[endgroup]
+2025-11-27T18:14:14.9029932Z ##[group]Run oven-sh/setup-bun@v2
+2025-11-27T18:14:14.9030251Z with:
+2025-11-27T18:14:14.9030467Z   no-cache: false
+2025-11-27T18:14:14.9030688Z ##[endgroup]
+2025-11-27T18:14:15.0367805Z Downloading a new version of Bun: https://bun.sh/download/latest/linux/x64?avx2=true&profile=false
+2025-11-27T18:14:15.6296586Z [command]/usr/bin/unzip -o -q /home/runner/work/_temp/fab3106e-8f37-48b3-b4ea-dcd250416da3.zip
+2025-11-27T18:14:16.4043232Z [command]/home/runner/.bun/bin/bun --revision
+2025-11-27T18:14:16.4079385Z 1.3.3+274e01c73
+2025-11-27T18:14:16.4306972Z ##[group]Run actions/cache@v4
+2025-11-27T18:14:16.4307241Z with:
+2025-11-27T18:14:16.4307422Z   path: ~/.bun/install/global
+2025-11-27T18:14:16.4307665Z   key: Linux-bun-global-renovate-40
+2025-11-27T18:14:16.4307936Z   restore-keys: Linux-bun-global-
+
+2025-11-27T18:14:16.4308180Z   enableCrossOsArchive: false
+2025-11-27T18:14:16.4308405Z   fail-on-cache-miss: false
+2025-11-27T18:14:16.4308617Z   lookup-only: false
+2025-11-27T18:14:16.4308805Z   save-always: false
+2025-11-27T18:14:16.4308990Z ##[endgroup]
+2025-11-27T18:14:16.8639517Z Cache hit for: Linux-bun-global-renovate-40
+2025-11-27T18:14:18.1950072Z Received 0 of 60848253 (0.0%), 0.0 MBs/sec
+2025-11-27T18:14:18.9521462Z Received 60848253 of 60848253 (100.0%), 33.0 MBs/sec
+2025-11-27T18:14:18.9524807Z Cache Size: ~58 MB (60848253 B)
+2025-11-27T18:14:18.9566748Z [command]/usr/bin/tar -xf /home/runner/work/_temp/8a84bbca-b71a-40b2-b1f2-b6befb2fe3de/cache.tzst -P -C /home/runner/work/runtipi-custom-appstore/runtipi-custom-appstore --use-compress-program unzstd
+2025-11-27T18:14:20.5670209Z Cache restored successfully
+2025-11-27T18:14:20.5877241Z Cache restored from key: Linux-bun-global-renovate-40
+2025-11-27T18:14:20.5987192Z ##[group]Run bun install -g renovate@40
+2025-11-27T18:14:20.5987559Z [36;1mbun install -g renovate@40[0m
+2025-11-27T18:14:20.6029929Z shell: /usr/bin/bash -e {0}
+2025-11-27T18:14:20.6030189Z ##[endgroup]
+2025-11-27T18:14:20.6129045Z bun add v1.3.3 (274e01c7)
+2025-11-27T18:14:20.6320869Z Saved lockfile
+2025-11-27T18:14:20.6321193Z 
+2025-11-27T18:14:20.6321495Z installed renovate@40.41.3 with binaries:
+2025-11-27T18:14:20.6322332Z  - renovate
+2025-11-27T18:14:20.6322603Z  - renovate-config-validator
+2025-11-27T18:14:20.6322799Z 
+2025-11-27T18:14:20.6322913Z [20.00ms] done
+2025-11-27T18:14:20.6366269Z ##[group]Run LOG_LEVEL=DEBUG renovate --token *** rodrigomescua/runtipi-custom-appstore
+2025-11-27T18:14:20.6367134Z [36;1mLOG_LEVEL=DEBUG renovate --token *** rodrigomescua/runtipi-custom-appstore[0m
+2025-11-27T18:14:20.6401430Z shell: /usr/bin/bash -e {0}
+2025-11-27T18:14:20.6401689Z ##[endgroup]
+2025-11-27T18:14:22.6487628Z DEBUG: Using RE2 regex engine
+2025-11-27T18:14:22.6497987Z DEBUG: Parsing configs
+2025-11-27T18:14:22.6516121Z DEBUG: Checking for config file in config.js
+2025-11-27T18:14:22.6691593Z DEBUG: File config
+2025-11-27T18:14:22.6692273Z        "config": {
+2025-11-27T18:14:22.6692649Z          "allowedCommands": [
+2025-11-27T18:14:22.6693154Z            "bun ./scripts/update-config.ts",
+2025-11-27T18:14:22.6693717Z            "bun install && bun run test"
+2025-11-27T18:14:22.6694185Z          ]
+2025-11-27T18:14:22.6694675Z        }
+2025-11-27T18:14:22.6696485Z DEBUG: CLI config
+2025-11-27T18:14:22.6696871Z        "config": {
+2025-11-27T18:14:22.6697742Z          "repositories": ["rodrigomescua/runtipi-custom-appstore"],
+2025-11-27T18:14:22.6698800Z          "token": "***********"
+2025-11-27T18:14:22.6699228Z        }
+2025-11-27T18:14:22.6703428Z DEBUG: Env config
+2025-11-27T18:14:22.6703908Z        "config": {"hostRules": []}
+2025-11-27T18:14:22.6704831Z DEBUG: Resolved global extends
+2025-11-27T18:14:22.6705303Z        "config": undefined
+2025-11-27T18:14:22.6705738Z DEBUG: Combined config
+2025-11-27T18:14:22.6706113Z        "config": {
+2025-11-27T18:14:22.6706498Z          "allowedCommands": [
+2025-11-27T18:14:22.6707029Z            "bun ./scripts/update-config.ts",
+2025-11-27T18:14:22.6707575Z            "bun install && bun run test"
+2025-11-27T18:14:22.6708012Z          ],
+2025-11-27T18:14:22.6708349Z          "hostRules": [],
+2025-11-27T18:14:22.6708987Z          "repositories": ["rodrigomescua/runtipi-custom-appstore"],
+2025-11-27T18:14:22.6709659Z          "token": "***********"
+2025-11-27T18:14:22.6710062Z        }
+2025-11-27T18:14:22.6710719Z DEBUG: Enabling forkProcessing while in non-autodiscover mode
+2025-11-27T18:14:22.6711610Z DEBUG: Enabling onboardingNoDeps while in non-autodiscover mode
+2025-11-27T18:14:22.6832491Z DEBUG: Found valid git version: 2.51.2
+2025-11-27T18:14:22.6833159Z DEBUG: Setting global hostRules
+2025-11-27T18:14:22.6860265Z DEBUG: Using default github endpoint: https://api.github.com/
+2025-11-27T18:14:22.6882154Z DEBUG: hostRules: authentication already set for api.github.com
+2025-11-27T18:14:22.6888201Z DEBUG: Using queue: host=api.github.com, concurrency=16
+2025-11-27T18:14:22.9438371Z DEBUG: Platform config
+2025-11-27T18:14:22.9438891Z        "platformConfig": {
+2025-11-27T18:14:22.9439334Z          "hostType": "github",
+2025-11-27T18:14:22.9439838Z          "endpoint": "https://api.github.com/",
+2025-11-27T18:14:22.9440328Z          "isGHApp": true,
+2025-11-27T18:14:22.9440676Z          "isGhe": false,
+2025-11-27T18:14:22.9441013Z          "userDetails": {
+2025-11-27T18:14:22.9441541Z            "username": "github-actions[bot]",
+2025-11-27T18:14:22.9442327Z            "name": "github-actions[bot]",
+2025-11-27T18:14:22.9442767Z            "id": 41898282
+2025-11-27T18:14:22.9443105Z          }
+2025-11-27T18:14:22.9443383Z        },
+2025-11-27T18:14:22.9443779Z        "renovateUsername": "github-actions[bot]"
+2025-11-27T18:14:22.9445714Z DEBUG: Using platform gitAuthor: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+2025-11-27T18:14:22.9483279Z DEBUG: Adding token authentication for api.github.com (hostType=github) to hostRules
+2025-11-27T18:14:22.9492605Z DEBUG: Using baseDir: /tmp/renovate
+2025-11-27T18:14:22.9496332Z DEBUG: Using cacheDir: /tmp/renovate/cache
+2025-11-27T18:14:22.9498680Z DEBUG: Using containerbaseDir: /tmp/renovate/cache/containerbase
+2025-11-27T18:14:22.9504289Z DEBUG: Initializing Renovate internal cache into /tmp/renovate/cache/renovate/renovate-cache-v1
+2025-11-27T18:14:22.9505329Z DEBUG: Commits limit = null
+2025-11-27T18:14:22.9505976Z DEBUG: Setting global hostRules
+2025-11-27T18:14:22.9519190Z DEBUG: Adding token authentication for api.github.com (hostType=github) to hostRules
+2025-11-27T18:14:22.9523944Z DEBUG: validatePresets()
+2025-11-27T18:14:22.9630372Z DEBUG: Reinitializing hostRules for repo
+2025-11-27T18:14:22.9631148Z DEBUG: Clearing hostRules
+2025-11-27T18:14:22.9632768Z DEBUG: Adding token authentication for api.github.com (hostType=github) to hostRules
+2025-11-27T18:14:22.9656826Z  INFO: Repository started (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:22.9657637Z        "renovateVersion": "40.41.3"
+2025-11-27T18:14:22.9659423Z DEBUG: Using localDir: /tmp/renovate/repos/github/rodrigomescua/runtipi-custom-appstore (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:22.9661292Z DEBUG: PackageFiles.clear() - Package files deleted (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:22.9680420Z DEBUG: initRepo("rodrigomescua/runtipi-custom-appstore") (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:22.9686227Z DEBUG: hostRules: authentication already set for api.github.com (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:22.9689883Z DEBUG: Using queue: host=api.github.com, concurrency=16 (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:23.2246048Z DEBUG: rodrigomescua/runtipi-custom-appstore default branch = main (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:23.2252827Z DEBUG: Using app token for git init (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:23.2263990Z DEBUG: fetchBranchCommits(): url=https://**redacted**@github.com/rodrigomescua/runtipi-custom-appstore.git (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:23.5076328Z DEBUG: Resetting npmrc (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:23.5077403Z DEBUG: Resetting npmrc (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:23.5082381Z DEBUG: checkOnboarding() (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:23.5085231Z DEBUG: isOnboarded() (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:23.5088264Z DEBUG: findPr(renovate/configure, Configure Renovate, !open) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:23.9088599Z DEBUG: http cache: saving https://api.github.com/repos/rodrigomescua/runtipi-custom-appstore/pulls?per_page=100&state=all&sort=updated&direction=desc&page=1 (etag=W/"deb7bfd5b2f7a58dc0527ce847b55d169ae186ea2838f1b5382aeab5e6edfa7a", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:23.9094691Z DEBUG: getPrList success (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:23.9095691Z        "pullsTotal": 0,
+2025-11-27T18:14:23.9096099Z        "requestsTotal": 1,
+2025-11-27T18:14:23.9096540Z        "apiQuotaAffected": true
+2025-11-27T18:14:23.9097693Z DEBUG: findPr(renovate/configure, chore: Configure Renovate, !open) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:23.9099070Z DEBUG: findFile(renovate.json) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:23.9103564Z DEBUG: syncGit(): Initializing git repository into /tmp/renovate/repos/github/rodrigomescua/runtipi-custom-appstore (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:23.9105078Z DEBUG: Performing blobless clone (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:24.7655479Z DEBUG: git clone completed (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:24.7656223Z        "durationMs": 855
+2025-11-27T18:14:24.7794505Z DEBUG: latest repository commit (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:24.7795049Z        "latestCommit": {
+2025-11-27T18:14:24.7795367Z          "hash": "f89ed61c980fde68453a4869d1e9cc300ab69b5a",
+2025-11-27T18:14:24.7795701Z          "date": "2025-11-27T15:12:38-03:00",
+2025-11-27T18:14:24.7796190Z          "message": "Merge branch 'main' of https://github.com/rodrigomescua/runtipi-custom-appstore",
+2025-11-27T18:14:24.7796975Z          "refs": "HEAD -> main, origin/main, origin/HEAD",
+2025-11-27T18:14:24.7797273Z          "body": "",
+2025-11-27T18:14:24.7798611Z          "author_name": "rodrigomescua",
+2025-11-27T18:14:24.7799310Z          "author_email": "ro_mescua@outlook.com"
+2025-11-27T18:14:24.7799779Z        }
+2025-11-27T18:14:24.7864155Z DEBUG: Current branch SHA: f89ed61c980fde68453a4869d1e9cc300ab69b5a (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:24.7921175Z DEBUG: Config file exists, fileName: renovate.json (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:24.7923648Z DEBUG: Retrieving issueList (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:24.9799450Z DEBUG: Retrieved 0 issues (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:24.9801283Z DEBUG: Repo is onboarded (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:24.9877338Z DEBUG: Found renovate.json config file (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:24.9900710Z DEBUG: Repository config (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:24.9901435Z        "fileName": "renovate.json",
+2025-11-27T18:14:24.9901815Z        "config": {
+2025-11-27T18:14:24.9902514Z          "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+2025-11-27T18:14:24.9903518Z          "automerge": false,
+2025-11-27T18:14:24.9903961Z          "extends": ["config:recommended"],
+2025-11-27T18:14:24.9904410Z          "addLabels": ["renovate"],
+2025-11-27T18:14:24.9904879Z          "enabledManagers": ["custom.regex"],
+2025-11-27T18:14:24.9905260Z          "automergeStrategy": "rebase",
+2025-11-27T18:14:24.9905555Z          "prCreation": "immediate",
+2025-11-27T18:14:24.9905817Z          "customManagers": [
+2025-11-27T18:14:24.9906038Z            {
+2025-11-27T18:14:24.9906262Z              "customType": "regex",
+2025-11-27T18:14:24.9906615Z              "managerFilePatterns": ["/^.*docker-compose\\.json$/"],
+2025-11-27T18:14:24.9907077Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:24.9907452Z              "datasourceTemplate": "docker"
+2025-11-27T18:14:24.9907704Z            }
+2025-11-27T18:14:24.9907877Z          ],
+2025-11-27T18:14:24.9908057Z          "packageRules": [
+2025-11-27T18:14:24.9908267Z            {
+2025-11-27T18:14:24.9908588Z              "matchUpdateTypes": ["minor", "major", "patch", "pin", "digest"],
+2025-11-27T18:14:24.9908941Z              "automerge": false
+2025-11-27T18:14:24.9909154Z            },
+2025-11-27T18:14:24.9909446Z            {"matchDepTypes": ["devDependencies"], "automerge": false},
+2025-11-27T18:14:24.9909746Z            {
+2025-11-27T18:14:24.9909964Z              "matchPackageNames": [
+2025-11-27T18:14:24.9910217Z                "mariadb",
+2025-11-27T18:14:24.9910429Z                "mysql",
+2025-11-27T18:14:24.9910625Z                "monogdb",
+2025-11-27T18:14:24.9910832Z                "postgres",
+2025-11-27T18:14:24.9911044Z                "redis",
+2025-11-27T18:14:24.9911237Z                "rabbitmq"
+2025-11-27T18:14:24.9911424Z              ],
+2025-11-27T18:14:24.9911610Z              "enabled": false
+2025-11-27T18:14:24.9911819Z            }
+2025-11-27T18:14:24.9912245Z          ],
+2025-11-27T18:14:24.9912458Z          "postUpgradeTasks": {
+2025-11-27T18:14:24.9912689Z            "commands": [
+2025-11-27T18:14:24.9913078Z              "bun ./scripts/update-config.ts {{packageFile}} {{newVersion}} {{depName}}",
+2025-11-27T18:14:24.9913486Z              "bun install && bun run test"
+2025-11-27T18:14:24.9913730Z            ],
+2025-11-27T18:14:24.9913929Z            "fileFilters": ["**/*"],
+2025-11-27T18:14:24.9914195Z            "executionMode": "update"
+2025-11-27T18:14:24.9914423Z          }
+2025-11-27T18:14:24.9914585Z        }
+2025-11-27T18:14:24.9914978Z DEBUG: migrateAndValidate() (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:24.9935790Z DEBUG: No config migration necessary (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.6947274Z DEBUG: Found repo ignorePaths (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.6948030Z        "ignorePaths": [
+2025-11-27T18:14:25.6948429Z          "**/node_modules/**",
+2025-11-27T18:14:25.6948839Z          "**/bower_components/**",
+2025-11-27T18:14:25.6949300Z          "**/vendor/**",
+2025-11-27T18:14:25.6949649Z          "**/examples/**",
+2025-11-27T18:14:25.6950008Z          "**/__tests__/**",
+2025-11-27T18:14:25.6950361Z          "**/test/**",
+2025-11-27T18:14:25.6950688Z          "**/tests/**",
+2025-11-27T18:14:25.6951011Z          "**/__fixtures__/**"
+2025-11-27T18:14:25.6951359Z        ]
+2025-11-27T18:14:25.7029389Z DEBUG: No vulnerability alerts enabled for repo (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.7030221Z DEBUG: No vulnerability alerts found (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.7043066Z DEBUG: findIssue(Dependency Dashboard) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.7044667Z DEBUG: No baseBranches (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.7047033Z DEBUG: extract() (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.7075732Z DEBUG: Setting current branch to main (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.7448903Z DEBUG: latest commit (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.7449345Z        "branchName": "main",
+2025-11-27T18:14:25.7449653Z        "latestCommitDate": "2025-11-27T15:12:38-03:00",
+2025-11-27T18:14:25.7450021Z        "sha": "f89ed61c980fde68453a4869d1e9cc300ab69b5a"
+2025-11-27T18:14:25.7771831Z DEBUG: Using file pattern: /^.*docker-compose\.json$/ for manager regex (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.7787936Z DEBUG: Matched 19 file(s) for manager regex: apps/blazor-rss-restricted/docker-compose.json, apps/blazor-rss/docker-compose.json, apps/blinko/docker-compose.json, apps/byparr/docker-compose.json, apps/dawarich/docker-compose.json, apps/edencrafters-companion/docker-compose.json, apps/kitchenowl/docker-compose.json, apps/linkding/docker-compose.json, apps/mediamanager/docker-compose.json, apps/photon/docker-compose.json, apps/pricebuddy/docker-compose.json, apps/razor-finance/docker-compose.json, apps/razor-iptv/docker-compose.json, apps/razor-miniflux-restricted/docker-compose.json, apps/razor-miniflux/docker-compose.json, apps/razor-pricehistory/docker-compose.json, apps/reitti/docker-compose.json, apps/upsnap/docker-compose.json, apps/wallabag/docker-compose.json (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.7908154Z DEBUG: manager extract durations (ms) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.7909008Z        "managers": {"regex": 13}
+2025-11-27T18:14:25.7931821Z DEBUG: Found regex package files (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.7932809Z DEBUG: Found 19 package file(s) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.7933518Z  INFO: Dependency extraction complete (repository=rodrigomescua/runtipi-custom-appstore, baseBranch=main)
+2025-11-27T18:14:25.7934004Z        "stats": {
+2025-11-27T18:14:25.7934313Z          "managers": {"regex": {"fileCount": 19, "depCount": 29}},
+2025-11-27T18:14:25.7934713Z          "total": {"fileCount": 19, "depCount": 29}
+2025-11-27T18:14:25.7934985Z        }
+2025-11-27T18:14:25.8496778Z DEBUG: Dependency: postgres, is disabled (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.8497820Z DEBUG: Dependency: redis, is disabled (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.8526549Z DEBUG: Using queue: host=ghcr.io, concurrency=16 (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.8587502Z DEBUG: hostRules: no authentication for hub.docker.com (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:25.8590082Z DEBUG: Using queue: host=hub.docker.com, concurrency=16 (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.0824762Z DEBUG: http cache: saving https://ghcr.io/token?scope=repository%3Arodrigomescua%2Fblazorrssdocker%3Apull&service=ghcr.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.0908563Z DEBUG: http cache: saving https://ghcr.io/token?scope=repository%3Athephaseless%2Fbyparr%3Apull&service=ghcr.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.2089734Z DEBUG: getLabels(https://ghcr.io, rodrigomescua/blazorrssdocker, 20250928-053614) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.2095187Z DEBUG: getManifestResponse(https://ghcr.io, rodrigomescua/blazorrssdocker, 20250928-053614, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.2304125Z DEBUG: getLabels(https://index.docker.io, postgis/postgis, latest) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.2307775Z DEBUG: getManifestResponse(https://index.docker.io, postgis/postgis, latest, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.2312263Z DEBUG: Using queue: host=index.docker.io, concurrency=16 (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.4385700Z DEBUG: http cache: saving https://ghcr.io/v2/rodrigomescua/blazorrssdocker/manifests/20250928-053614 (etag="sha256:7daddc62e1360c0f4beda8ab86f6eb2db57fd774126e0d3157b0d6fa94b39489", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.4390904Z DEBUG: getManifestResponse(https://ghcr.io, rodrigomescua/blazorrssdocker, sha256:672151e9d2ef5c84f721528d172c886034a150c98a1c7b54f05294343f48f9d8, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.4428831Z DEBUG: Using queue: host=auth.docker.io, concurrency=16 (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.4533891Z DEBUG: getLabels(https://index.docker.io, freikin/dawarich, latest) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.4537875Z DEBUG: getManifestResponse(https://index.docker.io, freikin/dawarich, latest, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.4775838Z DEBUG: getLabels(https://ghcr.io, thephaseless/byparr, latest) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.4779436Z DEBUG: getManifestResponse(https://ghcr.io, thephaseless/byparr, latest, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.6455954Z DEBUG: http cache: saving https://ghcr.io/v2/rodrigomescua/blazorrssdocker/manifests/sha256:672151e9d2ef5c84f721528d172c886034a150c98a1c7b54f05294343f48f9d8 (etag="sha256:672151e9d2ef5c84f721528d172c886034a150c98a1c7b54f05294343f48f9d8", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.6653617Z DEBUG: http cache: saving https://auth.docker.io/token?scope=repository%3Apostgis%2Fpostgis%3Apull&service=registry.docker.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.6986596Z DEBUG: http cache: saving https://ghcr.io/v2/thephaseless/byparr/manifests/latest (etag="sha256:dd2ab939fd616c17da5f58d85f5264e5ad125de1db732f3f27a4b52e96b78cbb", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.6989875Z DEBUG: getManifestResponse(https://ghcr.io, thephaseless/byparr, sha256:5218c08adc70a47c930fc6f113a6aca1f2778e71a15967df5ab98661c388c2e7, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.7249484Z DEBUG: http cache: saving https://auth.docker.io/token?scope=repository%3Afreikin%2Fdawarich%3Apull&service=registry.docker.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.7728489Z DEBUG: http cache: saving https://index.docker.io/v2/postgis/postgis/manifests/latest (etag="sha256:7801b017ecc5e1bb146e7f76e1910f44272f15ed02a94bf731d3511caf7e570c", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.7734286Z DEBUG: getManifestResponse(https://index.docker.io, postgis/postgis, sha256:4f5cd80903273815ed4c11c660642ef908e93bf8b1b0d37f46e236e18dd850e2, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.8932911Z DEBUG: http cache: saving https://ghcr.io/v2/thephaseless/byparr/manifests/sha256:5218c08adc70a47c930fc6f113a6aca1f2778e71a15967df5ab98661c388c2e7 (etag="sha256:5218c08adc70a47c930fc6f113a6aca1f2778e71a15967df5ab98661c388c2e7", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.9227920Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.9228504Z        "labels": {
+2025-11-27T18:14:26.9228902Z          "org.opencontainers.image.created": "2025-09-28T05:36:14.236Z",
+2025-11-27T18:14:26.9229398Z          "org.opencontainers.image.description": "",
+2025-11-27T18:14:26.9229847Z          "org.opencontainers.image.licenses": "",
+2025-11-27T18:14:26.9230404Z          "org.opencontainers.image.revision": "007843c88d5048bb5dce0bec884409fae4cbe7ef",
+2025-11-27T18:14:26.9231145Z          "org.opencontainers.image.source": "https://github.com/rodrigomescua/BlazorRssDocker",
+2025-11-27T18:14:26.9232404Z          "org.opencontainers.image.title": "BlazorRssDocker",
+2025-11-27T18:14:26.9233022Z          "org.opencontainers.image.url": "https://github.com/rodrigomescua/BlazorRssDocker",
+2025-11-27T18:14:26.9233594Z          "org.opencontainers.image.version": "master-latest"
+2025-11-27T18:14:26.9233895Z        }
+2025-11-27T18:14:26.9542138Z DEBUG: http cache: saving https://index.docker.io/v2/postgis/postgis/manifests/sha256:4f5cd80903273815ed4c11c660642ef908e93bf8b1b0d37f46e236e18dd850e2 (etag="sha256:4f5cd80903273815ed4c11c660642ef908e93bf8b1b0d37f46e236e18dd850e2", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.9804048Z DEBUG: http cache: saving https://index.docker.io/v2/freikin/dawarich/manifests/latest (etag="sha256:660d55f9309f63ad259e021c3e6817245200d5faf2cc44e3b5c7fcef0c79e09d", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:26.9807688Z DEBUG: getManifestResponse(https://index.docker.io, freikin/dawarich, sha256:3b3802a19e580c744302e8eb10e75ef19bad079569b8063c1b6971ce6d638a5d, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.1189876Z DEBUG: http cache: saving https://ghcr.io/token?scope=repository%3Arodrigomescua%2Fedencrafterscompanion%3Apull&service=ghcr.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.1556144Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.1556828Z        "labels": {
+2025-11-27T18:14:27.1557436Z          "org.opencontainers.image.created": "2025-09-11T20:32:24.835Z",
+2025-11-27T18:14:27.1558292Z          "org.opencontainers.image.description": "Get your valid antibot cookies yourself!",
+2025-11-27T18:14:27.1558863Z          "org.opencontainers.image.licenses": "GPL-3.0",
+2025-11-27T18:14:27.1559402Z          "org.opencontainers.image.revision": "b652f3caa15d2c52396f691f3fbec77ff5237609",
+2025-11-27T18:14:27.1560067Z          "org.opencontainers.image.source": "https://github.com/ThePhaseless/Byparr",
+2025-11-27T18:14:27.1560572Z          "org.opencontainers.image.title": "Byparr",
+2025-11-27T18:14:27.1561066Z          "org.opencontainers.image.url": "https://github.com/ThePhaseless/Byparr",
+2025-11-27T18:14:27.1562178Z          "org.opencontainers.image.version": "b652f3caa15d2c52396f691f3fbec77ff5237609-amd64"
+2025-11-27T18:14:27.1562849Z        }
+2025-11-27T18:14:27.2365509Z DEBUG: http cache: saving https://index.docker.io/v2/freikin/dawarich/manifests/sha256:3b3802a19e580c744302e8eb10e75ef19bad079569b8063c1b6971ce6d638a5d (etag="sha256:3b3802a19e580c744302e8eb10e75ef19bad079569b8063c1b6971ce6d638a5d", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.2528476Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.2529287Z        "labels": {
+2025-11-27T18:14:27.2529833Z          "maintainer": "PostGIS Project - https://postgis.net",
+2025-11-27T18:14:27.2531098Z          "org.opencontainers.image.description": "PostGIS 3.5.2+dfsg-1.pgdg110+1 spatial database extension with PostgreSQL 17 bullseye",
+2025-11-27T18:14:27.2532692Z          "org.opencontainers.image.source": "https://github.com/postgis/docker-postgis"
+2025-11-27T18:14:27.2533407Z        }
+2025-11-27T18:14:27.2534582Z DEBUG: getLabels(https://ghcr.io, rodrigomescua/edencrafterscompanion, latest) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.2536703Z DEBUG: getManifestResponse(https://ghcr.io, rodrigomescua/edencrafterscompanion, latest, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.2585168Z DEBUG: getLabels(https://index.docker.io, tombursch/kitchenowl, latest) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.2589104Z DEBUG: getManifestResponse(https://index.docker.io, tombursch/kitchenowl, latest, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.3956886Z DEBUG: http cache: saving https://auth.docker.io/token?scope=repository%3Atombursch%2Fkitchenowl%3Apull&service=registry.docker.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.4177841Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.4178592Z        "labels": {
+2025-11-27T18:14:27.4179149Z          "org.opencontainers.image.created": "2025-11-24T19:05:44.751Z",
+2025-11-27T18:14:27.4180057Z          "org.opencontainers.image.description": "Your favorite self-hostable alternative to Google Timeline (Google Location History)",
+2025-11-27T18:14:27.4180724Z          "org.opencontainers.image.licenses": "AGPL-3.0",
+2025-11-27T18:14:27.4181246Z          "org.opencontainers.image.revision": "52eb80503d2717e8bc203d440b48d0965e92ebe7",
+2025-11-27T18:14:27.4182096Z          "org.opencontainers.image.source": "https://github.com/Freika/dawarich",
+2025-11-27T18:14:27.4182881Z          "org.opencontainers.image.title": "dawarich",
+2025-11-27T18:14:27.4183528Z          "org.opencontainers.image.url": "https://github.com/Freika/dawarich",
+2025-11-27T18:14:27.4183959Z          "org.opencontainers.image.version": "0.36.0"
+2025-11-27T18:14:27.4184242Z        }
+2025-11-27T18:14:27.5090790Z DEBUG: Dependency ghcr.io/maxdorninger/mediamanager/mediamanager has unsupported/unversioned value sha-91df5ce (versioning=docker) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.5093553Z DEBUG: Skipping ghcr.io/maxdorninger/mediamanager/mediamanager because no currentDigest or pinDigests (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.5095280Z DEBUG: Dependency: postgres, is disabled (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.5173884Z DEBUG: http cache: saving https://ghcr.io/v2/rodrigomescua/edencrafterscompanion/manifests/latest (etag="sha256:c089126bec8341dad0c1d367d78977bdb7420b2349debb58620732168f4370ae", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.5177396Z DEBUG: getManifestResponse(https://ghcr.io, rodrigomescua/edencrafterscompanion, sha256:e53bbcac794bc58ce7813c31404c285b4a1aa2b22c26f5eec3eb0aadf70eb1fc, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.5197557Z DEBUG: http cache: saving https://index.docker.io/v2/tombursch/kitchenowl/manifests/latest (etag="sha256:9d5e4402c2abc734e1536586caa103840a7ebe961fdce1570e31b956abeba70b", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.5201486Z DEBUG: getManifestResponse(https://index.docker.io, tombursch/kitchenowl, sha256:f6db7ff4ae1d9a1ffc2c82dc4c0860c08233eff7d51b9ecaac50feb7ebc55751, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.6891707Z DEBUG: http cache: saving https://ghcr.io/v2/rodrigomescua/edencrafterscompanion/manifests/sha256:e53bbcac794bc58ce7813c31404c285b4a1aa2b22c26f5eec3eb0aadf70eb1fc (etag="sha256:e53bbcac794bc58ce7813c31404c285b4a1aa2b22c26f5eec3eb0aadf70eb1fc", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.6999595Z DEBUG: http cache: saving https://index.docker.io/v2/tombursch/kitchenowl/manifests/sha256:f6db7ff4ae1d9a1ffc2c82dc4c0860c08233eff7d51b9ecaac50feb7ebc55751 (etag="sha256:f6db7ff4ae1d9a1ffc2c82dc4c0860c08233eff7d51b9ecaac50feb7ebc55751", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.7186011Z DEBUG: getLabels(https://index.docker.io, rtuszik/photon-docker, latest) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.7189613Z DEBUG: getManifestResponse(https://index.docker.io, rtuszik/photon-docker, latest, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.7380282Z DEBUG: getLabels(https://index.docker.io, blinkospace/blinko, latest) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.7383567Z DEBUG: getManifestResponse(https://index.docker.io, blinkospace/blinko, latest, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.7657625Z DEBUG: getLabels(https://index.docker.io, sissbruecker/linkding, latest) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.7660532Z DEBUG: getManifestResponse(https://index.docker.io, sissbruecker/linkding, latest, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.8553447Z DEBUG: http cache: saving https://auth.docker.io/token?scope=repository%3Artuszik%2Fphoton-docker%3Apull&service=registry.docker.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.9359707Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.9360406Z        "labels": {}
+2025-11-27T18:14:27.9527809Z DEBUG: Dependency jez500/seleniumbase-scrapper has unsupported/unversioned value latest (versioning=docker) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.9529046Z DEBUG: Skipping jez500/seleniumbase-scrapper because no currentDigest or pinDigests (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.9537391Z DEBUG: Dependency: mysql, is disabled (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.9634140Z DEBUG: http cache: saving https://index.docker.io/v2/rtuszik/photon-docker/manifests/latest (etag="sha256:4b7afa61a0c7516bc0efc8a3c50f6ddc2c6df7bca258ce84cfb7942dd28692e8", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:27.9636767Z DEBUG: getManifestResponse(https://index.docker.io, rtuszik/photon-docker, sha256:f7fddc6bf92107e2531bd76de4a9dbe5f0b65d7411e2fc02253be92fd7cb20bb, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.0243602Z DEBUG: http cache: saving https://auth.docker.io/token?scope=repository%3Ablinkospace%2Fblinko%3Apull&service=registry.docker.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.0335773Z DEBUG: http cache: saving https://auth.docker.io/token?scope=repository%3Asissbruecker%2Flinkding%3Apull&service=registry.docker.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.1267470Z DEBUG: http cache: saving https://index.docker.io/v2/blinkospace/blinko/manifests/latest (etag="sha256:15ed2193fe2e0a682cad4ec1f5acf05cfc1105329884eabb1fc6f3de478a0f5d", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.1271585Z DEBUG: getManifestResponse(https://index.docker.io, blinkospace/blinko, sha256:844aa0af6032b592060980d782c227259c1d54b00294b59a1a0c88d8dedebd86, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.1343309Z DEBUG: getLabels(https://index.docker.io, jez500/pricebuddy, latest) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.1347462Z DEBUG: getManifestResponse(https://index.docker.io, jez500/pricebuddy, latest, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.1370659Z DEBUG: http cache: saving https://index.docker.io/v2/sissbruecker/linkding/manifests/latest (etag="sha256:e4fbafee44388d8555e34ffdc507224302989265009fc82f5f2762b789f0385a", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.1374356Z DEBUG: getManifestResponse(https://index.docker.io, sissbruecker/linkding, sha256:72977140c1375cbf741f1fb1ebd1dc6b0922e33c6d7b982169ab3187dfcce32f, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.1418135Z DEBUG: http cache: saving https://index.docker.io/v2/rtuszik/photon-docker/manifests/sha256:f7fddc6bf92107e2531bd76de4a9dbe5f0b65d7411e2fc02253be92fd7cb20bb (etag="sha256:f7fddc6bf92107e2531bd76de4a9dbe5f0b65d7411e2fc02253be92fd7cb20bb", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.2947166Z DEBUG: http cache: saving https://index.docker.io/v2/blinkospace/blinko/manifests/sha256:844aa0af6032b592060980d782c227259c1d54b00294b59a1a0c88d8dedebd86 (etag="sha256:844aa0af6032b592060980d782c227259c1d54b00294b59a1a0c88d8dedebd86", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.3109996Z DEBUG: http cache: saving https://index.docker.io/v2/sissbruecker/linkding/manifests/sha256:72977140c1375cbf741f1fb1ebd1dc6b0922e33c6d7b982169ab3187dfcce32f (etag="sha256:72977140c1375cbf741f1fb1ebd1dc6b0922e33c6d7b982169ab3187dfcce32f", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.4075323Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.4075923Z        "labels": {}
+2025-11-27T18:14:28.4316220Z DEBUG: http cache: saving https://auth.docker.io/token?scope=repository%3Ajez500%2Fpricebuddy%3Apull&service=registry.docker.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.4599049Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.4599853Z        "labels": {
+2025-11-27T18:14:28.4600303Z          "org.opencontainers.image.created": "2025-11-16T08:29:10Z",
+2025-11-27T18:14:28.4601148Z          "org.opencontainers.image.description": "An open-source, self-hosted personal AI note tool prioritizing privacy, built using TypeScript .",
+2025-11-27T18:14:28.4602435Z          "org.opencontainers.image.licenses": "GPL-3.0",
+2025-11-27T18:14:28.4603212Z          "org.opencontainers.image.revision": "007ea2d5613b5bfef7a0f0e96ee4a5a53ace2688",
+2025-11-27T18:14:28.4604046Z          "org.opencontainers.image.source": "https://github.com/blinkospace/blinko",
+2025-11-27T18:14:28.4604870Z          "org.opencontainers.image.title": "blinko",
+2025-11-27T18:14:28.4605703Z          "org.opencontainers.image.url": "https://github.com/blinkospace/blinko",
+2025-11-27T18:14:28.4606334Z          "org.opencontainers.image.version": "1.6.6"
+2025-11-27T18:14:28.4606695Z        }
+2025-11-27T18:14:28.5774724Z DEBUG: http cache: saving https://index.docker.io/v2/jez500/pricebuddy/manifests/latest (etag="sha256:e20593172802370c02f93bd93af85a69d8edca42b673106f8f5b55c32fc0705e", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.5778881Z DEBUG: getManifestResponse(https://index.docker.io, jez500/pricebuddy, sha256:a73bbca9001be93b8625b21c141782db2bd9665572e1d9e4a0ce04b2e8158abb, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.5810816Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.5813790Z        "labels": {"org.opencontainers.image.source": "https://github.com/sissbruecker/linkding"}
+2025-11-27T18:14:28.5819105Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.5820018Z        "labels": {
+2025-11-27T18:14:28.5824100Z          "org.opencontainers.image.description": "Unofficial docker image for the Photon Geocoder",
+2025-11-27T18:14:28.5829553Z          "org.opencontainers.image.documentation": "https://github.com/rtuszik/photon-docker#readme",
+2025-11-27T18:14:28.5832657Z          "org.opencontainers.image.ref.name": "ubuntu",
+2025-11-27T18:14:28.5833427Z          "org.opencontainers.image.source": "https://github.com/rtuszik/photon-docker",
+2025-11-27T18:14:28.5834202Z          "org.opencontainers.image.title": "photon-docker",
+2025-11-27T18:14:28.5835008Z          "org.opencontainers.image.url": "https://github.com/rtuszik/photon-docker",
+2025-11-27T18:14:28.5835762Z          "org.opencontainers.image.version": "24.04"
+2025-11-27T18:14:28.5836191Z        }
+2025-11-27T18:14:28.6748763Z DEBUG: http cache: saving https://ghcr.io/token?scope=repository%3Arodrigomescua%2Frazorfinance%3Apull&service=ghcr.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.7415265Z DEBUG: getLabels(https://index.docker.io, romesc/razoriptvdocker, 1761309973) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.7418978Z DEBUG: getManifestResponse(https://index.docker.io, romesc/razoriptvdocker, 1761309973, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.7652748Z DEBUG: http cache: saving https://index.docker.io/v2/jez500/pricebuddy/manifests/sha256:a73bbca9001be93b8625b21c141782db2bd9665572e1d9e4a0ce04b2e8158abb (etag="sha256:a73bbca9001be93b8625b21c141782db2bd9665572e1d9e4a0ce04b2e8158abb", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.7714802Z DEBUG: getLabels(https://ghcr.io, rodrigomescua/razorfinance, latest) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.7718858Z DEBUG: getManifestResponse(https://ghcr.io, rodrigomescua/razorfinance, latest, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.8786323Z DEBUG: http cache: saving https://auth.docker.io/token?scope=repository%3Aromesc%2Frazoriptvdocker%3Apull&service=registry.docker.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.9359715Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.9360445Z        "labels": {}
+2025-11-27T18:14:28.9902358Z DEBUG: http cache: saving https://ghcr.io/v2/rodrigomescua/razorfinance/manifests/latest (etag="sha256:867def774dfdc234e6065702d56610469f0154f8ce3fcff76bd4fdd25efe6b0e", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:28.9904721Z DEBUG: getManifestResponse(https://ghcr.io, rodrigomescua/razorfinance, sha256:ee7d3a9cac33d79aaf5accf21b143b901fff123c6b79a5352f3f9ec4b97b091d, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.0067857Z DEBUG: http cache: saving https://index.docker.io/v2/romesc/razoriptvdocker/manifests/1761309973 (etag="sha256:3bcd9fcaf54a56e4d093d37fa4ec8cab0ca5241a1aeaff08fcb307c64a83f7b3", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.1178089Z DEBUG: getLabels(https://index.docker.io, romesc/razorpricehistory, 1743737648) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.1180832Z DEBUG: getManifestResponse(https://index.docker.io, romesc/razorpricehistory, 1743737648, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.1724239Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.1724728Z        "labels": {}
+2025-11-27T18:14:29.2005111Z DEBUG: Dependency: rabbitmq, is disabled (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.2006406Z DEBUG: Dependency: redis, is disabled (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.2376447Z DEBUG: http cache: saving https://ghcr.io/v2/rodrigomescua/razorfinance/manifests/sha256:ee7d3a9cac33d79aaf5accf21b143b901fff123c6b79a5352f3f9ec4b97b091d (etag="sha256:ee7d3a9cac33d79aaf5accf21b143b901fff123c6b79a5352f3f9ec4b97b091d", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.2554734Z DEBUG: getLabels(https://index.docker.io, romesc/razorminiflux, 1762990086) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.2558485Z DEBUG: getManifestResponse(https://index.docker.io, romesc/razorminiflux, 1762990086, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.3059803Z DEBUG: http cache: saving https://auth.docker.io/token?scope=repository%3Aromesc%2Frazorpricehistory%3Apull&service=registry.docker.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.3997331Z DEBUG: http cache: saving https://auth.docker.io/token?scope=repository%3Aromesc%2Frazorminiflux%3Apull&service=registry.docker.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.4297845Z DEBUG: getLabels(https://index.docker.io, dedicatedcode/reitti, latest) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.4301784Z DEBUG: getManifestResponse(https://index.docker.io, dedicatedcode/reitti, latest, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.4958138Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.4958776Z        "labels": {
+2025-11-27T18:14:29.4959097Z          "org.opencontainers.image.ref.name": "ubuntu",
+2025-11-27T18:14:29.4959499Z          "org.opencontainers.image.version": "24.04"
+2025-11-27T18:14:29.4959817Z        }
+2025-11-27T18:14:29.5168154Z DEBUG: http cache: saving https://index.docker.io/v2/romesc/razorminiflux/manifests/1762990086 (etag="sha256:12c912419df4acdf968f42cb02ab6eed34d5f7bbc3ba1da1f2099d5492d41776", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.5402126Z DEBUG: http cache: saving https://index.docker.io/v2/romesc/razorpricehistory/manifests/1743737648 (etag="sha256:283f2c74098a39eb09a163605305edf244e1a9a9f220e2ac657f0a019464b7cb", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.5854165Z DEBUG: http cache: saving https://auth.docker.io/token?scope=repository%3Adedicatedcode%2Freitti%3Apull&service=registry.docker.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.6913895Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.6914563Z        "labels": {}
+2025-11-27T18:14:29.6944016Z DEBUG: http cache: saving https://index.docker.io/v2/dedicatedcode/reitti/manifests/latest (etag="sha256:eabd8c70f4bb79767701d9afb190c3665f1813a775b325fa74b4af4b45e93bd8", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.6947441Z DEBUG: getManifestResponse(https://index.docker.io, dedicatedcode/reitti, sha256:83a4ee87b7f85afa035f2e19a49de9ac229191f6959932eadc7aa4352226fb7d, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.7840858Z DEBUG: http cache: saving https://ghcr.io/token?scope=repository%3Aseriousm4x%2Fupsnap%3Apull&service=ghcr.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.7902471Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.7903129Z        "labels": {}
+2025-11-27T18:14:29.8995224Z DEBUG: http cache: saving https://index.docker.io/v2/dedicatedcode/reitti/manifests/sha256:83a4ee87b7f85afa035f2e19a49de9ac229191f6959932eadc7aa4352226fb7d (etag="sha256:83a4ee87b7f85afa035f2e19a49de9ac229191f6959932eadc7aa4352226fb7d", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.9007116Z DEBUG: getLabels(https://ghcr.io, seriousm4x/upsnap, latest) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.9018375Z DEBUG: getManifestResponse(https://ghcr.io, seriousm4x/upsnap, latest, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.9620987Z DEBUG: getLabels(https://index.docker.io, wallabag/wallabag, latest) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:29.9629330Z DEBUG: getManifestResponse(https://index.docker.io, wallabag/wallabag, latest, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:30.1316309Z DEBUG: http cache: saving https://ghcr.io/v2/seriousm4x/upsnap/manifests/latest (etag="sha256:cbeafcff280d9db36aba467abc2b6110cd8de1e83e7a9d2d6a8e864511ba36e1", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:30.1320727Z DEBUG: getManifestResponse(https://ghcr.io, seriousm4x/upsnap, sha256:b7f91abea887698f8c4f0f792e07fc767f95d4722b3fba350d9235b4e8c150ad, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:30.3241189Z DEBUG: http cache: saving https://ghcr.io/v2/seriousm4x/upsnap/manifests/sha256:b7f91abea887698f8c4f0f792e07fc767f95d4722b3fba350d9235b4e8c150ad (etag="sha256:b7f91abea887698f8c4f0f792e07fc767f95d4722b3fba350d9235b4e8c150ad", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:30.3301186Z DEBUG: http cache: saving https://auth.docker.io/token?scope=repository%3Awallabag%2Fwallabag%3Apull&service=registry.docker.io (etag=undefined, lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:30.3603712Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:30.3605214Z        "labels": {
+2025-11-27T18:14:30.3605597Z          "maintainer": "dedicatedcode",
+2025-11-27T18:14:30.3606239Z          "org.opencontainers.image.created": "2025-11-23T12:50:58.712Z",
+2025-11-27T18:14:30.3608347Z          "org.opencontainers.image.description": "Reitti is a comprehensive personal location tracking and analysis application that helps you understand your movement patterns and significant places. The name \"Reitti\" comes from Finnish, meaning \"route\" or \"path\".",
+2025-11-27T18:14:30.3610162Z          "org.opencontainers.image.licenses": "MIT",
+2025-11-27T18:14:30.3610942Z          "org.opencontainers.image.revision": "8689825a584cba8650b0960086e2f1e8ccd7a24e",
+2025-11-27T18:14:30.3612056Z          "org.opencontainers.image.source": "https://github.com/dedicatedcode/reitti",
+2025-11-27T18:14:30.3612825Z          "org.opencontainers.image.title": "reitti",
+2025-11-27T18:14:30.3613565Z          "org.opencontainers.image.url": "https://github.com/dedicatedcode/reitti",
+2025-11-27T18:14:30.3614297Z          "org.opencontainers.image.version": "2.5.0"
+2025-11-27T18:14:30.3614728Z        }
+2025-11-27T18:14:30.5977679Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:30.5978479Z        "labels": {}
+2025-11-27T18:14:30.9706405Z DEBUG: http cache: saving https://index.docker.io/v2/wallabag/wallabag/manifests/latest (etag="sha256:4a527e027e0d59e87c14225ef11e005af3d4890374202ad319ce5e63dfc66709", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:30.9708982Z DEBUG: getManifestResponse(https://index.docker.io, wallabag/wallabag, sha256:82ade66b403d67c05732f9f08003034509f6499e9f487b858c0b77524b28545d, getText) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.1920809Z DEBUG: http cache: saving https://index.docker.io/v2/wallabag/wallabag/manifests/sha256:82ade66b403d67c05732f9f08003034509f6499e9f487b858c0b77524b28545d (etag="sha256:82ade66b403d67c05732f9f08003034509f6499e9f487b858c0b77524b28545d", lastModified=undefined) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.3610593Z DEBUG: found labels in manifest (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.3611575Z        "labels": {
+2025-11-27T18:14:31.3612350Z          "org.opencontainers.image.created": "2025-10-07T08:17:19.987Z",
+2025-11-27T18:14:31.3613271Z          "org.opencontainers.image.description": "Official docker-composer for wallabag.",
+2025-11-27T18:14:31.3614021Z          "org.opencontainers.image.licenses": "",
+2025-11-27T18:14:31.3614707Z          "org.opencontainers.image.revision": "480d3833bc44c555b6ee76491635fef84ec7dd86",
+2025-11-27T18:14:31.3615298Z          "org.opencontainers.image.source": "https://github.com/wallabag/docker",
+2025-11-27T18:14:31.3615777Z          "org.opencontainers.image.title": "docker",
+2025-11-27T18:14:31.3616387Z          "org.opencontainers.image.url": "https://github.com/wallabag/docker",
+2025-11-27T18:14:31.3616953Z          "org.opencontainers.image.version": "2.6.14"
+2025-11-27T18:14:31.3617430Z        }
+2025-11-27T18:14:31.3846256Z DEBUG: PackageFiles.add() - Package file saved for base branch (repository=rodrigomescua/runtipi-custom-appstore, baseBranch=main)
+2025-11-27T18:14:31.3848221Z DEBUG: Package releases lookups complete (repository=rodrigomescua/runtipi-custom-appstore, baseBranch=main)
+2025-11-27T18:14:31.3856283Z DEBUG: No currentVersionTimestamp for ghcr.io/rodrigomescua/razorfinance (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.3860848Z DEBUG: Repository libYears (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.3861655Z        "libYears": {"managers": {"regex": 0}, "total": 0},
+2025-11-27T18:14:31.3862405Z        "dependencyStatus": {"outdated": 1, "total": 25}
+2025-11-27T18:14:31.3864520Z DEBUG: branchifyUpgrades (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4257990Z DEBUG: detectSemanticCommits() (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4259572Z DEBUG: getCommitMessages (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4354179Z DEBUG: semanticCommits: detected "angular" (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4355713Z DEBUG: semanticCommits: enabled (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4362293Z DEBUG: 1 flattened updates found: ghcr.io/rodrigomescua/razorfinance (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4367029Z DEBUG: Returning 1 branch(es) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4474664Z DEBUG: config.repoIsOnboarded=true (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4515690Z DEBUG: packageFiles with updates (repository=rodrigomescua/runtipi-custom-appstore, baseBranch=main)
+2025-11-27T18:14:31.4516512Z        "config": {
+2025-11-27T18:14:31.4516821Z          "regex": [
+2025-11-27T18:14:31.4517129Z            {
+2025-11-27T18:14:31.4517422Z              "deps": [
+2025-11-27T18:14:31.4517743Z                {
+2025-11-27T18:14:31.4518234Z                  "depName": "ghcr.io/rodrigomescua/blazorrssdocker",
+2025-11-27T18:14:31.4518856Z                  "currentValue": "20250928-055530",
+2025-11-27T18:14:31.4519360Z                  "datasource": "docker",
+2025-11-27T18:14:31.4520122Z                  "replaceString": "\"image\": \"ghcr.io/rodrigomescua/blazorrssdocker:20250928-055530\",",
+2025-11-27T18:14:31.4520821Z                  "updates": [],
+2025-11-27T18:14:31.4521382Z                  "packageName": "ghcr.io/rodrigomescua/blazorrssdocker",
+2025-11-27T18:14:31.4522156Z                  "versioning": "docker",
+2025-11-27T18:14:31.4522624Z                  "warnings": [],
+2025-11-27T18:14:31.4523292Z                  "sourceUrl": "https://github.com/rodrigomescua/BlazorRssDocker",
+2025-11-27T18:14:31.4524009Z                  "registryUrl": "https://ghcr.io",
+2025-11-27T18:14:31.4524615Z                  "lookupName": "rodrigomescua/blazorrssdocker",
+2025-11-27T18:14:31.4525402Z                  "currentVersion": "20250928",
+2025-11-27T18:14:31.4525969Z                  "fixedVersion": "20250928-055530"
+2025-11-27T18:14:31.4526422Z                }
+2025-11-27T18:14:31.4527080Z              ],
+2025-11-27T18:14:31.4527710Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4528384Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4529060Z              "packageFile": "apps/blazor-rss-restricted/docker-compose.json"
+2025-11-27T18:14:31.4529643Z            },
+2025-11-27T18:14:31.4529922Z            {
+2025-11-27T18:14:31.4530215Z              "deps": [
+2025-11-27T18:14:31.4530538Z                {
+2025-11-27T18:14:31.4531021Z                  "depName": "ghcr.io/rodrigomescua/blazorrssdocker",
+2025-11-27T18:14:31.4531602Z                  "currentValue": "20250928-055530",
+2025-11-27T18:14:31.4532324Z                  "datasource": "docker",
+2025-11-27T18:14:31.4533116Z                  "replaceString": "\"image\": \"ghcr.io/rodrigomescua/blazorrssdocker:20250928-055530\",",
+2025-11-27T18:14:31.4533823Z                  "updates": [],
+2025-11-27T18:14:31.4534386Z                  "packageName": "ghcr.io/rodrigomescua/blazorrssdocker",
+2025-11-27T18:14:31.4534969Z                  "versioning": "docker",
+2025-11-27T18:14:31.4535415Z                  "warnings": [],
+2025-11-27T18:14:31.4536071Z                  "sourceUrl": "https://github.com/rodrigomescua/BlazorRssDocker",
+2025-11-27T18:14:31.4536984Z                  "registryUrl": "https://ghcr.io",
+2025-11-27T18:14:31.4537566Z                  "lookupName": "rodrigomescua/blazorrssdocker",
+2025-11-27T18:14:31.4538121Z                  "currentVersion": "20250928",
+2025-11-27T18:14:31.4538650Z                  "fixedVersion": "20250928-055530"
+2025-11-27T18:14:31.4539065Z                }
+2025-11-27T18:14:31.4539349Z              ],
+2025-11-27T18:14:31.4539899Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4540549Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4541157Z              "packageFile": "apps/blazor-rss/docker-compose.json"
+2025-11-27T18:14:31.4541648Z            },
+2025-11-27T18:14:31.4542350Z            {
+2025-11-27T18:14:31.4542664Z              "deps": [
+2025-11-27T18:14:31.4542986Z                {
+2025-11-27T18:14:31.4543375Z                  "depName": "blinkospace/blinko",
+2025-11-27T18:14:31.4543861Z                  "currentValue": "1.6.6",
+2025-11-27T18:14:31.4544267Z                  "datasource": "docker",
+2025-11-27T18:14:31.4544660Z                  "replaceString": "\"image\": \"blinkospace/blinko:1.6.6\",",
+2025-11-27T18:14:31.4545028Z                  "updates": [],
+2025-11-27T18:14:31.4545328Z                  "packageName": "blinkospace/blinko",
+2025-11-27T18:14:31.4545626Z                  "versioning": "docker",
+2025-11-27T18:14:31.4545898Z                  "warnings": [],
+2025-11-27T18:14:31.4546225Z                  "sourceUrl": "https://github.com/blinkospace/blinko",
+2025-11-27T18:14:31.4546604Z                  "registryUrl": "https://index.docker.io",
+2025-11-27T18:14:31.4547033Z                  "mostRecentTimestamp": "2025-11-16T08:36:03.463Z",
+2025-11-27T18:14:31.4547397Z                  "currentVersion": "1.6.6",
+2025-11-27T18:14:31.4547810Z                  "currentVersionTimestamp": "2025-11-16T08:36:03.463Z",
+2025-11-27T18:14:31.4548155Z                  "currentVersionAgeInDays": 11,
+2025-11-27T18:14:31.4548444Z                  "fixedVersion": "1.6.6"
+2025-11-27T18:14:31.4548686Z                },
+2025-11-27T18:14:31.4548861Z                {
+2025-11-27T18:14:31.4549076Z                  "depName": "postgres",
+2025-11-27T18:14:31.4549346Z                  "currentValue": "14",
+2025-11-27T18:14:31.4549614Z                  "datasource": "docker",
+2025-11-27T18:14:31.4549930Z                  "replaceString": "\"image\": \"postgres:14\",",
+2025-11-27T18:14:31.4550227Z                  "updates": [],
+2025-11-27T18:14:31.4550487Z                  "packageName": "postgres",
+2025-11-27T18:14:31.4550769Z                  "skipReason": "disabled"
+2025-11-27T18:14:31.4551006Z                }
+2025-11-27T18:14:31.4551190Z              ],
+2025-11-27T18:14:31.4551669Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4552344Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4552698Z              "packageFile": "apps/blinko/docker-compose.json"
+2025-11-27T18:14:31.4552988Z            },
+2025-11-27T18:14:31.4553159Z            {
+2025-11-27T18:14:31.4553337Z              "deps": [
+2025-11-27T18:14:31.4553527Z                {
+2025-11-27T18:14:31.4553776Z                  "depName": "ghcr.io/thephaseless/byparr",
+2025-11-27T18:14:31.4554088Z                  "currentValue": "2.0.1",
+2025-11-27T18:14:31.4554365Z                  "datasource": "docker",
+2025-11-27T18:14:31.4554757Z                  "replaceString": "\"image\": \"ghcr.io/thephaseless/byparr:2.0.1\",",
+2025-11-27T18:14:31.4555115Z                  "updates": [],
+2025-11-27T18:14:31.4555407Z                  "packageName": "ghcr.io/thephaseless/byparr",
+2025-11-27T18:14:31.4555722Z                  "versioning": "docker",
+2025-11-27T18:14:31.4555996Z                  "warnings": [],
+2025-11-27T18:14:31.4556329Z                  "sourceUrl": "https://github.com/ThePhaseless/Byparr",
+2025-11-27T18:14:31.4556687Z                  "registryUrl": "https://ghcr.io",
+2025-11-27T18:14:31.4557011Z                  "lookupName": "thephaseless/byparr",
+2025-11-27T18:14:31.4557459Z                  "currentVersion": "2.0.1",
+2025-11-27T18:14:31.4557824Z                  "fixedVersion": "2.0.1"
+2025-11-27T18:14:31.4558240Z                }
+2025-11-27T18:14:31.4558529Z              ],
+2025-11-27T18:14:31.4559068Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4559712Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4560294Z              "packageFile": "apps/byparr/docker-compose.json"
+2025-11-27T18:14:31.4560761Z            },
+2025-11-27T18:14:31.4561038Z            {
+2025-11-27T18:14:31.4561321Z              "deps": [
+2025-11-27T18:14:31.4561635Z                {
+2025-11-27T18:14:31.4562135Z                  "depName": "redis",
+2025-11-27T18:14:31.4562609Z                  "currentValue": "7.4-alpine",
+2025-11-27T18:14:31.4563088Z                  "datasource": "docker",
+2025-11-27T18:14:31.4563461Z                  "replaceString": "\"image\": \"redis:7.4-alpine\",",
+2025-11-27T18:14:31.4563779Z                  "updates": [],
+2025-11-27T18:14:31.4564024Z                  "packageName": "redis",
+2025-11-27T18:14:31.4564295Z                  "skipReason": "disabled"
+2025-11-27T18:14:31.4564540Z                },
+2025-11-27T18:14:31.4564720Z                {
+2025-11-27T18:14:31.4564938Z                  "depName": "postgis/postgis",
+2025-11-27T18:14:31.4565232Z                  "currentValue": "17-3.5-alpine",
+2025-11-27T18:14:31.4565517Z                  "datasource": "docker",
+2025-11-27T18:14:31.4565883Z                  "replaceString": "\"image\": \"postgis/postgis:17-3.5-alpine\",",
+2025-11-27T18:14:31.4566227Z                  "updates": [],
+2025-11-27T18:14:31.4566501Z                  "packageName": "postgis/postgis",
+2025-11-27T18:14:31.4566786Z                  "versioning": "docker",
+2025-11-27T18:14:31.4567046Z                  "warnings": [],
+2025-11-27T18:14:31.4567426Z                  "sourceUrl": "https://github.com/postgis/docker-postgis",
+2025-11-27T18:14:31.4567815Z                  "registryUrl": "https://index.docker.io",
+2025-11-27T18:14:31.4568121Z                  "currentVersion": "17",
+2025-11-27T18:14:31.4568463Z                  "currentVersionTimestamp": "2025-11-24T05:37:45.920Z",
+2025-11-27T18:14:31.4568813Z                  "currentVersionAgeInDays": 3,
+2025-11-27T18:14:31.4569105Z                  "fixedVersion": "17-3.5-alpine"
+2025-11-27T18:14:31.4569355Z                },
+2025-11-27T18:14:31.4569531Z                {
+2025-11-27T18:14:31.4569755Z                  "depName": "freikin/dawarich",
+2025-11-27T18:14:31.4570039Z                  "currentValue": "0.36.0",
+2025-11-27T18:14:31.4570308Z                  "datasource": "docker",
+2025-11-27T18:14:31.4570801Z                  "replaceString": "\"image\": \"freikin/dawarich:0.36.0\",",
+2025-11-27T18:14:31.4571145Z                  "updates": [],
+2025-11-27T18:14:31.4571417Z                  "packageName": "freikin/dawarich",
+2025-11-27T18:14:31.4571703Z                  "versioning": "docker",
+2025-11-27T18:14:31.4572206Z                  "warnings": [],
+2025-11-27T18:14:31.4572530Z                  "sourceUrl": "https://github.com/Freika/dawarich",
+2025-11-27T18:14:31.4572892Z                  "registryUrl": "https://index.docker.io",
+2025-11-27T18:14:31.4573195Z                  "currentVersion": "0.36.0",
+2025-11-27T18:14:31.4573531Z                  "currentVersionTimestamp": "2025-11-24T20:03:36.668Z",
+2025-11-27T18:14:31.4573872Z                  "currentVersionAgeInDays": 2,
+2025-11-27T18:14:31.4574159Z                  "fixedVersion": "0.36.0"
+2025-11-27T18:14:31.4574400Z                },
+2025-11-27T18:14:31.4574573Z                {
+2025-11-27T18:14:31.4574804Z                  "depName": "freikin/dawarich",
+2025-11-27T18:14:31.4575087Z                  "currentValue": "0.36.0",
+2025-11-27T18:14:31.4575356Z                  "datasource": "docker",
+2025-11-27T18:14:31.4575689Z                  "replaceString": "\"image\": \"freikin/dawarich:0.36.0\",",
+2025-11-27T18:14:31.4576163Z                  "updates": [],
+2025-11-27T18:14:31.4576431Z                  "packageName": "freikin/dawarich",
+2025-11-27T18:14:31.4576719Z                  "versioning": "docker",
+2025-11-27T18:14:31.4576969Z                  "warnings": [],
+2025-11-27T18:14:31.4577280Z                  "sourceUrl": "https://github.com/Freika/dawarich",
+2025-11-27T18:14:31.4577640Z                  "registryUrl": "https://index.docker.io",
+2025-11-27T18:14:31.4577957Z                  "currentVersion": "0.36.0",
+2025-11-27T18:14:31.4578294Z                  "currentVersionTimestamp": "2025-11-24T20:03:36.668Z",
+2025-11-27T18:14:31.4578630Z                  "currentVersionAgeInDays": 2,
+2025-11-27T18:14:31.4578918Z                  "fixedVersion": "0.36.0"
+2025-11-27T18:14:31.4579151Z                }
+2025-11-27T18:14:31.4579324Z              ],
+2025-11-27T18:14:31.4579633Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4580007Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4580355Z              "packageFile": "apps/dawarich/docker-compose.json"
+2025-11-27T18:14:31.4580655Z            },
+2025-11-27T18:14:31.4580827Z            {
+2025-11-27T18:14:31.4580995Z              "deps": [
+2025-11-27T18:14:31.4581188Z                {
+2025-11-27T18:14:31.4581486Z                  "depName": "ghcr.io/rodrigomescua/edencrafterscompanion",
+2025-11-27T18:14:31.4581955Z                  "currentValue": "v1.1.0",
+2025-11-27T18:14:31.4582228Z                  "datasource": "docker",
+2025-11-27T18:14:31.4582679Z                  "replaceString": "\"image\": \"ghcr.io/rodrigomescua/edencrafterscompanion:v1.1.0\",",
+2025-11-27T18:14:31.4583103Z                  "updates": [],
+2025-11-27T18:14:31.4583474Z                  "packageName": "ghcr.io/rodrigomescua/edencrafterscompanion",
+2025-11-27T18:14:31.4583844Z                  "versioning": "docker",
+2025-11-27T18:14:31.4584100Z                  "warnings": [],
+2025-11-27T18:14:31.4584376Z                  "registryUrl": "https://ghcr.io",
+2025-11-27T18:14:31.4584741Z                  "lookupName": "rodrigomescua/edencrafterscompanion",
+2025-11-27T18:14:31.4585076Z                  "currentVersion": "v1.1.0",
+2025-11-27T18:14:31.4585354Z                  "fixedVersion": "v1.1.0"
+2025-11-27T18:14:31.4585590Z                }
+2025-11-27T18:14:31.4585766Z              ],
+2025-11-27T18:14:31.4586090Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4586461Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4586859Z              "packageFile": "apps/edencrafters-companion/docker-compose.json"
+2025-11-27T18:14:31.4587195Z            },
+2025-11-27T18:14:31.4587486Z            {
+2025-11-27T18:14:31.4587691Z              "deps": [
+2025-11-27T18:14:31.4587885Z                {
+2025-11-27T18:14:31.4588123Z                  "depName": "tombursch/kitchenowl",
+2025-11-27T18:14:31.4588423Z                  "currentValue": "v0.7.4",
+2025-11-27T18:14:31.4588705Z                  "datasource": "docker",
+2025-11-27T18:14:31.4589068Z                  "replaceString": "\"image\": \"tombursch/kitchenowl:v0.7.4\",",
+2025-11-27T18:14:31.4589412Z                  "updates": [],
+2025-11-27T18:14:31.4589682Z                  "packageName": "tombursch/kitchenowl",
+2025-11-27T18:14:31.4589975Z                  "versioning": "docker",
+2025-11-27T18:14:31.4590240Z                  "warnings": [],
+2025-11-27T18:14:31.4590535Z                  "registryUrl": "https://index.docker.io",
+2025-11-27T18:14:31.4590847Z                  "currentVersion": "v0.7.4",
+2025-11-27T18:14:31.4591177Z                  "currentVersionTimestamp": "2025-09-21T16:25:26.137Z",
+2025-11-27T18:14:31.4591780Z                  "currentVersionAgeInDays": 67,
+2025-11-27T18:14:31.4592499Z                  "fixedVersion": "v0.7.4"
+2025-11-27T18:14:31.4592928Z                }
+2025-11-27T18:14:31.4593235Z              ],
+2025-11-27T18:14:31.4593799Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4594713Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4595339Z              "packageFile": "apps/kitchenowl/docker-compose.json"
+2025-11-27T18:14:31.4595857Z            },
+2025-11-27T18:14:31.4596144Z            {
+2025-11-27T18:14:31.4596452Z              "deps": [
+2025-11-27T18:14:31.4596794Z                {
+2025-11-27T18:14:31.4597232Z                  "depName": "sissbruecker/linkding",
+2025-11-27T18:14:31.4597778Z                  "currentValue": "1.44.1",
+2025-11-27T18:14:31.4598284Z                  "datasource": "docker",
+2025-11-27T18:14:31.4600245Z                  "replaceString": "\"image\": \"sissbruecker/linkding:1.44.1\",",
+2025-11-27T18:14:31.4600920Z                  "updates": [],
+2025-11-27T18:14:31.4601436Z                  "packageName": "sissbruecker/linkding",
+2025-11-27T18:14:31.4602206Z                  "versioning": "docker",
+2025-11-27T18:14:31.4602688Z                  "warnings": [],
+2025-11-27T18:14:31.4603304Z                  "sourceUrl": "https://github.com/sissbruecker/linkding",
+2025-11-27T18:14:31.4603988Z                  "registryUrl": "https://index.docker.io",
+2025-11-27T18:14:31.4604545Z                  "currentVersion": "1.44.1",
+2025-11-27T18:14:31.4605172Z                  "currentVersionTimestamp": "2025-10-11T09:43:12.848Z",
+2025-11-27T18:14:31.4605813Z                  "currentVersionAgeInDays": 47,
+2025-11-27T18:14:31.4606334Z                  "fixedVersion": "1.44.1"
+2025-11-27T18:14:31.4606740Z                }
+2025-11-27T18:14:31.4607048Z              ],
+2025-11-27T18:14:31.4607606Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4608287Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4608901Z              "packageFile": "apps/linkding/docker-compose.json"
+2025-11-27T18:14:31.4609397Z            },
+2025-11-27T18:14:31.4609690Z            {
+2025-11-27T18:14:31.4609977Z              "deps": [
+2025-11-27T18:14:31.4610300Z                {
+2025-11-27T18:14:31.4610817Z                  "depName": "ghcr.io/maxdorninger/mediamanager/mediamanager",
+2025-11-27T18:14:31.4611458Z                  "currentValue": "sha-91df5ce",
+2025-11-27T18:14:31.4612164Z                  "datasource": "docker",
+2025-11-27T18:14:31.4613021Z                  "replaceString": "\"image\": \"ghcr.io/maxdorninger/mediamanager/mediamanager:sha-91df5ce\",",
+2025-11-27T18:14:31.4613785Z                  "updates": [],
+2025-11-27T18:14:31.4614416Z                  "packageName": "ghcr.io/maxdorninger/mediamanager/mediamanager",
+2025-11-27T18:14:31.4615072Z                  "versioning": "docker",
+2025-11-27T18:14:31.4615534Z                  "warnings": [],
+2025-11-27T18:14:31.4616260Z                  "skipReason": "invalid-value"
+2025-11-27T18:14:31.4616711Z                },
+2025-11-27T18:14:31.4617017Z                {
+2025-11-27T18:14:31.4617373Z                  "depName": "postgres",
+2025-11-27T18:14:31.4617844Z                  "currentValue": "17",
+2025-11-27T18:14:31.4618318Z                  "datasource": "docker",
+2025-11-27T18:14:31.4618860Z                  "replaceString": "\"image\": \"postgres:17\",",
+2025-11-27T18:14:31.4619363Z                  "updates": [],
+2025-11-27T18:14:31.4619796Z                  "packageName": "postgres",
+2025-11-27T18:14:31.4620269Z                  "skipReason": "disabled"
+2025-11-27T18:14:31.4620666Z                }
+2025-11-27T18:14:31.4620946Z              ],
+2025-11-27T18:14:31.4621485Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4622330Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4623004Z              "packageFile": "apps/mediamanager/docker-compose.json"
+2025-11-27T18:14:31.4623540Z            },
+2025-11-27T18:14:31.4623840Z            {
+2025-11-27T18:14:31.4624160Z              "deps": [
+2025-11-27T18:14:31.4624507Z                {
+2025-11-27T18:14:31.4624950Z                  "depName": "rtuszik/photon-docker",
+2025-11-27T18:14:31.4625744Z                  "currentValue": "1.3.0",
+2025-11-27T18:14:31.4626209Z                  "datasource": "docker",
+2025-11-27T18:14:31.4626835Z                  "replaceString": "\"image\": \"rtuszik/photon-docker:1.3.0\",",
+2025-11-27T18:14:31.4627422Z                  "updates": [],
+2025-11-27T18:14:31.4627891Z                  "packageName": "rtuszik/photon-docker",
+2025-11-27T18:14:31.4628397Z                  "versioning": "docker",
+2025-11-27T18:14:31.4628841Z                  "warnings": [],
+2025-11-27T18:14:31.4629402Z                  "sourceUrl": "https://github.com/rtuszik/photon-docker",
+2025-11-27T18:14:31.4630043Z                  "registryUrl": "https://index.docker.io",
+2025-11-27T18:14:31.4630567Z                  "currentVersion": "1.3.0",
+2025-11-27T18:14:31.4631151Z                  "currentVersionTimestamp": "2025-11-01T00:32:29.859Z",
+2025-11-27T18:14:31.4631747Z                  "currentVersionAgeInDays": 26,
+2025-11-27T18:14:31.4632439Z                  "fixedVersion": "1.3.0"
+2025-11-27T18:14:31.4632841Z                }
+2025-11-27T18:14:31.4633145Z              ],
+2025-11-27T18:14:31.4633716Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4634419Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4635019Z              "packageFile": "apps/photon/docker-compose.json"
+2025-11-27T18:14:31.4635498Z            },
+2025-11-27T18:14:31.4635787Z            {
+2025-11-27T18:14:31.4636078Z              "deps": [
+2025-11-27T18:14:31.4636399Z                {
+2025-11-27T18:14:31.4636783Z                  "depName": "jez500/pricebuddy",
+2025-11-27T18:14:31.4637296Z                  "currentValue": "v1.0.40",
+2025-11-27T18:14:31.4637798Z                  "datasource": "docker",
+2025-11-27T18:14:31.4638438Z                  "replaceString": "\"image\": \"jez500/pricebuddy:v1.0.40\",",
+2025-11-27T18:14:31.4639027Z                  "updates": [],
+2025-11-27T18:14:31.4639508Z                  "packageName": "jez500/pricebuddy",
+2025-11-27T18:14:31.4640031Z                  "versioning": "docker",
+2025-11-27T18:14:31.4640504Z                  "warnings": [],
+2025-11-27T18:14:31.4641032Z                  "registryUrl": "https://index.docker.io",
+2025-11-27T18:14:31.4641596Z                  "currentVersion": "v1.0.40",
+2025-11-27T18:14:31.4642419Z                  "currentVersionTimestamp": "2025-11-19T06:09:25.195Z",
+2025-11-27T18:14:31.4643045Z                  "currentVersionAgeInDays": 8,
+2025-11-27T18:14:31.4643568Z                  "fixedVersion": "v1.0.40"
+2025-11-27T18:14:31.4643990Z                },
+2025-11-27T18:14:31.4644296Z                {
+2025-11-27T18:14:31.4644662Z                  "depName": "mysql",
+2025-11-27T18:14:31.4645343Z                  "currentValue": "8.2",
+2025-11-27T18:14:31.4645838Z                  "datasource": "docker",
+2025-11-27T18:14:31.4646396Z                  "replaceString": "\"image\": \"mysql:8.2\",",
+2025-11-27T18:14:31.4646919Z                  "updates": [],
+2025-11-27T18:14:31.4647367Z                  "packageName": "mysql",
+2025-11-27T18:14:31.4647860Z                  "skipReason": "disabled"
+2025-11-27T18:14:31.4648275Z                },
+2025-11-27T18:14:31.4648583Z                {
+2025-11-27T18:14:31.4649031Z                  "depName": "jez500/seleniumbase-scrapper",
+2025-11-27T18:14:31.4649587Z                  "currentValue": "latest",
+2025-11-27T18:14:31.4650069Z                  "datasource": "docker",
+2025-11-27T18:14:31.4650756Z                  "replaceString": "\"image\": \"jez500/seleniumbase-scrapper:latest\",",
+2025-11-27T18:14:31.4651405Z                  "updates": [],
+2025-11-27T18:14:31.4658233Z                  "packageName": "jez500/seleniumbase-scrapper",
+2025-11-27T18:14:31.4658925Z                  "versioning": "docker",
+2025-11-27T18:14:31.4659439Z                  "warnings": [],
+2025-11-27T18:14:31.4659933Z                  "skipReason": "invalid-value"
+2025-11-27T18:14:31.4660383Z                }
+2025-11-27T18:14:31.4660693Z              ],
+2025-11-27T18:14:31.4661500Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4662451Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4662860Z              "packageFile": "apps/pricebuddy/docker-compose.json"
+2025-11-27T18:14:31.4663166Z            },
+2025-11-27T18:14:31.4663341Z            {
+2025-11-27T18:14:31.4663525Z              "deps": [
+2025-11-27T18:14:31.4663727Z                {
+2025-11-27T18:14:31.4664006Z                  "depName": "ghcr.io/rodrigomescua/razorfinance",
+2025-11-27T18:14:31.4664341Z                  "currentValue": "202511271733",
+2025-11-27T18:14:31.4664634Z                  "datasource": "docker",
+2025-11-27T18:14:31.4665071Z                  "replaceString": "\"image\": \"ghcr.io/rodrigomescua/razorfinance:202511271733\",",
+2025-11-27T18:14:31.4665458Z                  "updates": [
+2025-11-27T18:14:31.4665681Z                    {
+2025-11-27T18:14:31.4665902Z                      "bucket": "major",
+2025-11-27T18:14:31.4666192Z                      "newVersion": "202511271759",
+2025-11-27T18:14:31.4666487Z                      "newValue": "202511271759",
+2025-11-27T18:14:31.4666771Z                      "newMajor": 202511271759,
+2025-11-27T18:14:31.4667043Z                      "newMinor": null,
+2025-11-27T18:14:31.4667349Z                      "newPatch": null,
+2025-11-27T18:14:31.4667623Z                      "updateType": "major",
+2025-11-27T18:14:31.4667903Z                      "isBreaking": true,
+2025-11-27T18:14:31.4668336Z                      "branchName": "renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x"
+2025-11-27T18:14:31.4668708Z                    }
+2025-11-27T18:14:31.4668895Z                  ],
+2025-11-27T18:14:31.4669183Z                  "packageName": "ghcr.io/rodrigomescua/razorfinance",
+2025-11-27T18:14:31.4669526Z                  "versioning": "docker",
+2025-11-27T18:14:31.4669787Z                  "warnings": [],
+2025-11-27T18:14:31.4670068Z                  "registryUrl": "https://ghcr.io",
+2025-11-27T18:14:31.4670408Z                  "lookupName": "rodrigomescua/razorfinance",
+2025-11-27T18:14:31.4670719Z                  "currentVersion": "202511271733",
+2025-11-27T18:14:31.4670998Z                  "isSingleVersion": true,
+2025-11-27T18:14:31.4671284Z                  "fixedVersion": "202511271733"
+2025-11-27T18:14:31.4671531Z                }
+2025-11-27T18:14:31.4671708Z              ],
+2025-11-27T18:14:31.4672282Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4672677Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4673060Z              "packageFile": "apps/razor-finance/docker-compose.json"
+2025-11-27T18:14:31.4673521Z            },
+2025-11-27T18:14:31.4673707Z            {
+2025-11-27T18:14:31.4673876Z              "deps": [
+2025-11-27T18:14:31.4674065Z                {
+2025-11-27T18:14:31.4674303Z                  "depName": "romesc/razoriptvdocker",
+2025-11-27T18:14:31.4674607Z                  "currentValue": "1761309973",
+2025-11-27T18:14:31.4674881Z                  "datasource": "docker",
+2025-11-27T18:14:31.4675256Z                  "replaceString": "\"image\": \"romesc/razoriptvdocker:1761309973\",",
+2025-11-27T18:14:31.4675605Z                  "updates": [],
+2025-11-27T18:14:31.4675890Z                  "packageName": "romesc/razoriptvdocker",
+2025-11-27T18:14:31.4676185Z                  "versioning": "docker",
+2025-11-27T18:14:31.4676453Z                  "warnings": [],
+2025-11-27T18:14:31.4676746Z                  "registryUrl": "https://index.docker.io",
+2025-11-27T18:14:31.4677109Z                  "mostRecentTimestamp": "2025-10-24T12:47:13.680Z",
+2025-11-27T18:14:31.4677446Z                  "currentVersion": "1761309973",
+2025-11-27T18:14:31.4677788Z                  "currentVersionTimestamp": "2025-10-24T12:47:13.680Z",
+2025-11-27T18:14:31.4678137Z                  "currentVersionAgeInDays": 34,
+2025-11-27T18:14:31.4678444Z                  "fixedVersion": "1761309973"
+2025-11-27T18:14:31.4678810Z                }
+2025-11-27T18:14:31.4678977Z              ],
+2025-11-27T18:14:31.4679288Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4679665Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4680011Z              "packageFile": "apps/razor-iptv/docker-compose.json"
+2025-11-27T18:14:31.4680299Z            },
+2025-11-27T18:14:31.4680460Z            {
+2025-11-27T18:14:31.4680632Z              "deps": [
+2025-11-27T18:14:31.4680821Z                {
+2025-11-27T18:14:31.4681053Z                  "depName": "romesc/razorminiflux",
+2025-11-27T18:14:31.4681349Z                  "currentValue": "1762990086",
+2025-11-27T18:14:31.4681631Z                  "datasource": "docker",
+2025-11-27T18:14:31.4682132Z                  "replaceString": "\"image\": \"romesc/razorminiflux:1762990086\",",
+2025-11-27T18:14:31.4682492Z                  "updates": [],
+2025-11-27T18:14:31.4682770Z                  "packageName": "romesc/razorminiflux",
+2025-11-27T18:14:31.4683072Z                  "versioning": "docker",
+2025-11-27T18:14:31.4683335Z                  "warnings": [],
+2025-11-27T18:14:31.4683630Z                  "registryUrl": "https://index.docker.io",
+2025-11-27T18:14:31.4683993Z                  "mostRecentTimestamp": "2025-11-12T23:29:23.793Z",
+2025-11-27T18:14:31.4684313Z                  "currentVersion": "1762990086",
+2025-11-27T18:14:31.4684667Z                  "currentVersionTimestamp": "2025-11-12T23:29:23.793Z",
+2025-11-27T18:14:31.4685015Z                  "currentVersionAgeInDays": 14,
+2025-11-27T18:14:31.4685310Z                  "fixedVersion": "1762990086"
+2025-11-27T18:14:31.4685547Z                }
+2025-11-27T18:14:31.4685726Z              ],
+2025-11-27T18:14:31.4686036Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4686412Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4686812Z              "packageFile": "apps/razor-miniflux-restricted/docker-compose.json"
+2025-11-27T18:14:31.4687152Z            },
+2025-11-27T18:14:31.4687321Z            {
+2025-11-27T18:14:31.4687490Z              "deps": [
+2025-11-27T18:14:31.4687682Z                {
+2025-11-27T18:14:31.4687914Z                  "depName": "romesc/razorminiflux",
+2025-11-27T18:14:31.4688219Z                  "currentValue": "1762990086",
+2025-11-27T18:14:31.4688496Z                  "datasource": "docker",
+2025-11-27T18:14:31.4688863Z                  "replaceString": "\"image\": \"romesc/razorminiflux:1762990086\",",
+2025-11-27T18:14:31.4689205Z                  "updates": [],
+2025-11-27T18:14:31.4689481Z                  "packageName": "romesc/razorminiflux",
+2025-11-27T18:14:31.4689888Z                  "versioning": "docker",
+2025-11-27T18:14:31.4690161Z                  "warnings": [],
+2025-11-27T18:14:31.4690453Z                  "registryUrl": "https://index.docker.io",
+2025-11-27T18:14:31.4690805Z                  "mostRecentTimestamp": "2025-11-12T23:29:23.793Z",
+2025-11-27T18:14:31.4691132Z                  "currentVersion": "1762990086",
+2025-11-27T18:14:31.4691475Z                  "currentVersionTimestamp": "2025-11-12T23:29:23.793Z",
+2025-11-27T18:14:31.4691818Z                  "currentVersionAgeInDays": 14,
+2025-11-27T18:14:31.4692230Z                  "fixedVersion": "1762990086"
+2025-11-27T18:14:31.4692478Z                }
+2025-11-27T18:14:31.4692654Z              ],
+2025-11-27T18:14:31.4692965Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4693334Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4693682Z              "packageFile": "apps/razor-miniflux/docker-compose.json"
+2025-11-27T18:14:31.4693983Z            },
+2025-11-27T18:14:31.4694156Z            {
+2025-11-27T18:14:31.4694326Z              "deps": [
+2025-11-27T18:14:31.4694510Z                {
+2025-11-27T18:14:31.4694747Z                  "depName": "romesc/razorpricehistory",
+2025-11-27T18:14:31.4695065Z                  "currentValue": "1743737648",
+2025-11-27T18:14:31.4695465Z                  "datasource": "docker",
+2025-11-27T18:14:31.4695835Z                  "replaceString": "\"image\": \"romesc/razorpricehistory:1743737648\",",
+2025-11-27T18:14:31.4696189Z                  "updates": [],
+2025-11-27T18:14:31.4696474Z                  "packageName": "romesc/razorpricehistory",
+2025-11-27T18:14:31.4696777Z                  "versioning": "docker",
+2025-11-27T18:14:31.4697038Z                  "warnings": [],
+2025-11-27T18:14:31.4697321Z                  "registryUrl": "https://index.docker.io",
+2025-11-27T18:14:31.4697674Z                  "mostRecentTimestamp": "2025-04-04T03:34:56.492Z",
+2025-11-27T18:14:31.4698017Z                  "currentVersion": "1743737648",
+2025-11-27T18:14:31.4698372Z                  "currentVersionTimestamp": "2025-04-04T03:34:56.492Z",
+2025-11-27T18:14:31.4698713Z                  "currentVersionAgeInDays": 237,
+2025-11-27T18:14:31.4699010Z                  "fixedVersion": "1743737648"
+2025-11-27T18:14:31.4699283Z                }
+2025-11-27T18:14:31.4699458Z              ],
+2025-11-27T18:14:31.4699770Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4700140Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4700512Z              "packageFile": "apps/razor-pricehistory/docker-compose.json"
+2025-11-27T18:14:31.4700831Z            },
+2025-11-27T18:14:31.4700997Z            {
+2025-11-27T18:14:31.4701163Z              "deps": [
+2025-11-27T18:14:31.4701353Z                {
+2025-11-27T18:14:31.4701576Z                  "depName": "postgis/postgis",
+2025-11-27T18:14:31.4701991Z                  "currentValue": "17-3.5-alpine",
+2025-11-27T18:14:31.4702283Z                  "datasource": "docker",
+2025-11-27T18:14:31.4702654Z                  "replaceString": "\"image\": \"postgis/postgis:17-3.5-alpine\",",
+2025-11-27T18:14:31.4703000Z                  "updates": [],
+2025-11-27T18:14:31.4703269Z                  "packageName": "postgis/postgis",
+2025-11-27T18:14:31.4703560Z                  "versioning": "docker",
+2025-11-27T18:14:31.4703819Z                  "warnings": [],
+2025-11-27T18:14:31.4704152Z                  "sourceUrl": "https://github.com/postgis/docker-postgis",
+2025-11-27T18:14:31.4704536Z                  "registryUrl": "https://index.docker.io",
+2025-11-27T18:14:31.4704839Z                  "currentVersion": "17",
+2025-11-27T18:14:31.4705166Z                  "currentVersionTimestamp": "2025-11-24T05:37:45.920Z",
+2025-11-27T18:14:31.4705509Z                  "currentVersionAgeInDays": 3,
+2025-11-27T18:14:31.4705801Z                  "fixedVersion": "17-3.5-alpine"
+2025-11-27T18:14:31.4706044Z                },
+2025-11-27T18:14:31.4706223Z                {
+2025-11-27T18:14:31.4706573Z                  "depName": "rabbitmq",
+2025-11-27T18:14:31.4707111Z                  "currentValue": "3-management-alpine",
+2025-11-27T18:14:31.4707618Z                  "datasource": "docker",
+2025-11-27T18:14:31.4708266Z                  "replaceString": "\"image\": \"rabbitmq:3-management-alpine\",",
+2025-11-27T18:14:31.4708869Z                  "updates": [],
+2025-11-27T18:14:31.4709304Z                  "packageName": "rabbitmq",
+2025-11-27T18:14:31.4709779Z                  "skipReason": "disabled"
+2025-11-27T18:14:31.4710181Z                },
+2025-11-27T18:14:31.4710467Z                {
+2025-11-27T18:14:31.4710814Z                  "depName": "redis",
+2025-11-27T18:14:31.4711274Z                  "currentValue": "7-alpine",
+2025-11-27T18:14:31.4711746Z                  "datasource": "docker",
+2025-11-27T18:14:31.4712457Z                  "replaceString": "\"image\": \"redis:7-alpine\",",
+2025-11-27T18:14:31.4712978Z                  "updates": [],
+2025-11-27T18:14:31.4713406Z                  "packageName": "redis",
+2025-11-27T18:14:31.4713872Z                  "skipReason": "disabled"
+2025-11-27T18:14:31.4714270Z                },
+2025-11-27T18:14:31.4714557Z                {
+2025-11-27T18:14:31.4714954Z                  "depName": "dedicatedcode/reitti",
+2025-11-27T18:14:31.4715705Z                  "currentValue": "2.5.0",
+2025-11-27T18:14:31.4716159Z                  "datasource": "docker",
+2025-11-27T18:14:31.4716766Z                  "replaceString": "\"image\": \"dedicatedcode/reitti:2.5.0\",",
+2025-11-27T18:14:31.4717345Z                  "updates": [],
+2025-11-27T18:14:31.4717806Z                  "packageName": "dedicatedcode/reitti",
+2025-11-27T18:14:31.4718301Z                  "versioning": "docker",
+2025-11-27T18:14:31.4718745Z                  "warnings": [],
+2025-11-27T18:14:31.4719309Z                  "sourceUrl": "https://github.com/dedicatedcode/reitti",
+2025-11-27T18:14:31.4719959Z                  "registryUrl": "https://index.docker.io",
+2025-11-27T18:14:31.4720495Z                  "currentVersion": "2.5.0",
+2025-11-27T18:14:31.4721076Z                  "currentVersionTimestamp": "2025-11-23T12:51:16.596Z",
+2025-11-27T18:14:31.4721657Z                  "currentVersionAgeInDays": 4,
+2025-11-27T18:14:31.4722311Z                  "fixedVersion": "2.5.0"
+2025-11-27T18:14:31.4722561Z                }
+2025-11-27T18:14:31.4722735Z              ],
+2025-11-27T18:14:31.4723050Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4723417Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4723753Z              "packageFile": "apps/reitti/docker-compose.json"
+2025-11-27T18:14:31.4724034Z            },
+2025-11-27T18:14:31.4724204Z            {
+2025-11-27T18:14:31.4724369Z              "deps": [
+2025-11-27T18:14:31.4724562Z                {
+2025-11-27T18:14:31.4724809Z                  "depName": "ghcr.io/seriousm4x/upsnap",
+2025-11-27T18:14:31.4725109Z                  "currentValue": "5.2.4",
+2025-11-27T18:14:31.4725378Z                  "datasource": "docker",
+2025-11-27T18:14:31.4725746Z                  "replaceString": "\"image\": \"ghcr.io/seriousm4x/upsnap:5.2.4\",",
+2025-11-27T18:14:31.4726099Z                  "updates": [],
+2025-11-27T18:14:31.4726384Z                  "packageName": "ghcr.io/seriousm4x/upsnap",
+2025-11-27T18:14:31.4726690Z                  "versioning": "docker",
+2025-11-27T18:14:31.4726942Z                  "warnings": [],
+2025-11-27T18:14:31.4727221Z                  "registryUrl": "https://ghcr.io",
+2025-11-27T18:14:31.4727541Z                  "lookupName": "seriousm4x/upsnap",
+2025-11-27T18:14:31.4727835Z                  "currentVersion": "5.2.4",
+2025-11-27T18:14:31.4728103Z                  "fixedVersion": "5.2.4"
+2025-11-27T18:14:31.4728331Z                }
+2025-11-27T18:14:31.4728505Z              ],
+2025-11-27T18:14:31.4728818Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4729322Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4729680Z              "packageFile": "apps/upsnap/docker-compose.json"
+2025-11-27T18:14:31.4729959Z            },
+2025-11-27T18:14:31.4730135Z            {
+2025-11-27T18:14:31.4730307Z              "deps": [
+2025-11-27T18:14:31.4730494Z                {
+2025-11-27T18:14:31.4730719Z                  "depName": "wallabag/wallabag",
+2025-11-27T18:14:31.4731013Z                  "currentValue": "2.6.14",
+2025-11-27T18:14:31.4731295Z                  "datasource": "docker",
+2025-11-27T18:14:31.4731634Z                  "replaceString": "\"image\": \"wallabag/wallabag:2.6.14\",",
+2025-11-27T18:14:31.4732199Z                  "updates": [],
+2025-11-27T18:14:31.4732475Z                  "packageName": "wallabag/wallabag",
+2025-11-27T18:14:31.4732768Z                  "versioning": "docker",
+2025-11-27T18:14:31.4733022Z                  "warnings": [],
+2025-11-27T18:14:31.4733334Z                  "sourceUrl": "https://github.com/wallabag/docker",
+2025-11-27T18:14:31.4733693Z                  "registryUrl": "https://index.docker.io",
+2025-11-27T18:14:31.4734001Z                  "currentVersion": "2.6.14",
+2025-11-27T18:14:31.4734335Z                  "currentVersionTimestamp": "2025-10-07T08:21:27.986Z",
+2025-11-27T18:14:31.4734674Z                  "currentVersionAgeInDays": 51,
+2025-11-27T18:14:31.4735094Z                  "fixedVersion": "2.6.14"
+2025-11-27T18:14:31.4735328Z                }
+2025-11-27T18:14:31.4735499Z              ],
+2025-11-27T18:14:31.4735803Z              "matchStrings": ["\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","],
+2025-11-27T18:14:31.4736172Z              "datasourceTemplate": "docker",
+2025-11-27T18:14:31.4736506Z              "packageFile": "apps/wallabag/docker-compose.json"
+2025-11-27T18:14:31.4736794Z            }
+2025-11-27T18:14:31.4736956Z          ]
+2025-11-27T18:14:31.4737123Z        }
+2025-11-27T18:14:31.4737533Z DEBUG: detectSemanticCommits() (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4738258Z DEBUG: semanticCommits: returning "enabled" from cache (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4738905Z DEBUG: processRepo() (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4739747Z DEBUG: Processing 1 branch: renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4740808Z DEBUG: getBranchPr(renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4741982Z DEBUG: findPr(renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x, undefined, open) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4742805Z DEBUG: 0 PRs are currently open (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4743503Z DEBUG: ConcurrentPRs count = 0 (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4744644Z DEBUG: 0 already existing branches found. (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4745685Z DEBUG: Branches count = 0 (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4747125Z DEBUG: Calculating PRs created so far in this hour currentHourStart=2025-11-27T18:00:00.000Z (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4748573Z DEBUG: 0 PRs have been created so far in this hour. (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4749638Z DEBUG: HourlyPRs count = 0 (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:31.4751172Z DEBUG: syncBranchState() (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.4753737Z DEBUG: syncBranchState(): Branch cache not found, creating minimal branchState (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.4756678Z DEBUG: getBranchPr(renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x) (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.4759582Z DEBUG: findPr(renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x, undefined, open) (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.4762183Z DEBUG: branchExists=false (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.4764342Z DEBUG: dependencyDashboardCheck=undefined (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.4766764Z DEBUG: Check for closed PR because recreating closed PRs is disabled. (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.4770122Z DEBUG: findPr(renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x, chore(deps): update ghcr.io/rodrigomescua/razorfinance docker tag to v202511271759, !open) (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.4773136Z DEBUG: prAlreadyExisted=false (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.4775581Z DEBUG: Open PR Count: 0, Existing Branch Count: 0, Hourly PR Count: 0 (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.4777983Z DEBUG: prHourlyLimit of the upgrades present in this branch (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.4779517Z        "limits": [{"depName": "ghcr.io/rodrigomescua/razorfinance", "prHourlyLimit": 2}]
+2025-11-27T18:14:31.4781501Z DEBUG: Calculated lowest prHourlyLimit among the upgrades present in this branch is 2. (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.4784266Z DEBUG: branchConcurrentLimit of the upgrades present in this branch (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.4785572Z        "limits": [
+2025-11-27T18:14:31.4785861Z          {
+2025-11-27T18:14:31.4786278Z            "depName": "ghcr.io/rodrigomescua/razorfinance",
+2025-11-27T18:14:31.4786825Z            "branchConcurrentLimit": null
+2025-11-27T18:14:31.4787225Z          }
+2025-11-27T18:14:31.4787477Z        ]
+2025-11-27T18:14:31.4789195Z DEBUG: Calculated lowest branchConcurrentLimit among the upgrades present in this branch is 10. (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.4792074Z DEBUG: Checking schedule(schedule=at any time, tz=null, now=2025-11-27T18:14:31.471Z) (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.4794310Z DEBUG: No schedule defined (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.6944865Z DEBUG: GET https://api.github.com/repos/rodrigomescua/runtipi-custom-appstore/branches/main/protection = (code=ERR_NON_2XX_3XX_RESPONSE, statusCode=403 retryCount=0, duration=219) (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.6955357Z DEBUG: GitHub failure: Resource not accessible by integration (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.6956786Z        "err": {
+2025-11-27T18:14:31.6957133Z          "name": "HTTPError",
+2025-11-27T18:14:31.6957982Z          "code": "ERR_NON_2XX_3XX_RESPONSE",
+2025-11-27T18:14:31.6958493Z          "timings": {
+2025-11-27T18:14:31.6958902Z            "start": 1764267271474,
+2025-11-27T18:14:31.6959358Z            "socket": 1764267271474,
+2025-11-27T18:14:31.6959796Z            "lookup": 1764267271476,
+2025-11-27T18:14:31.6960257Z            "connect": 1764267271495,
+2025-11-27T18:14:31.6960726Z            "secureConnect": 1764267271516,
+2025-11-27T18:14:31.6961189Z            "upload": 1764267271516,
+2025-11-27T18:14:31.6961644Z            "response": 1764267271692,
+2025-11-27T18:14:31.6962291Z            "end": 1764267271693,
+2025-11-27T18:14:31.6962677Z            "phases": {
+2025-11-27T18:14:31.6963017Z              "wait": 0,
+2025-11-27T18:14:31.6963345Z              "dns": 2,
+2025-11-27T18:14:31.6963669Z              "tcp": 19,
+2025-11-27T18:14:31.6964011Z              "tls": 21,
+2025-11-27T18:14:31.6964345Z              "request": 0,
+2025-11-27T18:14:31.6964739Z              "firstByte": 176,
+2025-11-27T18:14:31.6965151Z              "download": 1,
+2025-11-27T18:14:31.6965533Z              "total": 219
+2025-11-27T18:14:31.6965874Z            }
+2025-11-27T18:14:31.6966153Z          },
+2025-11-27T18:14:31.6966559Z          "message": "Response code 403 (Forbidden)",
+2025-11-27T18:14:31.6968397Z          "stack": "HTTPError: Response code 403 (Forbidden)\n    at Request.<anonymous> (/home/runner/.bun/install/global/node_modules/got/dist/source/as-promise/index.js:118:42)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)",
+2025-11-27T18:14:31.6970134Z          "options": {
+2025-11-27T18:14:31.6970435Z            "headers": {
+2025-11-27T18:14:31.6971030Z              "user-agent": "RenovateBot/40.41.3 (https://github.com/renovatebot/renovate)",
+2025-11-27T18:14:31.6972105Z              "accept": "application/json, application/vnd.github.machine-man-preview+json",
+2025-11-27T18:14:31.6972767Z              "authorization": "***********",
+2025-11-27T18:14:31.6973225Z              "accept-encoding": "gzip, deflate, br"
+2025-11-27T18:14:31.6973630Z            },
+2025-11-27T18:14:31.6974349Z            "url": "https://api.github.com/repos/rodrigomescua/runtipi-custom-appstore/branches/main/protection",
+2025-11-27T18:14:31.6975118Z            "hostType": "github",
+2025-11-27T18:14:31.6975477Z            "username": "",
+2025-11-27T18:14:31.6975845Z            "password": "",
+2025-11-27T18:14:31.6976174Z            "method": "GET",
+2025-11-27T18:14:31.6976528Z            "http2": false
+2025-11-27T18:14:31.6976858Z          },
+2025-11-27T18:14:31.6977129Z          "response": {
+2025-11-27T18:14:31.6977479Z            "statusCode": 403,
+2025-11-27T18:14:31.6977889Z            "statusMessage": "Forbidden",
+2025-11-27T18:14:31.6978286Z            "body": {
+2025-11-27T18:14:31.6978738Z              "message": "Resource not accessible by integration",
+2025-11-27T18:14:31.6979683Z              "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+2025-11-27T18:14:31.6980458Z              "status": "403"
+2025-11-27T18:14:31.6980792Z            },
+2025-11-27T18:14:31.6981073Z            "headers": {
+2025-11-27T18:14:31.6981471Z              "date": "Thu, 27 Nov 2025 18:14:31 GMT",
+2025-11-27T18:14:31.6982209Z              "content-type": "application/json; charset=utf-8",
+2025-11-27T18:14:31.6982926Z              "x-github-media-type": "github.v3; param=machine-man-preview",
+2025-11-27T18:14:31.6983656Z              "x-accepted-github-permissions": "administration=read",
+2025-11-27T18:14:31.6984289Z              "x-github-api-version-selected": "2022-11-28",
+2025-11-27T18:14:31.6984814Z              "x-ratelimit-limit": "5000",
+2025-11-27T18:14:31.6985293Z              "x-ratelimit-remaining": "4961",
+2025-11-27T18:14:31.6985781Z              "x-ratelimit-reset": "1764270098",
+2025-11-27T18:14:31.6986216Z              "x-ratelimit-used": "39",
+2025-11-27T18:14:31.6986661Z              "x-ratelimit-resource": "core",
+2025-11-27T18:14:31.6988958Z              "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset",
+2025-11-27T18:14:31.6990925Z              "access-control-allow-origin": "*",
+2025-11-27T18:14:31.6991663Z              "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
+2025-11-27T18:14:31.6992511Z              "x-frame-options": "deny",
+2025-11-27T18:14:31.6993016Z              "x-content-type-options": "nosniff",
+2025-11-27T18:14:31.6993500Z              "x-xss-protection": "0",
+2025-11-27T18:14:31.6994195Z              "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+2025-11-27T18:14:31.6994997Z              "content-security-policy": "default-src 'none'",
+2025-11-27T18:14:31.6995622Z              "vary": "Accept-Encoding, Accept, X-Requested-With",
+2025-11-27T18:14:31.6996179Z              "content-encoding": "gzip",
+2025-11-27T18:14:31.6996654Z              "transfer-encoding": "chunked",
+2025-11-27T18:14:31.6997107Z              "server": "github.com",
+2025-11-27T18:14:31.6997684Z              "x-github-request-id": "A029:26ABFB:3FAADFB:42771FB:69289507"
+2025-11-27T18:14:31.6998352Z            },
+2025-11-27T18:14:31.6998692Z            "httpVersion": "1.1",
+2025-11-27T18:14:31.6999062Z            "retryCount": 0
+2025-11-27T18:14:31.6999402Z          }
+2025-11-27T18:14:31.6999689Z        }
+2025-11-27T18:14:31.7000798Z DEBUG: Branch protection: Do not have permissions to detect branch protection (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7002688Z DEBUG: Converting rebaseWhen=auto to rebaseWhen=conflicted because no rule for behind-base-branch applies (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7004121Z DEBUG: Branch needs creating (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7005330Z DEBUG: Using reuseExistingBranch: false (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7006558Z DEBUG: Setting current branch to main (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7179617Z DEBUG: latest commit (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7180812Z        "branchName": "main",
+2025-11-27T18:14:31.7181331Z        "latestCommitDate": "2025-11-27T15:12:38-03:00",
+2025-11-27T18:14:31.7182132Z        "sha": "f89ed61c980fde68453a4869d1e9cc300ab69b5a"
+2025-11-27T18:14:31.7254761Z DEBUG: manager.getUpdatedPackageFiles() reuseExistingBranch=false (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7325205Z DEBUG: Starting search at index 150 (repository=rodrigomescua/runtipi-custom-appstore, packageFile=apps/razor-finance/docker-compose.json, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7326962Z        "depName": "ghcr.io/rodrigomescua/razorfinance"
+2025-11-27T18:14:31.7328760Z DEBUG: Found match at index 150 (repository=rodrigomescua/runtipi-custom-appstore, packageFile=apps/razor-finance/docker-compose.json, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7330303Z        "depName": "ghcr.io/rodrigomescua/razorfinance"
+2025-11-27T18:14:31.7340808Z DEBUG: Contents updated (repository=rodrigomescua/runtipi-custom-appstore, packageFile=apps/razor-finance/docker-compose.json, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7343830Z        "depName": "ghcr.io/rodrigomescua/razorfinance"
+2025-11-27T18:14:31.7345477Z DEBUG: updateArtifacts for updatedPackageFiles (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7350058Z DEBUG: Updated 1 package files (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7356469Z DEBUG: No updated lock files in branch (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7448259Z DEBUG: Post-upgrade command has been compiled (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7449591Z        "dep": "ghcr.io/rodrigomescua/razorfinance",
+2025-11-27T18:14:31.7450395Z        "rawCmd": "bun ./scripts/update-config.ts {{packageFile}} {{newVersion}} {{depName}}",
+2025-11-27T18:14:31.7451736Z        "compiledCmd": "bun ./scripts/update-config.ts apps/razor-finance/docker-compose.json 202511271759 ghcr.io/rodrigomescua/razorfinance"
+2025-11-27T18:14:31.7454183Z DEBUG: Setting CONTAINERBASE_CACHE_DIR to /tmp/renovate/cache/containerbase (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7455885Z        "dep": "ghcr.io/rodrigomescua/razorfinance"
+2025-11-27T18:14:31.7459250Z DEBUG: Falling back to binarySource=global (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7460498Z        "dep": "ghcr.io/rodrigomescua/razorfinance"
+2025-11-27T18:14:31.7462032Z DEBUG: Executing command (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.7463183Z        "dep": "ghcr.io/rodrigomescua/razorfinance",
+2025-11-27T18:14:31.7464273Z        "command": "bun ./scripts/update-config.ts apps/razor-finance/docker-compose.json 202511271759 ghcr.io/rodrigomescua/razorfinance"
+2025-11-27T18:14:31.8659954Z DEBUG: exec completed (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.8661272Z        "dep": "ghcr.io/rodrigomescua/razorfinance",
+2025-11-27T18:14:31.8662078Z        "durationMs": 120,
+2025-11-27T18:14:31.8663384Z        "stdout": "Updating app config for package: apps/razor-finance/docker-compose.json, new version: 202511271759, package name: ghcr.io/rodrigomescua/razorfinance\n",
+2025-11-27T18:14:31.8664718Z        "stderr": ""
+2025-11-27T18:14:31.8666780Z DEBUG: Executed post-upgrade task (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.8668082Z        "dep": "ghcr.io/rodrigomescua/razorfinance",
+2025-11-27T18:14:31.8669346Z        "cmd": "bun ./scripts/update-config.ts apps/razor-finance/docker-compose.json 202511271759 ghcr.io/rodrigomescua/razorfinance",
+2025-11-27T18:14:31.8670367Z        "stderr": "",
+2025-11-27T18:14:31.8671638Z        "stdout": "Updating app config for package: apps/razor-finance/docker-compose.json, new version: 202511271759, package name: ghcr.io/rodrigomescua/razorfinance\n"
+2025-11-27T18:14:31.8676671Z DEBUG: Setting CONTAINERBASE_CACHE_DIR to /tmp/renovate/cache/containerbase (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.8689514Z        "dep": "ghcr.io/rodrigomescua/razorfinance"
+2025-11-27T18:14:31.8691114Z DEBUG: Falling back to binarySource=global (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.8692541Z        "dep": "ghcr.io/rodrigomescua/razorfinance"
+2025-11-27T18:14:31.8694153Z DEBUG: Executing command (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:31.8695330Z        "dep": "ghcr.io/rodrigomescua/razorfinance",
+2025-11-27T18:14:31.8695871Z        "command": "bun install && bun run test"
+2025-11-27T18:14:33.5172550Z DEBUG: exec completed (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:33.5173814Z        "dep": "ghcr.io/rodrigomescua/razorfinance",
+2025-11-27T18:14:33.5174292Z        "durationMs": 1649,
+2025-11-27T18:14:33.5175996Z        "stdout": "bun install v1.3.3 (274e01c7)\n\n+ @types/bun@1.2.10\n+ @types/node@24.10.1\n+ @runtipi/common@1.0.1\n+ bun@1.2.10\n+ zod@4.1.13\n+ zod-validation-error@5.0.0\n+ typescript@5.8.3\n\n19 packages installed [1119.00ms]\nbun test v1.2.10 (db2e7d7f)\n",
+2025-11-27T18:14:33.5236177Z        "stderr": "$ bun test\n\n__tests__/apps.test.ts:\n(pass) each app should have the required files > app razor-miniflux should have config.json\n(pass) each app should have the required files > app razor-miniflux should have docker-compose.json\n(pass) each app should have the required files > app razor-miniflux should have metadata/logo.jpg [1.00ms]\n(pass) each app should have the required files > app razor-miniflux should have metadata/description.md\n(pass) each app should have the required files > app razor-miniflux-restricted should have config.json\n(pass) each app should have the required files > app razor-miniflux-restricted should have docker-compose.json\n(pass) each app should have the required files > app razor-miniflux-restricted should have metadata/logo.jpg\n(pass) each app should have the required files > app razor-miniflux-restricted should have metadata/description.md\n(pass) each app should have the required files > app photon should have config.json [1.00ms]\n(pass) each app should have the required files > app photon should have docker-compose.json\n(pass) each app should have the required files > app photon should have metadata/logo.jpg\n(pass) each app should have the required files > app photon should have metadata/description.md\n(pass) each app should have the required files > app byparr should have config.json\n(pass) each app should have the required files > app byparr should have docker-compose.json\n(pass) each app should have the required files > app byparr should have metadata/logo.jpg [1.00ms]\n(pass) each app should have the required files > app byparr should have metadata/description.md\n(pass) each app should have the required files > app mediamanager should have config.json\n(pass) each app should have the required files > app mediamanager should have docker-compose.json\n(pass) each app should have the required files > app mediamanager should have metadata/logo.jpg\n(pass) each app should have the required files > app mediamanager should have metadata/description.md\n(pass) each app should have the required files > app linkding should have config.json\n(pass) each app should have the required files > app linkding should have docker-compose.json\n(pass) each app should have the required files > app linkding should have metadata/logo.jpg [1.00ms]\n(pass) each app should have the required files > app linkding should have metadata/description.md\n(pass) each app should have the required files > app wallabag should have config.json\n(pass) each app should have the required files > app wallabag should have docker-compose.json\n(pass) each app should have the required files > app wallabag should have metadata/logo.jpg\n(pass) each app should have the required files > app wallabag should have metadata/description.md\n(pass) each app should have the required files > app pricebuddy should have config.json\n(pass) each app should have the required files > app pricebuddy should have docker-compose.json\n(pass) each app should have the required files > app pricebuddy should have metadata/logo.jpg\n(pass) each app should have the required files > app pricebuddy should have metadata/description.md [1.00ms]\n(pass) each app should have the required files > app edencrafters-companion should have config.json\n(pass) each app should have the required files > app edencrafters-companion should have docker-compose.json\n(pass) each app should have the required files > app edencrafters-companion should have metadata/logo.jpg [1.00ms]\n(pass) each app should have the required files > app edencrafters-companion should have metadata/description.md\n(pass) each app should have the required files > app razor-finance should have config.json\n(pass) each app should have the required files > app razor-finance should have docker-compose.json\n(pass) each app should have the required files > app razor-finance should have metadata/logo.jpg [1.00ms]\n(pass) each app should have the required files > app razor-finance should have metadata/description.md\n(pass) each app should have the required files > app razor-pricehistory should have config.json\n(pass) each app should have the required files > app razor-pricehistory should have docker-compose.json\n(pass) each app should have the required files > app razor-pricehistory should have metadata/logo.jpg\n(pass) each app should have the required files > app razor-pricehistory should have metadata/description.md\n(pass) each app should have the required files > app dawarich should have config.json\n(pass) each app should have the required files > app dawarich should have docker-compose.json\n(pass) each app should have the required files > app dawarich should have metadata/logo.jpg\n(pass) each app should have the required files > app dawarich should have metadata/description.md\n(pass) each app should have the required files > app upsnap should have config.json\n(pass) each app should have the required files > app upsnap should have docker-compose.json\n(pass) each app should have the required files > app upsnap should have metadata/logo.jpg [1.00ms]\n(pass) each app should have the required files > app upsnap should have metadata/description.md\n(pass) each app should have the required files > app kitchenowl should have config.json\n(pass) each app should have the required files > app kitchenowl should have docker-compose.json\n(pass) each app should have the required files > app kitchenowl should have metadata/logo.jpg [1.00ms]\n(pass) each app should have the required files > app kitchenowl should have metadata/description.md\n(pass) each app should have the required files > app razor-iptv should have config.json\n(pass) each app should have the required files > app razor-iptv should have docker-compose.json\n(pass) each app should have the required files > app razor-iptv should have metadata/logo.jpg\n(pass) each app should have the required files > app razor-iptv should have metadata/description.md\n(pass) each app should have the required files > app blazor-rss-restricted should have config.json\n(pass) each app should have the required files > app blazor-rss-restricted should have docker-compose.json\n(pass) each app should have the required files > app blazor-rss-restricted should have metadata/logo.jpg\n(pass) each app should have the required files > app blazor-rss-restricted should have metadata/description.md\n(pass) each app should have the required files > app reitti should have config.json [1.00ms]\n(pass) each app should have the required files > app reitti should have docker-compose.json\n(pass) each app should have the required files > app reitti should have metadata/logo.jpg\n(pass) each app should have the required files > app reitti should have metadata/description.md [1.00ms]\n(pass) each app should have the required files > app blinko should have config.json\n(pass) each app should have the required files > app blinko should have docker-compose.json\n(pass) each app should have the required files > app blinko should have metadata/logo.jpg\n(pass) each app should have the required files > app blinko should have metadata/description.md\n(pass) each app should have the required files > app blazor-rss should have config.json\n(pass) each app should have the required files > app blazor-rss should have docker-compose.json\n(pass) each app should have the required files > app blazor-rss should have metadata/logo.jpg [1.00ms]\n(pass) each app should have the required files > app blazor-rss should have metadata/description.md\n(pass) each app should have a valid config.json > app razor-miniflux should have a valid config.json [6.00ms]\n(pass) each app should have a valid config.json > app razor-miniflux-restricted should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app photon should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app byparr should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app mediamanager should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app linkding should have a valid config.json\n(pass) each app should have a valid config.json > app wallabag should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app pricebuddy should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app edencrafters-companion should have a valid config.json\n(pass) each app should have a valid config.json > app razor-finance should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app razor-pricehistory should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app dawarich should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app upsnap should have a valid config.json\n(pass) each app should have a valid config.json > app kitchenowl should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app razor-iptv should have a valid config.json\n(pass) each app should have a valid config.json > app blazor-rss-restricted should have a valid config.json [3.00ms]\n(pass) each app should have a valid config.json > app reitti should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app blinko should have a valid config.json\n(pass) each app should have a valid config.json > app blazor-rss should have a valid config.json [1.00ms]\n(pass) each app should have a valid docker-compose.json > app razor-miniflux should have a valid docker-compose.json [3.00ms]\n(pass) each app should have a valid docker-compose.json > app razor-miniflux-restricted should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app photon should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app byparr should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app mediamanager should have a valid docker-compose.json [1.00ms]\n(pass) each app should have a valid docker-compose.json > app linkding should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app wallabag should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app pricebuddy should have a valid docker-compose.json [1.00ms]\n(pass) each app should have a valid docker-compose.json > app edencrafters-companion should have a valid docker-compose.json [1.00ms]\n(pass) each app should have a valid docker-compose.json > app razor-finance should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app razor-pricehistory should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app dawarich should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app upsnap should have a valid docker-compose.json [1.00ms]\n(pass) each app should have a valid docker-compose.json > app kitchenowl should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app razor-iptv should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app blazor-rss-restricted should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app reitti should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app blinko should have a valid docker-compose.json [1.00ms]\n(pass) each app should have a valid docker-compose.json > app blazor-rss should have a valid docker-compose.json\n\n 114 pass\n 0 fail\n 114 expect() calls\nRan 114 tests across 1 files. [467.00ms]\n"
+2025-11-27T18:14:33.5273909Z DEBUG: Executed post-upgrade task (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:33.5274663Z        "dep": "ghcr.io/rodrigomescua/razorfinance",
+2025-11-27T18:14:33.5274993Z        "cmd": "bun install && bun run test",
+2025-11-27T18:14:33.5344094Z        "stderr": "$ bun test\n\n__tests__/apps.test.ts:\n(pass) each app should have the required files > app razor-miniflux should have config.json\n(pass) each app should have the required files > app razor-miniflux should have docker-compose.json\n(pass) each app should have the required files > app razor-miniflux should have metadata/logo.jpg [1.00ms]\n(pass) each app should have the required files > app razor-miniflux should have metadata/description.md\n(pass) each app should have the required files > app razor-miniflux-restricted should have config.json\n(pass) each app should have the required files > app razor-miniflux-restricted should have docker-compose.json\n(pass) each app should have the required files > app razor-miniflux-restricted should have metadata/logo.jpg\n(pass) each app should have the required files > app razor-miniflux-restricted should have metadata/description.md\n(pass) each app should have the required files > app photon should have config.json [1.00ms]\n(pass) each app should have the required files > app photon should have docker-compose.json\n(pass) each app should have the required files > app photon should have metadata/logo.jpg\n(pass) each app should have the required files > app photon should have metadata/description.md\n(pass) each app should have the required files > app byparr should have config.json\n(pass) each app should have the required files > app byparr should have docker-compose.json\n(pass) each app should have the required files > app byparr should have metadata/logo.jpg [1.00ms]\n(pass) each app should have the required files > app byparr should have metadata/description.md\n(pass) each app should have the required files > app mediamanager should have config.json\n(pass) each app should have the required files > app mediamanager should have docker-compose.json\n(pass) each app should have the required files > app mediamanager should have metadata/logo.jpg\n(pass) each app should have the required files > app mediamanager should have metadata/description.md\n(pass) each app should have the required files > app linkding should have config.json\n(pass) each app should have the required files > app linkding should have docker-compose.json\n(pass) each app should have the required files > app linkding should have metadata/logo.jpg [1.00ms]\n(pass) each app should have the required files > app linkding should have metadata/description.md\n(pass) each app should have the required files > app wallabag should have config.json\n(pass) each app should have the required files > app wallabag should have docker-compose.json\n(pass) each app should have the required files > app wallabag should have metadata/logo.jpg\n(pass) each app should have the required files > app wallabag should have metadata/description.md\n(pass) each app should have the required files > app pricebuddy should have config.json\n(pass) each app should have the required files > app pricebuddy should have docker-compose.json\n(pass) each app should have the required files > app pricebuddy should have metadata/logo.jpg\n(pass) each app should have the required files > app pricebuddy should have metadata/description.md [1.00ms]\n(pass) each app should have the required files > app edencrafters-companion should have config.json\n(pass) each app should have the required files > app edencrafters-companion should have docker-compose.json\n(pass) each app should have the required files > app edencrafters-companion should have metadata/logo.jpg [1.00ms]\n(pass) each app should have the required files > app edencrafters-companion should have metadata/description.md\n(pass) each app should have the required files > app razor-finance should have config.json\n(pass) each app should have the required files > app razor-finance should have docker-compose.json\n(pass) each app should have the required files > app razor-finance should have metadata/logo.jpg [1.00ms]\n(pass) each app should have the required files > app razor-finance should have metadata/description.md\n(pass) each app should have the required files > app razor-pricehistory should have config.json\n(pass) each app should have the required files > app razor-pricehistory should have docker-compose.json\n(pass) each app should have the required files > app razor-pricehistory should have metadata/logo.jpg\n(pass) each app should have the required files > app razor-pricehistory should have metadata/description.md\n(pass) each app should have the required files > app dawarich should have config.json\n(pass) each app should have the required files > app dawarich should have docker-compose.json\n(pass) each app should have the required files > app dawarich should have metadata/logo.jpg\n(pass) each app should have the required files > app dawarich should have metadata/description.md\n(pass) each app should have the required files > app upsnap should have config.json\n(pass) each app should have the required files > app upsnap should have docker-compose.json\n(pass) each app should have the required files > app upsnap should have metadata/logo.jpg [1.00ms]\n(pass) each app should have the required files > app upsnap should have metadata/description.md\n(pass) each app should have the required files > app kitchenowl should have config.json\n(pass) each app should have the required files > app kitchenowl should have docker-compose.json\n(pass) each app should have the required files > app kitchenowl should have metadata/logo.jpg [1.00ms]\n(pass) each app should have the required files > app kitchenowl should have metadata/description.md\n(pass) each app should have the required files > app razor-iptv should have config.json\n(pass) each app should have the required files > app razor-iptv should have docker-compose.json\n(pass) each app should have the required files > app razor-iptv should have metadata/logo.jpg\n(pass) each app should have the required files > app razor-iptv should have metadata/description.md\n(pass) each app should have the required files > app blazor-rss-restricted should have config.json\n(pass) each app should have the required files > app blazor-rss-restricted should have docker-compose.json\n(pass) each app should have the required files > app blazor-rss-restricted should have metadata/logo.jpg\n(pass) each app should have the required files > app blazor-rss-restricted should have metadata/description.md\n(pass) each app should have the required files > app reitti should have config.json [1.00ms]\n(pass) each app should have the required files > app reitti should have docker-compose.json\n(pass) each app should have the required files > app reitti should have metadata/logo.jpg\n(pass) each app should have the required files > app reitti should have metadata/description.md [1.00ms]\n(pass) each app should have the required files > app blinko should have config.json\n(pass) each app should have the required files > app blinko should have docker-compose.json\n(pass) each app should have the required files > app blinko should have metadata/logo.jpg\n(pass) each app should have the required files > app blinko should have metadata/description.md\n(pass) each app should have the required files > app blazor-rss should have config.json\n(pass) each app should have the required files > app blazor-rss should have docker-compose.json\n(pass) each app should have the required files > app blazor-rss should have metadata/logo.jpg [1.00ms]\n(pass) each app should have the required files > app blazor-rss should have metadata/description.md\n(pass) each app should have a valid config.json > app razor-miniflux should have a valid config.json [6.00ms]\n(pass) each app should have a valid config.json > app razor-miniflux-restricted should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app photon should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app byparr should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app mediamanager should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app linkding should have a valid config.json\n(pass) each app should have a valid config.json > app wallabag should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app pricebuddy should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app edencrafters-companion should have a valid config.json\n(pass) each app should have a valid config.json > app razor-finance should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app razor-pricehistory should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app dawarich should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app upsnap should have a valid config.json\n(pass) each app should have a valid config.json > app kitchenowl should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app razor-iptv should have a valid config.json\n(pass) each app should have a valid config.json > app blazor-rss-restricted should have a valid config.json [3.00ms]\n(pass) each app should have a valid config.json > app reitti should have a valid config.json [1.00ms]\n(pass) each app should have a valid config.json > app blinko should have a valid config.json\n(pass) each app should have a valid config.json > app blazor-rss should have a valid config.json [1.00ms]\n(pass) each app should have a valid docker-compose.json > app razor-miniflux should have a valid docker-compose.json [3.00ms]\n(pass) each app should have a valid docker-compose.json > app razor-miniflux-restricted should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app photon should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app byparr should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app mediamanager should have a valid docker-compose.json [1.00ms]\n(pass) each app should have a valid docker-compose.json > app linkding should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app wallabag should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app pricebuddy should have a valid docker-compose.json [1.00ms]\n(pass) each app should have a valid docker-compose.json > app edencrafters-companion should have a valid docker-compose.json [1.00ms]\n(pass) each app should have a valid docker-compose.json > app razor-finance should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app razor-pricehistory should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app dawarich should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app upsnap should have a valid docker-compose.json [1.00ms]\n(pass) each app should have a valid docker-compose.json > app kitchenowl should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app razor-iptv should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app blazor-rss-restricted should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app reitti should have a valid docker-compose.json\n(pass) each app should have a valid docker-compose.json > app blinko should have a valid docker-compose.json [1.00ms]\n(pass) each app should have a valid docker-compose.json > app blazor-rss should have a valid docker-compose.json\n\n 114 pass\n 0 fail\n 114 expect() calls\nRan 114 tests across 1 files. [467.00ms]\n",
+2025-11-27T18:14:33.5385575Z        "stdout": "bun install v1.3.3 (274e01c7)\n\n+ @types/bun@1.2.10\n+ @types/node@24.10.1\n+ @runtipi/common@1.0.1\n+ bun@1.2.10\n+ zod@4.1.13\n+ zod-validation-error@5.0.0\n+ typescript@5.8.3\n\n19 packages installed [1119.00ms]\nbun test v1.2.10 (db2e7d7f)\n"
+2025-11-27T18:14:33.5387068Z DEBUG: git status counts after post-upgrade tasks (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:33.5387844Z        "dep": "ghcr.io/rodrigomescua/razorfinance",
+2025-11-27T18:14:33.5388134Z        "addedCount": 1,
+2025-11-27T18:14:33.5388364Z        "modifiedCount": 2,
+2025-11-27T18:14:33.5388584Z        "deletedCount": 0
+2025-11-27T18:14:33.5389488Z DEBUG: Checking 3 added or modified files for post-upgrade changes (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:33.5390484Z        "dep": "ghcr.io/rodrigomescua/razorfinance"
+2025-11-27T18:14:33.5391297Z DEBUG: Post-upgrade file saved (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:33.5392224Z        "dep": "ghcr.io/rodrigomescua/razorfinance",
+2025-11-27T18:14:33.5392580Z        "file": "apps/razor-finance/docker-compose.yml",
+2025-11-27T18:14:33.5392866Z        "pattern": "**/*"
+2025-11-27T18:14:33.5393825Z DEBUG: Post-upgrade file saved (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:33.5394563Z        "dep": "ghcr.io/rodrigomescua/razorfinance",
+2025-11-27T18:14:33.5394983Z        "file": "apps/razor-finance/config.json",
+2025-11-27T18:14:33.5395470Z        "pattern": "**/*"
+2025-11-27T18:14:33.5396858Z DEBUG: Post-upgrade file saved (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:33.5397822Z        "dep": "ghcr.io/rodrigomescua/razorfinance",
+2025-11-27T18:14:33.5398170Z        "file": "apps/razor-finance/docker-compose.json",
+2025-11-27T18:14:33.5398449Z        "pattern": "**/*"
+2025-11-27T18:14:33.5399161Z DEBUG: 3 file(s) to commit (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:33.5400661Z DEBUG: Preparing files for committing to branch renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:33.5402479Z DEBUG: Setting git author name: github-actions[bot] (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:33.5906210Z DEBUG: Setting git author email: 41898282+github-actions[bot]@users.noreply.github.com (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:33.9110083Z DEBUG: git commit (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:33.9111180Z        "deletedFiles": [],
+2025-11-27T18:14:33.9111541Z        "ignoredFiles": [],
+2025-11-27T18:14:33.9112129Z        "result": {
+2025-11-27T18:14:33.9112445Z          "author": null,
+2025-11-27T18:14:33.9113078Z          "branch": "renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x",
+2025-11-27T18:14:33.9113816Z          "commit": "767a441a8680cf09e330411316b6039786b7d956",
+2025-11-27T18:14:33.9114527Z          "root": false,
+2025-11-27T18:14:33.9115032Z          "summary": {"changes": 3, "insertions": 6, "deletions": 5}
+2025-11-27T18:14:33.9115518Z        }
+2025-11-27T18:14:36.3377386Z DEBUG: resetToCommit(f89ed61c980fde68453a4869d1e9cc300ab69b5a) (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.3466851Z DEBUG: Fetching branch renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.7457898Z DEBUG: Setting current branch to main (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.7643834Z DEBUG: latest commit (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.7644541Z        "branchName": "main",
+2025-11-27T18:14:36.7644882Z        "latestCommitDate": "2025-11-27T15:12:38-03:00",
+2025-11-27T18:14:36.7645234Z        "sha": "f89ed61c980fde68453a4869d1e9cc300ab69b5a"
+2025-11-27T18:14:36.7712782Z  INFO: Branch created (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.7714329Z        "commitSha": "b7cf15703bde3ad25b41dac5c8df352a41ac98fb"
+2025-11-27T18:14:36.7716049Z DEBUG: Ensuring PR (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.7717525Z DEBUG: There are 0 errors and 0 warnings (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.7728205Z DEBUG: getBranchPr(renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x) (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.7731161Z DEBUG: findPr(renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x, undefined, open) (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.7733428Z DEBUG: findPr(renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x, undefined, closed) (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.7965957Z DEBUG: Creating PR (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.7967828Z        "prTitle": "chore(deps): update ghcr.io/rodrigomescua/razorfinance docker tag to v202511271759"
+2025-11-27T18:14:36.7970126Z DEBUG: prHourlyLimit of the upgrades present in this branch (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.7972507Z        "limits": [{"depName": "ghcr.io/rodrigomescua/razorfinance", "prHourlyLimit": 2}]
+2025-11-27T18:14:36.7975480Z DEBUG: Calculated lowest prHourlyLimit among the upgrades present in this branch is 2. (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.7977362Z DEBUG: prConcurrentLimit of the upgrades present in this branch (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.7978317Z        "limits": [{"depName": "ghcr.io/rodrigomescua/razorfinance", "prConcurrentLimit": 10}]
+2025-11-27T18:14:36.7979749Z DEBUG: Calculated lowest prConcurrentLimit among the upgrades present in this branch is 10. (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.7982239Z DEBUG: Creating PR (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.7983665Z        "title": "chore(deps): update ghcr.io/rodrigomescua/razorfinance docker tag to v202511271759",
+2025-11-27T18:14:36.7984312Z        "head": "rodrigomescua:renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x",
+2025-11-27T18:14:36.7984709Z        "base": "main",
+2025-11-27T18:14:36.7984918Z        "draft": false
+2025-11-27T18:14:36.9903631Z DEBUG: POST https://api.github.com/repos/rodrigomescua/runtipi-custom-appstore/pulls = (code=ERR_NON_2XX_3XX_RESPONSE, statusCode=403 retryCount=0, duration=191) (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.9906835Z DEBUG: Pull request creation error (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.9908176Z        "err": {
+2025-11-27T18:14:36.9908550Z          "name": "HTTPError",
+2025-11-27T18:14:36.9909039Z          "code": "ERR_NON_2XX_3XX_RESPONSE",
+2025-11-27T18:14:36.9909524Z          "timings": {
+2025-11-27T18:14:36.9909903Z            "start": 1764267276798,
+2025-11-27T18:14:36.9910359Z            "socket": 1764267276799,
+2025-11-27T18:14:36.9910923Z            "lookup": 1764267276799,
+2025-11-27T18:14:36.9911366Z            "connect": 1764267276799,
+2025-11-27T18:14:36.9912570Z            "secureConnect": 1764267276799,
+2025-11-27T18:14:36.9913094Z            "upload": 1764267276799,
+2025-11-27T18:14:36.9913584Z            "response": 1764267276988,
+2025-11-27T18:14:36.9914058Z            "end": 1764267276989,
+2025-11-27T18:14:36.9914454Z            "phases": {
+2025-11-27T18:14:36.9914784Z              "wait": 1,
+2025-11-27T18:14:36.9915112Z              "dns": 0,
+2025-11-27T18:14:36.9915463Z              "tcp": 0,
+2025-11-27T18:14:36.9915815Z              "tls": 0,
+2025-11-27T18:14:36.9916177Z              "request": 0,
+2025-11-27T18:14:36.9916607Z              "firstByte": 189,
+2025-11-27T18:14:36.9917012Z              "download": 1,
+2025-11-27T18:14:36.9917404Z              "total": 191
+2025-11-27T18:14:36.9917750Z            }
+2025-11-27T18:14:36.9918050Z          },
+2025-11-27T18:14:36.9918443Z          "message": "Response code 403 (Forbidden)",
+2025-11-27T18:14:36.9920381Z          "stack": "HTTPError: Response code 403 (Forbidden)\n    at Request.<anonymous> (/home/runner/.bun/install/global/node_modules/got/dist/source/as-promise/index.js:118:42)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)",
+2025-11-27T18:14:36.9922298Z          "options": {
+2025-11-27T18:14:36.9922652Z            "headers": {
+2025-11-27T18:14:36.9923324Z              "user-agent": "RenovateBot/40.41.3 (https://github.com/renovatebot/renovate)",
+2025-11-27T18:14:36.9924358Z              "accept": "application/json, application/vnd.github.machine-man-preview+json",
+2025-11-27T18:14:36.9925099Z              "authorization": "***********",
+2025-11-27T18:14:36.9925604Z              "content-type": "application/json",
+2025-11-27T18:14:36.9926124Z              "content-length": "1155",
+2025-11-27T18:14:36.9926635Z              "accept-encoding": "gzip, deflate, br"
+2025-11-27T18:14:36.9927083Z            },
+2025-11-27T18:14:36.9927755Z            "url": "https://api.github.com/repos/rodrigomescua/runtipi-custom-appstore/pulls",
+2025-11-27T18:14:36.9928516Z            "hostType": "github",
+2025-11-27T18:14:36.9928908Z            "username": "",
+2025-11-27T18:14:36.9929281Z            "password": "",
+2025-11-27T18:14:36.9929649Z            "method": "POST",
+2025-11-27T18:14:36.9930007Z            "http2": false
+2025-11-27T18:14:36.9930344Z          },
+2025-11-27T18:14:36.9930637Z          "response": {
+2025-11-27T18:14:36.9930977Z            "statusCode": 403,
+2025-11-27T18:14:36.9931430Z            "statusMessage": "Forbidden",
+2025-11-27T18:14:36.9932075Z            "body": {
+2025-11-27T18:14:36.9932551Z              "message": "GitHub Actions is not permitted to create or approve pull requests.",
+2025-11-27T18:14:36.9933376Z              "documentation_url": "https://docs.github.com/rest/pulls/pulls#create-a-pull-request",
+2025-11-27T18:14:36.9933812Z              "status": "403"
+2025-11-27T18:14:36.9934021Z            },
+2025-11-27T18:14:36.9934203Z            "headers": {
+2025-11-27T18:14:36.9934461Z              "date": "Thu, 27 Nov 2025 18:14:36 GMT",
+2025-11-27T18:14:36.9934830Z              "content-type": "application/json; charset=utf-8",
+2025-11-27T18:14:36.9935269Z              "x-github-media-type": "github.v3; param=machine-man-preview",
+2025-11-27T18:14:36.9935713Z              "x-accepted-github-permissions": "pull_requests=write",
+2025-11-27T18:14:36.9936094Z              "x-github-api-version-selected": "2022-11-28",
+2025-11-27T18:14:36.9936414Z              "x-ratelimit-limit": "5000",
+2025-11-27T18:14:36.9936712Z              "x-ratelimit-remaining": "4955",
+2025-11-27T18:14:36.9937006Z              "x-ratelimit-reset": "1764270098",
+2025-11-27T18:14:36.9937295Z              "x-ratelimit-used": "45",
+2025-11-27T18:14:36.9937589Z              "x-ratelimit-resource": "core",
+2025-11-27T18:14:36.9938953Z              "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset",
+2025-11-27T18:14:36.9940328Z              "access-control-allow-origin": "*",
+2025-11-27T18:14:36.9940775Z              "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
+2025-11-27T18:14:36.9941191Z              "x-frame-options": "deny",
+2025-11-27T18:14:36.9941493Z              "x-content-type-options": "nosniff",
+2025-11-27T18:14:36.9941789Z              "x-xss-protection": "0",
+2025-11-27T18:14:36.9942489Z              "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+2025-11-27T18:14:36.9942969Z              "content-security-policy": "default-src 'none'",
+2025-11-27T18:14:36.9943348Z              "vary": "Accept-Encoding, Accept, X-Requested-With",
+2025-11-27T18:14:36.9943673Z              "content-encoding": "gzip",
+2025-11-27T18:14:36.9943966Z              "transfer-encoding": "chunked",
+2025-11-27T18:14:36.9944246Z              "server": "github.com",
+2025-11-27T18:14:36.9944596Z              "x-github-request-id": "A029:26ABFB:3FAC1D3:4278642:6928950C"
+2025-11-27T18:14:36.9944911Z            },
+2025-11-27T18:14:36.9945117Z            "httpVersion": "1.1",
+2025-11-27T18:14:36.9945350Z            "retryCount": 0
+2025-11-27T18:14:36.9945554Z          }
+2025-11-27T18:14:36.9945714Z        }
+2025-11-27T18:14:36.9946426Z DEBUG: setBranchCommit() (repository=rodrigomescua/runtipi-custom-appstore, branch=renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x)
+2025-11-27T18:14:36.9947520Z DEBUG: getBranchPr(renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:36.9948604Z DEBUG: findPr(renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x, undefined, open) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:37.1819461Z DEBUG: http cache: saving https://api.github.com/repos/rodrigomescua/runtipi-custom-appstore/contents/renovate.json (etag=W/"96a3f3743aa76d297ac96b3220c67966530e4daa", lastModified=Thu, 27 Nov 2025 18:12:38 GMT) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:37.1835784Z DEBUG: Config does not need migration (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:37.1842802Z DEBUG: ensureDependencyDashboard() (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:37.1844017Z DEBUG: Ensuring Dependency Dashboard (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:37.1845342Z DEBUG: Checking packageFiles for deprecated packages (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:37.1986541Z DEBUG: ensureIssue(Dependency Dashboard) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:37.5577453Z  INFO: Issue created (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:37.5578591Z DEBUG: checkReconfigureBranch() (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:37.5579492Z DEBUG: No reconfigure branch found (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:37.5582884Z DEBUG: Removing any stale branches (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:37.5583999Z DEBUG: config.repoIsOnboarded=true (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:37.5585756Z DEBUG: Branch lists (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:37.5586701Z        "branchList": ["renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x"],
+2025-11-27T18:14:37.5587726Z        "renovateBranches": ["renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x"]
+2025-11-27T18:14:37.5588799Z DEBUG: remainingBranches= (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:37.5589835Z DEBUG: No branches to clean up (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:37.5591082Z DEBUG: Cleaning up Renovate refs: refs/renovate/branches/* (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:38.4826628Z DEBUG: PackageFiles.clear() - Package files deleted (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:38.4831610Z DEBUG: Branch summary (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:38.4832633Z        "cacheModified": undefined,
+2025-11-27T18:14:38.4833456Z        "baseBranches": [{"branchName": "main", "sha": "f89ed61c980fde68453a4869d1e9cc300ab69b5a"}],
+2025-11-27T18:14:38.4834193Z        "branches": [
+2025-11-27T18:14:38.4834508Z          {
+2025-11-27T18:14:38.4834867Z            "automerge": false,
+2025-11-27T18:14:38.4835342Z            "baseBranch": "main",
+2025-11-27T18:14:38.4835950Z            "baseBranchSha": "f89ed61c980fde68453a4869d1e9cc300ab69b5a",
+2025-11-27T18:14:38.4836864Z            "branchName": "renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x",
+2025-11-27T18:14:38.4837767Z            "branchSha": "b7cf15703bde3ad25b41dac5c8df352a41ac98fb",
+2025-11-27T18:14:38.4838377Z            "isModified": false,
+2025-11-27T18:14:38.4838813Z            "isPristine": true
+2025-11-27T18:14:38.4839205Z          }
+2025-11-27T18:14:38.4839488Z        ],
+2025-11-27T18:14:38.4839862Z        "defaultBranch": "main",
+2025-11-27T18:14:38.4840318Z        "inactiveBranches": []
+2025-11-27T18:14:38.4841136Z DEBUG: branches info extended (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:38.4842078Z        "branchesInformation": [
+2025-11-27T18:14:38.4842442Z          {
+2025-11-27T18:14:38.4843044Z            "branchName": "renovate/ghcr.io-rodrigomescua-razorfinance-202511271759.x",
+2025-11-27T18:14:38.4843453Z            "prNo": null,
+2025-11-27T18:14:38.4843913Z            "prTitle": "chore(deps): update ghcr.io/rodrigomescua/razorfinance docker tag to v202511271759",
+2025-11-27T18:14:38.4844578Z            "result": "error",
+2025-11-27T18:14:38.4844831Z            "prBlockedBy": "Error",
+2025-11-27T18:14:38.4845068Z            "upgrades": [
+2025-11-27T18:14:38.4845266Z              {
+2025-11-27T18:14:38.4845483Z                "datasource": "docker",
+2025-11-27T18:14:38.4845960Z                "depName": "ghcr.io/rodrigomescua/razorfinance",
+2025-11-27T18:14:38.4846391Z                "displayPending": "",
+2025-11-27T18:14:38.4846678Z                "fixedVersion": "202511271733",
+2025-11-27T18:14:38.4846967Z                "currentVersion": "202511271733",
+2025-11-27T18:14:38.4847258Z                "currentValue": "202511271733",
+2025-11-27T18:14:38.4847527Z                "newValue": "202511271759",
+2025-11-27T18:14:38.4847799Z                "newVersion": "202511271759",
+2025-11-27T18:14:38.4848193Z                "packageFile": "apps/razor-finance/docker-compose.json",
+2025-11-27T18:14:38.4848766Z                "updateType": "major",
+2025-11-27T18:14:38.4849434Z                "packageName": "ghcr.io/rodrigomescua/razorfinance"
+2025-11-27T18:14:38.4849753Z              }
+2025-11-27T18:14:38.4849930Z            ]
+2025-11-27T18:14:38.4850098Z          }
+2025-11-27T18:14:38.4850261Z        ]
+2025-11-27T18:14:38.4850736Z DEBUG: Renovate repository PR statistics (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:38.4851565Z        "stats": {"total": 0, "open": 0, "closed": 0, "merged": 0}
+2025-11-27T18:14:38.4852827Z DEBUG: Repository result: done, status: onboarded, enabled: true, onboarded: true (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:38.5284939Z DEBUG: Repository timing splits (milliseconds) (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:38.5286134Z        "splits": {"init": 2739, "extract": 89, "lookup": 5660, "onboarding": 1, "update": 5538},
+2025-11-27T18:14:38.5286800Z        "total": 15565
+2025-11-27T18:14:38.5287967Z DEBUG: Package cache statistics (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:38.5288951Z        "get": {"count": 75, "avgMs": 2, "medianMs": 1, "maxMs": 38, "totalMs": 130},
+2025-11-27T18:14:38.5289772Z        "set": {"count": 75, "avgMs": 5, "medianMs": 2, "maxMs": 69, "totalMs": 383}
+2025-11-27T18:14:38.5304665Z DEBUG: HTTP statistics (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:38.5305762Z        "hosts": {
+2025-11-27T18:14:38.5306126Z          "api.github.com": {
+2025-11-27T18:14:38.5306512Z            "count": 12,
+2025-11-27T18:14:38.5306865Z            "reqAvgMs": 280,
+2025-11-27T18:14:38.5307284Z            "reqMedianMs": 275,
+2025-11-27T18:14:38.5307678Z            "reqMaxMs": 445,
+2025-11-27T18:14:38.5308045Z            "queueAvgMs": 0,
+2025-11-27T18:14:38.5308476Z            "queueMedianMs": 0,
+2025-11-27T18:14:38.5308883Z            "queueMaxMs": 0
+2025-11-27T18:14:38.5309247Z          },
+2025-11-27T18:14:38.5309575Z          "auth.docker.io": {
+2025-11-27T18:14:38.5309978Z            "count": 12,
+2025-11-27T18:14:38.5310337Z            "reqAvgMs": 94,
+2025-11-27T18:14:38.5310739Z            "reqMedianMs": 69,
+2025-11-27T18:14:38.5311135Z            "reqMaxMs": 221,
+2025-11-27T18:14:38.5311518Z            "queueAvgMs": 0,
+2025-11-27T18:14:38.5312170Z            "queueMedianMs": 0,
+2025-11-27T18:14:38.5312578Z            "queueMaxMs": 0
+2025-11-27T18:14:38.5312945Z          },
+2025-11-27T18:14:38.5313254Z          "ghcr.io": {
+2025-11-27T18:14:38.5313611Z            "count": 46,
+2025-11-27T18:14:38.5313961Z            "reqAvgMs": 106,
+2025-11-27T18:14:38.5314334Z            "reqMedianMs": 96,
+2025-11-27T18:14:38.5314719Z            "reqMaxMs": 276,
+2025-11-27T18:14:38.5315109Z            "queueAvgMs": 0,
+2025-11-27T18:14:38.5315531Z            "queueMedianMs": 0,
+2025-11-27T18:14:38.5315941Z            "queueMaxMs": 1
+2025-11-27T18:14:38.5316293Z          },
+2025-11-27T18:14:38.5316621Z          "hub.docker.com": {
+2025-11-27T18:14:38.5317015Z            "count": 24,
+2025-11-27T18:14:38.5317377Z            "reqAvgMs": 209,
+2025-11-27T18:14:38.5317809Z            "reqMedianMs": 211,
+2025-11-27T18:14:38.5318294Z            "reqMaxMs": 319,
+2025-11-27T18:14:38.5318716Z            "queueAvgMs": 0,
+2025-11-27T18:14:38.5319139Z            "queueMedianMs": 0,
+2025-11-27T18:14:38.5319538Z            "queueMaxMs": 0
+2025-11-27T18:14:38.5319913Z          },
+2025-11-27T18:14:38.5320251Z          "index.docker.io": {
+2025-11-27T18:14:38.5320645Z            "count": 66,
+2025-11-27T18:14:38.5320989Z            "reqAvgMs": 115,
+2025-11-27T18:14:38.5321412Z            "reqMedianMs": 102,
+2025-11-27T18:14:38.5321814Z            "reqMaxMs": 640,
+2025-11-27T18:14:38.5322457Z            "queueAvgMs": 0,
+2025-11-27T18:14:38.5322879Z            "queueMedianMs": 0,
+2025-11-27T18:14:38.5323279Z            "queueMaxMs": 1
+2025-11-27T18:14:38.5323635Z          }
+2025-11-27T18:14:38.5323922Z        },
+2025-11-27T18:14:38.5324195Z        "requests": 160
+2025-11-27T18:14:38.5324982Z DEBUG: HTTP cache statistics (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:38.5325761Z        "https://api.github.com": {
+2025-11-27T18:14:38.5326768Z          "/repos/rodrigomescua/runtipi-custom-appstore/contents/renovate.json": {
+2025-11-27T18:14:38.5327516Z            "hit": 0,
+2025-11-27T18:14:38.5327865Z            "miss": 1
+2025-11-27T18:14:38.5328175Z          },
+2025-11-27T18:14:38.5328819Z          "/repos/rodrigomescua/runtipi-custom-appstore/pulls": {"hit": 0, "miss": 1}
+2025-11-27T18:14:38.5329483Z        },
+2025-11-27T18:14:38.5330014Z        "https://auth.docker.io": {"/token": {"hit": 0, "miss": 12}},
+2025-11-27T18:14:38.5330584Z        "https://ghcr.io": {
+2025-11-27T18:14:38.5331054Z          "/token": {"hit": 0, "miss": 5},
+2025-11-27T18:14:38.5331734Z          "/v2/rodrigomescua/blazorrssdocker/manifests/20250928-053614": {
+2025-11-27T18:14:38.5333114Z            "hit": 0,
+2025-11-27T18:14:38.5333447Z            "miss": 1
+2025-11-27T18:14:38.5333768Z          },
+2025-11-27T18:14:38.5334795Z          "/v2/rodrigomescua/blazorrssdocker/manifests/sha256:672151e9d2ef5c84f721528d172c886034a150c98a1c7b54f05294343f48f9d8": {
+2025-11-27T18:14:38.5335818Z            "hit": 0,
+2025-11-27T18:14:38.5336147Z            "miss": 1
+2025-11-27T18:14:38.5336463Z          },
+2025-11-27T18:14:38.5337016Z          "/v2/rodrigomescua/edencrafterscompanion/manifests/latest": {
+2025-11-27T18:14:38.5337864Z            "hit": 0,
+2025-11-27T18:14:38.5338185Z            "miss": 1
+2025-11-27T18:14:38.5338472Z          },
+2025-11-27T18:14:38.5339499Z          "/v2/rodrigomescua/edencrafterscompanion/manifests/sha256:e53bbcac794bc58ce7813c31404c285b4a1aa2b22c26f5eec3eb0aadf70eb1fc": {
+2025-11-27T18:14:38.5340550Z            "hit": 0,
+2025-11-27T18:14:38.5340878Z            "miss": 1
+2025-11-27T18:14:38.5341177Z          },
+2025-11-27T18:14:38.5341800Z          "/v2/rodrigomescua/razorfinance/manifests/latest": {"hit": 0, "miss": 1},
+2025-11-27T18:14:38.5343395Z          "/v2/rodrigomescua/razorfinance/manifests/sha256:ee7d3a9cac33d79aaf5accf21b143b901fff123c6b79a5352f3f9ec4b97b091d": {
+2025-11-27T18:14:38.5344385Z            "hit": 0,
+2025-11-27T18:14:38.5344722Z            "miss": 1
+2025-11-27T18:14:38.5345029Z          },
+2025-11-27T18:14:38.5345553Z          "/v2/seriousm4x/upsnap/manifests/latest": {"hit": 0, "miss": 1},
+2025-11-27T18:14:38.5346743Z          "/v2/seriousm4x/upsnap/manifests/sha256:b7f91abea887698f8c4f0f792e07fc767f95d4722b3fba350d9235b4e8c150ad": {
+2025-11-27T18:14:38.5347710Z            "hit": 0,
+2025-11-27T18:14:38.5348046Z            "miss": 1
+2025-11-27T18:14:38.5348312Z          },
+2025-11-27T18:14:38.5348718Z          "/v2/thephaseless/byparr/manifests/latest": {"hit": 0, "miss": 1},
+2025-11-27T18:14:38.5349981Z          "/v2/thephaseless/byparr/manifests/sha256:5218c08adc70a47c930fc6f113a6aca1f2778e71a15967df5ab98661c388c2e7": {
+2025-11-27T18:14:38.5350906Z            "hit": 0,
+2025-11-27T18:14:38.5351230Z            "miss": 1
+2025-11-27T18:14:38.5351546Z          }
+2025-11-27T18:14:38.5351837Z        },
+2025-11-27T18:14:38.5352438Z        "https://index.docker.io": {
+2025-11-27T18:14:38.5353153Z          "/v2/blinkospace/blinko/manifests/latest": {"hit": 0, "miss": 1},
+2025-11-27T18:14:38.5354391Z          "/v2/blinkospace/blinko/manifests/sha256:844aa0af6032b592060980d782c227259c1d54b00294b59a1a0c88d8dedebd86": {
+2025-11-27T18:14:38.5355352Z            "hit": 0,
+2025-11-27T18:14:38.5355695Z            "miss": 1
+2025-11-27T18:14:38.5356028Z          },
+2025-11-27T18:14:38.5356613Z          "/v2/dedicatedcode/reitti/manifests/latest": {"hit": 0, "miss": 1},
+2025-11-27T18:14:38.5357898Z          "/v2/dedicatedcode/reitti/manifests/sha256:83a4ee87b7f85afa035f2e19a49de9ac229191f6959932eadc7aa4352226fb7d": {
+2025-11-27T18:14:38.5358881Z            "hit": 0,
+2025-11-27T18:14:38.5359240Z            "miss": 1
+2025-11-27T18:14:38.5359573Z          },
+2025-11-27T18:14:38.5360125Z          "/v2/freikin/dawarich/manifests/latest": {"hit": 0, "miss": 1},
+2025-11-27T18:14:38.5361311Z          "/v2/freikin/dawarich/manifests/sha256:3b3802a19e580c744302e8eb10e75ef19bad079569b8063c1b6971ce6d638a5d": {
+2025-11-27T18:14:38.5362730Z            "hit": 0,
+2025-11-27T18:14:38.5363123Z            "miss": 1
+2025-11-27T18:14:38.5363465Z          },
+2025-11-27T18:14:38.5364042Z          "/v2/jez500/pricebuddy/manifests/latest": {"hit": 0, "miss": 1},
+2025-11-27T18:14:38.5365244Z          "/v2/jez500/pricebuddy/manifests/sha256:a73bbca9001be93b8625b21c141782db2bd9665572e1d9e4a0ce04b2e8158abb": {
+2025-11-27T18:14:38.5366199Z            "hit": 0,
+2025-11-27T18:14:38.5366543Z            "miss": 1
+2025-11-27T18:14:38.5366894Z          },
+2025-11-27T18:14:38.5367455Z          "/v2/postgis/postgis/manifests/latest": {"hit": 0, "miss": 1},
+2025-11-27T18:14:38.5368662Z          "/v2/postgis/postgis/manifests/sha256:4f5cd80903273815ed4c11c660642ef908e93bf8b1b0d37f46e236e18dd850e2": {
+2025-11-27T18:14:38.5369575Z            "hit": 0,
+2025-11-27T18:14:38.5369932Z            "miss": 1
+2025-11-27T18:14:38.5370256Z          },
+2025-11-27T18:14:38.5370890Z          "/v2/romesc/razoriptvdocker/manifests/1761309973": {"hit": 0, "miss": 1},
+2025-11-27T18:14:38.5371823Z          "/v2/romesc/razorminiflux/manifests/1762990086": {"hit": 0, "miss": 1},
+2025-11-27T18:14:38.5372998Z          "/v2/romesc/razorpricehistory/manifests/1743737648": {"hit": 0, "miss": 1},
+2025-11-27T18:14:38.5373937Z          "/v2/rtuszik/photon-docker/manifests/latest": {"hit": 0, "miss": 1},
+2025-11-27T18:14:38.5375458Z          "/v2/rtuszik/photon-docker/manifests/sha256:f7fddc6bf92107e2531bd76de4a9dbe5f0b65d7411e2fc02253be92fd7cb20bb": {
+2025-11-27T18:14:38.5376435Z            "hit": 0,
+2025-11-27T18:14:38.5376788Z            "miss": 1
+2025-11-27T18:14:38.5377107Z          },
+2025-11-27T18:14:38.5377725Z          "/v2/sissbruecker/linkding/manifests/latest": {"hit": 0, "miss": 1},
+2025-11-27T18:14:38.5379055Z          "/v2/sissbruecker/linkding/manifests/sha256:72977140c1375cbf741f1fb1ebd1dc6b0922e33c6d7b982169ab3187dfcce32f": {
+2025-11-27T18:14:38.5380060Z            "hit": 0,
+2025-11-27T18:14:38.5380418Z            "miss": 1
+2025-11-27T18:14:38.5380759Z          },
+2025-11-27T18:14:38.5381370Z          "/v2/tombursch/kitchenowl/manifests/latest": {"hit": 0, "miss": 1},
+2025-11-27T18:14:38.5382881Z          "/v2/tombursch/kitchenowl/manifests/sha256:f6db7ff4ae1d9a1ffc2c82dc4c0860c08233eff7d51b9ecaac50feb7ebc55751": {
+2025-11-27T18:14:38.5383886Z            "hit": 0,
+2025-11-27T18:14:38.5384254Z            "miss": 1
+2025-11-27T18:14:38.5384591Z          },
+2025-11-27T18:14:38.5385174Z          "/v2/wallabag/wallabag/manifests/latest": {"hit": 0, "miss": 1},
+2025-11-27T18:14:38.5386415Z          "/v2/wallabag/wallabag/manifests/sha256:82ade66b403d67c05732f9f08003034509f6499e9f487b858c0b77524b28545d": {
+2025-11-27T18:14:38.5387351Z            "hit": 0,
+2025-11-27T18:14:38.5387709Z            "miss": 1
+2025-11-27T18:14:38.5388051Z          }
+2025-11-27T18:14:38.5388353Z        }
+2025-11-27T18:14:38.5389064Z DEBUG: Lookup statistics (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:38.5390075Z        "docker": {"count": 23, "avgMs": 1122, "medianMs": 1118, "maxMs": 2718, "totalMs": 25804}
+2025-11-27T18:14:38.5391125Z DEBUG: Cache fallback URLs (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:38.5391761Z        "count": 0,
+2025-11-27T18:14:38.5392352Z        "hits": {}
+2025-11-27T18:14:38.5393015Z  INFO: Repository finished (repository=rodrigomescua/runtipi-custom-appstore)
+2025-11-27T18:14:38.5393742Z        "cloned": true,
+2025-11-27T18:14:38.5394122Z        "durationMs": 15565
+2025-11-27T18:14:38.5394716Z DEBUG: Checking file package cache for expired items
+2025-11-27T18:14:38.5892322Z DEBUG: Deleted 0 of 75 file cached entries in 56ms
+2025-11-27T18:14:38.6254771Z Post job cleanup.
+2025-11-27T18:14:38.7552700Z Cache hit occurred on the primary key Linux-bun-global-renovate-40, not saving cache.
+2025-11-27T18:14:38.7630062Z Post job cleanup.
+2025-11-27T18:14:38.8928056Z Post job cleanup.
+2025-11-27T18:14:39.0592764Z Post job cleanup.
+2025-11-27T18:14:39.1517898Z [command]/usr/bin/git version
+2025-11-27T18:14:39.1554319Z git version 2.51.2
+2025-11-27T18:14:39.1597911Z Temporarily overriding HOME='/home/runner/work/_temp/df9723f7-b7aa-489d-a7d3-652f1fa4a6b1' before making global git config changes
+2025-11-27T18:14:39.1599453Z Adding repository directory to the temporary git global config as a safe directory
+2025-11-27T18:14:39.1604833Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/runtipi-custom-appstore/runtipi-custom-appstore
+2025-11-27T18:14:39.1641404Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-11-27T18:14:39.1674155Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-11-27T18:14:39.1899122Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-11-27T18:14:39.1919656Z http.https://github.com/.extraheader
+2025-11-27T18:14:39.1932200Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-11-27T18:14:39.1963177Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-11-27T18:14:39.2179498Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-11-27T18:14:39.2209487Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-11-27T18:14:39.2529968Z Cleaning up orphan processes
