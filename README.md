@@ -23,9 +23,9 @@ If you want to see new apps on Tipi you can either:
 - [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
 - Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
 
-## Apps available (17)
+## Apps available (18)
 
-| Name                                                                              | Description                                                                        | Port | Dynamic (17) |
+| Name                                                                              | Description                                                                        | Port | Dynamic (18) |
 | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---- | ------------ |
 | [Blazor RSS](https://github.com/rodrigomescua/BlazorRssDocker)                    | Blazor RSS                                                                         | 8822 | yes          |
 | [Blazor RSS - Restricted](https://github.com/rodrigomescua/BlazorRssDocker)       | Blazor RSS Restricted                                                              | 8823 | yes          |
@@ -34,6 +34,7 @@ If you want to see new apps on Tipi you can either:
 | [Dawarich](https://github.com/Freika/dawarich)                                    | Self-hostable alternative to Google Location History (Google Maps Timeline)        | 8824 | yes          |
 | [Eden Crafters Companion](https://github.com/rodrigomescua/EdenCraftersCompanion) | Eden Crafters Companion                                                            | 8832 | yes          |
 | [KitchenOwl](https://github.com/tombursch/kitchenowl)                             | KitchenOwl                                                                         | 8828 | yes          |
+| [Linkding](https://github.com/sissbruecker/linkding)                              | Self-hosted bookmark manager                                                       | 8830 | yes          |
 | [MediaManager](https://github.com/maxdorninger/MediaManager)                      | Media Manager                                                                      | 8838 | yes          |
 | [Photon](https://github.com/rtuszik/photon-docker)                                | This is an unofficial docker image for Photon                                      | 8825 | yes          |
 | [PriceBuddy](https://github.com/jez500/pricebuddy)                                | Self-hosted price tracker with notifications                                       | 8839 | yes          |
