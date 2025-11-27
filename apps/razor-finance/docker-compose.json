@@ -4,7 +4,7 @@
   "services": [
     {
       "name": "razor-finance",
-      "image": "ghcr.io/rodrigomescua/razorfinance:202511271733",
+      "image": "ghcr.io/rodrigomescua/razorfinance:202511271759",
       "isMain": true,
       "internalPort": 8080,
       "environment": [

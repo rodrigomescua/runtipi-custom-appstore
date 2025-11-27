@@ -10,8 +10,8 @@
     "featured"
   ],
   "description": "App criado substituir planilha de gastos",
-  "tipi_version": 1,
-  "version": "202511271733",
+  "tipi_version": 2,
+  "version": "202511271759",
   "source": "https://github.com/rodrigomescua/RazorFinanceDocker",
   "exposable": true,
   "dynamic_config": true,
@@ -19,6 +19,6 @@
     "amd64"
   ],
   "created_at": 1732724400000,
-  "updated_at": 1732724400000,
+  "updated_at": 1764267514550,
   "form_fields": []
 }
