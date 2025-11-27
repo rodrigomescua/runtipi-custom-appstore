@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Blazor Finance",
+  "id": "razor-finance",
+  "available": true,
+  "short_desc": "Gerenciamento financeiro",
+  "author": "Rodrigo Mescua",
+  "port": 8840,
+  "categories": [
+    "featured"
+  ],
+  "description": "App criado substituir planilha de gastos",
+  "tipi_version": 1,
+  "version": "202511271733",
+  "source": "https://github.com/rodrigomescua/RazorFinanceDocker",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": [
+    "amd64"
+  ],
+  "created_at": 1732724400000,
+  "updated_at": 1732724400000,
+  "form_fields": []
+}
