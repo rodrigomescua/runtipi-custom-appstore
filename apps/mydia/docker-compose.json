@@ -10,7 +10,7 @@
       "environment": [
         {
           "key": "PHX_HOST",
-          "value": "${APP_PROTOCOL}://${APP_LOCAL_DOMAIN}"
+          "value": "${APP_LOCAL_DOMAIN}"
         },
         {
           "key": "PORT",
