@@ -27,6 +27,14 @@
         {
           "key": "TZ",
           "value": "${TZ}"
+        },
+        {
+          "key": "MOVIES_PATH",
+          "value": "/media/data/movies"
+        },
+        {
+          "key": "TV_PATH",
+          "value": "/media/data/tv"
         }
       ],
       "volumes": [
