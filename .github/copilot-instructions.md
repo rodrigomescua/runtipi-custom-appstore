@@ -76,14 +76,23 @@ You MUST verify the exact tag format from the Docker registry, not assume or gue
    - Visit: `https://hub.docker.com/r/{owner}/{image}/tags`
    - Example: `https://hub.docker.com/r/sissbruecker/linkding/tags`
    - Verify the exact tag format from the tags list
+   - If the web interface doesn't load, check the GitHub Actions workflow to see how tags are generated
 
-3. **Common tag format variations:**
+3. **For Docker Hub images with unclear tags (when web interface fails):**
+   - Check the GitHub Actions workflow file (usually `.github/workflows/docker-publish.yml`)
+   - Look for Docker build/push configuration
+   - **Key insight:** Some projects strip the 'v' prefix when publishing to Docker Hub
+   - Example: GitHub release `v2.2.8` → Docker tag `2.2.8` (without 'v')
+   - Check for tag transformation logic like `${GITHUB_REF_NAME#v}` (removes 'v' prefix)
+   - Also check the project's documentation for installation commands
+
+4. **Common tag format variations:**
    - Some projects use `v1.0.0` (with 'v' prefix)
    - Others use `1.0.0` (without 'v' prefix)
    - Some use semantic versions like `20250928-055530` (timestamps)
    - **ALWAYS verify the exact format in the registry** - don't assume
 
-4. **After setting the tag:**
+5. **After setting the tag:**
    - `config.json` version: `"version": "{EXACT_TAG}"`
    - `docker-compose.json` image: `"image": "registry/owner/name:{EXACT_TAG}"`
    - Both MUST match exactly character-for-character
@@ -91,7 +100,8 @@ You MUST verify the exact tag format from the Docker registry, not assume or gue
 **Real examples from mistakes made:**
 - ❌ Used `v0.7.2` when registry only had `0.7.2`
 - ❌ Used `v0.8.0` when registry only had `0.8.0`
-- ✅ Always check the registry page directly before committing
+- ❌ Used `v2.2.8` when GitHub Actions strips 'v' and publishes as `2.2.8`
+- ✅ Always check the registry page or GitHub Actions workflow directly before committing
 
 **Concrete example (Linkding):**
 ```json

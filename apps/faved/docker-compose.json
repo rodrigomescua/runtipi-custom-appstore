@@ -4,7 +4,7 @@
   "services": [
     {
       "name": "faved",
-      "image": "denho/faved:v2.2.8",
+      "image": "denho/faved:2.2.8",
       "isMain": true,
       "internalPort": 80,
       "environment": [
