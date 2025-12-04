@@ -4,7 +4,7 @@
   "services": [
     {
       "name": "omnom",
-      "image": "ghcr.io/asciimoo/omnom:0.8.0",
+      "image": "ghcr.io/asciimoo/omnom:v0.8.0",
       "isMain": true,
       "internalPort": 7331,
       "environment": [
