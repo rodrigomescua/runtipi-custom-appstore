@@ -6,7 +6,7 @@
       "name": "faved",
       "image": "denho/faved:2.2.8",
       "isMain": true,
-      "internalPort": 8080,
+      "internalPort": 80,
       "environment": [
         {
           "key": "TZ",
