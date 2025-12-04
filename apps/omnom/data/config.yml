@@ -7,7 +7,7 @@ app:
   webapp_snapshotter_timeout: 15 # seconds
   debug_sql: false
 server:
-  address: "http://{{APP_DOMAIN}}"
+  address: "${APP_PROTOCOL:-http}://${APP_DOMAIN}"
   # e.g. https://mydomain.tld/xy/
   # leave blank if you don't have custom base URL
   base_url: ""
