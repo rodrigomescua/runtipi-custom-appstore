@@ -9,8 +9,8 @@
       "internalPort": 8000,
       "environment": [
         {
-          "key": "ND_PASSWORD",
-          "value": "${ND_PASSWORD}"
+          "key": "PORT",
+          "value": "8000"
         },
         {
           "key": "TZ",
