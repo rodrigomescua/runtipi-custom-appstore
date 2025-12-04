@@ -61,6 +61,38 @@ dawarich/
 - `tipi_version` increments with each config change (starts at 1 for new apps)
 - Timestamps (`created_at`, `updated_at`) are in milliseconds; use `Date.now()`
 
+**CRITICAL: Verifying Docker Image Tags**
+
+You MUST verify the exact tag format from the Docker registry, not assume or guess:
+
+1. **For GHCR (GitHub Container Registry) images:**
+   - Visit: `https://github.com/orgs/{owner}/packages/container/{image}/versions`
+   - Example: `https://github.com/orgs/getmydia/packages/container/mydia/versions`
+   - Click on the specific version tag to view the exact installation command
+   - The command will show: `docker pull ghcr.io/{owner}/{image}:{EXACT_TAG}`
+   - Copy the tag exactly as shown (e.g., `0.7.2` not `v0.7.2`, or vice versa)
+
+2. **For Docker Hub images:**
+   - Visit: `https://hub.docker.com/r/{owner}/{image}/tags`
+   - Example: `https://hub.docker.com/r/sissbruecker/linkding/tags`
+   - Verify the exact tag format from the tags list
+
+3. **Common tag format variations:**
+   - Some projects use `v1.0.0` (with 'v' prefix)
+   - Others use `1.0.0` (without 'v' prefix)
+   - Some use semantic versions like `20250928-055530` (timestamps)
+   - **ALWAYS verify the exact format in the registry** - don't assume
+
+4. **After setting the tag:**
+   - `config.json` version: `"version": "{EXACT_TAG}"`
+   - `docker-compose.json` image: `"image": "registry/owner/name:{EXACT_TAG}"`
+   - Both MUST match exactly character-for-character
+
+**Real examples from mistakes made:**
+- ❌ Used `v0.7.2` when registry only had `0.7.2`
+- ❌ Used `v0.8.0` when registry only had `0.8.0`
+- ✅ Always check the registry page directly before committing
+
 **Concrete example (Linkding):**
 ```json
 // config.json
@@ -514,6 +546,9 @@ This script automatically:
    - config.json `"version": "1.44.1"` MUST match
    - docker-compose.json `"image": "sissbruecker/linkding:1.44.1"`
    - This is the #1 validation failure cause
+   - **Common mistake:** Assuming `v0.7.2` when registry has `0.7.2` (or vice versa)
+   - **Solution:** Always visit the Docker registry package page directly to verify the exact tag format
+   - **Example:** Check `https://github.com/orgs/getmydia/packages/container/mydia/versions` for the exact install command
 
 3. ❌ **Using `latest` image tag in production**
    - Example: `"image": "nginx:latest"` ❌
