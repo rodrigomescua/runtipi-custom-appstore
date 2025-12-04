@@ -9,16 +9,8 @@
       "internalPort": 4000,
       "environment": [
         {
-          "key": "SECRET_KEY_BASE",
-          "value": "${SECRET_KEY_BASE}"
-        },
-        {
-          "key": "GUARDIAN_SECRET_KEY",
-          "value": "${GUARDIAN_SECRET_KEY}"
-        },
-        {
           "key": "PHX_HOST",
-          "value": "${APP_DOMAIN}"
+          "value": "${APP_PROTOCOL:-http}://${APP_DOMAIN}"
         },
         {
           "key": "PORT",
@@ -35,6 +27,14 @@
         {
           "key": "TV_PATH",
           "value": "/media/data/tv"
+        },
+        {
+          "key": "SECRET_KEY_BASE",
+          "value": "${SECRET_KEY_BASE}"
+        },
+        {
+          "key": "GUARDIAN_SECRET_KEY",
+          "value": "${GUARDIAN_SECRET_KEY}"
         }
       ],
       "volumes": [
