@@ -8,7 +8,7 @@
   "port": 8841,
   "categories": ["featured", "media"],
   "description": "Mydia is a modern, self-hosted media management platform for tracking, organizing, and monitoring your media library. Built with Phoenix LiveView, it provides unified management for movies and TV shows with automated downloads, quality profiles, multi-user support, and SSO authentication.",
-  "tipi_version": 3,
+  "tipi_version": 4,
   "version": "0.7.2",
   "source": "https://github.com/getmydia/mydia",
   "exposable": true,
