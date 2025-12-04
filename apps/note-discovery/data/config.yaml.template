@@ -13,7 +13,7 @@ server:
   # CORS (Cross-Origin Resource Sharing) configuration
   # For self-hosted use, "*" is fine. For production, specify allowed domains.
   # Examples: ["http://localhost:8000", "https://yourdomain.com"]
-  allowed_origins: ["http://{{APP_DOMAIN}}:{{APP_PORT}}", "https://{{APP_DOMAIN}}"]
+  allowed_origins: ["http://{{APP_DOMAIN}}", "https://{{APP_DOMAIN}}"]
   
   # Debug mode - shows detailed error messages (DISABLE in production!)
   debug: false
