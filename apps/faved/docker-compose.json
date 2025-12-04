@@ -17,18 +17,6 @@
         {
           "hostPath": "${APP_DATA_DIR}/data/storage",
           "containerPath": "/var/www/html/storage"
-        },
-        {
-          "hostPath": "${APP_DATA_DIR}/data/temp",
-          "containerPath": "/tmp"
-        },
-        {
-          "hostPath": "${APP_DATA_DIR}/data/apache-conf",
-          "containerPath": "/etc/apache2/sites-enabled"
-        },
-        {
-          "hostPath": "${APP_DATA_DIR}/data/letsencrypt",
-          "containerPath": "/etc/letsencrypt"
         }
       ]
     }
