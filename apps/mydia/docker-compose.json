@@ -4,7 +4,7 @@
   "services": [
     {
       "name": "mydia",
-      "image": "ghcr.io/getmydia/mydia:v0.7.2",
+      "image": "ghcr.io/getmydia/mydia:0.7.2",
       "isMain": true,
       "internalPort": 4000,
       "environment": [
