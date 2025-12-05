@@ -2,7 +2,7 @@
 set -e
 
 echo "🔐 GeoPulse JWT Key Generator"
-echo "========================================"
+echo "=============================="
 
 KEYS_DIR="/keys"
 PRIVATE_KEY="$KEYS_DIR/jwt-private-key.pem"
@@ -46,7 +46,7 @@ if [ "$JWT_KEYS_EXIST" = false ]; then
         echo "✅ JWT keys generated successfully!"
         echo "   Private key: $PRIVATE_KEY"
         echo "   Public key:  $PUBLIC_KEY"
-
+        
         # Show key info for verification
         echo ""
         echo "🔍 Key verification:"
@@ -73,7 +73,7 @@ else
         echo "📦 Installing OpenSSL..."
         apk add --no-cache openssl
     fi
-
+    
     echo "🔑 Generating AI encryption key..."
     openssl rand -base64 32 > "$AI_ENCRYPTION_KEY"
     chmod 644 "$AI_ENCRYPTION_KEY"
