@@ -5,7 +5,6 @@
     {
       "name": "geopulse_keygen",
       "image": "alpine:latest",
-      "restart": "no",
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/keys",
