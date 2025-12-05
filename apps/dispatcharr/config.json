@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Dispatcharr",
+  "id": "dispatcharr",
+  "available": true,
+  "short_desc": "Ultimate IPTV & Stream Management Companion",
+  "author": "Dispatcharr",
+  "port": 8843,
+  "categories": ["featured", "automation"],
+  "description": "Dispatcharr is your ultimate IPTV & stream management companion. It provides comprehensive tools for managing IPTV streams, EPG integration, VOD support, proxy streaming, authentication, and M3U/EPG endpoint management with caching and validation.",
+  "tipi_version": 1,
+  "version": "0.13.0",
+  "source": "https://github.com/Dispatcharr/Dispatcharr",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "created_at": 1733356200000,
+  "updated_at": 1733356200000,
+  "form_fields": []
+}
