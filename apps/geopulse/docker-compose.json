@@ -108,7 +108,7 @@
         },
         {
           "key": "GEOPULSE_POSTGRES_URL",
-          "value": "jdbc:postgresql://geopulse_postgres:5432/geopulse"
+          "value": "jdbc:postgresql://${GEOPULSE_POSTGRES_HOST}:${GEOPULSE_POSTGRES_PORT}/${GEOPULSE_POSTGRES_DB}"
         },
         {
           "key": "GEOPULSE_ADMIN_EMAIL",
