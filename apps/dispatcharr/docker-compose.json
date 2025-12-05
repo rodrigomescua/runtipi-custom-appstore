@@ -3,22 +3,92 @@
   "schemaVersion": 2,
   "services": [
     {
+      "name": "dispatcharr_db",
+      "image": "postgres:14",
+      "environment": [
+        {
+          "key": "POSTGRES_DB",
+          "value": "dispatcharr"
+        },
+        {
+          "key": "POSTGRES_USER",
+          "value": "dispatch"
+        },
+        {
+          "key": "POSTGRES_PASSWORD",
+          "value": "secret"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/postgres_data",
+          "containerPath": "/var/lib/postgresql/data"
+        }
+      ]
+    },
+    {
+      "name": "dispatcharr_redis",
+      "image": "redis:7-alpine"
+    },
+    {
+      "name": "dispatcharr_celery",
+      "image": "ghcr.io/dispatcharr/dispatcharr:0.13.0",
+      "environment": [
+        {
+          "key": "POSTGRES_HOST",
+          "value": "dispatcharr_db"
+        },
+        {
+          "key": "POSTGRES_DB",
+          "value": "dispatcharr"
+        },
+        {
+          "key": "POSTGRES_USER",
+          "value": "dispatch"
+        },
+        {
+          "key": "POSTGRES_PASSWORD",
+          "value": "secret"
+        },
+        {
+          "key": "REDIS_HOST",
+          "value": "dispatcharr_redis"
+        },
+        {
+          "key": "CELERY_BROKER_URL",
+          "value": "redis://dispatcharr_redis:6379/0"
+        }
+      ]
+    },
+    {
       "name": "dispatcharr",
-      "image": "ghcr.io/dispatcharr/dispatcharr:dev",
+      "image": "ghcr.io/dispatcharr/dispatcharr:0.13.0",
       "isMain": true,
       "internalPort": 9191,
       "environment": [
         {
-          "key": "DISPATCHARR_ENV",
-          "value": "aio"
+          "key": "POSTGRES_HOST",
+          "value": "dispatcharr_db"
+        },
+        {
+          "key": "POSTGRES_DB",
+          "value": "dispatcharr"
+        },
+        {
+          "key": "POSTGRES_USER",
+          "value": "dispatch"
+        },
+        {
+          "key": "POSTGRES_PASSWORD",
+          "value": "secret"
         },
         {
           "key": "REDIS_HOST",
-          "value": "localhost"
+          "value": "dispatcharr_redis"
         },
         {
           "key": "CELERY_BROKER_URL",
-          "value": "redis://localhost:6379/0"
+          "value": "redis://dispatcharr_redis:6379/0"
         },
         {
           "key": "DISPATCHARR_LOG_LEVEL",
@@ -27,14 +97,6 @@
         {
           "key": "TZ",
           "value": "${TZ}"
-        },
-        {
-          "key": "PUID",
-          "value": "1000"
-        },
-        {
-          "key": "PGID",
-          "value": "1000"
         }
       ],
       "volumes": [
@@ -42,9 +104,6 @@
           "hostPath": "${APP_DATA_DIR}/data/data",
           "containerPath": "/data"
         }
-      ],
-      "devices": [
-        "/dev/dri:/dev/dri"
       ]
     }
   ]
