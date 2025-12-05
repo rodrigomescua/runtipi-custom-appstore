@@ -1,0 +1,143 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
+  "services": [
+    {
+      "name": "geopulse_keygen",
+      "image": "alpine:latest",
+      "restart": "no",
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/keys",
+          "containerPath": "/keys"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/generate-keys.sh",
+          "containerPath": "/generate-keys.sh"
+        }
+      ],
+      "command": [
+        "sh",
+        "/generate-keys.sh"
+      ]
+    },
+    {
+      "name": "geopulse_postgres",
+      "image": "postgis/postgis:17-3.5",
+      "environment": [
+        {
+          "key": "POSTGRES_USER",
+          "value": "postgres"
+        },
+        {
+          "key": "POSTGRES_PASSWORD",
+          "value": "postgres"
+        },
+        {
+          "key": "POSTGRES_DB",
+          "value": "geopulse"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/postgres_data",
+          "containerPath": "/var/lib/postgresql/data"
+        }
+      ],
+      "command": [
+        "postgres",
+        "-c", "shared_buffers=256MB",
+        "-c", "work_mem=8MB",
+        "-c", "maintenance_work_mem=64MB",
+        "-c", "effective_cache_size=1GB",
+        "-c", "max_wal_size=512MB",
+        "-c", "checkpoint_completion_target=0.9",
+        "-c", "wal_buffers=16MB",
+        "-c", "random_page_cost=1.1",
+        "-c", "effective_io_concurrency=100",
+        "-c", "autovacuum_naptime=60s",
+        "-c", "autovacuum_vacuum_scale_factor=0.2",
+        "-c", "log_min_duration_statement=5000",
+        "-c", "track_io_timing=on"
+      ],
+      "healthCheck": {
+        "test": "pg_isready -U postgres -d geopulse",
+        "interval": "5s",
+        "timeout": "5s",
+        "retries": 5
+      }
+    },
+    {
+      "name": "geopulse_backend",
+      "image": "tess1o/geopulse-backend:1.8.1-native",
+      "environment": [
+        {
+          "key": "GEOPULSE_POSTGRES_HOST",
+          "value": "geopulse_postgres"
+        },
+        {
+          "key": "GEOPULSE_POSTGRES_PORT",
+          "value": "5432"
+        },
+        {
+          "key": "GEOPULSE_POSTGRES_USERNAME",
+          "value": "postgres"
+        },
+        {
+          "key": "GEOPULSE_POSTGRES_PASSWORD",
+          "value": "postgres"
+        },
+        {
+          "key": "GEOPULSE_POSTGRES_DB",
+          "value": "geopulse"
+        },
+        {
+          "key": "GEOPULSE_ADMIN_EMAIL",
+          "value": "${GEOPULSE_ADMIN_EMAIL}"
+        },
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/keys",
+          "containerPath": "/app/keys"
+        }
+      ],
+      "dependsOn": {
+        "geopulse-keygen": {
+          "condition": "service_completed_successfully"
+        },
+        "geopulse-postgres": {
+          "condition": "service_healthy"
+        }
+      },
+      "healthCheck": {
+        "test": "curl -f http://localhost:8080/api/health || exit 1",
+        "interval": "3s",
+        "timeout": "2s",
+        "retries": 20,
+        "startPeriod": "5s"
+      }
+    },
+    {
+      "name": "geopulse",
+      "image": "tess1o/geopulse-ui:1.8.1",
+      "isMain": true,
+      "internalPort": 80,
+      "environment": [
+        {
+          "key": "GEOPULSE_BACKEND_URL",
+          "value": "http://geopulse_backend:8080"
+        },
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        }
+      ],
+      "dependsOn": ["geopulse_backend"]
+    }
+  ]
+}

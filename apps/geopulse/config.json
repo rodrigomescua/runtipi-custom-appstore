@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "GeoPulse",
+  "id": "geopulse",
+  "available": true,
+  "short_desc": "Self-hosted location tracking and analysis platform",
+  "author": "tess1o",
+  "port": 8844,
+  "categories": ["featured", "utilities", "data"],
+  "description": "GeoPulse is a self-hosted location tracking and analysis platform that transforms raw GPS data from tracking apps like OwnTracks, Overland, Dawarich or HomeAssistant into organized timelines and insights. It automatically categorizes your location data into stays and trips, providing a clear view of your movement patterns while keeping everything on your own server. Includes integration with Immich to view photos on the timeline map.",
+  "tipi_version": 1,
+  "version": "1.8.1",
+  "source": "https://github.com/tess1o/geopulse",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "created_at": 1733349600000,
+  "updated_at": 1733349600000,
+  "form_fields": [
+    {
+      "type": "email",
+      "label": "Admin Email (Optional)",
+      "required": false,
+      "env_variable": "GEOPULSE_ADMIN_EMAIL",
+      "hint": "Email of admin user. Existing or new user with this email will be promoted to admin"
+    }
+  ]
+}

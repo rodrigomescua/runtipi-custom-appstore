@@ -438,10 +438,11 @@ Validation schemas from `@runtipi/common/schemas`:
 ### Available Categories
 Use these in the `categories` array (can use 1 or multiple):
 ```
-featured, utilities, automation, network, media, productivity, security, monitoring, 
-backup, development, dashboard, cloud, database, social, tools, home, entertainment, 
-storage, communication
+featured, utilities, automation, network, media, development, social, security, 
+photography, books, data, music, finance, gaming, ai
 ```
+
+**Note:** These are the ONLY categories accepted by the schema. Invalid categories will cause schema validation to fail.
 
 ### Optional config.json Fields
 - `website`: URL of official website (e.g., "https://www.nginx.com/")
