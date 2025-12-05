@@ -104,6 +104,9 @@
           "hostPath": "${APP_DATA_DIR}/data/data",
           "containerPath": "/data"
         }
+      ],
+      "devices": [
+        "/dev/dri:/dev/dri"
       ]
     }
   ]
