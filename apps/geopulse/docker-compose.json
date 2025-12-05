@@ -26,15 +26,15 @@
       "environment": [
         {
           "key": "POSTGRES_USER",
-          "value": "postgres"
+          "value": "${GEOPULSE_POSTGRES_USERNAME}"
         },
         {
           "key": "POSTGRES_PASSWORD",
-          "value": "postgres"
+          "value": "${GEOPULSE_POSTGRES_PASSWORD}"
         },
         {
           "key": "POSTGRES_DB",
-          "value": "geopulse"
+          "value": "${GEOPULSE_POSTGRES_DB}"
         }
       ],
       "volumes": [
@@ -60,7 +60,7 @@
         "-c", "track_io_timing=on"
       ],
       "healthCheck": {
-        "test": "pg_isready -U postgres -d geopulse",
+        "test": "pg_isready -U ${GEOPULSE_POSTGRES_USERNAME} -d ${GEOPULSE_POSTGRES_DB}",
         "interval": "5s",
         "timeout": "5s",
         "retries": 5
@@ -96,19 +96,19 @@
         },
         {
           "key": "GEOPULSE_POSTGRES_USERNAME",
-          "value": "postgres"
+          "value": "${GEOPULSE_POSTGRES_USERNAME}"
         },
         {
           "key": "GEOPULSE_POSTGRES_PASSWORD",
-          "value": "postgres"
+          "value": "${GEOPULSE_POSTGRES_PASSWORD}"
         },
         {
           "key": "GEOPULSE_POSTGRES_DB",
-          "value": "geopulse"
+          "value": "${GEOPULSE_POSTGRES_DB}"
         },
         {
           "key": "GEOPULSE_POSTGRES_URL",
-          "value": "jdbc:postgresql://${GEOPULSE_POSTGRES_HOST}:${GEOPULSE_POSTGRES_PORT}/${GEOPULSE_POSTGRES_DB}"
+          "value": "jdbc:postgresql://geopulse_postgres:5432/${GEOPULSE_POSTGRES_DB}"
         },
         {
           "key": "GEOPULSE_ADMIN_EMAIL",

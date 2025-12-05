@@ -8,7 +8,7 @@
   "port": 8844,
   "categories": ["featured", "utilities", "data"],
   "description": "GeoPulse is a self-hosted location tracking and analysis platform that transforms raw GPS data from tracking apps like OwnTracks, Overland, Dawarich or HomeAssistant into organized timelines and insights. It automatically categorizes your location data into stays and trips, providing a clear view of your movement patterns while keeping everything on your own server. Includes integration with Immich to view photos on the timeline map.",
-  "tipi_version": 7,
+  "tipi_version": 8,
   "version": "1.8.1",
   "source": "https://github.com/tess1o/geopulse",
   "exposable": true,
@@ -17,6 +17,35 @@
   "created_at": 1733349600000,
   "updated_at": 1733349600000,
   "form_fields": [
+    {
+      "type": "text",
+      "label": "PostgreSQL Username",
+      "required": true,
+      "env_variable": "GEOPULSE_POSTGRES_USERNAME",
+      "hint": "Username for PostgreSQL database",
+      "default": "postgres",
+      "min": 3,
+      "max": 50
+    },
+    {
+      "type": "password",
+      "label": "PostgreSQL Password",
+      "required": true,
+      "env_variable": "GEOPULSE_POSTGRES_PASSWORD",
+      "hint": "Password for PostgreSQL database",
+      "default": "postgres",
+      "min": 3
+    },
+    {
+      "type": "text",
+      "label": "PostgreSQL Database Name",
+      "required": true,
+      "env_variable": "GEOPULSE_POSTGRES_DB",
+      "hint": "Name of the PostgreSQL database",
+      "default": "geopulse",
+      "min": 3,
+      "max": 50
+    },
     {
       "type": "email",
       "label": "Admin Email (Optional)",
