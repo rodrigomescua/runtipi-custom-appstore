@@ -8,7 +8,7 @@
   "port": 8844,
   "categories": ["featured", "utilities"],
   "description": "Obsidian is a powerful note-taking app that lets you create, link, and organize your notes on your device. Access hundreds of plugins and themes to customize your workflow. Store notes locally, access offline, and sync with end-to-end encryption. Run in a containerized desktop environment with full GUI access via web browser.",
-  "tipi_version": 2,
+  "tipi_version": 3,
   "version": "v1.10.6-ls99",
   "source": "https://github.com/linuxserver/docker-obsidian",
   "exposable": true,

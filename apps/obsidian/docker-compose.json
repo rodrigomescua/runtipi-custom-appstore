@@ -6,7 +6,7 @@
       "name": "obsidian",
       "image": "lscr.io/linuxserver/obsidian:v1.10.6-ls99",
       "isMain": true,
-      "internalPort": 3001,
+      "internalPort": 3000,
       "environment": [
         {
           "key": "PUID",
