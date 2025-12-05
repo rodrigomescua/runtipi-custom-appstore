@@ -35,10 +35,7 @@
           "containerPath": "/config"
         }
       ],
-      "shm_size": "1gb",
-      "devices": [
-        "/dev/dri:/dev/dri"
-      ]
+      "shm_size": "1gb"
     }
   ]
 }
