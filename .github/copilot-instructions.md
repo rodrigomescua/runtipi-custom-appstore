@@ -603,6 +603,24 @@ This script automatically:
     - WRONG: `"services": { "nginx": { ... } }` (YAML style)
     - RIGHT: `"services": [ { "name": "nginx", ... } ]` (JSON array)
 
+12. ❌ **LinuxServer images without 'v' prefix**
+    - **CRITICAL**: LinuxServer.io images (lscr.io/linuxserver/*) ALWAYS use 'v' prefix in tags
+    - Example: GitHub release `v1.10.6-ls99` → GHCR tag `v1.10.6-ls99` (WITH 'v')
+    - This is different from other registries that may strip the 'v' prefix
+    - **WRONG**: `"image": "lscr.io/linuxserver/obsidian:1.10.6-ls99"` ❌
+    - **RIGHT**: `"image": "lscr.io/linuxserver/obsidian:v1.10.6-ls99"` ✅
+    - **How to verify**: Visit `https://github.com/orgs/linuxserver/packages/container/{image}/versions`
+    - Look at the tag list directly - LinuxServer always shows the 'v' prefix clearly
+
+13. ❌ **Assuming tag format without registry verification**
+    - Different registries have different tag conventions:
+    - **GHCR (GitHub Container Registry)**: Check `https://github.com/orgs/{owner}/packages/container/{image}/versions`
+    - **Docker Hub**: Check `https://hub.docker.com/r/{owner}/{image}/tags`
+    - **LinuxServer.io**: Always visit GHCR package page to see the exact tag format
+    - **Generic registries**: Always check the official documentation or package page
+    - **Never assume or guess** - registry pages are the source of truth
+    - Take 30 seconds to verify rather than creating incorrect configurations
+
 ## Architecture Note: App Discovery & Validation
 
 Apps are discovered by reading the `apps/` directory:
