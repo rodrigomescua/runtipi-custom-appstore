@@ -71,12 +71,68 @@
       "image": "tess1o/geopulse-backend:1.8.1-native",
       "environment": [
         {
+          "key": "GEOPULSE_VERSION",
+          "value": "1.8.1"
+        },
+        {
+          "key": "GEOPULSE_UI_URL",
+          "value": "${APP_PROTOCOL:-http}://${APP_DOMAIN}"
+        },
+        {
+          "key": "GEOPULSE_AUTH_SECURE_COOKIES",
+          "value": "false"
+        },
+        {
+          "key": "GEOPULSE_BACKEND_URL",
+          "value": "http://geopulse_backend:8080"
+        },
+        {
+          "key": "GEOPULSE_POSTGRES_HOST",
+          "value": "geopulse_postgres"
+        },
+        {
+          "key": "GEOPULSE_POSTGRES_PORT",
+          "value": "5432"
+        },
+        {
+          "key": "GEOPULSE_POSTGRES_USERNAME",
+          "value": "postgres"
+        },
+        {
+          "key": "GEOPULSE_POSTGRES_PASSWORD",
+          "value": "postgres"
+        },
+        {
+          "key": "GEOPULSE_POSTGRES_DB",
+          "value": "geopulse"
+        },
+        {
           "key": "GEOPULSE_POSTGRES_URL",
           "value": "jdbc:postgresql://geopulse_postgres:5432/geopulse"
         },
         {
           "key": "GEOPULSE_ADMIN_EMAIL",
           "value": "${GEOPULSE_ADMIN_EMAIL}"
+        },
+        {
+          "key": "GEOPULSE_MQTT_ENABLED",
+          "value": "false"
+        },
+        {
+          "key": "GEOPULSE_OIDC_ENABLED",
+          "value": "false"
+        },
+        {
+          "key": "CLIENT_MAX_BODY_SIZE",
+          "value": "1000M"
+        },
+        {
+          "key": "OSM_RESOLVER",
+          "value": "127.0.0.11 8.8.8.8"
+        },
+        {
+          "key": "GEOPULSE_GEOCODING_DELAY_MS",
+          "value": "1000"
         },
         {
           "key": "TZ",
@@ -105,8 +161,16 @@
       "internalPort": 80,
       "environment": [
         {
+          "key": "GEOPULSE_VERSION",
+          "value": "1.8.1"
+        },
+        {
           "key": "GEOPULSE_BACKEND_URL",
           "value": "http://geopulse_backend:8080"
+        },
+        {
+          "key": "CLIENT_MAX_BODY_SIZE",
+          "value": "1000M"
         },
         {
           "key": "TZ",
