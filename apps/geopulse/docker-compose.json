@@ -107,10 +107,10 @@
         }
       ],
       "dependsOn": {
-        "geopulse-keygen": {
+        "geopulse_keygen": {
           "condition": "service_completed_successfully"
         },
-        "geopulse-postgres": {
+        "geopulse_postgres": {
           "condition": "service_healthy"
         }
       },
