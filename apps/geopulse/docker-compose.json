@@ -71,24 +71,8 @@
       "image": "tess1o/geopulse-backend:1.8.1-native",
       "environment": [
         {
-          "key": "GEOPULSE_POSTGRES_HOST",
-          "value": "geopulse_postgres"
-        },
-        {
-          "key": "GEOPULSE_POSTGRES_PORT",
-          "value": "5432"
-        },
-        {
-          "key": "GEOPULSE_POSTGRES_USERNAME",
-          "value": "postgres"
-        },
-        {
-          "key": "GEOPULSE_POSTGRES_PASSWORD",
-          "value": "postgres"
-        },
-        {
-          "key": "GEOPULSE_POSTGRES_DB",
-          "value": "geopulse"
+          "key": "GEOPULSE_POSTGRES_URL",
+          "value": "jdbc:postgresql://geopulse_postgres:5432/geopulse"
         },
         {
           "key": "GEOPULSE_ADMIN_EMAIL",
