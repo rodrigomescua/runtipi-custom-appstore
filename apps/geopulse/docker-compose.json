@@ -3,24 +3,6 @@
   "schemaVersion": 2,
   "services": [
     {
-      "name": "geopulse_keygen",
-      "image": "alpine:latest",
-      "volumes": [
-        {
-          "hostPath": "${APP_DATA_DIR}/data/keys",
-          "containerPath": "/keys"
-        },
-        {
-          "hostPath": "${APP_DATA_DIR}/data/generate-keys.sh",
-          "containerPath": "/generate-keys.sh"
-        }
-      ],
-      "command": [
-        "sh",
-        "/generate-keys.sh"
-      ]
-    },
-    {
       "name": "geopulse_postgres",
       "image": "postgis/postgis:17-3.5",
       "environment": [
