@@ -9,6 +9,22 @@
       "internalPort": 9191,
       "environment": [
         {
+          "key": "DISPATCHARR_ENV",
+          "value": "aio"
+        },
+        {
+          "key": "REDIS_HOST",
+          "value": "localhost"
+        },
+        {
+          "key": "CELERY_BROKER_URL",
+          "value": "redis://localhost:6379/0"
+        },
+        {
+          "key": "DISPATCHARR_LOG_LEVEL",
+          "value": "info"
+        },
+        {
           "key": "TZ",
           "value": "${TZ}"
         }
