@@ -145,7 +145,6 @@
           "containerPath": "/app/keys"
         }
       ],
-      "dependsOn": ["geopulse_postgres"],
       "healthCheck": {
         "test": "curl -f http://localhost:8080/api/health || exit 1",
         "interval": "3s",
