@@ -6,17 +6,21 @@
   "short_desc": "Self-hosted price tracker with notifications",
   "author": "jez500",
   "port": 8839,
-  "categories": ["utilities"],
+  "categories": [
+    "utilities"
+  ],
   "description": "A self-hostable application that tracks prices and sends you notifications when prices match your preferences. Create and manage stores, track product prices, visualize price history, and get notifications via the app, email or pushover/gotify.",
-  "tipi_version": 8,
-  "version": "v1.0.40",
+  "tipi_version": 9,
+  "version": "v1.0.42",
   "source": "https://github.com/jez500/pricebuddy",
   "website": "https://pricebuddy.jez.me",
   "exposable": true,
   "force_expose": false,
   "dynamic_config": true,
   "form_fields": [],
-  "supported_architectures": ["amd64"],
+  "supported_architectures": [
+    "amd64"
+  ],
   "created_at": 1732452278000,
-  "updated_at": 1732452278000
+  "updated_at": 1765039618934
 }
