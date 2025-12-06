@@ -25,24 +25,24 @@ If you want to see new apps on Tipi you can either:
 
 ## Apps available (19)
 
-| Name                                                                              | Description                                                                        | Port | Dynamic (19) |
-| --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---- | ------------ |
-| [Blazor RSS](https://github.com/rodrigomescua/BlazorRssDocker)                    | Blazor RSS                                                                         | 8822 | yes          |
-| [Blazor RSS - Restricted](https://github.com/rodrigomescua/BlazorRssDocker)       | Blazor RSS Restricted                                                              | 8823 | yes          |
-| [Blinko](https://github.com/blinkospace/blinko)                                   | Bring Your Ideas to Life with AI                                                   | 8831 | yes          |
-| [Byparr](https://github.com/ThePhaseless/Byparr)                                  | Bypass Cloudflare and DDoS-GuARD.                                                  | 8191 | yes          |
-| [Dawarich](https://github.com/Freika/dawarich)                                    | Self-hostable alternative to Google Location History (Google Maps Timeline)        | 8824 | yes          |
-| [Eden Crafters Companion](https://github.com/rodrigomescua/EdenCraftersCompanion) | Eden Crafters Companion                                                            | 8832 | yes          |
-| [KitchenOwl](https://github.com/tombursch/kitchenowl)                             | KitchenOwl                                                                         | 8828 | yes          |
-| [Linkding](https://github.com/sissbruecker/linkding)                              | Self-hosted bookmark manager                                                       | 8830 | yes          |
-| [MediaManager](https://github.com/maxdorninger/MediaManager)                      | Media Manager                                                                      | 8838 | yes          |
-| [Photon](https://github.com/rtuszik/photon-docker)                                | This is an unofficial docker image for Photon                                      | 8825 | yes          |
-| [PriceBuddy](https://github.com/jez500/pricebuddy)                                | Self-hosted price tracker with notifications                                       | 8839 | yes          |
-| [Blazor Finance](https://github.com/rodrigomescua/RazorFinanceDocker)             | Gerenciamento financeiro                                                           | 8840 | yes          |
-| [Razor IPTV](https://github.com/romesc/RazorIptvDocker)                           | Razor IPTV                                                                         | 8821 | yes          |
-| [Razor Miniflux](https://github.com/romesc/RazorMinifluxDocker)                   | Razor Miniflux                                                                     | 8822 | yes          |
-| [Razor Miniflux - Restricted](https://github.com/romesc/RazorMinifluxDocker)      | Razor Miniflux Restricted                                                          | 8823 | yes          |
-| [Razor Price History](https://github.com/romesc/RazorPriceHistory)                | Razor Price History                                                                | 8820 | yes          |
-| [Reitti](https://github.com/dedicatedcode/reitti)                                 | Personal Location Tracking & Analysis - Self-hosted alternative to Google Timeline | 8826 | yes          |
-| [Upsnap](https://github.com/seriousm4x/UpSnap)                                    | A simple wake on lan web app written with SvelteKit, Go and PocketBase.            | 8090 | yes          |
-| [Wallabag](https://github.com/wallabag/wallabag)                                  | Wallabag                                                                           | 8829 | yes          |
+| Name                                                                         | Description                                                                        | Port | Dynamic (19) |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---- | ------------ |
+| [Blinko](https://github.com/blinkospace/blinko)                              | Bring Your Ideas to Life with AI                                                   | 8831 | yes          |
+| [Byparr](https://github.com/ThePhaseless/Byparr)                             | Bypass Cloudflare and DDoS-GuARD.                                                  | 8191 | yes          |
+| [Dawarich](https://github.com/Freika/dawarich)                               | Self-hostable alternative to Google Location History (Google Maps Timeline)        | 8824 | yes          |
+| [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr)                    | Ultimate IPTV & Stream Management Companion                                        | 8843 | yes          |
+| [Faved](https://github.com/denho/faved)                                      | Self-hosted bookmark manager with tagging                                          | 8842 | yes          |
+| [KitchenOwl](https://github.com/tombursch/kitchenowl)                        | KitchenOwl                                                                         | 8828 | yes          |
+| [Linkding](https://github.com/sissbruecker/linkding)                         | Self-hosted bookmark manager                                                       | 8830 | yes          |
+| [MediaManager](https://github.com/maxdorninger/MediaManager)                 | Media Manager                                                                      | 8838 | yes          |
+| [Obsidian](https://github.com/linuxserver/docker-obsidian)                   | Powerful note-taking app for connected thoughts                                    | 8844 | yes          |
+| [Photon](https://github.com/rtuszik/photon-docker)                           | This is an unofficial docker image for Photon                                      | 8825 | yes          |
+| [PriceBuddy](https://github.com/jez500/pricebuddy)                           | Self-hosted price tracker with notifications                                       | 8839 | yes          |
+| [Blazor Finance](https://github.com/rodrigomescua/RazorFinanceDocker)        | Gerenciamento financeiro                                                           | 8840 | yes          |
+| [Razor IPTV](https://github.com/romesc/RazorIptvDocker)                      | Razor IPTV                                                                         | 8821 | yes          |
+| [Razor Miniflux](https://github.com/romesc/RazorMinifluxDocker)              | Razor Miniflux                                                                     | 8822 | yes          |
+| [Razor Miniflux - Restricted](https://github.com/romesc/RazorMinifluxDocker) | Razor Miniflux Restricted                                                          | 8823 | yes          |
+| [Razor Price History](https://github.com/romesc/RazorPriceHistory)           | Razor Price History                                                                | 8820 | yes          |
+| [Reitti](https://github.com/dedicatedcode/reitti)                            | Personal Location Tracking & Analysis - Self-hosted alternative to Google Timeline | 8826 | yes          |
+| [Upsnap](https://github.com/seriousm4x/UpSnap)                               | A simple wake on lan web app written with SvelteKit, Go and PocketBase.            | 8090 | yes          |
+| [Wallabag](https://github.com/wallabag/wallabag)                             | Wallabag                                                                           | 8829 | yes          |
