@@ -6,7 +6,7 @@
   "exposable": true,
   "dynamic_config": true,
   "port": 8831,
-  "tipi_version": 9,
+  "tipi_version": 10,
   "version": "1.7.0",
   "categories": ["utilities"],
   "description": "Blinko is an innovative open-source project designed for individuals who want to quickly capture and organize their fleeting thoughts. Blinko allows users to seamlessly jot down ideas the moment they strike, ensuring that no spark of creativity is lost.",
