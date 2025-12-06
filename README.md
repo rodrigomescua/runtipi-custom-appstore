@@ -27,15 +27,15 @@ If you want to see new apps on Tipi you can either:
 
 | Name                                                                         | Description                                                                        | Port | Dynamic (19) |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---- | ------------ |
-| [Blinko](https://github.com/blinkospace/blinko)                              | Bring Your Ideas to Life with AI                                                   | 8831 | yes          |
+| [Blinko](https://github.com/blinko-space/blinko)                             | Note taking, to-do and moodboard application                                       | 8831 | yes          |
 | [Byparr](https://github.com/ThePhaseless/Byparr)                             | Bypass Cloudflare and DDoS-GuARD.                                                  | 8191 | yes          |
 | [Dawarich](https://github.com/Freika/dawarich)                               | Self-hostable alternative to Google Location History (Google Maps Timeline)        | 8824 | yes          |
 | [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr)                    | Ultimate IPTV & Stream Management Companion                                        | 8843 | yes          |
 | [Faved](https://github.com/denho/faved)                                      | Self-hosted bookmark manager with tagging                                          | 8842 | yes          |
+| [GeoPulse](https://github.com/tess1o/geopulse)                               | Self-hosted location tracking and analysis platform                                | 8844 | yes          |
 | [KitchenOwl](https://github.com/tombursch/kitchenowl)                        | KitchenOwl                                                                         | 8828 | yes          |
 | [Linkding](https://github.com/sissbruecker/linkding)                         | Self-hosted bookmark manager                                                       | 8830 | yes          |
 | [MediaManager](https://github.com/maxdorninger/MediaManager)                 | Media Manager                                                                      | 8838 | yes          |
-| [Obsidian](https://github.com/linuxserver/docker-obsidian)                   | Powerful note-taking app for connected thoughts                                    | 8844 | yes          |
 | [Photon](https://github.com/rtuszik/photon-docker)                           | This is an unofficial docker image for Photon                                      | 8825 | yes          |
 | [PriceBuddy](https://github.com/jez500/pricebuddy)                           | Self-hosted price tracker with notifications                                       | 8839 | yes          |
 | [Blazor Finance](https://github.com/rodrigomescua/RazorFinanceDocker)        | Gerenciamento financeiro                                                           | 8840 | yes          |
