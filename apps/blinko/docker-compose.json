@@ -13,14 +13,27 @@
           "value": "production"
         },
         {
+          "key": "NEXTAUTH_URL",
+          "value": "${APP_PROTOCOL-http}://${APP_DOMAIN}"
+        },
+        {
+          "key": "NEXT_PUBLIC_BASE_URL",
+          "value": "${APP_PROTOCOL-http}://${APP_DOMAIN}"
+        },
+        {
           "key": "NEXTAUTH_SECRET",
-          "value": "my_ultra_secure_nextauth_secret"
+          "value": "${BLINKO_NEXTAUTH_SECRET}"
         },
         {
           "key": "DATABASE_URL",
-          "value": "postgresql://postgres:blinko@blinko-postgres:5432/postgres"
+          "value": "postgresql://tipi:tipi@blinko-db:5432/blinko"
         }
       ],
+      "dependsOn": {
+        "blinko-db": {
+          "condition": "service_healthy"
+        }
+      },
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/blinko",
@@ -31,25 +44,29 @@
         "test": "curl -f http://blinko:1111/",
         "interval": "30s",
         "timeout": "10s",
-        "retries": 5
-      },
-      "dependsOn": {
-        "blinko-postgres": {
-          "condition": "service_healthy"
-        }
+        "retries": 5,
+        "startPeriod": "30s"
       }
     },
     {
-      "name": "blinko-postgres",
+      "name": "blinko-db",
       "image": "postgres:14",
       "environment": [
         {
           "key": "POSTGRES_DB",
-          "value": "postgres"
+          "value": "blinko"
+        },
+        {
+          "key": "POSTGRES_USER",
+          "value": "tipi"
         },
         {
           "key": "POSTGRES_PASSWORD",
-          "value": "blinko"
+          "value": "tipi"
+        },
+        {
+          "key": "TZ",
+          "value": "${TZ}"
         }
       ],
       "volumes": [
@@ -59,8 +76,8 @@
         }
       ],
       "healthCheck": {
-        "test": "pg_isready -U postgres -d postgres",
-        "interval": "30s",
+        "test": "pg_isready -U tipi -d blinko",
+        "interval": "5s",
         "timeout": "10s",
         "retries": 5
       }

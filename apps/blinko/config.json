@@ -3,23 +3,27 @@
   "name": "Blinko",
   "id": "blinko",
   "available": true,
-  "short_desc": "Bring Your Ideas to Life with AI",
-  "author": "blinkospace",
-  "port": 8831,
-  "categories": [
-    "featured",
-    "utilities"
-  ],
-  "description": "Blinko is the next generation of open-source AI-powered card notes designed to help you quickly capture and organize inspiration so that ideas never run out.",
-  "tipi_version": 8,
-  "version": "1.7.0",
-  "source": "https://github.com/blinkospace/blinko",
   "exposable": true,
   "dynamic_config": true,
-  "supported_architectures": [
-    "amd64"
-  ],
-  "created_at": 1731806735001,
-  "updated_at": 1764617157338,
-  "form_fields": []
+  "port": 8831,
+  "tipi_version": 9,
+  "version": "1.7.0",
+  "categories": ["utilities"],
+  "description": "Blinko is an innovative open-source project designed for individuals who want to quickly capture and organize their fleeting thoughts. Blinko allows users to seamlessly jot down ideas the moment they strike, ensuring that no spark of creativity is lost.",
+  "short_desc": "Note taking, to-do and moodboard application",
+  "author": "blinko-space",
+  "source": "https://github.com/blinko-space/blinko",
+  "website": "https://blinko.mintlify.app/introduction",
+  "supported_architectures": ["amd64", "arm64"],
+  "created_at": 1737379503315,
+  "updated_at": 1764643373431,
+  "form_fields": [
+    {
+      "type": "random",
+      "label": "Blinko Nextauth secret",
+      "max": 32,
+      "min": 32,
+      "env_variable": "BLINKO_NEXTAUTH_SECRET"
+    }
+  ]
 }
