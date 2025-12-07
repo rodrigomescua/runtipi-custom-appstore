@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "name": "glean_postgres",
+      "name": "postgres",
       "image": "postgres:16-alpine",
       "environment": [
         {
@@ -33,7 +33,7 @@
       }
     },
     {
-      "name": "glean_redis",
+      "name": "redis",
       "image": "redis:7-alpine",
       "command": "redis-server --appendonly yes",
       "volumes": [
@@ -50,16 +50,16 @@
       }
     },
     {
-      "name": "glean_backend",
+      "name": "backend",
       "image": "ghcr.io/leslieleung/glean-backend:0.1.4",
       "environment": [
         {
           "key": "DATABASE_URL",
-          "value": "postgresql+asyncpg://glean:glean@glean_postgres:5432/glean"
+          "value": "postgresql+asyncpg://glean:glean@postgres:5432/glean"
         },
         {
           "key": "REDIS_URL",
-          "value": "redis://glean_redis:6379/0"
+          "value": "redis://redis:6379/0"
         },
         {
           "key": "SECRET_KEY",
@@ -79,8 +79,8 @@
         }
       ],
       "dependsOn": [
-        "glean_postgres",
-        "glean_redis"
+        "postgres",
+        "redis"
       ],
       "healthCheck": {
         "test": "curl -f http://localhost:8000/api/health || exit 1",
@@ -92,16 +92,16 @@
       "command": "uv run --no-sync uvicorn glean_api.main:app --host 0.0.0.0 --port 8000"
     },
     {
-      "name": "glean_worker",
+      "name": "worker",
       "image": "ghcr.io/leslieleung/glean-backend:0.1.4",
       "environment": [
         {
           "key": "DATABASE_URL",
-          "value": "postgresql+asyncpg://glean:glean@glean_postgres:5432/glean"
+          "value": "postgresql+asyncpg://glean:glean@postgres:5432/glean"
         },
         {
           "key": "REDIS_URL",
-          "value": "redis://glean_redis:6379/0"
+          "value": "redis://redis:6379/0"
         },
         {
           "key": "SECRET_KEY",
@@ -109,19 +109,19 @@
         }
       ],
       "dependsOn": [
-        "glean_postgres",
-        "glean_redis",
-        "glean_backend"
+        "postgres",
+        "redis",
+        "backend"
       ],
       "command": "uv run --no-sync arq glean_worker.main.WorkerSettings"
     },
     {
-      "name": "glean_web",
+      "name": "web",
       "image": "ghcr.io/leslieleung/glean-web:0.1.4",
       "isMain": true,
       "internalPort": 80,
       "dependsOn": [
-        "glean_backend"
+        "backend"
       ]
     }
   ]
