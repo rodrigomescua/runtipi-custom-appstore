@@ -82,6 +82,13 @@
         "glean_postgres",
         "glean_redis"
       ],
+      "healthCheck": {
+        "test": "curl -f http://localhost:8000/api/health || exit 1",
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 5,
+        "startPeriod": "30s"
+      },
       "command": "uv run --no-sync uvicorn glean_api.main:app --host 0.0.0.0 --port 8000"
     }
   ]
