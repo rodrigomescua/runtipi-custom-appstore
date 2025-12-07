@@ -1,0 +1,127 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
+  "services": [
+    {
+      "name": "glean_postgres",
+      "image": "postgres:16-alpine",
+      "environment": [
+        {
+          "key": "POSTGRES_DB",
+          "value": "glean"
+        },
+        {
+          "key": "POSTGRES_USER",
+          "value": "glean"
+        },
+        {
+          "key": "POSTGRES_PASSWORD",
+          "value": "glean"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/postgres",
+          "containerPath": "/var/lib/postgresql/data"
+        }
+      ],
+      "healthCheck": {
+        "test": "pg_isready -U glean",
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 5
+      }
+    },
+    {
+      "name": "glean_redis",
+      "image": "redis:7-alpine",
+      "command": "redis-server --appendonly yes",
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/redis",
+          "containerPath": "/data"
+        }
+      ],
+      "healthCheck": {
+        "test": "redis-cli ping",
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 5
+      }
+    },
+    {
+      "name": "glean_backend",
+      "image": "ghcr.io/leslieleung/glean-backend:v0.1.4",
+      "environment": [
+        {
+          "key": "DATABASE_URL",
+          "value": "postgresql+asyncpg://glean:glean@glean_postgres:5432/glean"
+        },
+        {
+          "key": "REDIS_URL",
+          "value": "redis://glean_redis:6379/0"
+        },
+        {
+          "key": "SECRET_KEY",
+          "value": "${SECRET_KEY}"
+        },
+        {
+          "key": "CORS_ORIGINS",
+          "value": "[\"http://localhost\", \"http://localhost:80\", \"http://${APP_DOMAIN}:${APP_PORT}\", \"https://${APP_DOMAIN}\"]"
+        },
+        {
+          "key": "DEBUG",
+          "value": "false"
+        },
+        {
+          "key": "RUN_MIGRATIONS",
+          "value": "true"
+        }
+      ],
+      "dependsOn": [
+        "glean_postgres",
+        "glean_redis"
+      ],
+      "healthCheck": {
+        "test": "curl -f http://localhost:8000/api/health || exit 1",
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 5,
+        "startPeriod": "30s"
+      }
+    },
+    {
+      "name": "glean_worker",
+      "image": "ghcr.io/leslieleung/glean-backend:v0.1.4",
+      "environment": [
+        {
+          "key": "DATABASE_URL",
+          "value": "postgresql+asyncpg://glean:glean@glean_postgres:5432/glean"
+        },
+        {
+          "key": "REDIS_URL",
+          "value": "redis://glean_redis:6379/0"
+        },
+        {
+          "key": "SECRET_KEY",
+          "value": "${SECRET_KEY}"
+        }
+      ],
+      "dependsOn": [
+        "glean_postgres",
+        "glean_redis",
+        "glean_backend"
+      ],
+      "command": "uv run --no-sync arq glean_worker.main.WorkerSettings"
+    },
+    {
+      "name": "glean_web",
+      "image": "ghcr.io/leslieleung/glean-web:v0.1.4",
+      "isMain": true,
+      "internalPort": 80,
+      "dependsOn": [
+        "glean_backend"
+      ]
+    }
+  ]
+}
