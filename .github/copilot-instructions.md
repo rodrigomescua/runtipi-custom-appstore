@@ -604,7 +604,20 @@ This script automatically:
     - WRONG: `"services": { "nginx": { ... } }` (YAML style)
     - RIGHT: `"services": [ { "name": "nginx", ... } ]` (JSON array)
 
-12. ❌ **LinuxServer images without 'v' prefix**
+12. ❌ **Using array format for `dependsOn` (CRITICAL!)**
+    - **WRONG:** `"dependsOn": ["postgres", "redis"]` ❌ - This causes "connection refused" errors!
+    - **RIGHT:** Use object format with conditions:
+    ```json
+    "dependsOn": {
+      "postgres": { "condition": "service_healthy" },
+      "redis": { "condition": "service_healthy" }
+    }
+    ```
+    - Array format only waits for container startup, not readiness
+    - Always use `"service_healthy"` condition to ensure dependencies are fully operational
+    - Without proper conditions, dependent services will fail trying to connect to services that aren't ready yet
+
+13. ❌ **LinuxServer images without 'v' prefix**
     - **CRITICAL**: LinuxServer.io images (lscr.io/linuxserver/*) ALWAYS use 'v' prefix in tags
     - Example: GitHub release `v1.10.6-ls99` → GHCR tag `v1.10.6-ls99` (WITH 'v')
     - This is different from other registries that may strip the 'v' prefix
@@ -613,7 +626,7 @@ This script automatically:
     - **How to verify**: Visit `https://github.com/orgs/linuxserver/packages/container/{image}/versions`
     - Look at the tag list directly - LinuxServer always shows the 'v' prefix clearly
 
-13. ❌ **Assuming tag format without registry verification**
+14. ❌ **Assuming tag format without registry verification**
     - Different registries have different tag conventions:
     - **GHCR (GitHub Container Registry)**: Check `https://github.com/orgs/{owner}/packages/container/{image}/versions`
     - **Docker Hub**: Check `https://hub.docker.com/r/{owner}/{image}/tags`
@@ -658,6 +671,10 @@ Use this checklist when creating a new app (though new apps are no longer accept
    - [ ] Only ONE service has `"isMain": true`
    - [ ] Volume `hostPath` uses `${APP_DATA_DIR}/data/{last-part}`
    - [ ] Reference form fields as `${ENV_VARIABLE_NAME}`
+   - [ ] **CRITICAL: Configure `dependsOn` with `service_healthy` conditions (NEVER use arrays!)**
+     - Each service with dependencies must use object format with conditions
+     - Example: `"dependsOn": { "postgres": { "condition": "service_healthy" } }`
+     - Without conditions, services fail with "connection refused" or "host not found" errors
 
 4. **metadata/**
    - [ ] logo.jpg (512x512, JPG format)

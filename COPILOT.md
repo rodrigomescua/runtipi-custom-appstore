@@ -535,48 +535,63 @@ Define servidores DNS customizados.
 #### `dependsOn` (array ou objeto)
 Define dependências entre serviços. Garante que o serviço é iniciado após suas dependências.
 
-**Formato array simples (espera apenas que os serviços iniciem):**
+**⚠️ IMPORTANTE: SEMPRE use o formato OBJETO com CONDIÇÕES, nunca arrays simples!**
+
+O formato array simples não garante que a dependência está pronta, apenas que iniciou. Isso causa problemas de conectividade onde serviços tentam se conectar antes da dependência estar totalmente operacional.
+
+**Formato INCORRETO (evitar):**
 ```json
-"dependsOn": ["database", "redis"]
+"dependsOn": ["database", "redis"]  // ❌ NÃO USE ISSO
 ```
 
-**Formato objeto com condições:**
+**Formato CORRETO (usar SEMPRE):**
 ```json
 "dependsOn": {
   "database": {
     "condition": "service_healthy"
   },
   "redis": {
-    "condition": "service_started"
+    "condition": "service_healthy"
   }
 }
 ```
 
 **Condições disponíveis:**
-- `"service_healthy"`: Aguarda até que o healthCheck seja bem-sucedido
-- `"service_started"`: Aguarda apenas que o container inicie
+- `"service_healthy"`: **PREFERIDO** - Aguarda até que o healthCheck seja bem-sucedido (garante que o serviço está operacional)
+- `"service_started"`: Aguarda apenas que o container inicie (NÃO recomendado para dependências críticas)
 - `"service_completed_successfully"`: Aguarda que o container termine com sucesso
 
 **Exemplos:**
+
+❌ **ERRADO - usando array:**
 ```json
-// App web depende de banco de dados
 {
   "name": "app",
   "image": "myapp:1.0",
-  "dependsOn": ["postgres"]
+  "dependsOn": ["postgres", "redis"]
 }
+```
 
-// Com condições
+✅ **CORRETO - com condições service_healthy:**
+```json
 {
   "name": "app",
   "image": "myapp:1.0",
   "dependsOn": {
     "postgres": {
       "condition": "service_healthy"
+    },
+    "redis": {
+      "condition": "service_healthy"
     }
   }
 }
 ```
+
+**Regra Geral:**
+- Se o serviço dependente define `healthCheck`, a dependência **DEVE usar `service_healthy`**
+- Se não houver healthCheck, use `service_started` como último recurso
+- Sem condições adequadas, você pode ter erros de "connection refused" ou "host not found"
 
 #### `command` (string ou array)
 Sobrescreve o comando padrão executado no container.
@@ -1203,9 +1218,10 @@ Siga estes passos para garantir que seu app atenda a todos os requisitos:
 - [ ] Configure `internalPort` corretamente (é a porta interna do container, não a porta pública)
 - [ ] Defina `isMain: true` apenas no serviço principal
 - [ ] Configure `environment` com todas as variáveis necessárias
-- [ ] Adicione `healthCheck` se apropriado
+- [ ] Adicione `healthCheck` se apropriado (strongly recommended for services with dependencies)
 - [ ] Configure `volumes` para persistência de dados
-- [ ] Se houver múltiplos serviços, configure `dependsOn` corretamente
+- [ ] Se houver múltiplos serviços, configure `dependsOn` **SEMPRE com condições `service_healthy`** (NUNCA use arrays simples!)
+- [ ] Verifique que cada serviço que depende de outro aguarda até que a dependência esteja `service_healthy`
 
 ### 5. Arquivo `metadata/description.md`
 - [ ] Escreva uma descrição clara e completa em Markdown
