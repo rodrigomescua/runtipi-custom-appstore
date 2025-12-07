@@ -78,10 +78,14 @@
           "value": "true"
         }
       ],
-      "dependsOn": [
-        "postgres",
-        "redis"
-      ],
+      "dependsOn": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
       "healthCheck": {
         "test": "curl -f http://localhost:8000/api/health || exit 1",
         "interval": "10s",
@@ -108,11 +112,17 @@
           "value": "${SECRET_KEY}"
         }
       ],
-      "dependsOn": [
-        "postgres",
-        "redis",
-        "backend"
-      ],
+      "dependsOn": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        },
+        "backend": {
+          "condition": "service_healthy"
+        }
+      },
       "command": "uv run --no-sync arq glean_worker.main.WorkerSettings"
     },
     {
@@ -120,9 +130,11 @@
       "image": "ghcr.io/leslieleung/glean-web:0.1.4",
       "isMain": true,
       "internalPort": 80,
-      "dependsOn": [
-        "backend"
-      ]
+      "dependsOn": {
+        "backend": {
+          "condition": "service_healthy"
+        }
+      }
     }
   ]
 }
