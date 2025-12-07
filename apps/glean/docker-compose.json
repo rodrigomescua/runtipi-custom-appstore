@@ -114,6 +114,15 @@
         "glean_backend"
       ],
       "command": "uv run --no-sync arq glean_worker.main.WorkerSettings"
+    },
+    {
+      "name": "glean_web",
+      "image": "ghcr.io/leslieleung/glean-web:0.1.4",
+      "isMain": true,
+      "internalPort": 80,
+      "dependsOn": [
+        "glean_backend"
+      ]
     }
   ]
 }
