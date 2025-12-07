@@ -24,7 +24,13 @@
           "hostPath": "${APP_DATA_DIR}/data/postgres",
           "containerPath": "/var/lib/postgresql/data"
         }
-      ]
+      ],
+      "healthCheck": {
+        "test": "pg_isready -U glean",
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 5
+      }
     },
     {
       "name": "glean_redis",
@@ -35,7 +41,13 @@
           "hostPath": "${APP_DATA_DIR}/data/redis",
           "containerPath": "/data"
         }
-      ]
+      ],
+      "healthCheck": {
+        "test": "redis-cli ping",
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 5
+      }
     }
   ]
 }
