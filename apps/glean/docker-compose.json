@@ -51,7 +51,7 @@
     },
     {
       "name": "glean_backend",
-      "image": "ghcr.io/leslieleung/glean-backend:v0.1.4",
+      "image": "ghcr.io/leslieleung/glean-backend:0.1.4",
       "environment": [
         {
           "key": "DATABASE_URL",
@@ -92,7 +92,7 @@
     },
     {
       "name": "glean_worker",
-      "image": "ghcr.io/leslieleung/glean-backend:v0.1.4",
+      "image": "ghcr.io/leslieleung/glean-backend:0.1.4",
       "environment": [
         {
           "key": "DATABASE_URL",
@@ -116,7 +116,7 @@
     },
     {
       "name": "glean_web",
-      "image": "ghcr.io/leslieleung/glean-web:v0.1.4",
+      "image": "ghcr.io/leslieleung/glean-web:0.1.4",
       "isMain": true,
       "internalPort": 80,
       "dependsOn": [
