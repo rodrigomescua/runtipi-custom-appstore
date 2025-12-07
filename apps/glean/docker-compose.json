@@ -24,13 +24,7 @@
           "hostPath": "${APP_DATA_DIR}/data/postgres",
           "containerPath": "/var/lib/postgresql/data"
         }
-      ],
-      "healthCheck": {
-        "test": "pg_isready -U glean",
-        "interval": "10s",
-        "timeout": "5s",
-        "retries": 5
-      }
+      ]
     },
     {
       "name": "glean_redis",
@@ -41,13 +35,7 @@
           "hostPath": "${APP_DATA_DIR}/data/redis",
           "containerPath": "/data"
         }
-      ],
-      "healthCheck": {
-        "test": "redis-cli ping",
-        "interval": "10s",
-        "timeout": "5s",
-        "retries": 5
-      }
+      ]
     },
     {
       "name": "glean_backend",
@@ -82,13 +70,6 @@
         "glean_postgres",
         "glean_redis"
       ],
-      "healthCheck": {
-        "test": "curl -f http://localhost:8000/api/health || exit 1",
-        "interval": "10s",
-        "timeout": "5s",
-        "retries": 5,
-        "startPeriod": "30s"
-      },
       "command": "uv run --no-sync uvicorn glean_api.main:app --host 0.0.0.0 --port 8000"
     },
     {
