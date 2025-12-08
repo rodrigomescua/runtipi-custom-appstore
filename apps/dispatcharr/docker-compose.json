@@ -32,7 +32,7 @@
     },
     {
       "name": "dispatcharr_celery",
-      "image": "ghcr.io/dispatcharr/dispatcharr:0.13.0",
+      "image": "ghcr.io/dispatcharr/dispatcharr:0.13.1",
       "environment": [
         {
           "key": "POSTGRES_HOST",
@@ -62,7 +62,7 @@
     },
     {
       "name": "dispatcharr",
-      "image": "ghcr.io/dispatcharr/dispatcharr:0.13.0",
+      "image": "ghcr.io/dispatcharr/dispatcharr:0.13.1",
       "isMain": true,
       "internalPort": 9191,
       "environment": [

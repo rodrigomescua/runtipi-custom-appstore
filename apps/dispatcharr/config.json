@@ -6,15 +6,21 @@
   "short_desc": "Ultimate IPTV & Stream Management Companion",
   "author": "Dispatcharr",
   "port": 8843,
-  "categories": ["featured", "automation"],
+  "categories": [
+    "featured",
+    "automation"
+  ],
   "description": "Dispatcharr is your ultimate IPTV & stream management companion. It provides comprehensive tools for managing IPTV streams, EPG integration, VOD support, proxy streaming, authentication, and M3U/EPG endpoint management with caching and validation.",
-  "tipi_version": 1,
-  "version": "0.13.0",
+  "tipi_version": 2,
+  "version": "0.13.1",
   "source": "https://github.com/Dispatcharr/Dispatcharr",
   "exposable": true,
   "dynamic_config": true,
-  "supported_architectures": ["amd64", "arm64"],
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
   "created_at": 1733356200000,
-  "updated_at": 1733356200000,
+  "updated_at": 1765048733549,
   "form_fields": []
 }
