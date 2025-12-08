@@ -23,9 +23,9 @@ If you want to see new apps on Tipi you can either:
 - [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
 - Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
 
-## Apps available (19)
+## Apps available (20)
 
-| Name                                                                         | Description                                                                        | Port | Dynamic (19) |
+| Name                                                                         | Description                                                                        | Port | Dynamic (20) |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---- | ------------ |
 | [Blinko](https://github.com/blinko-space/blinko)                             | Note taking, to-do and moodboard application                                       | 8831 | yes          |
 | [Byparr](https://github.com/ThePhaseless/Byparr)                             | Bypass Cloudflare and DDoS-GuARD.                                                  | 8191 | yes          |
@@ -33,6 +33,7 @@ If you want to see new apps on Tipi you can either:
 | [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr)                    | Ultimate IPTV & Stream Management Companion                                        | 8843 | yes          |
 | [Faved](https://github.com/denho/faved)                                      | Self-hosted bookmark manager with tagging                                          | 8842 | yes          |
 | [GeoPulse](https://github.com/tess1o/geopulse)                               | Self-hosted location tracking and analysis platform                                | 8844 | yes          |
+| [Glean](https://github.com/LeslieLeung/glean)                                | Self-hosted RSS reader and personal knowledge management                           | 8845 | yes          |
 | [KitchenOwl](https://github.com/tombursch/kitchenowl)                        | KitchenOwl                                                                         | 8828 | yes          |
 | [Linkding](https://github.com/sissbruecker/linkding)                         | Self-hosted bookmark manager                                                       | 8830 | yes          |
 | [MediaManager](https://github.com/maxdorninger/MediaManager)                 | Media Manager                                                                      | 8838 | yes          |
