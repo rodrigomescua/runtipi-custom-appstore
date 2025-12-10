@@ -27,6 +27,14 @@
         {
           "key": "TZ",
           "value": "${TZ}"
+        },
+        {
+          "key": "PUID",
+          "value": "1000"
+        },
+        {
+          "key": "PGID",
+          "value": "1000"
         }
       ],
       "volumes": [
