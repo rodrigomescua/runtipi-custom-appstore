@@ -3,92 +3,22 @@
   "schemaVersion": 2,
   "services": [
     {
-      "name": "dispatcharr_db",
-      "image": "postgres:14",
-      "environment": [
-        {
-          "key": "POSTGRES_DB",
-          "value": "dispatcharr"
-        },
-        {
-          "key": "POSTGRES_USER",
-          "value": "dispatch"
-        },
-        {
-          "key": "POSTGRES_PASSWORD",
-          "value": "secret"
-        }
-      ],
-      "volumes": [
-        {
-          "hostPath": "${APP_DATA_DIR}/data/postgres_data",
-          "containerPath": "/var/lib/postgresql/data"
-        }
-      ]
-    },
-    {
-      "name": "dispatcharr_redis",
-      "image": "redis:7-alpine"
-    },
-    {
-      "name": "dispatcharr_celery",
-      "image": "ghcr.io/dispatcharr/dispatcharr:0.13.1",
-      "environment": [
-        {
-          "key": "POSTGRES_HOST",
-          "value": "dispatcharr_db"
-        },
-        {
-          "key": "POSTGRES_DB",
-          "value": "dispatcharr"
-        },
-        {
-          "key": "POSTGRES_USER",
-          "value": "dispatch"
-        },
-        {
-          "key": "POSTGRES_PASSWORD",
-          "value": "secret"
-        },
-        {
-          "key": "REDIS_HOST",
-          "value": "dispatcharr_redis"
-        },
-        {
-          "key": "CELERY_BROKER_URL",
-          "value": "redis://dispatcharr_redis:6379/0"
-        }
-      ]
-    },
-    {
       "name": "dispatcharr",
-      "image": "ghcr.io/dispatcharr/dispatcharr:0.13.1",
+      "image": "ghcr.io/dispatcharr/dispatcharr:0.14.0",
       "isMain": true,
       "internalPort": 9191,
       "environment": [
         {
-          "key": "POSTGRES_HOST",
-          "value": "dispatcharr_db"
-        },
-        {
-          "key": "POSTGRES_DB",
-          "value": "dispatcharr"
-        },
-        {
-          "key": "POSTGRES_USER",
-          "value": "dispatch"
-        },
-        {
-          "key": "POSTGRES_PASSWORD",
-          "value": "secret"
+          "key": "DISPATCHARR_ENV",
+          "value": "aio"
         },
         {
           "key": "REDIS_HOST",
-          "value": "dispatcharr_redis"
+          "value": "localhost"
         },
         {
           "key": "CELERY_BROKER_URL",
-          "value": "redis://dispatcharr_redis:6379/0"
+          "value": "redis://localhost:6379/0"
         },
         {
           "key": "DISPATCHARR_LOG_LEVEL",
