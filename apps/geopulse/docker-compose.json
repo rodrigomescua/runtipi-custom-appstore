@@ -137,7 +137,7 @@
     },
     {
       "name": "geopulse",
-      "image": "tess1o/geopulse-ui:1.8.1",
+      "image": "tess1o/geopulse-ui:1.9.0",
       "isMain": true,
       "internalPort": 80,
       "environment": [
