@@ -50,7 +50,7 @@
     },
     {
       "name": "geopulse_backend",
-      "image": "tess1o/geopulse-backend:1.9.0-native",
+      "image": "tess1o/geopulse-backend:1.9.1-native",
       "environment": [
         {
           "key": "GEOPULSE_VERSION",
