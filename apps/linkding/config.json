@@ -10,8 +10,8 @@
     "utilities"
   ],
   "description": "Linkding is a self-hosted bookmark manager that helps you save, organize and share your bookmarks. It features a clean and simple UI, browser extensions for quick bookmarking, full-text search, and tagging capabilities.",
-  "tipi_version": 1,
-  "version": "1.44.1",
+  "tipi_version": 2,
+  "version": "1.44.2",
   "source": "https://github.com/sissbruecker/linkding",
   "exposable": true,
   "dynamic_config": true,
@@ -20,7 +20,7 @@
     "arm64"
   ],
   "created_at": 1732627200000,
-  "updated_at": 1732627200000,
+  "updated_at": 1765640820963,
   "form_fields": [
     {
       "type": "text",
