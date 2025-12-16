@@ -98,12 +98,80 @@
           "value": "INFO"
         },
         {
+          "key": "EMBEDDING_PROVIDER",
+          "value": "sentence-transformers"
+        },
+        {
+          "key": "EMBEDDING_MODEL",
+          "value": "all-MiniLM-L6-v2"
+        },
+        {
+          "key": "EMBEDDING_DIMENSION",
+          "value": "384"
+        },
+        {
+          "key": "EMBEDDING_BATCH_SIZE",
+          "value": "20"
+        },
+        {
+          "key": "EMBEDDING_MAX_RETRIES",
+          "value": "3"
+        },
+        {
+          "key": "EMBEDDING_TIMEOUT",
+          "value": "30"
+        },
+        {
           "key": "MILVUS_HOST",
-          "value": "localhost"
+          "value": "milvus"
         },
         {
           "key": "MILVUS_PORT",
           "value": "19530"
+        },
+        {
+          "key": "MILVUS_ENTRIES_COLLECTION",
+          "value": "entries"
+        },
+        {
+          "key": "MILVUS_PREFS_COLLECTION",
+          "value": "user_preferences"
+        },
+        {
+          "key": "PREFERENCE_DEFAULT_SCORE",
+          "value": "50.0"
+        },
+        {
+          "key": "PREFERENCE_CONFIDENCE_THRESHOLD",
+          "value": "10"
+        },
+        {
+          "key": "PREFERENCE_LIKE_WEIGHT",
+          "value": "1.0"
+        },
+        {
+          "key": "PREFERENCE_BOOKMARK_WEIGHT",
+          "value": "0.7"
+        },
+        {
+          "key": "PREFERENCE_SOURCE_BOOST_MAX",
+          "value": "5.0"
+        },
+        {
+          "key": "PREFERENCE_AUTHOR_BOOST_MAX",
+          "value": "3.0"
+        },
+        {
+          "key": "SCORE_RECOMMEND_THRESHOLD",
+          "value": "70.0"
+        },
+        {
+          "key": "SCORE_LOW_INTEREST_THRESHOLD",
+          "value": "40.0"
+        },
+        {
+          "key": "SCORE_CACHE_TTL",
+          "value": "3600"
         }
       ],
       "volumes": [
