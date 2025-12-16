@@ -522,10 +522,11 @@ This script automatically:
 - Always verify the new version exists on Docker Hub or GitHub Releases before updating
 
 ### Package Management
-- Package manager: **bun** (not npm/pnpm)
+- Package manager: **bun** (not npm/pnpm) - this overrides the README.md which mentions pnpm
 - Lock file: `bun.lockb`
 - Main dependencies: `@runtipi/common`, `zod`, `zod-validation-error`
 - TypeScript configuration: `tsconfig.json` (strict mode enabled)
+- Commands: `bun test` (run validation), `bun scripts/update-config.ts` (update versions)
 
 ### File Structure Rules
 **DO NOT INCLUDE:**
@@ -683,6 +684,14 @@ Use this checklist when creating a new app (though new apps are no longer accept
 5. **Validation**
    - [ ] Run `bun test` - all tests must pass
    - [ ] Check no validation errors from schema
+
+## Existing Codebase Issues (as of Dec 2025)
+
+**KNOWN VIOLATION - Needs Fixing:**
+- **`apps/razor-pricehistory/`** - Contains BOTH `docker-compose.json` AND `docker-compose.yml`
+  - This violates rule #1 in "Common Mistakes to Avoid"
+  - Solution: Delete the `.yml` file, keep only `.json`
+  - This will likely cause test failures until resolved
 
 ## Language Context
 
