@@ -497,29 +497,35 @@ If tests fail, check for:
 ### Updating App Versions
 Use the version update script:
 ```bash
-bun scripts/update-config.ts <path-to-config.json> <new-version> <package-name>
+bun scripts/update-config.ts <path-to-docker-compose.json>
 ```
 
-**Parameters:**
-- `<path-to-config.json>`: Full path to the config.json file
-- `<new-version>`: New version number (must match image tag)
-- `<package-name>`: Package name to match in image (e.g., "sissbruecker/linkding")
+**Parameter:**
+- `<path-to-docker-compose.json>`: Full path to the docker-compose.json file
 
 **Example:**
 ```bash
-bun scripts/update-config.ts apps/linkding/config.json 1.45.0 sissbruecker/linkding
+bun scripts/update-config.ts apps/linkding/docker-compose.json
 ```
 
 This script automatically:
-- Updates `version` in config.json to match docker-compose.json
+- Detects the main service (marked with `isMain: true`)
+- Extracts the image version from the main service
+- Updates `version` in config.json to match
 - Increments `tipi_version` by 1
 - Updates `updated_at` timestamp to current milliseconds
-- Handles both JSON and YAML compose files (detects presence of `isMain` field)
+- Works with both JSON and YAML compose files
+
+**How Renovate Integration Works:**
+- Renovate detects all Docker image updates in a single `docker-compose.json` file
+- Instead of creating multiple PRs, it creates **one grouped PR** with all updates
+- Uses `executionMode: "branch"` to collect all changes before running the script
+- Script runs **once per app file** after all image updates are staged
+- This prevents `tipi_version` conflicts when multiple images in the same file are updated
 
 **Important notes:**
-- Script extracts app name from file path dirname
-- Must match the package name in the docker image
-- Always verify the new version exists on Docker Hub or GitHub Releases before updating
+- Script only reads from `docker-compose.json`, doesn't need parameters for individual images
+- Always verify the new versions exist on Docker Hub or GitHub Releases before merging
 
 ### Package Management
 - Package manager: **bun** (not npm/pnpm) - this overrides the README.md which mentions pnpm
@@ -527,6 +533,31 @@ This script automatically:
 - Main dependencies: `@runtipi/common`, `zod`, `zod-validation-error`
 - TypeScript configuration: `tsconfig.json` (strict mode enabled)
 - Commands: `bun test` (run validation), `bun scripts/update-config.ts` (update versions)
+
+### Renovate Automation & Grouped PRs
+Renovate automatically detects Docker image updates in all `apps/*/docker-compose.json` files:
+
+**Key Design:**
+- Multiple image updates in the same file are **grouped into one PR**
+- Renovate creates the branch, stages all image updates, then runs `update-config.ts` once
+- This prevents `tipi_version` conflicts when multiple services are updated together
+- Example: If redis, postgres, and dawarich all have updates available:
+  - **Before:** 3 separate PRs, 3 separate script executions, possible `tipi_version` inconsistency
+  - **After:** 1 PR with all 3 images updated, 1 script execution, consistent metadata
+
+**Excluded Packages:**
+The following database/cache images are never auto-updated (managed manually):
+- `redis`, `postgres`, `postgis/postgis`, `mariadb`, `mysql`, `mongodb`, `rabbitmq`
+
+**Workflow:**
+1. Renovate detects updates via regex: `/^apps\/.+\/docker-compose\.json$/`
+2. Groups updates by app/file using `executionMode: "branch"`
+3. Stages all image changes in docker-compose.json
+4. Runs: `bun install && bun run test`
+5. Runs: `bun ./scripts/update-config.ts apps/{app}/docker-compose.json`
+6. Script extracts main service version and updates config.json
+7. Creates single PR with all changes
+8. Manual review required (`automerge: false`)
 
 ### File Structure Rules
 **DO NOT INCLUDE:**

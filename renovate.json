@@ -51,12 +51,12 @@
   ],
   "postUpgradeTasks": {
     "commands": [
-      "bun ./scripts/update-config.ts {{packageFile}} {{newVersion}} {{depName}}",
+      "bun ./scripts/update-config.ts {{packageFile}}",
       "bun install && bun run test"
     ],
     "fileFilters": [
       "**/*"
     ],
-    "executionMode": "update"
+    "executionMode": "branch"
   }
 }
