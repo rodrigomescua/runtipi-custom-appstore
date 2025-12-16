@@ -51,7 +51,7 @@
     },
     {
       "name": "backend",
-      "image": "ghcr.io/leslieleung/glean-backend:0.1.4",
+      "image": "ghcr.io/leslieleung/glean-backend:0.2.1",
       "environment": [
         {
           "key": "DATABASE_URL",
@@ -97,7 +97,7 @@
     },
     {
       "name": "worker",
-      "image": "ghcr.io/leslieleung/glean-backend:0.1.4",
+      "image": "ghcr.io/leslieleung/glean-backend:0.2.1",
       "environment": [
         {
           "key": "DATABASE_URL",
