@@ -455,6 +455,22 @@ photography, books, data, music, finance, gaming, ai
 - `dynamic_config`: Must be `true` for all apps in this repository
 - `generate_vapid_keys`: If true, generates VAPID keys for web push notifications
 
+## Automatic App Creation Workflow
+
+**IMPORTANT:** When creating new apps, ALWAYS:
+1. **Fetch and analyze the GitHub repository** to extract accurate information about the app
+2. **Verify Docker image tags from the actual registry** (GHCR, Docker Hub, or the project's documentation) - never assume or guess
+3. **Generate all configuration automatically** following all guidelines in this document
+4. **Never create apps without analyzing the source repository first** - this ensures accuracy
+5. **Always validate with `bun test`** before completion and mark task as complete
+
+**Why this matters:**
+- Ensures `version` in config.json matches the Docker image tag exactly
+- Catches port conflicts early
+- Extracts accurate metadata, descriptions, and app structure
+- Prevents manual errors in form fields and environment variables
+- Validates configurations match schema requirements
+
 ## Development Workflow
 
 ### Testing Apps
