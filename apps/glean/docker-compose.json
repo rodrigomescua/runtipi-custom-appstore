@@ -270,7 +270,7 @@
     },
     {
       "name": "milvus-etcd",
-      "image": "quay.io/coreos/etcd:v3.5.5",
+      "image": "quay.io/coreos/etcd:v3.6.6",
       "environment": [
         {
           "key": "ETCD_AUTO_COMPACTION_MODE",
