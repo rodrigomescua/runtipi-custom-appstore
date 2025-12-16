@@ -332,7 +332,7 @@
     },
     {
       "name": "milvus",
-      "image": "milvusdb/milvus:v2.6.6",
+      "image": "milvusdb/milvus:v2.6.7",
       "environment": [
         {
           "key": "ETCD_ENDPOINTS",
