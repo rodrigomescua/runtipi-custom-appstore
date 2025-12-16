@@ -34,7 +34,7 @@
     },
     {
       "name": "redis",
-      "image": "redis:7-alpine",
+      "image": "redis:8-alpine",
       "command": "redis-server --appendonly yes",
       "volumes": [
         {
@@ -71,11 +71,37 @@
         },
         {
           "key": "DEBUG",
-          "value": "false"
+          "value": "${DEBUG}"
         },
         {
           "key": "RUN_MIGRATIONS",
           "value": "true"
+        },
+        {
+          "key": "CREATE_ADMIN",
+          "value": "${CREATE_ADMIN}"
+        },
+        {
+          "key": "ADMIN_USERNAME",
+          "value": "${ADMIN_USERNAME}"
+        },
+        {
+          "key": "ADMIN_PASSWORD",
+          "value": "${ADMIN_PASSWORD}"
+        },
+        {
+          "key": "ADMIN_ROLE",
+          "value": "super_admin"
+        },
+        {
+          "key": "LOG_LEVEL",
+          "value": "INFO"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/logs",
+          "containerPath": "/app/logs"
         }
       ],
       "dependsOn": {
@@ -110,6 +136,16 @@
         {
           "key": "SECRET_KEY",
           "value": "${SECRET_KEY}"
+        },
+        {
+          "key": "LOG_LEVEL",
+          "value": "INFO"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/logs",
+          "containerPath": "/app/logs"
         }
       ],
       "dependsOn": {
@@ -134,6 +170,125 @@
         "backend": {
           "condition": "service_healthy"
         }
+      }
+    },
+    {
+      "name": "admin",
+      "image": "ghcr.io/leslieleung/glean-admin:0.2.1",
+      "internalPort": 80,
+      "environment": [
+        {
+          "key": "VITE_API_BASE_URL",
+          "value": "http://localhost:8000"
+        }
+      ],
+      "dependsOn": {
+        "backend": {
+          "condition": "service_healthy"
+        }
+      },
+      "addPorts": [
+        {
+          "containerPort": 80,
+          "hostPort": 8847
+        }
+      ]
+    },
+    {
+      "name": "milvus-etcd",
+      "image": "quay.io/coreos/etcd:v3.5.5",
+      "environment": [
+        {
+          "key": "ETCD_AUTO_COMPACTION_MODE",
+          "value": "revision"
+        },
+        {
+          "key": "ETCD_AUTO_COMPACTION_RETENTION",
+          "value": "1000"
+        },
+        {
+          "key": "ETCD_QUOTA_BACKEND_BYTES",
+          "value": "4294967296"
+        },
+        {
+          "key": "ETCD_SNAPSHOT_COUNT",
+          "value": "50000"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/milvus_etcd",
+          "containerPath": "/etcd"
+        }
+      ],
+      "command": "etcd -advertise-client-urls=http://milvus-etcd:2379 -listen-client-urls http://0.0.0.0:2379 --data-dir /etcd",
+      "healthCheck": {
+        "test": "etcdctl endpoint health",
+        "interval": "30s",
+        "timeout": "20s",
+        "retries": 3
+      }
+    },
+    {
+      "name": "milvus-minio",
+      "image": "minio/minio:RELEASE.2023-03-20T20-16-18Z",
+      "environment": [
+        {
+          "key": "MINIO_ACCESS_KEY",
+          "value": "minioadmin"
+        },
+        {
+          "key": "MINIO_SECRET_KEY",
+          "value": "minioadmin"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/milvus_minio",
+          "containerPath": "/minio_data"
+        }
+      ],
+      "command": "minio server /minio_data",
+      "healthCheck": {
+        "test": "curl -f http://localhost:9000/minio/health/live || exit 1",
+        "interval": "30s",
+        "timeout": "20s",
+        "retries": 3
+      }
+    },
+    {
+      "name": "milvus",
+      "image": "milvusdb/milvus:v2.6.6",
+      "environment": [
+        {
+          "key": "ETCD_ENDPOINTS",
+          "value": "milvus-etcd:2379"
+        },
+        {
+          "key": "MINIO_ADDRESS",
+          "value": "milvus-minio:9000"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/milvus",
+          "containerPath": "/var/lib/milvus"
+        }
+      ],
+      "command": "milvus run standalone",
+      "dependsOn": {
+        "milvus-etcd": {
+          "condition": "service_healthy"
+        },
+        "milvus-minio": {
+          "condition": "service_healthy"
+        }
+      },
+      "healthCheck": {
+        "test": "curl -f http://localhost:9091/healthz || exit 1",
+        "interval": "30s",
+        "timeout": "20s",
+        "retries": 3
       }
     }
   ]
