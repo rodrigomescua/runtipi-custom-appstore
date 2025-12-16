@@ -127,7 +127,7 @@
     },
     {
       "name": "web",
-      "image": "ghcr.io/leslieleung/glean-web:0.2.0",
+      "image": "ghcr.io/leslieleung/glean-web:0.2.1",
       "isMain": true,
       "internalPort": 80,
       "dependsOn": {
