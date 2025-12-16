@@ -96,6 +96,14 @@
         {
           "key": "LOG_LEVEL",
           "value": "INFO"
+        },
+        {
+          "key": "MILVUS_HOST",
+          "value": "localhost"
+        },
+        {
+          "key": "MILVUS_PORT",
+          "value": "19530"
         }
       ],
       "volumes": [
