@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "8mb.local",
+  "id": "8mblocal",
+  "available": true,
+  "short_desc": "Self-hosted GPU video compressor",
+  "author": "JMS1717",
+  "port": 8846,
+  "categories": ["media"],
+  "description": "8mb.local is a self-hosted, fire-and-forget video compressor. Drop a file, choose a target size (8MB, 25MB, 50MB, 100MB), and let GPU-accelerated encoding produce compact outputs with AV1/HEVC/H.264. Supports NVIDIA NVENC, Intel/AMD VAAPI (Linux), and CPU fallback. Features drag-and-drop UI, real-time progress tracking, multi-vendor GPU support, and automatic file size optimization.",
+  "tipi_version": 1,
+  "version": "v133",
+  "source": "https://github.com/JMS1717/8mb.local",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64"],
+  "created_at": 1734374400000,
+  "updated_at": 1734374400000,
+  "form_fields": [
+    {
+      "type": "boolean",
+      "label": "Enable Authentication",
+      "required": false,
+      "env_variable": "AUTH_ENABLED",
+      "default": "false"
+    },
+    {
+      "type": "text",
+      "label": "Admin Username (if auth enabled)",
+      "required": false,
+      "env_variable": "AUTH_USER",
+      "default": "admin",
+      "min": 1,
+      "max": 50
+    },
+    {
+      "type": "password",
+      "label": "Admin Password (if auth enabled)",
+      "required": false,
+      "env_variable": "AUTH_PASS",
+      "default": "changeme",
+      "min": 8
+    },
+    {
+      "type": "number",
+      "label": "File Retention Hours",
+      "required": false,
+      "env_variable": "FILE_RETENTION_HOURS",
+      "default": "24"
+    },
+    {
+      "type": "number",
+      "label": "Worker Concurrency (1-20)",
+      "required": false,
+      "env_variable": "WORKER_CONCURRENCY",
+      "default": "4"
+    }
+  ]
+}

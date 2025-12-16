@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
+  "services": [
+    {
+      "name": "8mblocal",
+      "image": "jms1717/8mblocal:v133",
+      "isMain": true,
+      "internalPort": 8001,
+      "environment": [
+        {
+          "key": "AUTH_ENABLED",
+          "value": "${AUTH_ENABLED}"
+        },
+        {
+          "key": "AUTH_USER",
+          "value": "${AUTH_USER}"
+        },
+        {
+          "key": "AUTH_PASS",
+          "value": "${AUTH_PASS}"
+        },
+        {
+          "key": "FILE_RETENTION_HOURS",
+          "value": "${FILE_RETENTION_HOURS}"
+        },
+        {
+          "key": "WORKER_CONCURRENCY",
+          "value": "${WORKER_CONCURRENCY}"
+        },
+        {
+          "key": "BACKEND_HOST",
+          "value": "0.0.0.0"
+        },
+        {
+          "key": "BACKEND_PORT",
+          "value": "8001"
+        },
+        {
+          "key": "REDIS_URL",
+          "value": "redis://127.0.0.1:6379/0"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/uploads",
+          "containerPath": "/app/uploads"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/outputs",
+          "containerPath": "/app/outputs"
+        }
+      ],
+      "devices": [
+        "/dev/dri:/dev/dri"
+      ]
+    }
+  ]
+}

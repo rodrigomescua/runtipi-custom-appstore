@@ -932,6 +932,88 @@ Remove Linux capabilities do container.
 "capDrop": ["NET_RAW", "SYS_ADMIN"]
 ```
 
+#### `devices` (array de strings)
+Mapeamento de dispositivos do host para o container. Use para expor dispositivos de hardware como GPUs, placas de som, etc.
+
+**Formato:**
+```json
+"devices": [
+  "hostPath:containerPath",
+  "hostPath:containerPath:permissions"
+]
+```
+
+**Campos:**
+- `hostPath`: Caminho do dispositivo no host (ex: `/dev/dri`)
+- `containerPath`: Caminho onde o dispositivo aparecerá no container (ex: `/dev/dri`)
+- `permissions` (opcional): Permissões como `r`, `w`, `m`. Padrão: `rwm` (read, write, mknod)
+
+**Exemplos comuns:**
+
+```json
+// Acesso a dispositivos de GPU Intel/AMD (VAAPI)
+// Necessário para compressão de vídeo, renderização, etc.
+"devices": [
+  "/dev/dri:/dev/dri"
+]
+
+// Acesso a dispositivo de som
+"devices": [
+  "/dev/snd:/dev/snd"
+]
+
+// Acesso a USB (ex: scanner, impressora)
+"devices": [
+  "/dev/bus/usb:/dev/bus/usb"
+]
+
+// Múltiplos dispositivos
+"devices": [
+  "/dev/dri:/dev/dri",
+  "/dev/snd:/dev/snd"
+]
+
+// Com permissões restritas (read-only)
+"devices": [
+  "/dev/snd:/dev/snd:r"
+]
+```
+
+**⚠️ IMPORTANTE - GPU e Aceleração de Hardware:**
+
+Se o app suporta aceleração de GPU (compressão de vídeo, renderização, etc):
+1. **Intel/AMD GPUs (Linux):** Adicione `"/dev/dri:/dev/dri"` para suporte a VAAPI
+2. **NVIDIA GPUs:** Use as capacidades de GPU do Docker (deploy.resources), NÃO use devices
+3. **Validação em tempo de execução:** Aplicações bem-projetadas detêm automaticamente a disponibilidade do encoder e caem de volta para CPU se não houver GPU
+
+**Exemplo completo - App com suporte a GPU (8mb.local):**
+```json
+{
+  "name": "8mblocal",
+  "image": "jms1717/8mblocal:v133",
+  "isMain": true,
+  "internalPort": 8001,
+  "devices": [
+    "/dev/dri:/dev/dri"  // Acesso a GPUs Intel/AMD via VAAPI
+  ],
+  "volumes": [
+    {
+      "hostPath": "${APP_DATA_DIR}/data/uploads",
+      "containerPath": "/app/uploads"
+    },
+    {
+      "hostPath": "${APP_DATA_DIR}/data/outputs",
+      "containerPath": "/app/outputs"
+    }
+  ]
+}
+```
+
+**Regra geral:**
+- Use apenas se o app necessita de dispositivos específicos
+- Sempre documente no description.md quais dispositivos são usados e por quê
+- Teste em sistema sem o dispositivo para garantir fallback gracioso
+
 #### `securityOpt` (array de strings)
 Opções de segurança customizadas.
 
