@@ -4,7 +4,7 @@
   "services": [
     {
       "name": "imagemagick-postgres",
-      "image": "postgres:17-alpine",
+      "image": "postgres:16-alpine",
       "environment": [
         {
           "key": "POSTGRES_USER",
@@ -34,7 +34,7 @@
     },
     {
       "name": "imagemagick-redis",
-      "image": "redis:7.4-alpine",
+      "image": "redis:7-alpine",
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/redis",

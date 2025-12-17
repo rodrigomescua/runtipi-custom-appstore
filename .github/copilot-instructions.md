@@ -1,5 +1,7 @@
 # Copilot Instructions for Runtipi Custom App Store
 
+This is the definitive, consolidated guide for all development on this repository. All requirements from COPILOT.md have been merged here.
+
 ## Project Overview
 
 This is a custom app store for [Runtipi](https://github.com/runtipi/runtipi), a self-hosted app platform. Each app in the `apps/` directory is a containerized application with standardized configuration and Docker Compose files.
@@ -693,7 +695,7 @@ Apps are discovered by reading the `apps/` directory:
 
 ## Practical Checklist for Creating New Apps
 
-Use this checklist when creating a new app (though new apps are no longer accepted, only bug fixes):
+Use this checklist when creating a new app:
 
 1. **Port Selection**
    - [ ] Pick unused port in 8800-8999 range
@@ -703,7 +705,7 @@ Use this checklist when creating a new app (though new apps are no longer accept
    - [ ] Add `$schema` URL
    - [ ] Set `id` = folder name
    - [ ] Set `port` to exposed port (8800-8999 range)
-   - [ ] Set `version` to match docker image tag
+   - [ ] Set `version` to match docker image tag exactly
    - [ ] Include all `form_fields` (or empty array `[]`)
    - [ ] Set `tipi_version: 1`
    - [ ] Set timestamps with `Date.now()` (milliseconds!)
@@ -714,7 +716,8 @@ Use this checklist when creating a new app (though new apps are no longer accept
    - [ ] Add `$schema` and `schemaVersion: 2`
    - [ ] Make `services` an array
    - [ ] Set `image` tag to exact version (no `latest`)
-   - [ ] Image tag MUST match config.json `version`
+   - [ ] **CRITICAL:** Image tag MUST match config.json `version` exactly, character-for-character
+   - [ ] Verify dependency versions match the official app's docker-compose.json (PostgreSQL, Redis, etc.)
    - [ ] Set `internalPort` for each service
    - [ ] Only ONE service has `"isMain": true`
    - [ ] Volume `hostPath` uses `${APP_DATA_DIR}/data/{last-part}`
@@ -740,6 +743,9 @@ Use this checklist when creating a new app (though new apps are no longer accept
   - Solution: Delete the `.yml` file, keep only `.json`
   - This will likely cause test failures until resolved
 
-## Language Context
+## Important Notes
 
-The existing guidance in `COPILOT.md` is in Portuguese. When working with existing documentation or referencing it, maintain that language context. However, for new documentation and code comments, use English.
+- This consolidated file replaces the separate COPILOT.md
+- All development guidelines are consolidated here for centralized reference
+- Maintain English for new documentation and code comments
+- Always validate configurations with `bun test` before committing
