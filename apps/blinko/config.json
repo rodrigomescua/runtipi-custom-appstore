@@ -6,17 +6,22 @@
   "exposable": true,
   "dynamic_config": true,
   "port": 8831,
-  "tipi_version": 11,
-  "version": "1.7.0",
-  "categories": ["utilities"],
+  "tipi_version": 12,
+  "version": "1.7.1",
+  "categories": [
+    "utilities"
+  ],
   "description": "Blinko is an innovative open-source project designed for individuals who want to quickly capture and organize their fleeting thoughts. Blinko allows users to seamlessly jot down ideas the moment they strike, ensuring that no spark of creativity is lost.",
   "short_desc": "Note taking, to-do and moodboard application",
   "author": "blinko-space",
   "source": "https://github.com/blinko-space/blinko",
   "website": "https://blinko.mintlify.app/introduction",
-  "supported_architectures": ["amd64", "arm64"],
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
   "created_at": 1737379503315,
-  "updated_at": 1764643373431,
+  "updated_at": 1765956114572,
   "form_fields": [
     {
       "type": "random",
