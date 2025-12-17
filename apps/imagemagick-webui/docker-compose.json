@@ -70,6 +70,14 @@
           "value": "8849"
         },
         {
+          "key": "FRONTEND_PORT",
+          "value": "${APP_PORT}"
+        },
+        {
+          "key": "BACKEND_PORT",
+          "value": "8849"
+        },
+        {
           "key": "DATABASE_URL",
           "value": "postgresql+asyncpg://imagemagick:imagemagick@imagemagick-postgres:5432/imagemagick"
         },
