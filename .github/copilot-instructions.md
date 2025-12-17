@@ -41,7 +41,9 @@ dawarich/
 
 ### Port Assignment (8800-8999 range)
 - New apps MUST use ports in the range 8800-8999
-- Never reuse existing app ports (check README.md table of 19 current apps)
+- Never reuse existing app ports - check both:
+  1. The `port` field in all `apps/*/config.json` files
+  2. The `hostPort` field in all `apps/*/docker-compose.json` files
 - The `port` field in `config.json` is the **exposed host port**, not the internal container port
 - Internal container port goes in `docker-compose.json` under `internalPort`
 
@@ -65,22 +67,36 @@ dawarich/
 
 **CRITICAL: Verifying Docker Image Tags**
 
-You MUST verify the exact tag format from the Docker registry, not assume or guess:
+You MUST verify the exact tag format from the registry WHERE THE APP'S OFFICIAL DOCUMENTATION USES IT, not assume or guess:
 
-1. **For GHCR (GitHub Container Registry) images:**
+**STEP 1: Identify the correct registry**
+- Check the app's official documentation (README.md, docker-compose.yaml, installation docs)
+- Look for the `docker pull` command or `image:` field to see which registry they use
+- Common registries: Docker Hub (`docker.io`), GHCR (`ghcr.io`), LinuxServer (`lscr.io`), Quay (`quay.io`)
+- Use the SAME registry the official documentation uses
+
+**STEP 2: Verify tags in the correct registry**
+
+1. **For GHCR (GitHub Container Registry) images (`ghcr.io`):**
    - Visit: `https://github.com/orgs/{owner}/packages/container/{image}/versions`
    - Example: `https://github.com/orgs/getmydia/packages/container/mydia/versions`
    - Click on the specific version tag to view the exact installation command
    - The command will show: `docker pull ghcr.io/{owner}/{image}:{EXACT_TAG}`
    - Copy the tag exactly as shown (e.g., `0.7.2` not `v0.7.2`, or vice versa)
 
-2. **For Docker Hub images:**
+2. **For Docker Hub images (`docker.io` or no prefix):**
    - Visit: `https://hub.docker.com/r/{owner}/{image}/tags`
    - Example: `https://hub.docker.com/r/sissbruecker/linkding/tags`
    - Verify the exact tag format from the tags list
    - If the web interface doesn't load, check the GitHub Actions workflow to see how tags are generated
 
-3. **For Docker Hub images with unclear tags (when web interface fails):**
+3. **For LinuxServer.io images (`lscr.io/linuxserver/*`):**
+   - Visit: `https://hub.docker.com/r/linuxserver/{image}/tags` OR
+   - Visit: `https://github.com/linuxserver/docker-{image}` and check README for latest tag
+   - LinuxServer tags often include build numbers: `16.1.0-ls324`
+   - Use the tag format shown in their official documentation
+
+4. **For Docker Hub images with unclear tags (when web interface fails):**
    - Check the GitHub Actions workflow file (usually `.github/workflows/docker-publish.yml`)
    - Look for Docker build/push configuration
    - **Key insight:** Some projects strip the 'v' prefix when publishing to Docker Hub
@@ -88,13 +104,14 @@ You MUST verify the exact tag format from the Docker registry, not assume or gue
    - Check for tag transformation logic like `${GITHUB_REF_NAME#v}` (removes 'v' prefix)
    - Also check the project's documentation for installation commands
 
-4. **Common tag format variations:**
+5. **Common tag format variations:**
    - Some projects use `v1.0.0` (with 'v' prefix)
    - Others use `1.0.0` (without 'v' prefix)
+   - LinuxServer uses `version-lsXXX` format (e.g., `16.1.0-ls324`)
    - Some use semantic versions like `20250928-055530` (timestamps)
-   - **ALWAYS verify the exact format in the registry** - don't assume
+   - **ALWAYS verify the exact format in the registry the app officially uses** - don't assume
 
-5. **After setting the tag:**
+6. **After setting the tag:**
    - `config.json` version: `"version": "{EXACT_TAG}"`
    - `docker-compose.json` image: `"image": "registry/owner/name:{EXACT_TAG}"`
    - Both MUST match exactly character-for-character
@@ -128,6 +145,13 @@ You MUST verify the exact tag format from the Docker registry, not assume or gue
 
 ### Form Fields Pattern
 The `form_fields` array defines user input during installation. Can be empty `[]` for apps with no user config.
+
+**CRITICAL RULE - Database Credentials:**
+- **NEVER ask for database credentials via form_fields**
+- Database usernames, passwords, and database names should be hardcoded in `docker-compose.json`
+- Use simple, default values related to the app name (e.g., app "piwigo" → user: "piwigo", password: "piwigo", db: "piwigo")
+- Example from Dawarich: `POSTGRES_USER: "postgres"`, `POSTGRES_PASSWORD: "password"`, `POSTGRES_DB: "dawarich_development"`
+- This applies to all database types: PostgreSQL, MariaDB, MySQL, MongoDB, etc.
 
 **Common field types and usage:**
 - `text`: General text input (usernames, URLs, paths)
