@@ -54,6 +54,12 @@
       "image": "ghcr.io/przemekskw/imagemagick-webui:1.0.9",
       "isMain": true,
       "internalPort": 3000,
+      "addPorts": [
+        {
+          "containerPort": 8000,
+          "hostPort": 8849
+        }
+      ],
       "environment": [
         {
           "key": "NODE_ENV",
@@ -61,7 +67,7 @@
         },
         {
           "key": "NEXT_PUBLIC_API_PORT",
-          "value": "${APP_PORT}"
+          "value": "8849"
         },
         {
           "key": "DATABASE_URL",
