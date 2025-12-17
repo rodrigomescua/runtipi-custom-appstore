@@ -56,11 +56,11 @@
       "environment": [
         {
           "key": "DATABASE_URL",
-          "value": "postgresql://imagemagick:imagemagick@imagemagick-postgres:5432/imagemagick"
+          "value": "postgresql+asyncpg://imagemagick:imagemagick@imagemagick-postgres:5432/imagemagick"
         },
         {
           "key": "REDIS_URL",
-          "value": "redis://imagemagick-redis:6379"
+          "value": "redis://imagemagick-redis:6379/0"
         },
         {
           "key": "SECRET_KEY",
