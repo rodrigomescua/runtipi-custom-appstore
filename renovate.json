@@ -44,7 +44,9 @@
         "mongodb",
         "postgres",
         "redis",
-        "rabbitmq"
+        "rabbitmq",
+        "milvus",
+        "etcd"
       ],
       "enabled": false
     }
