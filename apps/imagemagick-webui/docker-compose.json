@@ -35,6 +35,7 @@
     {
       "name": "imagemagick-redis",
       "image": "redis:7-alpine",
+      "command": "redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru",
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/redis",
@@ -55,6 +56,14 @@
       "internalPort": 3000,
       "environment": [
         {
+          "key": "NODE_ENV",
+          "value": "production"
+        },
+        {
+          "key": "NEXT_PUBLIC_API_PORT",
+          "value": "8000"
+        },
+        {
           "key": "DATABASE_URL",
           "value": "postgresql+asyncpg://imagemagick:imagemagick@imagemagick-postgres:5432/imagemagick"
         },
@@ -71,16 +80,52 @@
           "value": "${JWT_SECRET}"
         },
         {
+          "key": "ALLOWED_ORIGINS",
+          "value": "http://${APP_DOMAIN}:${APP_PORT},https://${APP_DOMAIN}"
+        },
+        {
           "key": "REQUIRE_LOGIN",
           "value": "${REQUIRE_LOGIN}"
+        },
+        {
+          "key": "ALLOW_REGISTRATION",
+          "value": "true"
+        },
+        {
+          "key": "DEFAULT_OUTPUT_FORMAT",
+          "value": "webp"
+        },
+        {
+          "key": "DEFAULT_QUALITY",
+          "value": "85"
         },
         {
           "key": "MAX_UPLOAD_SIZE_MB",
           "value": "${MAX_UPLOAD_SIZE_MB}"
         },
         {
-          "key": "ALLOWED_ORIGINS",
-          "value": "http://${APP_DOMAIN}:${APP_PORT},https://${APP_DOMAIN}"
+          "key": "IMAGEMAGICK_TIMEOUT",
+          "value": "300"
+        },
+        {
+          "key": "IMAGEMAGICK_MEMORY_LIMIT",
+          "value": "2GB"
+        },
+        {
+          "key": "HISTORY_RETENTION_HOURS",
+          "value": "24"
+        },
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        },
+        {
+          "key": "GOOGLE_CLIENT_ID",
+          "value": "${GOOGLE_CLIENT_ID:-}"
+        },
+        {
+          "key": "GOOGLE_CLIENT_SECRET",
+          "value": "${GOOGLE_CLIENT_SECRET:-}"
         }
       ],
       "volumes": [

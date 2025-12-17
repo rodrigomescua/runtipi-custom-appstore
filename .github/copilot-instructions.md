@@ -685,6 +685,104 @@ The following database/cache images are never auto-updated (managed manually):
     - **Never assume or guess** - registry pages are the source of truth
     - Take 30 seconds to verify rather than creating incorrect configurations
 
+## Environment Variables Common Mistakes
+
+**CRITICAL:** Many app failures are caused by missing or incorrect environment variables in `docker-compose.json`. Always compare with the official app's documentation.
+
+### Database Connection Strings (PostgreSQL, MySQL, etc)
+
+**MISTAKE #1: Wrong database driver in connection string**
+- ❌ WRONG: `"DATABASE_URL": "postgresql://user:pass@host:5432/db"` (uses psycopg2 - synchronous driver)
+- ✅ RIGHT: `"DATABASE_URL": "postgresql+asyncpg://user:pass@host:5432/db"` (uses asyncpg - async driver)
+
+**WHY:** Different drivers are installed in different images:
+- If app was built with asyncpg (modern async), using `postgresql://` causes `ModuleNotFoundError: No module named 'psycopg2'`
+- Always check the app's `docker-compose.yml` or `requirements.txt` to see which driver is used
+- Other examples: `mysql+pymysql://`, `postgresql+psycopg2://`, etc.
+
+**HOW TO FIX:**
+1. Find the official app's docker-compose.yml
+2. Look for `DATABASE_URL` environment variable
+3. Copy the exact URL format (including driver prefix)
+4. **Never assume** - each app may use different drivers
+
+### Redis Connection Strings
+
+**MISTAKE #2: Missing Redis database number**
+- ❌ WRONG: `"REDIS_URL": "redis://host:6379"`
+- ✅ RIGHT: `"REDIS_URL": "redis://host:6379/0"`
+
+**WHY:** Redis has multiple databases (0-15). Without specifying `/0`, the connection may fail or use wrong database.
+
+### Complete Environment Variables List
+
+**MISTAKE #3: Missing environment variables in docker-compose.json**
+- ❌ WRONG: Only including database and redis URLs, ignoring other config
+- ✅ RIGHT: Include ALL variables from `.env.example` (even optional ones with defaults)
+
+**WHY:** Apps often have many environment variables for features that are disabled by default:
+- Authentication flags (REQUIRE_LOGIN, ALLOW_REGISTRATION)
+- Processing settings (DEFAULT_OUTPUT_FORMAT, DEFAULT_QUALITY, TIMEOUT)
+- Optional integrations (GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET)
+- Monitoring/Logging (TZ, LOG_LEVEL)
+
+**HOW TO FIX:**
+1. Find the official app's `.env.example` file
+2. Extract ALL variable names and their defaults
+3. Include in `docker-compose.json` environment array
+4. Use Runtipi's form_fields for user-configurable values: `"${ENV_VARIABLE_NAME}"`
+5. Use hardcoded defaults for fixed values (e.g., `"NODE_ENV": "production"`)
+
+**CONCRETE EXAMPLE (ImageMagick WebGUI):**
+
+Official `.env.example` has 20+ variables. Our initial version only had 7, missing:
+- NODE_ENV=production
+- NEXT_PUBLIC_API_PORT=8000
+- ALLOW_REGISTRATION=true
+- DEFAULT_OUTPUT_FORMAT=webp
+- DEFAULT_QUALITY=85
+- IMAGEMAGICK_TIMEOUT=300
+- IMAGEMAGICK_MEMORY_LIMIT=2GB
+- HISTORY_RETENTION_HOURS=24
+- TZ=UTC
+- GOOGLE_CLIENT_ID (optional)
+- GOOGLE_CLIENT_SECRET (optional)
+
+All of these affected functionality and had to be added.
+
+### Service-Specific Configuration
+
+**MISTAKE #4: Redis without optimization flags**
+- ❌ WRONG: `"image": "redis:7-alpine"` (no command)
+- ✅ RIGHT: Add command with performance/persistence settings:
+```json
+"command": "redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru"
+```
+
+**WHY:** 
+- `--appendonly yes`: Enables persistence (important for prod)
+- `--maxmemory 256mb`: Prevents unlimited memory usage
+- `--maxmemory-policy allkeys-lru`: Evicts old data when memory full
+
+**MISTAKE #5: Empty optional variables failing validation**
+- ❌ WRONG: `"GOOGLE_CLIENT_ID": ""` (fails schema validation for min_length)
+- ✅ RIGHT: `"GOOGLE_CLIENT_ID": "${GOOGLE_CLIENT_ID:-}"` (optional with empty default)
+
+**WHY:** Schema requires minimum string length. Using `${VAR:-}` syntax allows empty value.
+
+## Validation Checklist for Environment Variables
+
+When creating an app with multiple services (db, cache, main), verify:
+
+- [ ] **DATABASE_URL**: Check driver prefix matches app requirements (asyncpg, psycopg2, pymysql, etc)
+- [ ] **REDIS_URL**: Includes database number `/0`
+- [ ] **All env vars**: Compare with official `.env.example` - did NOT skip any
+- [ ] **Optional vars**: Use `${VAR:-default}` format instead of empty strings
+- [ ] **Service commands**: Redis/queue services have optimization flags
+- [ ] **dependsOn**: All services use `"condition": "service_healthy"`
+- [ ] **healthCheck**: All critical services have proper health checks
+- [ ] **Test**: Run `bun test` to validate against schema
+
 ## Architecture Note: App Discovery & Validation
 
 Apps are discovered by reading the `apps/` directory:
