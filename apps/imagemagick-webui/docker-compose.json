@@ -81,7 +81,7 @@
         },
         {
           "key": "ALLOWED_ORIGINS",
-          "value": "http://${APP_DOMAIN}:${APP_PORT},https://${APP_DOMAIN}"
+          "value": "*"
         },
         {
           "key": "REQUIRE_LOGIN",
