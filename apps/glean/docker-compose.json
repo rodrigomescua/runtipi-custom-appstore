@@ -254,7 +254,7 @@
     },
     {
       "name": "admin",
-      "image": "ghcr.io/leslieleung/glean-admin:0.2.1",
+      "image": "ghcr.io/leslieleung/glean-admin:0.2.2",
       "internalPort": 80,
       "dependsOn": {
         "backend": {
