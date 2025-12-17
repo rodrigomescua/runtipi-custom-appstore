@@ -61,7 +61,7 @@
         },
         {
           "key": "NEXT_PUBLIC_API_PORT",
-          "value": "8000"
+          "value": "${APP_PORT}"
         },
         {
           "key": "DATABASE_URL",
@@ -118,14 +118,6 @@
         {
           "key": "TZ",
           "value": "${TZ}"
-        },
-        {
-          "key": "GOOGLE_CLIENT_ID",
-          "value": "${GOOGLE_CLIENT_ID:-}"
-        },
-        {
-          "key": "GOOGLE_CLIENT_SECRET",
-          "value": "${GOOGLE_CLIENT_SECRET:-}"
         }
       ],
       "volumes": [
