@@ -5,7 +5,7 @@
   "available": true,
   "short_desc": "Offline-first photo and video library with AI organization",
   "author": "EinAeffchen",
-  "port": 8840,
+  "port": 8841,
   "categories": ["photography", "media"],
   "description": "Omoide is a self-hosted, offline-capable photo and video library designed for privacy and longevity. It uses local AI to organize your media with face recognition, semantic search, duplicate detection, map view, and automatic tagging—all without sending data to the cloud.",
   "tipi_version": 1,

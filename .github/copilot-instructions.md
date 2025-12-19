@@ -41,11 +41,18 @@ dawarich/
 
 ### Port Assignment (8800-8999 range)
 - New apps MUST use ports in the range 8800-8999
-- Never reuse existing app ports - check both:
-  1. The `port` field in all `apps/*/config.json` files
-  2. The `hostPort` field in all `apps/*/docker-compose.json` files
+- **CRITICAL:** Always verify port availability BEFORE creating the app:
+  1. Search for the chosen port number in ALL `apps/*/config.json` files using: `grep -r "\"port\": 8XXX" apps/`
+  2. Search for the chosen port in ALL `apps/*/docker-compose.json` files
+  3. Check README.md apps table for any documented port assignments
+  4. Only after confirming it's unused, assign it to the new app
 - The `port` field in `config.json` is the **exposed host port**, not the internal container port
 - Internal container port goes in `docker-compose.json` under `internalPort`
+
+**MISTAKE THAT HAPPENED:** App created with port 8840 when razor-finance already used it
+- **ROOT CAUSE:** Port availability was not verified before creation
+- **SOLUTION:** Always run verification search across ALL config files first
+- **COMMAND TO USE:** Find all used ports with: `grep -rh '"port"' apps/*/config.json | grep -oP ':\s*\K\d+' | sort -n | uniq`
 
 **Concrete example (Linkding):**
 ```json
@@ -623,11 +630,20 @@ The following database/cache images are never auto-updated (managed manually):
 
 ## Common Mistakes to Avoid
 
-1. ❌ **Using `docker-compose.yml` instead of `docker-compose.json`**
+1. ❌ **Reusing existing port numbers without verification (CRITICAL!)**
+   - **MISTAKE THAT HAPPENED:** Created Omoide app with port 8840, which was already used by razor-finance
+   - **ROOT CAUSE:** Port availability was not verified before file creation
+   - **SOLUTION:** ALWAYS run verification search before creating the app
+   - **Command:** `grep -rh '"port"' apps/*/config.json | grep -oP ':\s*\K\d+' | sort -n | uniq`
+   - **Do this FIRST** before creating config.json
+   - Check ALL files (config.json + docker-compose.json) for existing ports
+   - This prevents wasted work and conflicts
+
+2. ❌ **Using `docker-compose.yml` instead of `docker-compose.json`**
    - Always use `.json` format only
    - Never have both `.yml` and `.json` in same app
 
-2. ❌ **`version` field not matching image tag**
+3. ❌ **`version` field not matching image tag**
    - config.json `"version": "1.44.1"` MUST match
    - docker-compose.json `"image": "sissbruecker/linkding:1.44.1"`
    - This is the #1 validation failure cause
@@ -635,50 +651,50 @@ The following database/cache images are never auto-updated (managed manually):
    - **Solution:** Always visit the Docker registry package page directly to verify the exact tag format
    - **Example:** Check `https://github.com/orgs/getmydia/packages/container/mydia/versions` for the exact install command
 
-3. ❌ **Using `latest` image tag in production**
+4. ❌ **Using `latest` image tag in production**
    - Example: `"image": "nginx:latest"` ❌
    - Instead: `"image": "nginx:1.25.3"` ✅
    - Always use specific version numbers
 
-4. ❌ **Ports outside 8800-8999 range**
+5. ❌ **Ports outside 8800-8999 range**
    - `"port": 8080` ❌ (outside range)
    - `"port": 8850` ✅ (inside range)
    - Special case: Old apps may have different ports (don't change them)
 
-5. ❌ **Using container port in `port` field**
+6. ❌ **Using container port in `port` field**
    - config.json `"port": 8830` (exposed host port)
    - docker-compose.json `"internalPort": 9090` (container port)
    - These are DIFFERENT - don't confuse them
 
-6. ❌ **Invalid volume paths**
+7. ❌ **Invalid volume paths**
    - WRONG: `"hostPath": "${APP_DATA_DIR}/data/var/lib/postgresql/data"` (full path)
    - RIGHT: `"hostPath": "${APP_DATA_DIR}/data/data"` (last part only)
    - Use only the final directory/file name from containerPath
 
-7. ❌ **Multiple services without `isMain`**
+8. ❌ **Multiple services without `isMain`**
    - If app has Redis + Database + Web service:
    - Only the web service gets `"isMain": true`
    - Database and cache services should NOT have this field
 
-8. ❌ **Omitting `form_fields` array**
+9. ❌ **Omitting `form_fields` array**
    - WRONG: `{ "name": "app", ... }` (missing form_fields)
    - RIGHT: `{ "name": "app", "form_fields": [], ... }` (empty array is OK)
    - Always include the field, even if empty
 
-9. ❌ **Timestamps in seconds instead of milliseconds**
-   - WRONG: `"created_at": 1732627200` (in seconds)
-   - RIGHT: `"created_at": 1732627200000` (in milliseconds)
-   - Use `Date.now()` to generate correct timestamp
+10. ❌ **Timestamps in seconds instead of milliseconds**
+    - WRONG: `"created_at": 1732627200` (in seconds)
+    - RIGHT: `"created_at": 1732627200000` (in milliseconds)
+    - Use `Date.now()` to generate correct timestamp
 
-10. ❌ **Missing `schemaVersion: 2` in docker-compose.json**
+11. ❌ **Missing `schemaVersion: 2` in docker-compose.json**
     - Always include: `"schemaVersion": 2`
     - Never use 1 or 3
 
-11. ❌ **Services as object instead of array**
+12. ❌ **Services as object instead of array**
     - WRONG: `"services": { "nginx": { ... } }` (YAML style)
     - RIGHT: `"services": [ { "name": "nginx", ... } ]` (JSON array)
 
-12. ❌ **Using array format for `dependsOn` (CRITICAL!)**
+13. ❌ **Using array format for `dependsOn` (CRITICAL!)**
     - **WRONG:** `"dependsOn": ["postgres", "redis"]` ❌ - This causes "connection refused" errors!
     - **RIGHT:** Use object format with conditions:
     ```json
@@ -691,7 +707,7 @@ The following database/cache images are never auto-updated (managed manually):
     - Always use `"service_healthy"` condition to ensure dependencies are fully operational
     - Without proper conditions, dependent services will fail trying to connect to services that aren't ready yet
 
-13. ❌ **LinuxServer images without 'v' prefix**
+14. ❌ **LinuxServer images without 'v' prefix**
     - **CRITICAL**: LinuxServer.io images (lscr.io/linuxserver/*) ALWAYS use 'v' prefix in tags
     - Example: GitHub release `v1.10.6-ls99` → GHCR tag `v1.10.6-ls99` (WITH 'v')
     - This is different from other registries that may strip the 'v' prefix
@@ -700,7 +716,7 @@ The following database/cache images are never auto-updated (managed manually):
     - **How to verify**: Visit `https://github.com/orgs/linuxserver/packages/container/{image}/versions`
     - Look at the tag list directly - LinuxServer always shows the 'v' prefix clearly
 
-14. ❌ **Assuming tag format without registry verification**
+15. ❌ **Assuming tag format without registry verification**
     - Different registries have different tag conventions:
     - **GHCR (GitHub Container Registry)**: Check `https://github.com/orgs/{owner}/packages/container/{image}/versions`
     - **Docker Hub**: Check `https://hub.docker.com/r/{owner}/{image}/tags`
@@ -819,14 +835,18 @@ Apps are discovered by reading the `apps/` directory:
 
 Use this checklist when creating a new app:
 
-1. **Port Selection**
+1. **Port Selection - VERIFY FIRST**
+   - [ ] **CRITICAL: Verify port availability BEFORE creating any files**
+   - [ ] Get all used ports: `grep -rh '"port"' apps/*/config.json | grep -oP ':\s*\K\d+' | sort -n | uniq`
+   - [ ] Verify chosen port is NOT in the list above
    - [ ] Pick unused port in 8800-8999 range
    - [ ] Verify it's not in README.md apps table
+   - [ ] Only proceed to next steps after confirming port is available
 
 2. **config.json**
    - [ ] Add `$schema` URL
    - [ ] Set `id` = folder name
-   - [ ] Set `port` to exposed port (8800-8999 range)
+   - [ ] Set `port` to exposed port (8800-8999 range, already verified as available)
    - [ ] Set `version` to match docker image tag exactly
    - [ ] Include all `form_fields` (or empty array `[]`)
    - [ ] Set `tipi_version: 1`
