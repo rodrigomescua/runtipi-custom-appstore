@@ -115,6 +115,14 @@
         {
           "key": "OMOIDE_PROCESSORS__MEDIA_BATCH_SIZE",
           "value": "125"
+        },
+        {
+          "key": "HOST_MEDIA_DIR",
+          "value": "/app/media"
+        },
+        {
+          "key": "HOST_DATA_DIR",
+          "value": "/app/data"
         }
       ],
       "volumes": [
