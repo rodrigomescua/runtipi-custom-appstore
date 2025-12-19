@@ -1,0 +1,132 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
+  "services": [
+    {
+      "name": "omoide",
+      "image": "einaeffchen/omoide:0.4.0",
+      "isMain": true,
+      "internalPort": 8123,
+      "environment": [
+        {
+          "key": "OMOIDE_GENERAL__PRESENTATION_MODE",
+          "value": "false"
+        },
+        {
+          "key": "OMOIDE_GENERAL__ENABLE_PEOPLE",
+          "value": "true"
+        },
+        {
+          "key": "OMOIDE_GENERAL__MEME_MODE",
+          "value": "false"
+        },
+        {
+          "key": "OMOIDE_GENERAL__PERSON_RELATIONSHIP_MAX_NODES",
+          "value": "100"
+        },
+        {
+          "key": "OMOIDE_GENERAL__THUMB_DIR_FOLDER_SIZE",
+          "value": "1000"
+        },
+        {
+          "key": "OMOIDE_SCAN__AUTO_SCAN",
+          "value": "false"
+        },
+        {
+          "key": "OMOIDE_SCAN__SCAN_INTERVAL_MINUTES",
+          "value": "15"
+        },
+        {
+          "key": "OMOIDE_SCAN__AUTO_CLEAN_ON_SCAN",
+          "value": "false"
+        },
+        {
+          "key": "OMOIDE_SCAN__AUTO_CLEANUP_WITHOUT_REVIEW",
+          "value": "false"
+        },
+        {
+          "key": "OMOIDE_SCAN__SKIP_GIT_FOLDER",
+          "value": "true"
+        },
+        {
+          "key": "OMOIDE_SCAN__SKIP_VENV_FOLDER",
+          "value": "true"
+        },
+        {
+          "key": "OMOIDE_AI__CLIP_MODEL",
+          "value": "xlm-roberta-base-ViT-B-32"
+        },
+        {
+          "key": "OMOIDE_AI__MIN_SEARCH_DIST",
+          "value": "0.68"
+        },
+        {
+          "key": "OMOIDE_AI__MIN_SIMILARITY_DIST",
+          "value": "1.2"
+        },
+        {
+          "key": "OMOIDE_TAGGING__AUTO_TAGGING",
+          "value": "true"
+        },
+        {
+          "key": "OMOIDE_TAGGING__USE_DEFAULT_TAGS",
+          "value": "true"
+        },
+        {
+          "key": "OMOIDE_FACE_RECOGNITION__PRESET",
+          "value": "loose"
+        },
+        {
+          "key": "OMOIDE_FACE_RECOGNITION__FACE_RECOGNITION_MIN_CONFIDENCE",
+          "value": "0.5"
+        },
+        {
+          "key": "OMOIDE_FACE_RECOGNITION__FACE_MATCH_MIN_PERCENT",
+          "value": "75"
+        },
+        {
+          "key": "OMOIDE_FACE_RECOGNITION__EXISTING_PERSON_COSINE_THRESHOLD",
+          "value": "0.8"
+        },
+        {
+          "key": "OMOIDE_DUPLICATES__DUPLICATE_AUTO_KEEP_RULE",
+          "value": "highest_res"
+        },
+        {
+          "key": "OMOIDE_VIDEO__AUTO_SCENE_DETECTION",
+          "value": "true"
+        },
+        {
+          "key": "OMOIDE_VIDEO__MAX_FRAMES_PER_VIDEO",
+          "value": "30"
+        },
+        {
+          "key": "OMOIDE_PROCESSORS__EXIF_PROCESSOR_ACTIVE",
+          "value": "true"
+        },
+        {
+          "key": "OMOIDE_PROCESSORS__FACE_PROCESSOR_ACTIVE",
+          "value": "true"
+        },
+        {
+          "key": "OMOIDE_PROCESSORS__IMAGE_EMBEDDING_PROCESSOR_ACTIVE",
+          "value": "true"
+        },
+        {
+          "key": "OMOIDE_PROCESSORS__MEDIA_BATCH_SIZE",
+          "value": "125"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/media",
+          "containerPath": "/app/media"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/data",
+          "containerPath": "/app/data"
+        }
+      ]
+    }
+  ]
+}

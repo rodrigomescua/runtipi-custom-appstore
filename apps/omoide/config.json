@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Omoide",
+  "id": "omoide",
+  "available": true,
+  "short_desc": "Offline-first photo and video library with AI organization",
+  "author": "EinAeffchen",
+  "port": 8840,
+  "categories": ["photography", "media"],
+  "description": "Omoide is a self-hosted, offline-capable photo and video library designed for privacy and longevity. It uses local AI to organize your media with face recognition, semantic search, duplicate detection, map view, and automatic tagging—all without sending data to the cloud.",
+  "tipi_version": 1,
+  "version": "0.4.0",
+  "source": "https://github.com/EinAeffchen/Omoide",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64"],
+  "created_at": 1734556800000,
+  "updated_at": 1734556800000,
+  "form_fields": []
+}
