@@ -18,9 +18,9 @@ If you want to see new apps on Tipi you can either:
 - [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
 - Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
 
-## Apps available (22)
+## Apps available (23)
 
-| Name                                                                         | Description                                                                        | Port | Dynamic (22) |
+| Name                                                                         | Description                                                                        | Port | Dynamic (23) |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                            | Self-hosted GPU video compressor                                                   | 8846 | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                             | Note taking, to-do and moodboard application                                       | 8831 | yes          |
@@ -35,6 +35,7 @@ If you want to see new apps on Tipi you can either:
 | [Linkding](https://github.com/sissbruecker/linkding)                         | Self-hosted bookmark manager                                                       | 8830 | yes          |
 | [MediaManager](https://github.com/maxdorninger/MediaManager)                 | Media Manager                                                                      | 8838 | yes          |
 | [Photon](https://github.com/rtuszik/photon-docker)                           | This is an unofficial docker image for Photon                                      | 8825 | yes          |
+| [Piwigo](https://github.com/Piwigo/Piwigo)                                   | Open-source photo gallery software                                                 | 8849 | yes          |
 | [PriceBuddy](https://github.com/jez500/pricebuddy)                           | Self-hosted price tracker with notifications                                       | 8839 | yes          |
 | [Blazor Finance](https://github.com/rodrigomescua/RazorFinanceDocker)        | Gerenciamento financeiro                                                           | 8840 | yes          |
 | [Razor IPTV](https://github.com/romesc/RazorIptvDocker)                      | Razor IPTV                                                                         | 8821 | yes          |
