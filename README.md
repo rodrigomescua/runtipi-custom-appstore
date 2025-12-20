@@ -18,9 +18,9 @@ If you want to see new apps on Tipi you can either:
 - [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
 - Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
 
-## Apps available (23)
+## Apps available (24)
 
-| Name                                                                         | Description                                                                        | Port | Dynamic (23) |
+| Name                                                                         | Description                                                                        | Port | Dynamic (24) |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                            | Self-hosted GPU video compressor                                                   | 8846 | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                             | Note taking, to-do and moodboard application                                       | 8831 | yes          |
@@ -34,6 +34,7 @@ If you want to see new apps on Tipi you can either:
 | [KitchenOwl](https://github.com/tombursch/kitchenowl)                        | KitchenOwl                                                                         | 8828 | yes          |
 | [Linkding](https://github.com/sissbruecker/linkding)                         | Self-hosted bookmark manager                                                       | 8830 | yes          |
 | [MediaManager](https://github.com/maxdorninger/MediaManager)                 | Media Manager                                                                      | 8838 | yes          |
+| [Omoide](https://github.com/EinAeffchen/Omoide)                              | Offline-first photo and video library with AI organization                         | 8841 | yes          |
 | [Photon](https://github.com/rtuszik/photon-docker)                           | This is an unofficial docker image for Photon                                      | 8825 | yes          |
 | [Piwigo](https://github.com/Piwigo/Piwigo)                                   | Open-source photo gallery software                                                 | 8849 | yes          |
 | [PriceBuddy](https://github.com/jez500/pricebuddy)                           | Self-hosted price tracker with notifications                                       | 8839 | yes          |
