@@ -6,16 +6,21 @@
   "short_desc": "Modern web interface for ImageMagick with AI-powered image processing",
   "author": "PrzemekSkw",
   "port": 8848,
-  "categories": ["utilities", "media"],
+  "categories": [
+    "utilities",
+    "media"
+  ],
   "description": "ImageMagick WebGUI is a beautiful, modern web interface for image processing. Features include drag & drop uploads, batch processing, AI-powered background removal, real-time preview, and support for multiple image formats (JPG, PNG, WebP, GIF, TIFF, PDF).",
-  "tipi_version": 3,
-  "version": "1.0.9",
+  "tipi_version": 4,
+  "version": "1.0.11",
   "source": "https://github.com/PrzemekSkw/imagemagick-webui",
   "exposable": true,
   "dynamic_config": true,
-  "supported_architectures": ["amd64"],
+  "supported_architectures": [
+    "amd64"
+  ],
   "created_at": 1734375600000,
-  "updated_at": 1734375600000,
+  "updated_at": 1766215039460,
   "form_fields": [
     {
       "type": "random",
