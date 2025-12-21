@@ -6,8 +6,8 @@
   "exposable": true,
   "dynamic_config": true,
   "port": 8831,
-  "tipi_version": 12,
-  "version": "1.7.1",
+  "tipi_version": 13,
+  "version": "1.8.0",
   "categories": [
     "utilities"
   ],
@@ -21,7 +21,7 @@
     "arm64"
   ],
   "created_at": 1737379503315,
-  "updated_at": 1765956114572,
+  "updated_at": 1766344772880,
   "form_fields": [
     {
       "type": "random",
