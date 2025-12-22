@@ -75,6 +75,23 @@
       }
     },
     {
+      "name": "tile-cache",
+      "image": "nginx:alpine",
+      "environment": [
+        {
+          "key": "NGINX_CACHE_SIZE",
+          "value": "1g"
+        }
+      ],
+      "command": "sh -c \"mkdir -p /var/cache/nginx/tiles && cat > /etc/nginx/nginx.conf << 'EOF'\nevents {\n  worker_connections 1024;\n}\nhttp {\n  proxy_cache_path /var/cache/nginx/tiles levels=1:2 keys_zone=tiles:10m max_size=1g inactive=30d use_temp_path=off;\n  \n  server {\n    listen 80;\n    location / {\n      proxy_pass https://tile.openstreetmap.org/;\n      proxy_set_header Host tile.openstreetmap.org;\n      proxy_set_header User-Agent \\\"Reitti/1.0\\\";\n      proxy_cache tiles;\n      proxy_cache_valid 200 30d;\n      proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504;\n    }\n  }\n}\nEOF\nnginx -g 'daemon off;'\"",
+      "healthCheck": {
+        "test": "wget --quiet --tries=1 --spider http://127.0.0.1/0/0/0.png || exit 1",
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3
+      }
+    },
+    {
       "name": "reitti",
       "isMain": true,
       "image": "dedicatedcode/reitti:3.0.1",
@@ -163,6 +180,9 @@
           "condition": "service_healthy"
         },
         "reitti_redis": {
+          "condition": "service_healthy"
+        },
+        "tile-cache": {
           "condition": "service_healthy"
         }
       }
