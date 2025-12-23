@@ -18,9 +18,9 @@ If you want to see new apps on Tipi you can either:
 - [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
 - Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
 
-## Apps available (24)
+## Apps available (25)
 
-| Name                                                                         | Description                                                                        | Port | Dynamic (24) |
+| Name                                                                         | Description                                                                        | Port | Dynamic (25) |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                            | Self-hosted GPU video compressor                                                   | 8846 | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                             | Note taking, to-do and moodboard application                                       | 8831 | yes          |
@@ -44,5 +44,6 @@ If you want to see new apps on Tipi you can either:
 | [Razor Miniflux - Restricted](https://github.com/romesc/RazorMinifluxDocker) | Razor Miniflux Restricted                                                          | 8823 | yes          |
 | [Razor Price History](https://github.com/romesc/RazorPriceHistory)           | Razor Price History                                                                | 8820 | yes          |
 | [Reitti](https://github.com/dedicatedcode/reitti)                            | Personal Location Tracking & Analysis - Self-hosted alternative to Google Timeline | 8826 | yes          |
+| [Stash](https://github.com/stashapp/stash)                                   | Organize and serve media.                                                          | 8847 | yes          |
 | [Upsnap](https://github.com/seriousm4x/UpSnap)                               | A simple wake on lan web app written with SvelteKit, Go and PocketBase.            | 8090 | yes          |
 | [Wallabag](https://github.com/wallabag/wallabag)                             | Wallabag                                                                           | 8829 | yes          |
