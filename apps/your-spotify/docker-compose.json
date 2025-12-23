@@ -13,7 +13,7 @@
       "environment": [
         {
           "key": "API_ENDPOINT",
-          "value": "http://${INTERNAL_IP}:${APP_PORT}"
+          "value": "https://${APP_DOMAIN}"
         }
       ],
       "dependsOn": {
@@ -30,7 +30,7 @@
       "environment": [
         {
           "key": "API_ENDPOINT",
-          "value": "http://${INTERNAL_IP}:${APP_PORT}"
+          "value": "https://${APP_DOMAIN}"
         },
         {
           "key": "CLIENT_ENDPOINT",
