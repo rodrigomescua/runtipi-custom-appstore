@@ -6,7 +6,7 @@
   "dynamic_config": true,
   "port": 8850,
   "id": "your-spotify",
-  "tipi_version": 2,
+  "tipi_version": 3,
   "version": "1.16.0",
   "categories": ["music", "utilities"],
   "description": "Self hosted Spotify tracking dashboard.",

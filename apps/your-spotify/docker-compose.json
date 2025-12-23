@@ -3,38 +3,33 @@
     {
       "name": "your-spotify",
       "image": "yooooomi/your_spotify_client:1.16.0",
+      "isMain": true,
       "internalPort": 3000,
-      "addPorts": [
-        {
-          "hostPort": 32500,
-          "containerPort": 3000
-        }
-      ],
       "environment": [
         {
           "key": "API_ENDPOINT",
-          "value": "https://${APP_DOMAIN}"
+          "value": "http://${INTERNAL_IP}:32500"
         }
       ],
-      "dependsOn": {
-        "your-spotify-server": {
-          "condition": "service_started"
-        }
-      }
+      "dependsOn": ["your-spotify-server"]
     },
     {
       "name": "your-spotify-server",
       "image": "yooooomi/your_spotify_server:1.16.0",
-      "isMain": true,
-      "internalPort": 8080,
+      "addPorts": [
+        {
+          "hostPort": 32500,
+          "containerPort": 8080
+        }
+      ],
       "environment": [
         {
           "key": "API_ENDPOINT",
-          "value": "https://${APP_DOMAIN}"
+          "value": "http://${INTERNAL_IP}:32500"
         },
         {
           "key": "CLIENT_ENDPOINT",
-          "value": "http://${INTERNAL_IP}:32500"
+          "value": "http://${INTERNAL_IP}:${APP_PORT}"
         },
         {
           "key": "SPOTIFY_PUBLIC",
