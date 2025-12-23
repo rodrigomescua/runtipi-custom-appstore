@@ -1,0 +1,81 @@
+{
+  "services": [
+    {
+      "name": "your-spotify",
+      "image": "yooooomi/your_spotify_client:1.16.0",
+      "internalPort": 3000,
+      "addPorts": [
+        {
+          "hostPort": 32500,
+          "containerPort": 3000
+        }
+      ],
+      "environment": [
+        {
+          "key": "API_ENDPOINT",
+          "value": "http://${INTERNAL_IP}:${APP_PORT}"
+        }
+      ],
+      "dependsOn": {
+        "your-spotify-server": {
+          "condition": "service_started"
+        }
+      }
+    },
+    {
+      "name": "your-spotify-server",
+      "image": "yooooomi/your_spotify_server:1.16.0",
+      "isMain": true,
+      "internalPort": 8080,
+      "environment": [
+        {
+          "key": "API_ENDPOINT",
+          "value": "http://${INTERNAL_IP}:${APP_PORT}"
+        },
+        {
+          "key": "CLIENT_ENDPOINT",
+          "value": "http://${INTERNAL_IP}:32500"
+        },
+        {
+          "key": "SPOTIFY_PUBLIC",
+          "value": "${SPOTIFY_PUBLIC}"
+        },
+        {
+          "key": "SPOTIFY_SECRET",
+          "value": "${SPOTIFY_SECRET}"
+        },
+        {
+          "key": "MONGO_ENDPOINT",
+          "value": "mongodb://your-spotify-db:27017/your_spotify"
+        },
+        {
+          "key": "CORS",
+          "value": "i-want-a-security-vulnerability-and-want-to-allow-all-origins"
+        }
+      ],
+      "dependsOn": {
+        "your-spotify-db": {
+          "condition": "service_healthy"
+        }
+      }
+    },
+    {
+      "name": "your-spotify-db",
+      "image": "mongo:4.4.29",
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/db",
+          "containerPath": "/data/db"
+        }
+      ],
+      "healthCheck": {
+        "test": "mongosh --eval 'db.runCommand({ ping: 1 })' --quiet || exit 1",
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 5
+      }
+    }
+  ],
+  "schemaVersion": 2,
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json"
+}

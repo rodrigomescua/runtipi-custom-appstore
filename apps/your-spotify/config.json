@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Your Spotify",
+  "available": true,
+  "exposable": true,
+  "dynamic_config": true,
+  "port": 8850,
+  "id": "your-spotify",
+  "tipi_version": 1,
+  "version": "1.16.0",
+  "categories": ["music", "utilities"],
+  "description": "Self hosted Spotify tracking dashboard.",
+  "short_desc": "Self hosted Spotify tracking dashboard.",
+  "author": "Yooooomi",
+  "source": "https://github.com/Yooooomi/your_spotify",
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "Spotify public key",
+      "hint": "The public key of your Spotify application",
+      "required": true,
+      "env_variable": "SPOTIFY_PUBLIC"
+    },
+    {
+      "type": "password",
+      "label": "Spotify secret key",
+      "hint": "The secret key of your Spotify application",
+      "required": true,
+      "env_variable": "SPOTIFY_SECRET"
+    }
+  ],
+  "supported_architectures": ["arm64", "amd64"],
+  "created_at": 1691943801422,
+  "updated_at": 1766292658574,
+  "min_tipi_version": "4.5.0"
+}
