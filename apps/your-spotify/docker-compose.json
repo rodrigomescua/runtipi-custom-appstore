@@ -53,11 +53,7 @@
           "value": "i-want-a-security-vulnerability-and-want-to-allow-all-origins"
         }
       ],
-      "dependsOn": {
-        "your-spotify-db": {
-          "condition": "service_healthy"
-        }
-      }
+      "dependsOn": ["your-spotify-db"]
     },
     {
       "name": "your-spotify-db",
@@ -67,13 +63,7 @@
           "hostPath": "${APP_DATA_DIR}/data/db",
           "containerPath": "/data/db"
         }
-      ],
-      "healthCheck": {
-        "test": "mongosh --eval 'db.runCommand({ ping: 1 })' --quiet || exit 1",
-        "interval": "10s",
-        "timeout": "5s",
-        "retries": 5
-      }
+      ]
     }
   ],
   "schemaVersion": 2,
