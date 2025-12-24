@@ -1,6 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "automerge": false,
+  "prHourlyLimit": 20,
   "extends": [
     "config:recommended"
   ],
@@ -10,7 +11,7 @@
   "enabledManagers": ["custom.regex"],
   "automergeStrategy": "rebase",
   "prCreation": "immediate",
-  "rebaseWhen": "behind-base-branch",
+  "rebaseWhen": "conflicted",
   "customManagers": [
     {
       "customType": "regex",
@@ -52,21 +53,16 @@
         "quay.io/coreos/etcd"
       ],
       "enabled": false
-    },
-    {
-      "matchPackagePatterns": ["^ghcr\\.io/leslieleung/glean-"],
-      "groupName": "glean services",
-      "groupSlug": "glean-all"
     }
   ],
   "postUpgradeTasks": {
     "commands": [
-      "bun ./scripts/update-config.ts {{packageFile}}",
+      "bun ./scripts/update-config.ts {{packageFile}} {{newVersion}} {{packageName}}",
       "bun install && bun run test"
     ],
     "fileFilters": [
       "**/*"
     ],
-    "executionMode": "branch"
+    "executionMode": "update"
   }
 }
