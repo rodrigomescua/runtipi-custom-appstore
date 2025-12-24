@@ -51,6 +51,11 @@
         "quay.io/coreos/etcd"
       ],
       "enabled": false
+    },
+    {
+      "matchPackagePatterns": ["^ghcr\\.io/leslieleung/glean-"],
+      "groupName": "glean services",
+      "groupSlug": "glean-all"
     }
   ],
   "postUpgradeTasks": {
