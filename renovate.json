@@ -53,6 +53,11 @@
         "quay.io/coreos/etcd"
       ],
       "enabled": false
+    },
+    {
+      "matchDatasources": ["docker"],
+      "groupName": "{{{groupName}}}",
+      "groupSlug": "{{{groupSlug}}}"
     }
   ],
   "postUpgradeTasks": {
