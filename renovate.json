@@ -10,7 +10,6 @@
   "enabledManagers": ["custom.regex"],
   "automergeStrategy": "rebase",
   "prCreation": "immediate",
-  "prConcurrency": 1,
   "rebaseWhen": "behind-base-branch",
   "customManagers": [
     {
