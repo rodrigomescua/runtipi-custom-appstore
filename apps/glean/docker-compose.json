@@ -51,7 +51,7 @@
     },
     {
       "name": "backend",
-      "image": "ghcr.io/leslieleung/glean-backend:0.2.2",
+      "image": "ghcr.io/leslieleung/glean-backend:0.2.3",
       "environment": [
         {
           "key": "DATABASE_URL",
@@ -203,7 +203,7 @@
     },
     {
       "name": "worker",
-      "image": "ghcr.io/leslieleung/glean-backend:0.2.2",
+      "image": "ghcr.io/leslieleung/glean-backend:0.2.3",
       "environment": [
         {
           "key": "DATABASE_URL",
@@ -243,7 +243,7 @@
     },
     {
       "name": "web",
-      "image": "ghcr.io/leslieleung/glean-web:0.2.2",
+      "image": "ghcr.io/leslieleung/glean-web:0.2.3",
       "isMain": true,
       "internalPort": 80,
       "dependsOn": {
@@ -254,7 +254,7 @@
     },
     {
       "name": "admin",
-      "image": "ghcr.io/leslieleung/glean-admin:0.2.2",
+      "image": "ghcr.io/leslieleung/glean-admin:0.2.3",
       "dependsOn": {
         "backend": {
           "condition": "service_healthy"
@@ -331,7 +331,7 @@
     },
     {
       "name": "milvus",
-      "image": "milvusdb/milvus:v2.6.6",
+      "image": "milvusdb/milvus:v2.6.7",
       "environment": [
         {
           "key": "ETCD_ENDPOINTS",
