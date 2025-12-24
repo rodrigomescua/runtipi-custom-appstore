@@ -43,10 +43,12 @@
         "mysql",
         "mongodb",
         "postgres",
+        "postgis/postgis",
         "redis",
         "rabbitmq",
         "milvus",
-        "etcd"
+        "minio/minio",
+        "quay.io/coreos/etcd"
       ],
       "enabled": false
     }
