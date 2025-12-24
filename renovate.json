@@ -19,7 +19,8 @@
       "matchStrings": [
         "\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","
       ],
-      "datasourceTemplate": "docker"
+      "datasourceTemplate": "docker",
+      "skipInstalls": true
     }
   ],
   "packageRules": [
@@ -50,14 +51,18 @@
         "rabbitmq",
         "milvus",
         "minio/minio",
-        "quay.io/coreos/etcd"
+        "quay.io/coreos/etcd",
+        "etcd"
       ],
       "enabled": false
     },
     {
-      "matchDatasources": ["docker"],
-      "groupName": "{{{groupName}}}",
-      "groupSlug": "{{{groupSlug}}}"
+      "matchPackagePatterns": [
+        ".*-etcd$",
+        ".*-minio$",
+        ".*-redis$"
+      ],
+      "enabled": false
     }
   ],
   "postUpgradeTasks": {
