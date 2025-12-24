@@ -10,13 +10,6 @@
   "enabledManagers": ["custom.regex"],
   "automergeStrategy": "rebase",
   "prCreation": "immediate",
-  "hostRules": [
-    {
-      "hostType": "docker",
-      "username": "${{ secrets.DOCKERHUB_USERNAME }}",
-      "password": "${{ secrets.DOCKERHUB_TOKEN }}"
-    }
-  ],
   "customManagers": [
     {
       "customType": "regex",
