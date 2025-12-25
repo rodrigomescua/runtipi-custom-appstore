@@ -8,14 +8,18 @@
   "addLabels": [
     "renovate"
   ],
-  "enabledManagers": ["custom.regex"],
+  "enabledManagers": [
+    "custom.regex"
+  ],
   "automergeStrategy": "rebase",
   "prCreation": "immediate",
   "rebaseWhen": "conflicted",
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": ["/^apps\/.+\/docker-compose\\.json$/"],
+      "managerFilePatterns": [
+        "/^apps/.+/docker-compose\\.json$/"
+      ],
       "matchStrings": [
         "\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","
       ],
@@ -56,16 +60,18 @@
       "enabled": false
     },
     {
-      "matchPackagePatterns": [
-        ".*-etcd$",
-        ".*-minio$",
-        ".*-redis$"
-      ],
-      "enabled": false
+      "enabled": false,
+      "matchPackageNames": [
+        "/.*-etcd$/",
+        "/.*-minio$/",
+        "/.*-redis$/"
+      ]
     },
     {
       "description": "Group all updates for the same app into a single PR",
-      "matchFileNames": ["apps/**"],
+      "matchFileNames": [
+        "apps/**"
+      ],
       "groupName": "{{parentDir}}"
     }
   ],
