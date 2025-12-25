@@ -76,7 +76,8 @@
       "bun run test"
     ],
     "fileFilters": [
-      "**/*"
+      "apps/**/config.json",
+      "apps/**/docker-compose.json"
     ],
     "executionMode": "branch"
   }
