@@ -254,7 +254,7 @@
     },
     {
       "name": "admin",
-      "image": "ghcr.io/leslieleung/glean-admin:0.2.2",
+      "image": "ghcr.io/leslieleung/glean-admin:0.2.3",
       "dependsOn": {
         "backend": {
           "condition": "service_healthy"
