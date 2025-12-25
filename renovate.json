@@ -2,7 +2,6 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "automerge": false,
   "prHourlyLimit": 20,
-  "statusCheckRun": "disabled",
   "extends": [
     "config:recommended"
   ],
