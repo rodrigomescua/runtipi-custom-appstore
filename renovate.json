@@ -12,11 +12,6 @@
   "automergeStrategy": "rebase",
   "prCreation": "immediate",
   "rebaseWhen": "conflicted",
-  "allowedPostUpgradeCommands": [
-    "^bun install$",
-    "^bun \\./scripts/update-config\\.ts .*$",
-    "^bun run test$"
-  ],
   "customManagers": [
     {
       "customType": "regex",
