@@ -19,8 +19,7 @@
       "matchStrings": [
         "\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","
       ],
-      "datasourceTemplate": "docker",
-      "skipInstalls": true
+      "datasourceTemplate": "docker"
     }
   ],
   "packageRules": [
