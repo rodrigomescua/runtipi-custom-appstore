@@ -10,8 +10,8 @@
     "utilities"
   ],
   "description": "Glean (拾灵) is a self-hosted RSS reader and personal knowledge management tool. It helps information-heavy consumers efficiently manage their reading through intelligent RSS aggregation. Features include RSS/Atom subscription with OPML import/export, clean reading experience, read later functionality, folders and tags for organization, bookmarks, background feed sync, and a modern responsive UI.",
-  "tipi_version": 16,
-  "version": "0.2.1",
+  "tipi_version": 19,
+  "version": "0.2.3",
   "source": "https://github.com/LeslieLeung/glean",
   "website": "https://github.com/LeslieLeung/glean",
   "exposable": true,
@@ -21,7 +21,7 @@
     "arm64"
   ],
   "created_at": 1733590800000,
-  "updated_at": 1765995143507,
+  "updated_at": 1766642798889,
   "form_fields": [
     {
       "type": "random",
