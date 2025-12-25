@@ -78,6 +78,6 @@
     "fileFilters": [
       "**/*"
     ],
-    "executionMode": "update"
+    "executionMode": "branch"
   }
 }
