@@ -18,11 +18,12 @@ If you want to see new apps on Tipi you can either:
 - [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
 - Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
 
-## Apps available (26)
+## Apps available (27)
 
-| Name                                                                         | Description                                                                        | Port | Dynamic (26) |
+| Name                                                                         | Description                                                                        | Port | Dynamic (27) |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                            | Self-hosted GPU video compressor                                                   | 8846 | yes          |
+| [Arcane](https://github.com/getarcaneapp/arcane)                             | Modern Docker Management, Made for Everyone                                        | 8851 | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                             | Note taking, to-do and moodboard application                                       | 8831 | yes          |
 | [Byparr](https://github.com/ThePhaseless/Byparr)                             | Bypass Cloudflare and DDoS-GuARD.                                                  | 8191 | yes          |
 | [Dawarich](https://github.com/Freika/dawarich)                               | Self-hostable alternative to Google Location History (Google Maps Timeline)        | 8824 | yes          |
