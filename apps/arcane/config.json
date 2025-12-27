@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Arcane",
+  "id": "arcane",
+  "available": true,
+  "short_desc": "Modern Docker Management, Made for Everyone",
+  "author": "kmendell",
+  "port": 8851,
+  "categories": ["utilities"],
+  "description": "Arcane is a modern, intuitive Docker management platform designed for everyone. It provides a clean web interface to manage containers, images, networks, volumes, and Docker projects. With features like real-time monitoring, automatic updates, and environment management, Arcane makes Docker management accessible and efficient.",
+  "tipi_version": 1,
+  "version": "v1.11.1",
+  "source": "https://github.com/getarcaneapp/arcane",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "created_at": 1735368000000,
+  "updated_at": 1735368000000,
+  "form_fields": [
+    {
+      "type": "random",
+      "label": "Encryption Key",
+      "required": true,
+      "env_variable": "ENCRYPTION_KEY",
+      "hint": "32 bytes encryption key for data security (raw/base64/hex format)",
+      "min": 32,
+      "encoding": "hex"
+    },
+    {
+      "type": "random",
+      "label": "JWT Secret",
+      "required": true,
+      "env_variable": "JWT_SECRET",
+      "hint": "Secret key for JWT token generation",
+      "min": 32,
+      "encoding": "hex"
+    }
+  ]
+}
