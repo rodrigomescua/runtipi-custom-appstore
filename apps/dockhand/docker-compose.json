@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
+  "services": [
+    {
+      "name": "dockhand",
+      "image": "fnsys/dockhand:v1.0.4",
+      "isMain": true,
+      "internalPort": 3000,
+      "user": "0:0",
+      "environment": [
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "/var/run/docker.sock",
+          "containerPath": "/var/run/docker.sock"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/data",
+          "containerPath": "/app/data"
+        }
+      ]
+    }
+  ]
+}
