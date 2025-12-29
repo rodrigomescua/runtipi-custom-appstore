@@ -127,7 +127,16 @@ You MUST verify the exact tag format from the registry WHERE THE APP'S OFFICIAL 
 - ❌ Used `v0.7.2` when registry only had `0.7.2`
 - ❌ Used `v0.8.0` when registry only had `0.8.0`
 - ❌ Used `v2.2.8` when GitHub Actions strips 'v' and publishes as `2.2.8`
+- ❌ Used `1.4.4` for Recommendarr when Docker Hub tag was `v1.4.4` (with 'v' prefix) - **MISTAKE THAT HAPPENED**
 - ✅ Always check the registry page or GitHub Actions workflow directly before committing
+
+**CRITICAL LESSON - Recommendarr Tag Format (Dec 29, 2025):**
+- **WRONG:** `tannermiddleton/recommendarr:1.4.4` ❌ (tag doesn't exist on Docker Hub)
+- **RIGHT:** `tannermiddleton/recommendarr:v1.4.4` ✅ (actual tag on Docker Hub)
+- **Root Cause:** Assumed GitHub Release version `1.4.4` would match Docker tag, but didn't verify on Docker Hub registry page
+- **Root Cause:** GitHub Releases page showed "Release 1.4.4" but Docker Hub uses `v1.4.4` with prefix
+- **Solution Applied:** Visit `https://hub.docker.com/r/tannermiddleton/recommendarr/tags` and confirmed tag is `v1.4.4` with prefix
+- **Why This Matters:** Apps using incorrect tags will fail at runtime with "image not found" errors, wasting deployment time
 
 **Concrete example (Linkding):**
 ```json

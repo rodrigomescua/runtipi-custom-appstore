@@ -4,7 +4,7 @@
   "services": [
     {
       "name": "recommendarr",
-      "image": "tannermiddleton/recommendarr:1.4.4",
+      "image": "tannermiddleton/recommendarr:v1.4.4",
       "isMain": true,
       "internalPort": 3000,
       "environment": [
