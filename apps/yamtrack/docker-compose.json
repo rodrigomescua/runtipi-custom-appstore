@@ -19,7 +19,11 @@
         { "key": "SECRET", "value": "${SECRET}"},
         { "key": "REDIS_URL", "value": "redis://redis:6379" }
       ],
-      "dependsOn": { "redis": { "condition": "service_healthy" } }
+      "dependsOn": {
+        "redis": {
+          "condition": "service_healthy"
+        }
+      }
     },
     {
       "name": "redis",
@@ -30,7 +34,13 @@
           "containerPath": "/data",
           "readOnly": false
         }
-      ]
+      ],
+      "healthCheck": {
+        "test": "redis-cli ping",
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 5
+      }
     }
   ]
 }
