@@ -1,0 +1,43 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "yamtrack",
+  "available": true,
+  "deprecated": false,
+  "port": 8860,
+  "name": "Yamtrack",
+  "description": "Yamtrack is a self hosted media tracker for movies, tv shows, anime, manga, video games and books.",
+  "short_desc": "Yamtrack is a self hosted media tracker for movies, tv shows, anime, manga, video games and books.",
+  "author": "FuzzyGrimm",
+  "website": "https://github.com/FuzzyGrim/Yamtrack",
+  "categories": [
+    "media",
+    "utilities"
+  ],
+  "version": "0.24.11",
+  "tipi_version": 1,
+  "source": "https://github.com/FuzzyGrim/Yamtrack",
+  "exposable": true,
+  "no_gui": false,
+  "dynamic_config": true,
+  "force_expose": false,
+  "generate_vapid_keys": false,
+  "https": false,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "min_tipi_version": "4.5.0",
+  "force_pull": false,
+  "form_fields": [
+    {
+      "type": "random",
+      "label": "Secret Key",
+      "required": true,
+      "env_variable": "SECRET",
+      "min": 32,
+      "encoding": "hex"
+    }
+  ],
+  "created_at": 1735329600000,
+  "updated_at": 1735329600000
+}
