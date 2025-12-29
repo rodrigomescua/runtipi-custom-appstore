@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Recommendarr",
+  "id": "recommendarr",
+  "available": true,
+  "short_desc": "AI-powered TV and movie recommendations based on your library",
+  "author": "fingerthief",
+  "port": 8827,
+  "categories": ["media", "ai"],
+  "description": "Recommendarr is a web application that generates personalized TV show and movie recommendations based on your Sonarr, Radarr, Plex, Jellyfin, Tautulli, and Trakt libraries using AI. It integrates with OpenAI, local models (Ollama/LM Studio), or any OpenAI-compatible API to provide intelligent recommendations tailored to your preferences.",
+  "tipi_version": 1,
+  "version": "1.4.4",
+  "source": "https://github.com/fingerthief/recommendarr",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "created_at": 1735449600000,
+  "updated_at": 1735449600000,
+  "form_fields": []
+}
