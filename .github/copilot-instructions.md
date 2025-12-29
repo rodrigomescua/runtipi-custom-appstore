@@ -877,6 +877,132 @@ Use this checklist when creating a new app:
    - [ ] Run `bun test` - all tests must pass
    - [ ] Check no validation errors from schema
 
+## Renovate Bot Setup & Automation
+
+Renovate automatically detects and updates Docker images in all `apps/*/docker-compose.json` files.
+
+**Key Configuration Details:**
+
+**renovate.json Settings:**
+- `enabledManagers: ["custom.regex"]` - Only custom regex manager (app configs)
+- Custom regex pattern: `"image": "(?<depName>.*?):(?<currentValue>.*?)"`
+- `executionMode: "branch"` - Groups all updates in single PR per file
+- `postUpgradeTasks` - Runs: `bun install` → `bun ./scripts/update-config.ts` → `bun run test`
+- `fileFilters` - Restricted to only `apps/**/config.json` and `apps/**/docker-compose.json` (excludes lock files)
+
+**GitHub Actions Workflow (.github/workflows/renovate.yml):**
+- Runs on schedule: **2x daily** (7am and 7pm UTC = 4am and 4pm Brasília time)
+- Authentication: Uses `RENOVATE_TOKEN` (PAT with `repo` + `workflow` scopes)
+- Environment variable: `RENOVATE_ALLOWED_POST_UPGRADE_COMMANDS` permits:
+  - `^bun install$`
+  - `^bun \\./scripts/update-config\\.ts .*$`
+  - `^bun run test$`
+
+**Critical Fixes Applied (DO NOT REVERT):**
+
+1. **Removed `skipInstalls` field from customManagers**
+   - **Why:** Field not supported by Renovate
+   - **Impact:** Would cause "disallowed fields" validation error
+
+2. **Moved `js-yaml` to dependencies (from devDependencies)**
+   - **Why:** Required by `update-config.ts` script at runtime
+   - **Impact:** Without this, script fails with "ENOENT: Cannot find module 'js-yaml'"
+   - **File:** `package.json`
+
+3. **Changed `executionMode` from "update" to "branch"**
+   - **Why:** "update" creates separate PR per image; "branch" groups all in one PR
+   - **Impact:** Prevents multiple PRs per app and `tipi_version` conflicts
+   - **Before:** 3 images in dawarich → 3 separate PRs
+   - **After:** 3 images in dawarich → 1 grouped PR
+
+4. **Configured post-upgrade command execution order**
+   - **Order:** `bun install` → `bun ./scripts/update-config.ts apps/{app}/docker-compose.json` → `bun run test`
+   - **Why:** Dependencies must be installed before script runs
+   - **Impact:** Script can import js-yaml without errors
+
+5. **Added `RENOVATE_ALLOWED_POST_UPGRADE_COMMANDS` to workflow**
+   - **Why:** Renovate requires explicit allow-list in CI environment (not in renovate.json)
+   - **Commands:** Whitelisted install, script, and test commands
+   - **Impact:** Without this, commands fail with "not in allowedCommands list"
+
+6. **Added infrastructure package ignore rules**
+   - **Packages:** `redis`, `postgres`, `postgis/postgis`, `mariadb`, `mysql`, `mongodb`, `rabbitmq`
+   - **Why:** Database/cache services should be updated manually, not automatically
+   - **Configuration:** `matchPackageNames` with `enabled: false`
+
+7. **Configured `groupName` and `groupSlug`**
+   - **Pattern:** Groups by app folder (e.g., `dawarich-docker-updates`)
+   - **Why:** All images in same docker-compose.json file grouped together
+   - **Impact:** Single PR containing all updates for an app
+
+8. **Restricted `fileFilters` to prevent lock file commits**
+   - **Before:** `fileFilters: ["**/*"]` (too permissive)
+   - **After:** `fileFilters: ["apps/**/config.json", "apps/**/docker-compose.json"]`
+   - **Why:** Prevents `bun.lockb` from being committed in Renovate PRs
+   - **Impact:** Clean PRs with only config changes
+
+**How Renovate Workflow Works:**
+
+1. Renovate detects Docker image updates in `apps/*/docker-compose.json`
+2. Groups all updates for same app file into one branch/PR
+3. Stages all image version changes
+4. Runs: `bun install` (install dependencies)
+5. Runs: `bun ./scripts/update-config.ts apps/{app}/docker-compose.json`
+   - Script extracts main service image version
+   - Updates `version` field in corresponding `config.json`
+   - Increments `tipi_version` by 1
+   - Updates `updated_at` timestamp
+6. Runs: `bun run test` (validates all app configs)
+7. Creates single PR with all changes
+8. Requires manual review (`automerge: false`)
+
+**GitHub Token Setup:**
+
+To use Renovate properly:
+1. Create Personal Access Token (PAT) with scopes: `repo` + `workflow`
+2. Store as `RENOVATE_TOKEN` secret in repository
+3. Token must have write access to:
+   - Push commits
+   - Create pull requests
+   - Update commit status checks
+
+**Troubleshooting Common Issues:**
+
+| Issue | Cause | Solution |
+|-------|-------|----------|
+| Multiple PRs instead of 1 | `executionMode: "update"` | Change to `executionMode: "branch"` |
+| `js-yaml not found` error | `js-yaml` in devDependencies | Move to dependencies in package.json |
+| Commands not executing | `allowedCommands` not set | Add `RENOVATE_ALLOWED_POST_UPGRADE_COMMANDS` to workflow env |
+| HTTP 403 Forbidden | GITHUB_TOKEN lacks scopes | Use RENOVATE_TOKEN with `repo` + `workflow` scopes |
+| Lock file in PR | Overly permissive fileFilters | Restrict to `apps/**/config.json` and `apps/**/docker-compose.json` |
+| Database services updating | Not in ignore list | Add to `matchPackageNames` with `enabled: false` |
+| `tipi_version` conflicts | Multiple script runs per file | Use `executionMode: "branch"` to group updates |
+
+**Testing Renovate Locally (Docker):**
+
+If you need to test Renovate configuration locally before pushing:
+
+```bash
+# Install Docker first
+
+# Run Renovate in Docker with your config
+docker run -it --rm \
+  -v "$(pwd):/repo" \
+  -e RENOVATE_TOKEN=your_token_here \
+  -e LOG_LEVEL=debug \
+  renovate/renovate:latest renovate
+```
+
+This validates configuration and shows what updates would be detected without making actual commits.
+
+**Important Notes for Maintenance:**
+
+- **Never remove** any of the 8 critical fixes listed above
+- **If adding new infrastructure services:** Add to `matchPackageNames` with `enabled: false`
+- **If updating post-upgrade commands:** Update both `postUpgradeTasks` and `RENOVATE_ALLOWED_POST_UPGRADE_COMMANDS`
+- **If changing app structure:** Verify Renovate regex still matches new file patterns
+- **Monitor PR history:** Ensure Renovate creates 1 PR per app, not multiple
+
 ## Existing Codebase Issues (as of Dec 2025)
 
 **KNOWN VIOLATION - Needs Fixing:**
@@ -891,3 +1017,4 @@ Use this checklist when creating a new app:
 - All development guidelines are consolidated here for centralized reference
 - Maintain English for new documentation and code comments
 - Always validate configurations with `bun test` before committing
+- Renovate setup is fully documented above; refer to "Renovate Bot Setup & Automation" section for maintenance

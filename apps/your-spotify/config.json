@@ -6,9 +6,12 @@
   "dynamic_config": true,
   "port": 8850,
   "id": "your-spotify",
-  "tipi_version": 3,
-  "version": "1.16.0",
-  "categories": ["music", "utilities"],
+  "tipi_version": 4,
+  "version": "1.17.0",
+  "categories": [
+    "music",
+    "utilities"
+  ],
   "description": "Self hosted Spotify tracking dashboard.",
   "short_desc": "Self hosted Spotify tracking dashboard.",
   "author": "Yooooomi",
@@ -29,8 +32,11 @@
       "env_variable": "SPOTIFY_SECRET"
     }
   ],
-  "supported_architectures": ["arm64", "amd64"],
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
   "created_at": 1691943801422,
-  "updated_at": 1766292658574,
+  "updated_at": 1766776812276,
   "min_tipi_version": "4.5.0"
 }

@@ -8,19 +8,22 @@
   "addLabels": [
     "renovate"
   ],
-  "enabledManagers": ["custom.regex"],
+  "enabledManagers": [
+    "custom.regex"
+  ],
   "automergeStrategy": "rebase",
   "prCreation": "immediate",
   "rebaseWhen": "conflicted",
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": ["/^apps\/.+\/docker-compose\\.json$/"],
+      "managerFilePatterns": [
+        "/^apps/.+/docker-compose\\.json$/"
+      ],
       "matchStrings": [
         "\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","
       ],
-      "datasourceTemplate": "docker",
-      "skipInstalls": true
+      "datasourceTemplate": "docker"
     }
   ],
   "packageRules": [
@@ -44,35 +47,44 @@
       "matchPackageNames": [
         "mariadb",
         "mysql",
+        "mongo",
         "mongodb",
         "postgres",
         "postgis/postgis",
         "redis",
         "rabbitmq",
-        "milvus",
+        "milvusdb/milvus",
         "minio/minio",
-        "quay.io/coreos/etcd",
-        "etcd"
+        "quay.io/coreos/etcd"
       ],
       "enabled": false
     },
     {
-      "matchPackagePatterns": [
-        ".*-etcd$",
-        ".*-minio$",
-        ".*-redis$"
+      "enabled": false,
+      "matchPackageNames": [
+        "/.*-etcd$/",
+        "/.*-minio$/",
+        "/.*-redis$/"
+      ]
+    },
+    {
+      "description": "Group all updates for the same app into a single PR",
+      "matchFileNames": [
+        "apps/**"
       ],
-      "enabled": false
+      "groupName": "{{parentDir}}"
     }
   ],
   "postUpgradeTasks": {
     "commands": [
+      "bun install",
       "bun ./scripts/update-config.ts {{packageFile}} {{newVersion}} {{packageName}}",
-      "bun install && bun run test"
+      "bun run test"
     ],
     "fileFilters": [
-      "**/*"
+      "apps/**/config.json",
+      "apps/**/docker-compose.json"
     ],
-    "executionMode": "update"
+    "executionMode": "branch"
   }
 }
