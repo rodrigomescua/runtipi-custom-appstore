@@ -17,7 +17,8 @@
       "environment": [
         { "key": "TZ", "value": "${TZ}"},
         { "key": "SECRET", "value": "${SECRET}"},
-        { "key": "REDIS_URL", "value": "redis://redis:6379" }
+        { "key": "REDIS_URL", "value": "redis://redis:6379" },
+        { "key": "TMDB_LANG", "value": "${TMDB_LANG}" }
       ],
       "dependsOn": {
         "redis": {
