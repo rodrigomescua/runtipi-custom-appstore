@@ -2,7 +2,7 @@
   "$schema": "https://schemas.runtipi.io/v2/app-info.json",
   "name": "Razor Miniflux - Restricted",
   "id": "razor-miniflux-restricted",
-  "available": true,
+  "available": false,
   "short_desc": "Razor Miniflux Restricted",
   "author": "Rodrigo Mescua",
   "port": 8823,
