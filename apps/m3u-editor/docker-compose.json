@@ -1,0 +1,203 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
+  "services": [
+    {
+      "name": "m3u-editor_redis",
+      "image": "redis:alpine3.22",
+      "command": [
+        "redis-server",
+        "--port",
+        "6379",
+        "--appendonly",
+        "no",
+        "--save",
+        "",
+        "--maxmemory",
+        "256mb",
+        "--maxmemory-policy",
+        "allkeys-lru"
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/redis",
+          "containerPath": "/data"
+        }
+      ],
+      "healthCheck": {
+        "test": "redis-cli -p 6379 ping",
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 3
+      }
+    },
+    {
+      "name": "m3u-proxy",
+      "image": "sparkison/m3u-proxy:latest",
+      "environment": [
+        {
+          "key": "API_TOKEN",
+          "value": "${M3U_PROXY_TOKEN}"
+        },
+        {
+          "key": "PORT",
+          "value": "38085"
+        },
+        {
+          "key": "REDIS_ENABLED",
+          "value": "true"
+        },
+        {
+          "key": "REDIS_PORT",
+          "value": "6379"
+        },
+        {
+          "key": "REDIS_HOST",
+          "value": "m3u-editor_redis"
+        },
+        {
+          "key": "REDIS_DB",
+          "value": "6"
+        },
+        {
+          "key": "ENABLE_REDIS_POOLING",
+          "value": "true"
+        },
+        {
+          "key": "LOG_LEVEL",
+          "value": "INFO"
+        }
+      ],
+      "dependsOn": {
+        "m3u-editor_redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "devices": [
+        "/dev/dri:/dev/dri"
+      ],
+      "healthCheck": {
+        "test": "curl -f http://127.0.0.1:38085/health?api_token=${M3U_PROXY_TOKEN}",
+        "interval": "30s",
+        "timeout": "2s",
+        "retries": 12
+      }
+    },
+    {
+      "name": "m3u-editor",
+      "image": "sparkison/m3u-editor:0.8.19",
+      "isMain": true,
+      "internalPort": 36400,
+      "environment": [
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        },
+        {
+          "key": "APP_URL",
+          "value": "http://${APP_DOMAIN}:${APP_PORT}"
+        },
+        {
+          "key": "APP_PORT",
+          "value": "36400"
+        },
+        {
+          "key": "ENABLE_POSTGRES",
+          "value": "true"
+        },
+        {
+          "key": "PG_DATABASE",
+          "value": "m3ue"
+        },
+        {
+          "key": "PG_USER",
+          "value": "m3ue"
+        },
+        {
+          "key": "PG_PASSWORD",
+          "value": "${PG_PASSWORD}"
+        },
+        {
+          "key": "PG_PORT",
+          "value": "5432"
+        },
+        {
+          "key": "DB_CONNECTION",
+          "value": "pgsql"
+        },
+        {
+          "key": "DB_HOST",
+          "value": "localhost"
+        },
+        {
+          "key": "DB_PORT",
+          "value": "5432"
+        },
+        {
+          "key": "DB_DATABASE",
+          "value": "m3ue"
+        },
+        {
+          "key": "DB_USERNAME",
+          "value": "m3ue"
+        },
+        {
+          "key": "DB_PASSWORD",
+          "value": "${PG_PASSWORD}"
+        },
+        {
+          "key": "REDIS_ENABLED",
+          "value": "false"
+        },
+        {
+          "key": "REDIS_SERVER_PORT",
+          "value": "6379"
+        },
+        {
+          "key": "REDIS_HOST",
+          "value": "m3u-editor_redis"
+        },
+        {
+          "key": "M3U_PROXY_ENABLED",
+          "value": "false"
+        },
+        {
+          "key": "M3U_PROXY_PORT",
+          "value": "38085"
+        },
+        {
+          "key": "M3U_PROXY_HOST",
+          "value": "m3u-proxy"
+        },
+        {
+          "key": "M3U_PROXY_TOKEN",
+          "value": "${M3U_PROXY_TOKEN}"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/config",
+          "containerPath": "/var/www/config"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/postgres",
+          "containerPath": "/var/lib/postgresql/data"
+        }
+      ],
+      "dependsOn": {
+        "m3u-proxy": {
+          "condition": "service_healthy"
+        },
+        "m3u-editor_redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "healthCheck": {
+        "test": "curl -f http://127.0.0.1:36400/up",
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 5
+      }
+    }
+  ]
+}
