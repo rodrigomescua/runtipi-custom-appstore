@@ -42,7 +42,7 @@
     },
     {
       "name": "piwigo",
-      "image": "piwigo/piwigo:16.1.0",
+      "image": "piwigo/piwigo:16.2.0",
       "isMain": true,
       "internalPort": 80,
       "environment": [
