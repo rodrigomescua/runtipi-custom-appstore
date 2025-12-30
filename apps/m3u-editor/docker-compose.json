@@ -95,7 +95,7 @@
         },
         {
           "key": "APP_URL",
-          "value": "http://${APP_DOMAIN}:${APP_PORT}"
+          "value": "http://${APP_DOMAIN}"
         },
         {
           "key": "APP_PORT",
