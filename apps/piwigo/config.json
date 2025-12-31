@@ -6,16 +6,22 @@
   "short_desc": "Open-source photo gallery software",
   "author": "Piwigo Team",
   "port": 8849,
-  "categories": ["media", "photography"],
+  "categories": [
+    "media",
+    "photography"
+  ],
   "description": "Piwigo is open source photo gallery software for the web. Designed for organisations, teams and individuals to manage, share and organise their photo collections.",
-  "tipi_version": 1,
-  "version": "16.1.0",
+  "tipi_version": 2,
+  "version": "16.2.0",
   "source": "https://github.com/Piwigo/Piwigo",
   "website": "https://piwigo.org/",
   "exposable": true,
   "dynamic_config": true,
-  "supported_architectures": ["amd64", "arm64"],
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
   "created_at": 1734461280000,
-  "updated_at": 1734461280000,
+  "updated_at": 1767122460699,
   "form_fields": []
 }
