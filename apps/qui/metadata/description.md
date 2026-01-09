@@ -30,8 +30,8 @@ Qui is a fast, modern web interface for qBittorrent with multi-instance support.
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `QUI_SESSION_SECRET` | Secret key for cookie encryption | Auto-generated |
-| `QUI_LOG_LEVEL` | Logging level (ERROR, DEBUG, INFO, WARN, TRACE) | INFO |
+| `QUI__SESSION_SECRET` | Secret key for cookie encryption | Auto-generated |
+| `QUI__LOG_LEVEL` | Logging level (ERROR, DEBUG, INFO, WARN, TRACE) | INFO |
 
 ## Usage
 
@@ -44,5 +44,4 @@ Qui is a fast, modern web interface for qBittorrent with multi-instance support.
 
 - Qui stores its configuration in `/config` inside the container
 - For cross-seeding, ensure your trackers are properly configured
-- The web interface is available on port 7476 by default
 - Full documentation available at [getqui.com](https://getqui.com)

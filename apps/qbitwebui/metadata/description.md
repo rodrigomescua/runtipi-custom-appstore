@@ -5,47 +5,56 @@
 
 ## Overview
 
-qBitWebUI is a modern, fast, and beautiful alternative web user interface for qBittorrent. Built with React 19, TypeScript, and Tailwind CSS, it provides a superior experience for managing your torrents.
+qBitWebUI is a modern, feature-rich alternative web interface for qBittorrent. Built with React 19, TypeScript, and Tailwind CSS, it provides multi-instance management, Prowlarr integration, and a comprehensive set of tools for advanced torrent management.
 
 ## Features
 
+### Multi-Instance Management (v2.0+)
+- **Multiple qBittorrent Instances** - Manage unlimited instances from a single interface
+- **User Authentication** - Secure registration/login with AES-256-GCM encrypted credential storage
+- **Instance Dashboard** - Overview of all instances with statistics and speed graphs
+
 ### Core Functionality
-- **Real-time Torrent Monitoring** - Live updates on download/upload speeds and progress
-- **Magnet Link Support** - Add torrents directly via magnet links
-- **Drag & Drop Uploads** - Easy torrent file uploads with drag and drop
-- **File Priority Management** - Set download priorities for individual files
+- **Real-time Monitoring** - Live updates on download/upload speeds, progress, and peer information
+- **Advanced Search** - Integrated Prowlarr support for indexer search across all instances
+- **File Management** - Browse, download, copy, move, and delete files directly from the server
+- **Torrent Operations** - Drag & drop uploads, magnet links, file priority management, and sequential download
+
+### Tools & Features
+- **Settings Panel** - Edit most qBittorrent settings directly in the UI
+- **Orphaned Torrents Detection** - Find and manage torrents with missing data files
+- **Global/Alternative Speed Controls** - Speed limit scheduling and management
+- **File Browser** - Navigate and manage server files with download-to-client capability
 
 ### User Experience
-- **Multiple Themes** - Light and dark modes with customizable themes
+- **Multiple Themes** - Light and dark modes with customizable color schemes
+- **Mobile Support** - Progressive Web App (PWA) with responsive design and compact mode
+- **Fuzzy Search** - Intelligent search across all torrents
+- **Pagination & Filtering** - Efficient navigation through large torrent collections
 - **Keyboard Navigation** - Full keyboard shortcuts for power users
-- **Responsive Design** - Works on desktop, tablet, and mobile devices
-- **Fast Performance** - Optimized React 19 for smooth interactions
-
-### Technical Features
-- **TypeScript** - Full type safety throughout the codebase
-- **Tailwind CSS** - Modern, utility-first styling
-- **Modern Architecture** - Clean, maintainable code structure
 
 ## Requirements
 
-- A running qBittorrent instance with Web UI enabled
-- qBittorrent Web API access (default port 8080)
+- A running qBittorrent instance with Web UI enabled (or multiple instances)
+- Network access to qBittorrent Web API
 
 ## Configuration
 
 | Variable | Description | Required |
 |----------|-------------|----------|
-| `QBITWEBUI_URL` | Full URL to your qBittorrent instance | Yes |
+| `ENCRYPTION_KEY` | Secret key for credential encryption (32+ characters) | Yes |
 
 ## Usage
 
-1. Enable Web UI in your qBittorrent settings
-2. Configure the qBittorrent URL in the app settings
-3. Access qBitWebUI through Tipi's interface
-4. Log in with your qBittorrent credentials
+1. **First Launch:** Register an account to secure the application
+2. **Add Instances:** Configure one or more qBittorrent instances via the UI
+3. **Optional:** Connect Prowlarr for integrated torrent search
+4. **Manage Torrents:** Switch between instances and manage torrents with all available tools
 
 ## Notes
 
-- Ensure qBittorrent's Web UI is accessible from the Tipi server
-- For remote access, you may need to configure CORS settings in qBittorrent
+- All qBittorrent credentials are encrypted with AES-256-GCM before storage
+- The ENCRYPTION_KEY is generated automatically during installation
+- User data and instance configurations are persisted in the `/data` volume
+- For Prowlarr integration, ensure it's accessible from the qBitWebUI container
 - The Web UI runs on nginx serving static files
