@@ -49,6 +49,34 @@ dawarich/
 - The `port` field in `config.json` is the **exposed host port**, not the internal container port
 - Internal container port goes in `docker-compose.json` under `internalPort`
 
+**⚠️ CRITICAL DISTINCTION - NEVER CONFUSE `port` WITH `internalPort`**
+
+| Campo | Arquivo | Descrição | Range | Restrição |
+|-------|---------|-----------|-------|-----------|
+| `port` | config.json | Porta EXPOSTA no host | 8800-8999 | **OBRIGATÓRIO verificar range e disponibilidade** |
+| `internalPort` | docker-compose.json | Porta DENTRO do container | Qualquer | Deve corresponder à documentação da aplicação |
+
+**Erro Comum:**
+```json
+// ❌ ERRADO - porta config.json fora do range
+"port": 7476,  // Em config.json - viola range 8800-8999!
+"internalPort": 7476,  // Em docker-compose - pode estar correto se a app usa 7476 internamente
+
+// ✅ CORRETO
+"port": 8852,  // Em config.json - dentro do range 8800-8999
+"internalPort": 7476,  // Em docker-compose - porta interna real da aplicação
+```
+
+**Exemplo Real (Linkding):**
+```json
+// config.json
+"port": 8830  // Host: acessa em http://host:8830 (RANGE 8800-8999 ✅)
+
+// docker-compose.json
+"internalPort": 9090  // Container: app roda em :9090 (conforme documentação da app ✅)
+```
+Resultado: Container porta 9090 → Host porta 8830
+
 **MISTAKE THAT HAPPENED:** App created with port 8840 when razor-finance already used it
 - **ROOT CAUSE:** Port availability was not verified before creation
 - **SOLUTION:** Always run verification search across ALL config files first
