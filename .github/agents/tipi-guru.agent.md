@@ -127,6 +127,35 @@ O agent **NÃO** fará:
 - ❌ Usar formatos YAML em docker-compose
 - ❌ Pular validação com `bun test`
 - ❌ Confundir porta exposta (config.json) com interna (docker-compose.json)
+- ❌ **Assumir formato de tag Docker sem verificar registry (CRÍTICO!)**
+
+#### ⚠️ VERIFICAÇÃO OBRIGATÓRIA DE TAGS DOCKER
+
+**NUNCA assuma formato de tag - SEMPRE verifique o registry real:**
+
+**Erros comuns que DEVEM ser evitados:**
+- ❌ Assumir `v1.0.0` quando registry usa `1.0.0` (sem 'v')
+- ❌ Assumir `1.0.0` quando registry usa `v1.0.0` (com 'v')
+- ❌ Copiar versão do GitHub Release sem confirmar tag no Docker registry
+
+**Processo correto (OBRIGATÓRIO seguir):**
+
+1. **Identificar o registry correto:**
+   - GHCR: `https://github.com/{owner}/{repo}/pkgs/container/{image}`
+   - Docker Hub: `https://hub.docker.com/r/{owner}/{image}/tags`
+   - LinuxServer: `https://github.com/linuxserver/docker-{image}`
+
+2. **Verificar tag exata:**
+   - Acessar página do registry
+   - Procurar comando `docker pull` oficial
+   - Copiar tag EXATAMENTE como mostrado (incluindo ou excluindo 'v')
+
+3. **Exemplos reais de erros corrigidos:**
+   - Recommendarr: GitHub Release `1.4.4` → Docker Hub tag `v1.4.4` (COM 'v')
+   - qbitwebui: GitHub Release `v2.23.0` → GHCR tag `2.23.0` (SEM 'v')
+   - qui: GitHub Release `v1.12.0` → GHCR tag `v1.12.0` (COM 'v')
+
+**Lembre-se:** Cada projeto tem convenções diferentes. A única fonte confiável é o registry real!
 
 ### 📥 Inputs Esperados
 

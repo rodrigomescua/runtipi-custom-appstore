@@ -156,6 +156,7 @@ You MUST verify the exact tag format from the registry WHERE THE APP'S OFFICIAL 
 - ❌ Used `v0.8.0` when registry only had `0.8.0`
 - ❌ Used `v2.2.8` when GitHub Actions strips 'v' and publishes as `2.2.8`
 - ❌ Used `1.4.4` for Recommendarr when Docker Hub tag was `v1.4.4` (with 'v' prefix) - **MISTAKE THAT HAPPENED**
+- ❌ Used `v2.23.0` for qbitwebui when GHCR tag was `2.23.0` (without 'v' prefix) - **MISTAKE THAT HAPPENED (Jan 9, 2026)**
 - ✅ Always check the registry page or GitHub Actions workflow directly before committing
 
 **CRITICAL LESSON - Recommendarr Tag Format (Dec 29, 2025):**
@@ -165,6 +166,14 @@ You MUST verify the exact tag format from the registry WHERE THE APP'S OFFICIAL 
 - **Root Cause:** GitHub Releases page showed "Release 1.4.4" but Docker Hub uses `v1.4.4` with prefix
 - **Solution Applied:** Visit `https://hub.docker.com/r/tannermiddleton/recommendarr/tags` and confirmed tag is `v1.4.4` with prefix
 - **Why This Matters:** Apps using incorrect tags will fail at runtime with "image not found" errors, wasting deployment time
+
+**CRITICAL LESSON - qbitwebui Tag Format (Jan 9, 2026):**
+- **WRONG:** `ghcr.io/maciejonos/qbitwebui:v2.23.0` ❌ (tag doesn't exist on GHCR)
+- **RIGHT:** `ghcr.io/maciejonos/qbitwebui:2.23.0` ✅ (actual tag on GHCR)
+- **Root Cause:** Assumed GitHub Release `v2.23.0` would match GHCR tag with 'v' prefix
+- **Solution Applied:** Visit `https://github.com/Maciejonos/qbitwebui/pkgs/container/qbitwebui` and confirmed tags are `2.23`, `2.23.0` WITHOUT 'v'
+- **Command shown:** `docker pull ghcr.io/maciejonos/qbitwebui:2.23` (no 'v')
+- **Why This Matters:** Different projects use different conventions - ALWAYS verify the actual registry page
 
 **Concrete example (Linkding):**
 ```json
