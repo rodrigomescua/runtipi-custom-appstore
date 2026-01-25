@@ -50,7 +50,7 @@
     },
     {
       "name": "geopulse_backend",
-      "image": "tess1o/geopulse-backend:1.14.0-native",
+      "image": "tess1o/geopulse-backend:1.15.0-native",
       "environment": [
         {
           "key": "GEOPULSE_VERSION",
@@ -137,7 +137,7 @@
     },
     {
       "name": "geopulse",
-      "image": "tess1o/geopulse-ui:1.14.0",
+      "image": "tess1o/geopulse-ui:1.15.0",
       "isMain": true,
       "internalPort": 80,
       "environment": [
