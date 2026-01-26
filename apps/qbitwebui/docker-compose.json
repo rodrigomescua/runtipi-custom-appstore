@@ -4,7 +4,7 @@
     "services": [
         {
             "name": "qbitwebui",
-            "image": "ghcr.io/maciejonos/qbitwebui:2.34.0",
+            "image": "ghcr.io/maciejonos/qbitwebui:2.41.0",
             "isMain": true,
             "internalPort": 3000,
             "environment": [
