@@ -10,8 +10,8 @@
     "utilities"
   ],
   "description": "Arcane is a modern, intuitive Docker management platform designed for everyone. It provides a clean web interface to manage containers, images, networks, volumes, and Docker projects. With features like real-time monitoring, automatic updates, and environment management, Arcane makes Docker management accessible and efficient.",
-  "tipi_version": 8,
-  "version": "v1.13.2",
+  "tipi_version": 9,
+  "version": "v1.14.0",
   "source": "https://github.com/getarcaneapp/arcane",
   "exposable": true,
   "dynamic_config": true,
@@ -20,7 +20,7 @@
     "arm64"
   ],
   "created_at": 1735368000000,
-  "updated_at": 1768894051327,
+  "updated_at": 1769931396732,
   "form_fields": [
     {
       "type": "random",
