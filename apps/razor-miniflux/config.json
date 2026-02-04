@@ -10,8 +10,8 @@
     "featured"
   ],
   "description": "Aplicativo para gerenciar feed RSS hospedado no Miniflux.",
-  "tipi_version": 24,
-  "version": "1767033274",
+  "tipi_version": 25,
+  "version": "1770231131",
   "source": "https://github.com/romesc/RazorMinifluxDocker",
   "exposable": true,
   "dynamic_config": true,
@@ -19,7 +19,7 @@
     "amd64"
   ],
   "created_at": 1731806736001,
-  "updated_at": 1767036033627,
+  "updated_at": 1770231357012,
   "form_fields": [
     {
       "type": "text",
