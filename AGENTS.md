@@ -29,7 +29,7 @@ apps/<app-id>/
 ├── config.json           # App metadata, port, version, form fields
 ├── docker-compose.json   # Docker services (JSON format, never YAML)
 └── metadata/
-    ├── logo.jpg          # 512x512 JPG
+    ├── logo.jpg          # 512x512 JPG (Use placeholder from another app. USER will update with real logo.)
     └── description.md    # Brief app description
 ```
 

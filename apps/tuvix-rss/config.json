@@ -1,0 +1,52 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "name": "Tuvix RSS",
+    "id": "tuvix-rss",
+    "available": true,
+    "short_desc": "Self-hosted RSS aggregator",
+    "author": "TechSquidTV",
+    "port": 8835,
+    "categories": [
+        "utilities",
+        "media"
+    ],
+    "description": "Tuvix is a self-hostable RSS aggregator. It allows you to organize and read your RSS feeds in a modern, responsive interface.",
+    "tipi_version": 1,
+    "version": "0.6.1",
+    "source": "https://github.com/TechSquidTV/Tuvix-RSS",
+    "exposable": true,
+    "dynamic_config": true,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "created_at": 1770817200000,
+    "updated_at": 1770817200000,
+    "form_fields": [
+        {
+            "type": "random",
+            "env_variable": "BETTER_AUTH_SECRET",
+            "label": "Better Auth Secret (Generated)",
+            "min": 32,
+            "max": 32
+        },
+        {
+            "type": "text",
+            "env_variable": "ADMIN_USERNAME",
+            "label": "Admin Username",
+            "required": true
+        },
+        {
+            "type": "email",
+            "env_variable": "ADMIN_EMAIL",
+            "label": "Admin Email",
+            "required": true
+        },
+        {
+            "type": "password",
+            "env_variable": "ADMIN_PASSWORD",
+            "label": "Admin Password",
+            "required": true
+        }
+    ]
+}

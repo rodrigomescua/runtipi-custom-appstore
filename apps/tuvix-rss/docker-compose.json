@@ -1,0 +1,61 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
+        {
+            "name": "api",
+            "image": "ghcr.io/techsquidtv/tuvix-rss/api:v0.6.1",
+            "restart": "unless-stopped",
+            "environment": [
+                {
+                    "key": "DATABASE_PATH",
+                    "value": "/app/data/tuvix.db"
+                },
+                {
+                    "key": "BETTER_AUTH_SECRET",
+                    "value": "${BETTER_AUTH_SECRET}"
+                },
+                {
+                    "key": "ADMIN_USERNAME",
+                    "value": "${ADMIN_USERNAME}"
+                },
+                {
+                    "key": "ADMIN_EMAIL",
+                    "value": "${ADMIN_EMAIL}"
+                },
+                {
+                    "key": "ADMIN_PASSWORD",
+                    "value": "${ADMIN_PASSWORD}"
+                },
+                {
+                    "key": "APP_BASE_URL",
+                    "value": "http://${APP_DOMAIN}"
+                },
+                {
+                    "key": "TZ",
+                    "value": "${TZ}"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data",
+                    "containerPath": "/app/data"
+                }
+            ]
+        },
+        {
+            "name": "app",
+            "image": "ghcr.io/techsquidtv/tuvix-rss/app:v0.6.1",
+            "isMain": true,
+            "internalPort": 8080,
+            "restart": "unless-stopped",
+            "user": "root",
+            "command": "/bin/sh -c \"echo 'server { listen 8080; root /usr/share/nginx/html; index index.html; location / { try_files $uri /index.html; sub_filter_types application/javascript; sub_filter \\\"http://localhost:3001/trpc\\\" \\\"/trpc\\\"; sub_filter_once off; } location /trpc { proxy_pass http://api:3001; } location /health { return 200 \\\"ok\\\"; } }' > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'\"",
+            "dependsOn": {
+                "api": {
+                    "condition": "service_started"
+                }
+            }
+        }
+    ]
+}
