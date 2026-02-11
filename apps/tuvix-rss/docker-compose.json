@@ -8,6 +8,10 @@
             "restart": "unless-stopped",
             "environment": [
                 {
+                    "key": "CORS_ORIGIN",
+                    "value": "http://${APP_DOMAIN}"
+                },
+                {
                     "key": "DATABASE_PATH",
                     "value": "/app/data/tuvix.db"
                 },
