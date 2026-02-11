@@ -1,0 +1,44 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "name": "TrackWatch",
+    "id": "trackwatch",
+    "available": true,
+    "short_desc": "Self-hosted Spotify release tracker",
+    "author": "emlopezr",
+    "port": 8834,
+    "categories": [
+        "media"
+    ],
+    "description": "Self-hosted Spotify release tracker. Auto-syncs new releases to playlists, generates discographies, and cleans ghost tracks.",
+    "tipi_version": 1,
+    "version": "2.1.1",
+    "source": "https://github.com/emlopezr/trackwatch",
+    "exposable": true,
+    "dynamic_config": true,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "created_at": 1770817200000,
+    "updated_at": 1770817200000,
+    "form_fields": [
+        {
+            "type": "text",
+            "env_variable": "SPOTIFY_CLIENT_ID",
+            "label": "Spotify Client ID",
+            "required": true
+        },
+        {
+            "type": "password",
+            "env_variable": "SPOTIFY_CLIENT_SECRET",
+            "label": "Spotify Client Secret",
+            "required": true
+        },
+        {
+            "type": "password",
+            "env_variable": "SECRET_KEY",
+            "label": "Secret Key (Random String)",
+            "required": true
+        }
+    ]
+}
