@@ -4,7 +4,7 @@
     "services": [
         {
             "name": "api",
-            "image": "ghcr.io/techsquidtv/tuvix-rss/api:v0.6.1",
+            "image": "ghcr.io/techsquidtv/tuvix-rss/api:0.7.1",
             "restart": "unless-stopped",
             "environment": [
                 {
@@ -45,7 +45,7 @@
         },
         {
             "name": "app",
-            "image": "ghcr.io/techsquidtv/tuvix-rss/app:v0.6.1",
+            "image": "ghcr.io/techsquidtv/tuvix-rss/app:0.7.1",
             "isMain": true,
             "internalPort": 8080,
             "restart": "unless-stopped",

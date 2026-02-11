@@ -12,7 +12,7 @@
     ],
     "description": "Tuvix is a self-hostable RSS aggregator. It allows you to organize and read your RSS feeds in a modern, responsive interface.",
     "tipi_version": 1,
-    "version": "0.6.1",
+    "version": "0.7.1",
     "source": "https://github.com/TechSquidTV/Tuvix-RSS",
     "exposable": true,
     "dynamic_config": true,

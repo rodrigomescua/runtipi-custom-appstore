@@ -57,6 +57,7 @@ The `version` in config.json MUST exactly match the image tag in docker-compose.
 **Always verify tags from the actual registry** (Docker Hub, GHCR, etc.) - never assume format:
 - Some use `v1.0.0`, others use `1.0.0`
 - LinuxServer.io always uses `v` prefix
+- **CRITICAL:** GitHub Releases often use a `v` prefix (e.g., `v0.7.1`) while the Docker Image in GHCR may NOT (e.g., `0.7.1`). ALWAYS check the Packages/Registry tab to confirm the exact string.
 - Check GitHub Actions workflows for tag transformation logic
 
 ### docker-compose.json Format
