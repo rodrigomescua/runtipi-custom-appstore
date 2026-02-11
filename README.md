@@ -18,9 +18,9 @@ If you want to see new apps on Tipi you can either:
 - [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
 - Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
 
-## Apps available (33)
+## Apps available (35)
 
-| Name                                                                         | Description                                                                                        | Port | Dynamic (33) |
+| Name                                                                         | Description                                                                                        | Port | Dynamic (35) |
 | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                            | Self-hosted GPU video compressor                                                                   | 8846 | yes          |
 | [Arcane](https://github.com/getarcaneapp/arcane)                             | Modern Docker Management, Made for Everyone                                                        | 8851 | yes          |
@@ -51,6 +51,8 @@ If you want to see new apps on Tipi you can either:
 | [Recommendarr](https://github.com/fingerthief/recommendarr)                  | AI-powered TV and movie recommendations based on your library                                      | 8827 | yes          |
 | [Reitti](https://github.com/dedicatedcode/reitti)                            | Personal Location Tracking & Analysis - Self-hosted alternative to Google Timeline                 | 8826 | yes          |
 | [Stash](https://github.com/stashapp/stash)                                   | Organize and serve media.                                                                          | 8847 | yes          |
+| [TrackWatch](https://github.com/emlopezr/trackwatch)                         | Self-hosted Spotify release tracker                                                                | 8834 | yes          |
+| [Tuvix RSS](https://github.com/TechSquidTV/Tuvix-RSS)                        | Self-hosted RSS aggregator                                                                         | 8835 | yes          |
 | [Upsnap](https://github.com/seriousm4x/UpSnap)                               | A simple wake on lan web app written with SvelteKit, Go and PocketBase.                            | 8090 | yes          |
 | [Wallabag](https://github.com/wallabag/wallabag)                             | Wallabag                                                                                           | 8829 | yes          |
 | [Yamtrack](https://github.com/FuzzyGrim/Yamtrack)                            | Yamtrack is a self hosted media tracker for movies, tv shows, anime, manga, video games and books. | 8860 | yes          |
