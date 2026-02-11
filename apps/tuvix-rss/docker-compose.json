@@ -49,6 +49,28 @@
             "isMain": true,
             "internalPort": 5137,
             "restart": "unless-stopped",
+            "environment": [
+                {
+                    "key": "CORS_ORIGIN",
+                    "value": "http://${APP_DOMAIN}"
+                },
+                {
+                    "key": "VITE_API_URL",
+                    "value": "http://api:3001/trpc"
+                },
+                {
+                    "key": "VITE_APP_VERSION",
+                    "value": "docker"
+                },
+                {
+                    "key": "BASE_URL",
+                    "value": "http://${APP_DOMAIN}"
+                },
+                {
+                    "key": "TZ",
+                    "value": "${TZ}"
+                }
+            ],
             "user": "root",
             "command": "/bin/sh -c \"echo 'server { listen 8080; root /usr/share/nginx/html; index index.html; location / { try_files \\$uri \\$uri/ /index.html; sub_filter_types application/javascript; sub_filter \\\"http://localhost:3001/trpc\\\" \\\"/trpc\\\"; sub_filter_once off; } location /trpc { proxy_pass http://api:3001; } location /health { return 200 \\\"ok\\\"; } }' > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'\"",
             "dependsOn": {
