@@ -10,8 +10,8 @@
     "utilities"
   ],
   "description": "Dockhand is a modern Docker management application providing real-time container management, Compose stack orchestration, multi-environment support, Git integration for stack deployment, interactive terminal, log streaming, file browser, and vulnerability scanning. Features include SSO via OIDC, local user authentication, and optional role-based access control (Enterprise).",
-  "tipi_version": 10,
-  "version": "v1.0.17",
+  "tipi_version": 11,
+  "version": "v1.0.18",
   "source": "https://github.com/Finsys/dockhand",
   "website": "https://dockhand.pro/",
   "exposable": true,
@@ -21,6 +21,6 @@
     "arm64"
   ],
   "created_at": 1735491600000,
-  "updated_at": 1770710287674,
+  "updated_at": 1771270497800,
   "form_fields": []
 }
