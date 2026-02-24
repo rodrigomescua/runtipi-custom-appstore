@@ -6,8 +6,8 @@
   "dynamic_config": true,
   "port": 8850,
   "id": "your-spotify",
-  "tipi_version": 4,
-  "version": "1.17.0",
+  "tipi_version": 5,
+  "version": "1.18.0",
   "categories": [
     "music",
     "utilities"
@@ -37,6 +37,6 @@
     "amd64"
   ],
   "created_at": 1691943801422,
-  "updated_at": 1766776812276,
+  "updated_at": 1771962605446,
   "min_tipi_version": "4.5.0"
 }
