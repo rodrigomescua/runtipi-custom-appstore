@@ -4,7 +4,7 @@
   "services": [
     {
       "name": "dockhand",
-      "image": "fnsys/dockhand:v1.0.19",
+      "image": "fnsys/dockhand:v1.0.20",
       "isMain": true,
       "internalPort": 3000,
       "user": "0:0",
