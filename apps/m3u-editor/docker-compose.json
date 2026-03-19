@@ -85,7 +85,7 @@
     },
     {
       "name": "m3u-editor",
-      "image": "sparkison/m3u-editor:dev-0.9.27",
+      "image": "sparkison/m3u-editor:dev-0.10.17",
       "isMain": true,
       "internalPort": 36400,
       "environment": [
