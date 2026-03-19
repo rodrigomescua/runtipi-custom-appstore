@@ -4,7 +4,7 @@
   "services": [
     {
       "name": "8mblocal",
-      "image": "jms1717/8mblocal:v133",
+      "image": "jms1717/8mblocal:v134",
       "isMain": true,
       "internalPort": 8001,
       "environment": [
