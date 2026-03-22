@@ -11,8 +11,8 @@
     "media"
   ],
   "description": "Omoide is a self-hosted, offline-capable photo and video library designed for privacy and longevity. It uses local AI to organize your media with face recognition, semantic search, duplicate detection, map view, and automatic tagging—all without sending data to the cloud.",
-  "tipi_version": 9,
-  "version": "0.5.1",
+  "tipi_version": 10,
+  "version": "0.5.3",
   "source": "https://github.com/EinAeffchen/Omoide",
   "exposable": true,
   "dynamic_config": true,
@@ -20,6 +20,6 @@
     "amd64"
   ],
   "created_at": 1734556800000,
-  "updated_at": 1771876734381,
+  "updated_at": 1774165056325,
   "form_fields": []
 }
