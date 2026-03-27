@@ -17,38 +17,43 @@ on:
           - ERROR
           - FATAL
   schedule:
-    - cron: 0 7 * * *  # 4 da manhã (horário de Brasília UTC-3)
-    - cron: 0 19 * * * # 4 da tarde (horário de Brasília UTC-3)
+    - cron: 0 9 * * *   # 6:00 AM America/Sao_Paulo (UTC-3)
+    - cron: 0 17 * * *  # 2:00 PM America/Sao_Paulo (UTC-3)
+    - cron: 0 1 * * *   # 10:00 PM America/Sao_Paulo (UTC-3, próximo dia)
+  pull_request:
+  merge_group:
 
 jobs:
   renovate:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/create-github-app-token@v2
+        id: app-token
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install node
+      - name: Setup node
         uses: actions/setup-node@v4
         with:
           node-version: "22"
 
-      - name: Install bun
+      - name: Setup bun
         uses: oven-sh/setup-bun@v2
 
-      - name: Cache Bun global packages
+      - name: Cache bun dependencies
         uses: actions/cache@v4
         with:
           path: ~/.bun/install/global
-          key: ${{ runner.os }}-bun-global-renovate-40
+          key: ${{ runner.os }}-bun-renovate-${{ hashFiles('bun.lockb') }}
           restore-keys: |
-            ${{ runner.os }}-bun-global-
+            ${{ runner.os }}-bun-renovate-
 
       - name: Install Renovate
-        run: bun install -g renovate@40
+        run: bun install -g renovate@40 re2
 
       - name: Run renovate
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-          RENOVATE_ALLOWED_POST_UPGRADE_COMMANDS: '["^bun install$","^bun \\./scripts/update-config\\.ts .*$","^bun run test$"]'
-        run: LOG_LEVEL=${{ github.event.inputs.log_level || 'INFO' }} renovate --token ${{ secrets.RENOVATE_TOKEN || secrets.GITHUB_TOKEN }} ${{ github.repository }}
+        run: LOG_LEVEL=${{ github.event.inputs.log_level || 'INFO' }} renovate --token ${{ steps.app-token.outputs.token }} ${{ github.repository }}
