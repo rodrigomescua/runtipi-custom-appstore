@@ -17,9 +17,9 @@ on:
           - ERROR
           - FATAL
   schedule:
-    - cron: 0 6 * * *   # 6:00 AM UTC
-    - cron: 0 14 * * *  # 2:00 PM UTC (14:00)
-    - cron: 0 22 * * *  # 10:00 PM UTC (22:00)
+    - cron: 0 9 * * *   # 6:00 AM America/Sao_Paulo (UTC-3)
+    - cron: 0 17 * * *  # 2:00 PM America/Sao_Paulo (UTC-3)
+    - cron: 0 1 * * *   # 10:00 PM America/Sao_Paulo (UTC-3, próximo dia)
   pull_request:
   merge_group:
 
