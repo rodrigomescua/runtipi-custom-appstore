@@ -3,8 +3,8 @@ name: Readme Generator
 on:
   workflow_dispatch:
   schedule:
-    - cron: 0 8 * * *  # 5 da manhã (horário de Brasília UTC-3)
-    - cron: 0 20 * * * # 5 da tarde (horário de Brasília UTC-3)
+    - cron: 0 12 * * *  # 9:00 AM America/Sao_Paulo (UTC-3)
+    - cron: 0 21 * * *  # 6:00 PM America/Sao_Paulo (UTC-3)
 
 permissions:
   contents: write
@@ -14,8 +14,14 @@ jobs:
   generate-readme-file:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/create-github-app-token@v2
+        id: app-token
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Install Bun
         uses: oven-sh/setup-bun@v2
@@ -24,9 +30,9 @@ jobs:
         run: bun .github/scripts/readme-generator.ts
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.PAT_TOKEN != '' && secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+          token: ${{ steps.app-token.outputs.token }}
           commit-message: |
             docs: regenerate readme app list
           committer: GitHub <noreply@github.com>
