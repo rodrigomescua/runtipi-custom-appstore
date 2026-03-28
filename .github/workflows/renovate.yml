@@ -56,4 +56,9 @@ jobs:
         run: bun install -g renovate@40 re2
 
       - name: Run renovate
+        env:
+          RENOVATE_ALLOWED_POST_UPGRADE_COMMANDS: |
+            ^bun install$
+            ^bun \\./scripts/update-config\\.ts .*$
+            ^bun run test$
         run: LOG_LEVEL=${{ github.event.inputs.log_level || 'INFO' }} renovate --token ${{ steps.app-token.outputs.token }} ${{ github.repository }}
