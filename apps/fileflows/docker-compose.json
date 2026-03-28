@@ -27,6 +27,10 @@
       ],
       "volumes": [
         {
+          "hostPath": "${ROOT_FOLDER_HOST}/media",
+          "containerPath": "/media"
+        },
+        {
           "hostPath": "/var/run/docker.sock",
           "containerPath": "/var/run/docker.sock"
         },

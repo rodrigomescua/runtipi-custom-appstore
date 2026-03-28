@@ -8,7 +8,7 @@
   "port": 8836,
   "categories": ["media", "automation"],
   "description": "FileFlows is a file processing automation server that watches directories and applies processing flows (pipelines) to media files. It supports transcoding video and audio via FFmpeg, renaming and moving files, running scripts, and integrating with tools like Sonarr and Radarr. Primarily used for automated media optimization and format conversion in self-hosted setups.",
-  "tipi_version": 1,
+  "tipi_version": 2,
   "version": "latest",
   "source": "https://github.com/revenz/FileFlows",
   "website": "https://fileflows.com",
