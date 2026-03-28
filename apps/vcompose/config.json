@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "VCompose",
+  "id": "vcompose",
+  "available": true,
+  "short_desc": "Visual Docker Compose Builder",
+  "author": "zbrave",
+  "port": 8861,
+  "categories": ["utilities", "development"],
+  "description": "VCompose is a visual Docker Compose builder that lets you drag-and-drop services to create docker-compose.yml files. It features a canvas-based interface for adding services, drawing dependencies, and generating production-ready YAML configuration. No signup, no backend, fully client-side processing.",
+  "tipi_version": 1,
+  "version": "latest",
+  "source": "https://github.com/zbrave/vcompose",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "created_at": 1774329600000,
+  "updated_at": 1774329600000,
+  "form_fields": []
+}
