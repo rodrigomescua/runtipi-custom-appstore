@@ -4,11 +4,27 @@
   "services": [
     {
       "name": "wallabag_db",
-      "image": "mariadb:latest",
+      "image": "mariadb:lts",
       "environment": [
         {
-          "key": "MYSQL_ROOT_PASSWORD",
+          "key": "MARIADB_ROOT_PASSWORD",
           "value": "wallaroot"
+        },
+        {
+          "key": "MARIADB_USER",
+          "value": "wallabag"
+        },
+        {
+          "key": "MARIADB_DATABASE",
+          "value": "wallabag"
+        },
+        {
+          "key": "MARIADB_PASSWORD",
+          "value": "wallabag"
+        },
+        {
+          "key": "TZ",
+          "value": "${TZ}"
         }
       ],
       "volumes": [
@@ -18,7 +34,7 @@
         }
       ],
       "healthCheck": {
-        "test": "/usr/local/bin/healthcheck.sh --innodb_initialized",
+        "test": "healthcheck.sh --connect --innodb_initialized",
         "interval": "30s",
         "timeout": "10s",
         "retries": 5
@@ -66,7 +82,7 @@
         },
         {
           "key": "SYMFONY__ENV__DATABASE_PASSWORD",
-          "value": "wallapass"
+          "value": "wallabag"
         },
         {
           "key": "SYMFONY__ENV__DATABASE_CHARSET",
