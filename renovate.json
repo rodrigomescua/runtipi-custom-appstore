@@ -74,6 +74,13 @@
         "apps/**"
       ],
       "groupName": "{{parentDir}}"
+    },
+    {
+      "description": "Allow dev-* tags for m3u-editor",
+      "matchPackageNames": [
+        "sparkison/m3u-editor"
+      ],
+      "versionStrategy": "loose"
     }
   ],
   "postUpgradeTasks": {
