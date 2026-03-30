@@ -9,22 +9,6 @@
         {
           "key": "MYSQL_ROOT_PASSWORD",
           "value": "wallaroot"
-        },
-        {
-          "key": "MYSQL_USER",
-          "value": "wallabag"
-        },
-        {
-          "key": "MYSQL_DATABASE",
-          "value": "wallabag"
-        },
-        {
-          "key": "MYSQL_PASSWORD",
-          "value": "wallapass"
-        },
-        {
-          "key": "TZ",
-          "value": "${TZ}"
         }
       ],
       "volumes": [
@@ -93,14 +77,6 @@
           "value": "wallabag_"
         },
         {
-          "key": "SYMFONY__ENV__SECRET",
-          "value": "${WALLABAG_SECRET}"
-        },
-        {
-          "key": "SYMFONY__ENV__LOCALE",
-          "value": "en"
-        },
-        {
           "key": "SYMFONY__ENV__DOMAIN_NAME",
           "value": "https://${APP_DOMAIN}"
         },
@@ -123,10 +99,6 @@
         {
           "key": "SYMFONY__ENV__REDIS_PORT",
           "value": "6379"
-        },
-        {
-          "key": "POPULATE_DATABASE",
-          "value": "True"
         },
         {
           "key": "TZ",
