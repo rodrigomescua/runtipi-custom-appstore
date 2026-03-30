@@ -4,22 +4,18 @@
   "services": [
     {
       "name": "wallabag_db",
-      "image": "mariadb:lts",
+      "image": "postgres:16-alpine",
       "environment": [
         {
-          "key": "MARIADB_ROOT_PASSWORD",
-          "value": "wallaroot"
-        },
-        {
-          "key": "MARIADB_USER",
+          "key": "POSTGRES_USER",
           "value": "wallabag"
         },
         {
-          "key": "MARIADB_DATABASE",
-          "value": "wallabag"
+          "key": "POSTGRES_PASSWORD",
+          "value": "wallapass"
         },
         {
-          "key": "MARIADB_PASSWORD",
+          "key": "POSTGRES_DB",
           "value": "wallabag"
         },
         {
@@ -29,14 +25,14 @@
       ],
       "volumes": [
         {
-          "hostPath": "${APP_DATA_DIR}/data/mysql",
-          "containerPath": "/var/lib/mysql"
+          "hostPath": "${APP_DATA_DIR}/data/postgres-data",
+          "containerPath": "/var/lib/postgresql/data"
         }
       ],
       "healthCheck": {
-        "test": "healthcheck.sh --connect --innodb_initialized",
-        "interval": "30s",
-        "timeout": "10s",
+        "test": "pg_isready -U wallabag -d wallabag",
+        "interval": "10s",
+        "timeout": "5s",
         "retries": 5
       }
     },
@@ -57,12 +53,16 @@
       "internalPort": 80,
       "environment": [
         {
-          "key": "MYSQL_ROOT_PASSWORD",
-          "value": "wallaroot"
+          "key": "POSTGRES_USER",
+          "value": "wallabag"
+        },
+        {
+          "key": "POSTGRES_PASSWORD",
+          "value": "wallapass"
         },
         {
           "key": "SYMFONY__ENV__DATABASE_DRIVER",
-          "value": "pdo_mysql"
+          "value": "pdo_pgsql"
         },
         {
           "key": "SYMFONY__ENV__DATABASE_HOST",
@@ -70,7 +70,7 @@
         },
         {
           "key": "SYMFONY__ENV__DATABASE_PORT",
-          "value": "3306"
+          "value": "5432"
         },
         {
           "key": "SYMFONY__ENV__DATABASE_NAME",
@@ -82,15 +82,7 @@
         },
         {
           "key": "SYMFONY__ENV__DATABASE_PASSWORD",
-          "value": "wallabag"
-        },
-        {
-          "key": "SYMFONY__ENV__DATABASE_CHARSET",
-          "value": "utf8mb4"
-        },
-        {
-          "key": "SYMFONY__ENV__DATABASE_TABLE_PREFIX",
-          "value": "wallabag_"
+          "value": "wallapass"
         },
         {
           "key": "SYMFONY__ENV__DOMAIN_NAME",
@@ -119,10 +111,6 @@
         {
           "key": "TZ",
           "value": "${TZ}"
-        },
-        {
-          "key": "POPULATE_DATABASE",
-          "value": "false"
         }
       ],
       "volumes": [
