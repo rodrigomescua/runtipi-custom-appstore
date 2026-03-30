@@ -103,6 +103,10 @@
         {
           "key": "TZ",
           "value": "${TZ}"
+        },
+        {
+          "key": "POPULATE_DATABASE",
+          "value": "false"
         }
       ],
       "volumes": [
