@@ -80,6 +80,7 @@
       "matchPackageNames": [
         "sparkison/m3u-editor"
       ],
+      "versioning": "loose",
       "versionStrategy": "loose"
     }
   ],
