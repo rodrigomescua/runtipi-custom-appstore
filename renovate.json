@@ -82,7 +82,7 @@
       ],
       "versioning": "loose",
       "versionStrategy": "loose",
-      "enableDigestUpdates": false
+      "pinDigests": false
     }
   ],
   "postUpgradeTasks": {
