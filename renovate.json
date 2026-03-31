@@ -81,7 +81,8 @@
         "sparkison/m3u-editor"
       ],
       "versioning": "loose",
-      "versionStrategy": "loose"
+      "versionStrategy": "loose",
+      "enableDigestUpdates": false
     }
   ],
   "postUpgradeTasks": {
