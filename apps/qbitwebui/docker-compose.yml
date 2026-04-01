@@ -3,8 +3,6 @@ version: '3'
 services:
   qbitwebui:
     image: ghcr.io/maciejonos/qbitwebui:2.42.3
-    ports:
-      - "8853:3000"
     environment:
       - ENCRYPTION_KEY=${ENCRYPTION_KEY}
     volumes:

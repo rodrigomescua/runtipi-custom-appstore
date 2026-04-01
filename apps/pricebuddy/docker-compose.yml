@@ -3,8 +3,6 @@ version: '3'
 services:
   pricebuddy:
     image: jez500/pricebuddy:v1.0.46
-    ports:
-      - "8839:80"
     environment:
       - APP_URL=${APP_PROTOCOL:-http}://${APP_DOMAIN}
       - ASSET_URL=${APP_PROTOCOL:-http}://${APP_DOMAIN}

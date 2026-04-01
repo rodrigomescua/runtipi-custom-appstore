@@ -3,8 +3,6 @@ version: '3'
 services:
   upsnap:
     image: ghcr.io/seriousm4x/upsnap:5.3.1
-    ports:
-      - "8090:8090"
     environment:
       - TZ=${TZ}
       - UPSNAP_INTERVAL=*/10 * * * * *

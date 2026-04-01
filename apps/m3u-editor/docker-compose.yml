@@ -47,8 +47,6 @@ services:
 
   m3u-editor:
     image: sparkison/m3u-editor:dev-0.10.30
-    ports:
-      - "8833:36400"
     environment:
       - TZ=${TZ}
       - APP_URL=http://${APP_DOMAIN}

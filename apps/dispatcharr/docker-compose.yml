@@ -3,8 +3,6 @@ version: '3'
 services:
   dispatcharr:
     image: ghcr.io/dispatcharr/dispatcharr:0.21.1
-    ports:
-      - "8843:9191"
     environment:
       - DISPATCHARR_ENV=aio
       - REDIS_HOST=localhost

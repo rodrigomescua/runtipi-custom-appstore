@@ -3,8 +3,6 @@ version: '3'
 services:
   fileflows:
     image: revenz/fileflows:latest
-    ports:
-      - "8836:5000"
     environment:
       - TempPathHost=/temp
       - TZ=${TZ}

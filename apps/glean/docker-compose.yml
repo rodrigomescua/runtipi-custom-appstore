@@ -95,8 +95,6 @@ services:
 
   web:
     image: ghcr.io/leslieleung/glean-web:0.2.5
-    ports:
-      - "8845:80"
     depends_on:
       backend:
         condition: service_healthy

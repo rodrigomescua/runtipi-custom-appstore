@@ -38,9 +38,6 @@ services:
   dawarich:
     image: freikin/dawarich:1.6.0
     container_name: dawarich
-    ports:
-      # Host port 8824 (from config.json) maps to container port 3000
-      - "8824:3000"
     command:
       - bin/rails
       - server

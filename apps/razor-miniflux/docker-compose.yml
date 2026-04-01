@@ -3,8 +3,6 @@ version: '3'
 services:
   razor-miniflux:
     image: romesc/razorminiflux:1774742086
-    ports:
-      - "8822:8080"
     environment:
       - FRESHRSS_CONNECTIONSTRING=${FRESHRSS_CONNECTIONSTRING}
       - FRESHRSS_TABLE_PREFIX=${FRESHRSS_TABLE_PREFIX}

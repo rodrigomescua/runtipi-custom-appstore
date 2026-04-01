@@ -3,8 +3,6 @@ version: '3'
 services:
   blinko:
     image: blinkospace/blinko:1.8.6
-    ports:
-      - "8831:1111"
     environment:
       - NODE_ENV=production
       - NEXTAUTH_URL=${APP_PROTOCOL-http}://${APP_DOMAIN}

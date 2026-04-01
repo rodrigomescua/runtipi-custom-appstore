@@ -3,8 +3,6 @@ version: '3'
 services:
   trackwatch:
     image: ghcr.io/emlopezr/trackwatch:2.1.1
-    ports:
-      - "8834:80"
     environment:
       - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
       - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}

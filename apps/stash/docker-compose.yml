@@ -3,8 +3,6 @@ version: '3'
 services:
   stash:
     image: stashapp/stash:v0.31.0
-    ports:
-      - "8847:9999"
     environment:
       - STASH_STASH=/media/data/top/
       - STASH_GENERATED=/generated/

@@ -6,9 +6,6 @@ services:
   linkding:
     image: sissbruecker/linkding:1.45.0
     container_name: linkding
-    ports:
-      # Host port 8830 (from config.json) maps to container port 9090
-      - "8830:9090"
     environment:
       # User configuration from form_fields
       - LD_SUPERUSER_NAME=${LD_SUPERUSER_NAME}

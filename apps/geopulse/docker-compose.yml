@@ -77,8 +77,6 @@ services:
 
   geopulse:
     image: tess1o/geopulse-ui:1.24.0
-    ports:
-      - "8844:80"
     environment:
       - GEOPULSE_VERSION=1.8.1
       - GEOPULSE_BACKEND_URL=http://geopulse_backend:8080

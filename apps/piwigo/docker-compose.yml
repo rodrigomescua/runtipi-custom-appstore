@@ -19,8 +19,6 @@ services:
 
   piwigo:
     image: piwigo/piwigo:16.3.0
-    ports:
-      - "8849:80"
     environment:
       - TZ=${TZ}
     depends_on:

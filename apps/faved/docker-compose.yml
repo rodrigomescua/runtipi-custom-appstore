@@ -3,8 +3,6 @@ version: '3'
 services:
   faved:
     image: denho/faved:2.9.0
-    ports:
-      - "8842:80"
     environment:
       - TZ=${TZ}
     volumes:

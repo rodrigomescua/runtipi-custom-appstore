@@ -3,8 +3,6 @@ version: '3'
 services:
   dockhand:
     image: fnsys/dockhand:v1.0.22
-    ports:
-      - "8832:3000"
     user: "0:0"
     environment:
       - TZ=${TZ}

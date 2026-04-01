@@ -3,8 +3,6 @@ version: '3'
 services:
   omoide:
     image: einaeffchen/omoide:0.5.3
-    ports:
-      - "8841:8123"
     environment:
       - OMOIDE_GENERAL__PRESENTATION_MODE=false
       - OMOIDE_GENERAL__ENABLE_PEOPLE=true

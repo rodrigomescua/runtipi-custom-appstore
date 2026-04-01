@@ -3,8 +3,6 @@ version: '3'
 services:
   mediamanager:
     image: ghcr.io/maxdorninger/mediamanager/mediamanager:sha-91df5ce
-    ports:
-      - "8838:8000"
     environment:
       - TZ=${TZ}
       - CONFIG_DIR=/app/config

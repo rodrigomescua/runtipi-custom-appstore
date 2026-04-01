@@ -51,8 +51,6 @@ services:
 
   reitti:
     image: dedicatedcode/reitti:3.4.1
-    ports:
-      - "8826:8080"
     volumes:
       - ${APP_DATA_DIR}/data/data:/data
     environment:

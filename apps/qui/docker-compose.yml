@@ -3,8 +3,6 @@ version: '3'
 services:
   qui:
     image: ghcr.io/autobrr/qui:v1.15.0
-    ports:
-      - "8852:7476"
     environment:
       - QUI__SESSION_SECRET=${QUI_SESSION_SECRET}
       - QUI__LOG_LEVEL=${QUI_LOG_LEVEL}

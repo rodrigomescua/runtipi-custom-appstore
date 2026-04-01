@@ -18,8 +18,6 @@ services:
 
   app:
     image: ghcr.io/techsquidtv/tuvix-rss/app:0.7.1
-    ports:
-      - "8835:5137"
     restart: unless-stopped
     environment:
       - CORS_ORIGIN=http://${APP_DOMAIN}
