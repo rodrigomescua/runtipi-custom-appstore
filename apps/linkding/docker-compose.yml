@@ -1,6 +1,5 @@
 # Linkding - Dynamic Compose v2 YAML Format
 # Converted from JSON format while maintaining compatibility
-version: '3'
 
 services:
   linkding:

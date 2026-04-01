@@ -11,7 +11,7 @@
     "utilities"
   ],
   "description": "Faved is a lightweight self-hosted web application to store and organize web links with advanced tagging system. Features a clean distraction-free interface, nested colored tags, browser bookmarklet for quick saving, import from browsers and Pocket, and works great on desktop and mobile devices.",
-  "tipi_version": 12,
+  "tipi_version": 13,
   "version": "2.9.0",
   "source": "https://github.com/denho/faved",
   "exposable": true,
@@ -21,6 +21,6 @@
     "arm64"
   ],
   "created_at": 1733396400000,
-  "updated_at": 1775080898000,
+  "updated_at": 1775081116000,
   "form_fields": []
 }

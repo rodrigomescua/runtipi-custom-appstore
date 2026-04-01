@@ -11,7 +11,7 @@
     "ai"
   ],
   "description": "Recommendarr is a web application that generates personalized TV show and movie recommendations based on your Sonarr, Radarr, Plex, Jellyfin, Tautulli, and Trakt libraries using AI. It integrates with OpenAI, local models (Ollama/LM Studio), or any OpenAI-compatible API to provide intelligent recommendations tailored to your preferences.",
-  "tipi_version": 3,
+  "tipi_version": 4,
   "version": "v1.4.4",
   "source": "https://github.com/fingerthief/recommendarr",
   "exposable": true,
@@ -21,6 +21,6 @@
     "arm64"
   ],
   "created_at": 1735449600000,
-  "updated_at": 1775080898000,
+  "updated_at": 1775081116000,
   "form_fields": []
 }

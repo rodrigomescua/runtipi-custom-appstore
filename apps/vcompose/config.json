@@ -11,7 +11,7 @@
     "development"
   ],
   "description": "VCompose is a visual Docker Compose builder that lets you drag-and-drop services to create docker-compose.yml files. It features a canvas-based interface for adding services, drawing dependencies, and generating production-ready YAML configuration. No signup, no backend, fully client-side processing.",
-  "tipi_version": 3,
+  "tipi_version": 4,
   "version": "latest",
   "source": "https://github.com/zbrave/vcompose",
   "exposable": true,
@@ -21,6 +21,6 @@
     "arm64"
   ],
   "created_at": 1774329600000,
-  "updated_at": 1775080898000,
+  "updated_at": 1775081116000,
   "form_fields": []
 }

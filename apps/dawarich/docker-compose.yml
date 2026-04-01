@@ -1,6 +1,5 @@
 # Dawarich - Dynamic Compose v2 YAML Format with Multiple Services
 # Converted from JSON format: 4 services (Redis, PostgreSQL, Web, Sidekiq Worker)
-version: '3'
 
 services:
   # Service 1: Redis Cache
