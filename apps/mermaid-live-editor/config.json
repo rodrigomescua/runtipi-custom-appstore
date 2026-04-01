@@ -6,15 +6,20 @@
   "short_desc": "Edit, preview and share mermaid diagrams",
   "author": "mermaid-js",
   "port": 8854,
-  "categories": ["utilities"],
+  "categories": [
+    "utilities"
+  ],
   "description": "Mermaid Live Editor is a web-based editor for creating, editing, and sharing Mermaid diagrams. It provides real-time preview of diagrams including flowcharts, sequence diagrams, class diagrams, state diagrams, and many more. Perfect for documentation, technical communication, and visual planning.",
-  "tipi_version": 1,
+  "tipi_version": 2,
   "version": "latest",
   "source": "https://github.com/mermaid-js/mermaid-live-editor",
   "exposable": true,
   "dynamic_config": true,
-  "supported_architectures": ["amd64", "arm64"],
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
   "created_at": 1745612400000,
-  "updated_at": 1745612400000,
+  "updated_at": 1775079113000,
   "form_fields": []
 }

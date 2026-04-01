@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  qui:
+    image: ghcr.io/autobrr/qui:v1.15.0
+    ports:
+      - "8852:7476"
+    environment:
+      - QUI__SESSION_SECRET=${QUI_SESSION_SECRET}
+      - QUI__LOG_LEVEL=${QUI_LOG_LEVEL}
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+    healthcheck:
+      test: curl --fail http://localhost:7476/health || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    x-runtipi:
+      is_main: true
+      internal_port: 7476
+
+x-runtipi:
+  schema_version: 2

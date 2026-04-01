@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  trackwatch:
+    image: ghcr.io/emlopezr/trackwatch:2.1.1
+    ports:
+      - "8834:80"
+    environment:
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
+      - SECRET_KEY=${SECRET_KEY}
+      - TZ=${TZ}
+    volumes:
+      - ${APP_DATA_DIR}/data/data:/var/lib/postgresql/data
+    restart: unless-stopped
+    x-runtipi:
+      is_main: true
+      internal_port: 80
+
+x-runtipi:
+  schema_version: 2

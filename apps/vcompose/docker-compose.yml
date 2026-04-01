@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  vcompose:
+    image: ghcr.io/zbrave/vcompose:latest
+    ports:
+      - "8861:80"
+    x-runtipi:
+      is_main: true
+      internal_port: 80
+
+x-runtipi:
+  schema_version: 2

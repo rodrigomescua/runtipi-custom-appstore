@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  photon:
+    image: rtuszik/photon-docker:2.1.1
+    ports:
+      - "8825:2322"
+    environment:
+      - UPDATE_STRATEGY=PARALLEL
+      - UPDATE_INTERVAL=720h
+      - REGION=south-america
+    volumes:
+      - ${APP_DATA_DIR}/data/proton_data:/photon/data
+    x-runtipi:
+      is_main: true
+      internal_port: 2322
+
+x-runtipi:
+  schema_version: 2

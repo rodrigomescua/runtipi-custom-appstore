@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  mediamanager:
+    image: ghcr.io/maxdorninger/mediamanager/mediamanager:sha-91df5ce
+    ports:
+      - "8838:8000"
+    environment:
+      - TZ=${TZ}
+      - CONFIG_DIR=/app/config
+    volumes:
+      - ${ROOT_FOLDER_HOST}/media:/media
+      - ${APP_DATA_DIR}/data/config:/app/config
+      - ${APP_DATA_DIR}/data/images:/data/images
+    depends_on:
+      mediamanager_db:
+        condition: service_started
+    x-runtipi:
+      is_main: true
+      internal_port: 8000
+
+  mediamanager_db:
+    image: postgres:17
+    environment:
+      - POSTGRES_USER=mediamanager
+      - POSTGRES_DB=mediamanager
+      - POSTGRES_PASSWORD=mediamanager
+    volumes:
+      - ${APP_DATA_DIR}/data/postgres:/var/lib/postgresql/data
+
+x-runtipi:
+  schema_version: 2

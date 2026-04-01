@@ -1,0 +1,65 @@
+version: '3'
+
+services:
+  imagemagick-postgres:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=imagemagick
+      - POSTGRES_PASSWORD=imagemagick
+      - POSTGRES_DB=imagemagick
+    volumes:
+      - ${APP_DATA_DIR}/data/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: pg_isready -U imagemagick -d imagemagick
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  imagemagick-redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - ${APP_DATA_DIR}/data/redis:/data
+    healthcheck:
+      test: redis-cli ping
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  imagemagick-webui:
+    image: ghcr.io/przemekskw/imagemagick-webui:1.0.16
+    ports:
+      - "8848:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_PORT=8000
+      - FRONTEND_PORT=${APP_PORT}
+      - BACKEND_PORT=8000
+      - DATABASE_URL=postgresql+asyncpg://imagemagick:imagemagick@imagemagick-postgres:5432/imagemagick
+      - REDIS_URL=redis://imagemagick-redis:6379/0
+      - SECRET_KEY=${SECRET_KEY}
+      - JWT_SECRET=${JWT_SECRET}
+      - ALLOWED_ORIGINS=*
+      - REQUIRE_LOGIN=${REQUIRE_LOGIN}
+      - ALLOW_REGISTRATION=true
+      - DEFAULT_OUTPUT_FORMAT=webp
+      - DEFAULT_QUALITY=85
+      - MAX_UPLOAD_SIZE_MB=${MAX_UPLOAD_SIZE_MB}
+      - IMAGEMAGICK_TIMEOUT=300
+      - IMAGEMAGICK_MEMORY_LIMIT=2GB
+      - HISTORY_RETENTION_HOURS=24
+      - TZ=${TZ}
+    volumes:
+      - ${APP_DATA_DIR}/data/uploads:/app/uploads
+      - ${APP_DATA_DIR}/data/projects:/app/projects
+    depends_on:
+      imagemagick-postgres:
+        condition: service_healthy
+      imagemagick-redis:
+        condition: service_healthy
+    x-runtipi:
+      is_main: true
+      internal_port: 3000
+
+x-runtipi:
+  schema_version: 2

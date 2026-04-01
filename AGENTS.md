@@ -17,8 +17,8 @@ bun install
 # Run validation tests (validates all apps)
 bun test
 
-# Update app version after changing docker-compose.json
-bun scripts/update-config.ts apps/<app-name>/docker-compose.json
+# Update app version after changing docker-compose.yml
+bun scripts/update-config.ts apps/<app-name>/docker-compose.yml
 ```
 
 ## App Structure
@@ -27,7 +27,7 @@ Each app requires exactly these files:
 ```
 apps/<app-id>/
 ├── config.json           # App metadata, port, version, form fields
-├── docker-compose.json   # Docker services (JSON format, never YAML)
+├── docker-compose.yml    # Docker services (YAML format with x-runtipi, NOT JSON)
 └── metadata/
     ├── logo.jpg          # 512x512 JPG (Use placeholder from another app. USER will update with real logo.)
     └── description.md    # Brief app description
@@ -42,16 +42,16 @@ apps/<app-id>/
   grep -rh '"port"' apps/*/config.json | grep -oP ':\s*\K\d+' | sort -n | uniq
   ```
 - `port` in config.json = exposed host port (8800-8999)
-- `internalPort` in docker-compose.json = container's internal port (any value)
+- `internal_port` in docker-compose.yml under `x-runtipi` = container's internal port (any value)
 
 ### Version Matching (Critical)
-The `version` in config.json MUST exactly match the image tag in docker-compose.json:
-```json
-// config.json
+The `version` in config.json MUST exactly match the image tag in docker-compose.yml:
+```yaml
+# config.json
 "version": "1.44.1"
 
-// docker-compose.json  
-"image": "sissbruecker/linkding:1.44.1"  // MUST MATCH exactly
+# docker-compose.yml
+image: sissbruecker/linkding:1.44.1  # MUST MATCH exactly
 ```
 
 **Always verify tags from the actual registry** (Docker Hub, GHCR, etc.) - never assume format:
@@ -60,30 +60,38 @@ The `version` in config.json MUST exactly match the image tag in docker-compose.
 - **CRITICAL:** GitHub Releases often use a `v` prefix (e.g., `v0.7.1`) while the Docker Image in GHCR may NOT (e.g., `0.7.1`). ALWAYS check the Packages/Registry tab to confirm the exact string.
 - Check GitHub Actions workflows for tag transformation logic
 
-### docker-compose.json Format
-```json
-{
-  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
-  "schemaVersion": 2,
-  "services": [
-    {
-      "name": "app-name",
-      "image": "registry/image:version",
-      "isMain": true,
-      "internalPort": 3000,
-      "environment": [...],
-      "volumes": [...],
-      // Use "dependsOn" with object format (never arrays):
-      "dependsOn": {
-        "postgres": { "condition": "service_healthy" }
-      }
-    }
-  ]
-}
+### docker-compose.yml Format (YAML with x-runtipi)
+```yaml
+version: '3'
+
+services:
+  app-name:
+    image: registry/image:version
+    ports:
+      - "8830:3000"  # hostPort:containerPort
+    environment:
+      - KEY=value
+      - ANOTHER=${ENV_VAR}
+    volumes:
+      - ${APP_DATA_DIR}/data:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy  # ✅ Always use condition!
+    x-runtipi:
+      is_main: true
+      internal_port: 3000
+
+x-runtipi:
+  schema_version: 2
 ```
 
-- `services` is an **array** (not object like YAML)
-- Only ONE service has `"isMain": true`
+**Key Rules:**
+- Use `docker-compose.yml` (YAML), NOT `.json`
+- Include `version: '3'` at root
+- Services are YAML objects (keys = service names), not arrays
+- **EXACTLY ONE** service with `x-runtipi.is_main: true`
+- `depends_on` always includes `condition: service_healthy` or `service_started`
+- Environment variables are simple list (`- KEY=value`), NOT array of objects
 
 ### Volume Paths
 Host path uses only the **last part** of container path:
@@ -91,7 +99,7 @@ Host path uses only the **last part** of container path:
 - Container `/app/storage` → Host `${APP_DATA_DIR}/data/storage`
 
 ### Database Credentials
-**Never** ask for database credentials via form_fields. Hardcode them in docker-compose.json with simple defaults related to app name.
+**Never** ask for database credentials via form_fields. Hardcode them in docker-compose.yml with simple defaults related to app name.
 
 ### config.json Required Fields
 ```json

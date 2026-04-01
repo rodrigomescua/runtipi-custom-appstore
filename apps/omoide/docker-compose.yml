@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  omoide:
+    image: einaeffchen/omoide:0.5.3
+    ports:
+      - "8841:8123"
+    environment:
+      - OMOIDE_GENERAL__PRESENTATION_MODE=false
+      - OMOIDE_GENERAL__ENABLE_PEOPLE=true
+      - OMOIDE_GENERAL__MEME_MODE=false
+      - OMOIDE_GENERAL__PERSON_RELATIONSHIP_MAX_NODES=100
+      - OMOIDE_GENERAL__THUMB_DIR_FOLDER_SIZE=1000
+      - OMOIDE_SCAN__AUTO_SCAN=false
+      - OMOIDE_SCAN__SCAN_INTERVAL_MINUTES=15
+      - OMOIDE_SCAN__AUTO_CLEAN_ON_SCAN=false
+      - OMOIDE_SCAN__AUTO_CLEANUP_WITHOUT_REVIEW=false
+      - OMOIDE_SCAN__SKIP_GIT_FOLDER=true
+      - OMOIDE_SCAN__SKIP_VENV_FOLDER=true
+      - OMOIDE_AI__CLIP_MODEL=xlm-roberta-base-ViT-B-32
+      - OMOIDE_AI__MIN_SEARCH_DIST=0.68
+      - OMOIDE_AI__MIN_SIMILARITY_DIST=1.2
+      - OMOIDE_TAGGING__AUTO_TAGGING=true
+      - OMOIDE_TAGGING__USE_DEFAULT_TAGS=true
+      - OMOIDE_FACE_RECOGNITION__PRESET=loose
+      - OMOIDE_FACE_RECOGNITION__FACE_RECOGNITION_MIN_CONFIDENCE=0.5
+      - OMOIDE_FACE_RECOGNITION__FACE_MATCH_MIN_PERCENT=75
+      - OMOIDE_FACE_RECOGNITION__EXISTING_PERSON_COSINE_THRESHOLD=0.8
+      - OMOIDE_DUPLICATES__DUPLICATE_AUTO_KEEP_RULE=highest_res
+      - OMOIDE_VIDEO__AUTO_SCENE_DETECTION=true
+      - OMOIDE_VIDEO__MAX_FRAMES_PER_VIDEO=30
+      - OMOIDE_PROCESSORS__EXIF_PROCESSOR_ACTIVE=true
+      - OMOIDE_PROCESSORS__FACE_PROCESSOR_ACTIVE=true
+      - OMOIDE_PROCESSORS__IMAGE_EMBEDDING_PROCESSOR_ACTIVE=true
+      - OMOIDE_PROCESSORS__MEDIA_BATCH_SIZE=125
+      - HOST_MEDIA_DIR=/app/media
+      - HOST_DATA_DIR=/app/data
+    volumes:
+      - ${APP_DATA_DIR}/data/media:/app/media
+      - ${APP_DATA_DIR}/data/data:/app/data
+    devices:
+      - /dev/dri:/dev/dri
+    x-runtipi:
+      is_main: true
+      internal_port: 8123
+
+x-runtipi:
+  schema_version: 2

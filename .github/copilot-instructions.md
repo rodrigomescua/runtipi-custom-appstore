@@ -8,8 +8,10 @@ This is a custom app store for [Runtipi](https://github.com/runtipi/runtipi), a 
 
 **Architecture:** Each app directory contains three required components:
 1. `config.json` - App metadata and form fields for user configuration
-2. `docker-compose.json` - Dynamic container configuration (always JSON, never YAML)
+2. `docker-compose.yml` - Dynamic container configuration (YAML with `x-runtipi` extensions, NOT JSON)
 3. `metadata/` folder with `logo.jpg` and `description.md`
+
+**⭐ IMPORTANT UPDATE (April 2026):** The Dynamic Compose format has changed from JSON (legacy) to **YAML with `x-runtipi` extensions**. All apps must use `docker-compose.yml`, not `docker-compose.json`.
 
 **Note:** This repository is no longer accepting new apps (see warning in README.md); contributions are limited to bug fixes for existing apps.
 
@@ -271,31 +273,180 @@ The `form_fields` array defines user input during installation. Can be empty `[]
 }
 ```
 
-### Docker Compose (`docker-compose.json`) Rules
+### Docker Compose (`docker-compose.yml`) Rules - NEW YAML Format with x-runtipi
 
-**Required top-level structure:**
-```json
-{
-  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
-  "schemaVersion": 2,
-  "services": [
-    // Array of service objects (NOT object keys like YAML)
-  ]
-}
+**✅ NEW FORMAT (Since April 2026):**
+
+All Docker Compose files must now use YAML format with `x-runtipi` extensions, NOT JSON.
+
+```yaml
+version: '3'
+
+services:
+  # Main service name (unique identifier)
+  myservice:
+    image: registry/image:version  # MUST match config.json "version" field
+    container_name: optional-name
+    ports:
+      - "8830:3000"  # Format: "hostPort:containerPort" (always strings)
+    
+    environment:
+      - KEY=value    # Simple YAML list, not array of objects
+      - ANOTHER=${ENV_VAR}
+    
+    volumes:
+      - ${APP_DATA_DIR}/data:/app/data
+      - /host/path:/container/path:ro  # optional :ro for read-only
+    
+    command: /bin/sh -c "..."  # string or list format
+    entrypoint: /start.sh
+    working_dir: /app
+    user: "1000:1000"
+    
+    healthcheck:
+      test: curl -f http://localhost:3000 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 0s      # Time before checks start
+      start_interval: 0s    # Initial check frequency
+    
+    depends_on:
+      other_service:
+        condition: service_healthy  # ✅ ALWAYS use condition!
+      another_service:
+        condition: service_started
+    
+    # Runtipi-specific configuration
+    x-runtipi:
+      is_main: true          # ✅ ONLY ONE per app! This is the exposed service
+      internal_port: 3000    # Container's listening port
+
+# Root-level Runtipi configuration
+x-runtipi:
+  schema_version: 2         # ✅ REQUIRED!
 ```
 
-**Required fields per service:**
-- `name`: Service identifier (e.g., "linkding", "dawarich_db")
-- `image`: Must use specific version tag with registry if needed (never `latest`)
-- `internalPort`: Port inside container (only for main service, but recommended for all)
-- `isMain`: Only set to `true` on the user-facing service (the one Traefik routes to)
+**Key Changes from Legacy JSON:**
 
-**Important patterns:**
-- `schemaVersion: 2` (always, never 1 or 3)
-- `services` is an array `[{ }, { }]` (not object like YAML)
-- Only the main service should have `"isMain": true`
-- Multiple services allowed (db, cache, queue, etc.); only mark the web service as main
-- Extra services (Redis, PostgreSQL) should NOT have `isMain` or set it to `false`
+| Field | Old (JSON) | New (YAML) |
+|-------|----------|-----------|
+| File name | `docker-compose.json` | `docker-compose.yml` |
+| Root structure | `{ "schemaVersion": 2, ... }` | `version: '3'` + `x-runtipi:` |
+| Services | Array `[{name, image, ...}]` | Object with service names as keys |
+| is_main | `"isMain": true` | `x-runtipi.is_main: true` |
+| Internal port | `"internalPort": 3000` | `x-runtipi.internal_port: 3000` |
+| Environment | `[{"key": "K", "value": "V"}]` | List: `- KEY=value` |
+| Ports | (in config.json) | `ports: ["8830:3000"]` |
+| Volumes | `[{hostPath, containerPath}]` | `- /host:/container` |
+| Docker Compose spec | Custom | Standard `version: '3'` |
+
+**✅ REQUIRED for each app:**
+- [ ] `version: '3'` at root level
+- [ ] `x-runtipi.schema_version: 2` at root level
+- [ ] One or more services configured
+- [ ] **EXACTLY ONE** service with `x-runtipi.is_main: true`
+- [ ] Image tag matches `config.json` version field
+- [ ] All database/cache services have `healthcheck` with `condition`
+
+**❌ MISTAKES TO AVOID:**
+- ❌ Mixing JSON and YAML in same app folder
+- ❌ Using `docker-compose.json` (❌ DEPRECATED - use `.yml`)
+- ❌ Using `schemaVersion` at root (❌ moved to `x-runtipi.schema_version`)
+- ❌ Using array format for environment (❌ use YAML list)
+- ❌ Multiple services with `is_main: true` (❌ only 1 allowed)
+- ❌ Using `dependsOn` without condition (❌ causes "connection refused" errors)
+- ❌ Services as JSON array (❌ use YAML object with name keys)
+- ❌ Port values as numbers (❌ use strings: `"8830:3000"`)
+
+**Multi-service Example - Dawarich (Redis + PostgreSQL + Web + Worker):**
+
+```yaml
+version: '3'
+
+services:
+  redis:
+    image: redis:7.4-alpine
+    command: redis-server
+    volumes:
+      - ${APP_DATA_DIR}/redis:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+
+  db:
+    image: postgis/postgis:17-3.5-alpine
+    environment:
+      - POSTGRES_DB=dawarich
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ${APP_DATA_DIR}/db:/var/lib/postgresql/data
+    healthcheck:
+      test: pg_isready -U postgres
+      interval: 10s
+    shm_size: 1gb
+
+  web:
+    image: freikin/dawarich:1.6.0
+    ports:
+      - "8824:3000"
+    depends_on:
+      redis:
+        condition: service_healthy
+      db:
+        condition: service_healthy
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_HOST=db
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=password
+    volumes:
+      - ${APP_DATA_DIR}/storage:/app/storage
+    x-runtipi:
+      is_main: true
+      internal_port: 3000
+
+  worker:
+    image: freikin/dawarich:1.6.0
+    command: sidekiq
+    depends_on:
+      web:
+        condition: service_started
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_HOST=db
+    volumes:
+      - ${APP_DATA_DIR}/storage:/app/storage
+
+x-runtipi:
+  schema_version: 2
+```
+
+**Architecture-specific Overrides (Optional):**
+
+```yaml
+x-runtipi:
+  schema_version: 2
+  overrides:
+    - architecture: arm64
+      services:
+        myapp:
+          image: myapp:arm64-latest
+          environment:
+            - ARM_SPECIFIC=true
+    - architecture: amd64
+      services:
+        myapp:
+          image: myapp:amd64-latest
+          deploy:
+            resources:
+              reservations:
+                devices:
+                  - driver: nvidia
+                    count: 1
+                    capabilities: [gpu]
+```
 
 **Concrete example (Single service - Linkding):**
 ```json

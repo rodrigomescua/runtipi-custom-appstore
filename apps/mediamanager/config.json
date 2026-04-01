@@ -8,14 +8,18 @@
   "short_desc": "Media Manager",
   "author": "maxdorninger",
   "port": 8838,
-  "categories": ["featured"],
+  "categories": [
+    "featured"
+  ],
   "description": "A manager for your media files.",
-  "tipi_version": 8,
+  "tipi_version": 9,
   "version": "sha-91df5ce",
   "source": "https://github.com/maxdorninger/MediaManager",
-  "supported_architectures": ["amd64"],
+  "supported_architectures": [
+    "amd64"
+  ],
   "created_at": 1728651600000,
-  "updated_at": 1728651600008,
+  "updated_at": 1775079113000,
   "form_fields": [
     {
       "type": "text",

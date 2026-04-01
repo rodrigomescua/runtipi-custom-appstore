@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  dispatcharr:
+    image: ghcr.io/dispatcharr/dispatcharr:0.21.1
+    ports:
+      - "8843:9191"
+    environment:
+      - DISPATCHARR_ENV=aio
+      - REDIS_HOST=localhost
+      - CELERY_BROKER_URL=redis://localhost:6379/0
+      - DISPATCHARR_LOG_LEVEL=info
+      - TZ=${TZ}
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ${APP_DATA_DIR}/data/data:/data
+    devices:
+      - /dev/dri:/dev/dri
+    x-runtipi:
+      is_main: true
+      internal_port: 9191
+
+x-runtipi:
+  schema_version: 2

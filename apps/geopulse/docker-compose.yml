@@ -1,0 +1,95 @@
+version: '3'
+
+services:
+  geopulse_postgres:
+    image: postgis/postgis:17-3.5
+    environment:
+      - POSTGRES_USER=${GEOPULSE_POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${GEOPULSE_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${GEOPULSE_POSTGRES_DB}
+    volumes:
+      - ${APP_DATA_DIR}/data/postgres_data:/var/lib/postgresql/data
+    command:
+      - postgres
+      - "-c"
+      - shared_buffers=256MB
+      - "-c"
+      - work_mem=8MB
+      - "-c"
+      - maintenance_work_mem=64MB
+      - "-c"
+      - effective_cache_size=1GB
+      - "-c"
+      - max_wal_size=512MB
+      - "-c"
+      - checkpoint_completion_target=0.9
+      - "-c"
+      - wal_buffers=16MB
+      - "-c"
+      - random_page_cost=1.1
+      - "-c"
+      - effective_io_concurrency=100
+      - "-c"
+      - autovacuum_naptime=60s
+      - "-c"
+      - autovacuum_vacuum_scale_factor=0.2
+      - "-c"
+      - log_min_duration_statement=5000
+      - "-c"
+      - track_io_timing=on
+    healthcheck:
+      test: pg_isready -U ${GEOPULSE_POSTGRES_USERNAME} -d ${GEOPULSE_POSTGRES_DB}
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  geopulse_backend:
+    image: tess1o/geopulse-backend:1.24.0-native
+    environment:
+      - GEOPULSE_VERSION=1.8.1
+      - GEOPULSE_UI_URL=${APP_PROTOCOL:-http}://${APP_DOMAIN}
+      - GEOPULSE_AUTH_SECURE_COOKIES=false
+      - GEOPULSE_BACKEND_URL=http://geopulse_backend:8080
+      - GEOPULSE_POSTGRES_HOST=geopulse_postgres
+      - GEOPULSE_POSTGRES_PORT=5432
+      - GEOPULSE_POSTGRES_USERNAME=${GEOPULSE_POSTGRES_USERNAME}
+      - GEOPULSE_POSTGRES_PASSWORD=${GEOPULSE_POSTGRES_PASSWORD}
+      - GEOPULSE_POSTGRES_DB=${GEOPULSE_POSTGRES_DB}
+      - GEOPULSE_POSTGRES_URL=jdbc:postgresql://geopulse_postgres:5432/${GEOPULSE_POSTGRES_DB}
+      - GEOPULSE_ADMIN_EMAIL=${GEOPULSE_ADMIN_EMAIL}
+      - GEOPULSE_MQTT_ENABLED=false
+      - GEOPULSE_OIDC_ENABLED=false
+      - CLIENT_MAX_BODY_SIZE=1000M
+      - OSM_RESOLVER=127.0.0.11 8.8.8.8
+      - GEOPULSE_GEOCODING_DELAY_MS=1000
+      - TZ=${TZ}
+    volumes:
+      - ${APP_DATA_DIR}/data/keys:/app/keys
+    depends_on:
+      geopulse_postgres:
+        condition: service_healthy
+    healthcheck:
+      test: curl -f http://localhost:8080/api/health || exit 1
+      interval: 3s
+      timeout: 2s
+      retries: 20
+      start_period: 5s
+
+  geopulse:
+    image: tess1o/geopulse-ui:1.24.0
+    ports:
+      - "8844:80"
+    environment:
+      - GEOPULSE_VERSION=1.8.1
+      - GEOPULSE_BACKEND_URL=http://geopulse_backend:8080
+      - CLIENT_MAX_BODY_SIZE=1000M
+      - TZ=${TZ}
+    depends_on:
+      geopulse_backend:
+        condition: service_healthy
+    x-runtipi:
+      is_main: true
+      internal_port: 80
+
+x-runtipi:
+  schema_version: 2

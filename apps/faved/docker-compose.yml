@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  faved:
+    image: denho/faved:2.9.0
+    ports:
+      - "8842:80"
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - ${APP_DATA_DIR}/data/storage:/var/www/html/storage
+    x-runtipi:
+      is_main: true
+      internal_port: 80
+
+x-runtipi:
+  schema_version: 2

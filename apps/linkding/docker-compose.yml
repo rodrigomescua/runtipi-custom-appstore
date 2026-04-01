@@ -1,0 +1,29 @@
+# Linkding - Dynamic Compose v2 YAML Format
+# Converted from JSON format while maintaining compatibility
+version: '3'
+
+services:
+  linkding:
+    image: sissbruecker/linkding:1.45.0
+    container_name: linkding
+    ports:
+      # Host port 8830 (from config.json) maps to container port 9090
+      - "8830:9090"
+    environment:
+      # User configuration from form_fields
+      - LD_SUPERUSER_NAME=${LD_SUPERUSER_NAME}
+      - LD_SUPERUSER_EMAIL=${LD_SUPERUSER_EMAIL}
+      - LD_SUPERUSER_PASSWORD=${LD_SUPERUSER_PASSWORD}
+      # CSRF configuration for secure access
+      - LD_CSRF_TRUSTED_ORIGINS=http://${APP_DOMAIN}:${APP_PORT},https://${APP_DOMAIN}
+    volumes:
+      # Data persistence
+      - ${APP_DATA_DIR}/data/data:/etc/linkding/data
+    # Runtipi-specific metadata
+    x-runtipi:
+      is_main: true              # This is the main/exposed service
+      internal_port: 9090        # Container internal port
+
+# Runtipi root configuration
+x-runtipi:
+  schema_version: 2              # Dynamic Compose Specification v2

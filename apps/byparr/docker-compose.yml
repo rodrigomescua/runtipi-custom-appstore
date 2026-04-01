@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  byparr:
+    image: ghcr.io/thephaseless/byparr:2.1.0
+    environment:
+      - LOG_LEVEL=${BYPARR_LOG_LEVEL-info}
+      - TZ=${TZ}
+    x-runtipi:
+      is_main: true
+      internal_port: 8191
+
+x-runtipi:
+  schema_version: 2

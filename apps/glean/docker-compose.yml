@@ -1,0 +1,108 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_DB=glean
+      - POSTGRES_USER=glean
+      - POSTGRES_PASSWORD=glean
+    volumes:
+      - ${APP_DATA_DIR}/data/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: pg_isready -U glean
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:8-alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - ${APP_DATA_DIR}/data/redis:/data
+    healthcheck:
+      test: redis-cli ping
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    image: ghcr.io/leslieleung/glean-backend:0.2.5
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://glean:glean@postgres:5432/glean
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=${SECRET_KEY}
+      - CORS_ORIGINS=["http://localhost", "http://localhost:80", "http://${APP_DOMAIN}:${APP_PORT}", "https://${APP_DOMAIN}"]
+      - DEBUG=${DEBUG}
+      - RUN_MIGRATIONS=true
+      - CREATE_ADMIN=${CREATE_ADMIN}
+      - ADMIN_USERNAME=${ADMIN_USERNAME}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - ADMIN_PORT=8847
+      - ADMIN_ROLE=super_admin
+      - LOG_LEVEL=INFO
+      - EMBEDDING_PROVIDER=sentence-transformers
+      - EMBEDDING_MODEL=all-MiniLM-L6-v2
+      - EMBEDDING_DIMENSION=384
+      - EMBEDDING_BATCH_SIZE=20
+      - EMBEDDING_MAX_RETRIES=3
+      - EMBEDDING_TIMEOUT=30
+      - MILVUS_HOST=milvus
+      - MILVUS_PORT=19530
+      - MILVUS_ENTRIES_COLLECTION=entries
+      - MILVUS_PREFS_COLLECTION=user_preferences
+      - PREFERENCE_DEFAULT_SCORE=50.0
+      - PREFERENCE_CONFIDENCE_THRESHOLD=10
+      - PREFERENCE_LIKE_WEIGHT=1.0
+      - PREFERENCE_BOOKMARK_WEIGHT=0.7
+      - PREFERENCE_SOURCE_BOOST_MAX=5.0
+      - PREFERENCE_AUTHOR_BOOST_MAX=3.0
+      - SCORE_RECOMMEND_THRESHOLD=70.0
+      - SCORE_LOW_INTEREST_THRESHOLD=40.0
+      - SCORE_CACHE_TTL=3600
+    volumes:
+      - ${APP_DATA_DIR}/data/logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: curl -f http://localhost:8000/api/health || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    command: uv run --no-sync uvicorn glean_api.main:app --host 0.0.0.0 --port 8000
+
+  worker:
+    image: ghcr.io/leslieleung/glean-backend:0.2.5
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://glean:glean@postgres:5432/glean
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=${SECRET_KEY}
+      - LOG_LEVEL=INFO
+    volumes:
+      - ${APP_DATA_DIR}/data/logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
+    command: uv run --no-sync arq glean_worker.main.WorkerSettings
+
+  web:
+    image: ghcr.io/leslieleung/glean-web:0.2.5
+    ports:
+      - "8845:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    x-runtipi:
+      is_main: true
+      internal_port: 80
+
+x-runtipi:
+  schema_version: 2

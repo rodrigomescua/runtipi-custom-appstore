@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  razor-iptv:
+    image: romesc/razoriptvdocker:1761309973
+    ports:
+      - "8821:8080"
+    environment:
+      - IPTV_URL=${IPTV_URL}
+      - WEBHOOK_URL=${WEBHOOK_URL}
+      - WEBHOOK_USER=${WEBHOOK_USER}
+      - WEBHOOK_PASSWORD=${WEBHOOK_PASSWORD}
+      - IS_TOP=${IS_TOP}
+      - TZ=${TZ}
+    volumes:
+      - ${APP_DATA_DIR}/data/db:/app/db
+    x-runtipi:
+      is_main: true
+      internal_port: 8080
+
+x-runtipi:
+  schema_version: 2

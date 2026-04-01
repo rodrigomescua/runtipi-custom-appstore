@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  piwigo_db:
+    image: mariadb:lts
+    environment:
+      - MARIADB_RANDOM_ROOT_PASSWORD=true
+      - MARIADB_USER=piwigo
+      - MARIADB_DATABASE=piwigo
+      - MARIADB_PASSWORD=piwigo
+      - TZ=${TZ}
+    volumes:
+      - ${APP_DATA_DIR}/data/mysql:/var/lib/mysql
+    healthcheck:
+      test: healthcheck.sh --connect --innodb_initialized
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  piwigo:
+    image: piwigo/piwigo:16.3.0
+    ports:
+      - "8849:80"
+    environment:
+      - TZ=${TZ}
+    depends_on:
+      piwigo_db:
+        condition: service_healthy
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${APP_DATA_DIR}/data/gallery:/gallery
+    x-runtipi:
+      is_main: true
+      internal_port: 80
+
+x-runtipi:
+  schema_version: 2

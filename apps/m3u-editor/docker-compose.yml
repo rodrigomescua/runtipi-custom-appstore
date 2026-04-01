@@ -1,0 +1,92 @@
+version: '3'
+
+services:
+  m3u-editor_redis:
+    image: redis:alpine3.22
+    command:
+      - redis-server
+      - "--port"
+      - "6379"
+      - "--appendonly"
+      - "no"
+      - "--save"
+      - ""
+      - "--maxmemory"
+      - "256mb"
+      - "--maxmemory-policy"
+      - "allkeys-lru"
+    volumes:
+      - ${APP_DATA_DIR}/data/redis:/data
+    healthcheck:
+      test: redis-cli -p 6379 ping
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  m3u-proxy:
+    image: sparkison/m3u-proxy:latest
+    environment:
+      - API_TOKEN=${M3U_PROXY_TOKEN}
+      - PORT=38085
+      - REDIS_ENABLED=true
+      - REDIS_PORT=6379
+      - REDIS_HOST=m3u-editor_redis
+      - REDIS_DB=6
+      - ENABLE_REDIS_POOLING=true
+      - LOG_LEVEL=INFO
+    depends_on:
+      m3u-editor_redis:
+        condition: service_healthy
+    devices:
+      - /dev/dri:/dev/dri
+    healthcheck:
+      test: curl -f http://127.0.0.1:38085/health?api_token=${M3U_PROXY_TOKEN}
+      interval: 30s
+      timeout: 2s
+      retries: 12
+
+  m3u-editor:
+    image: sparkison/m3u-editor:dev-0.10.30
+    ports:
+      - "8833:36400"
+    environment:
+      - TZ=${TZ}
+      - APP_URL=http://${APP_DOMAIN}
+      - APP_PORT=36400
+      - ENABLE_POSTGRES=true
+      - PG_DATABASE=m3ue
+      - PG_USER=m3ue
+      - PG_PASSWORD=${PG_PASSWORD}
+      - PG_PORT=5432
+      - DB_CONNECTION=pgsql
+      - DB_HOST=localhost
+      - DB_PORT=5432
+      - DB_DATABASE=m3ue
+      - DB_USERNAME=m3ue
+      - DB_PASSWORD=${PG_PASSWORD}
+      - REDIS_ENABLED=false
+      - REDIS_SERVER_PORT=6379
+      - REDIS_HOST=m3u-editor_redis
+      - M3U_PROXY_ENABLED=false
+      - M3U_PROXY_PORT=38085
+      - M3U_PROXY_HOST=m3u-proxy
+      - M3U_PROXY_TOKEN=${M3U_PROXY_TOKEN}
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/var/www/config
+      - ${APP_DATA_DIR}/data/postgres:/var/lib/postgresql/data
+    depends_on:
+      m3u-proxy:
+        condition: service_healthy
+      m3u-editor_redis:
+        condition: service_healthy
+    healthcheck:
+      test: curl -f http://127.0.0.1:36400/up
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    x-runtipi:
+      is_main: true
+      internal_port: 36400
+
+x-runtipi:
+  schema_version: 2

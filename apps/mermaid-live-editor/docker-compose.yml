@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  mermaid-live-editor:
+    image: ghcr.io/mermaid-js/mermaid-live-editor:latest
+    ports:
+      - "8854:8080"
+    x-runtipi:
+      is_main: true
+      internal_port: 8080
+
+x-runtipi:
+  schema_version: 2

@@ -10,7 +10,7 @@
     "media"
   ],
   "description": "8mb.local is a self-hosted, fire-and-forget video compressor. Drop a file, choose a target size (8MB, 25MB, 50MB, 100MB), and let GPU-accelerated encoding produce compact outputs with AV1/HEVC/H.264. Supports NVIDIA NVENC, Intel/AMD VAAPI (Linux), and CPU fallback. Features drag-and-drop UI, real-time progress tracking, multi-vendor GPU support, and automatic file size optimization.",
-  "tipi_version": 2,
+  "tipi_version": 3,
   "version": "v134",
   "source": "https://github.com/JMS1717/8mb.local",
   "exposable": true,
@@ -19,7 +19,7 @@
     "amd64"
   ],
   "created_at": 1734374400000,
-  "updated_at": 1773777333683,
+  "updated_at": 1775079113000,
   "form_fields": [
     {
       "type": "boolean",

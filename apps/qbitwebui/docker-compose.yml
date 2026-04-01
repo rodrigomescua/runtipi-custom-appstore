@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  qbitwebui:
+    image: ghcr.io/maciejonos/qbitwebui:2.42.3
+    ports:
+      - "8853:3000"
+    environment:
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY}
+    volumes:
+      - ${APP_DATA_DIR}/data/data:/data
+    x-runtipi:
+      is_main: true
+      internal_port: 3000
+
+x-runtipi:
+  schema_version: 2

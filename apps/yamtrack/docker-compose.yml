@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  yamtrack:
+    image: ghcr.io/fuzzygrim/yamtrack:0.25.0
+    ports:
+      - "8860:8000"
+    volumes:
+      - ${APP_DATA_DIR}/data/db:/yamtrack/db
+    environment:
+      - TZ=${TZ}
+      - SECRET=${SECRET}
+      - REDIS_URL=redis://redis:6379
+      - TMDB_LANG=${TMDB_LANG}
+    depends_on:
+      redis:
+        condition: service_healthy
+    x-runtipi:
+      is_main: true
+      internal_port: 8000
+
+  redis:
+    image: redis:8-alpine
+    volumes:
+      - ${APP_DATA_DIR}/data/redis:/data
+    healthcheck:
+      test: redis-cli ping
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+x-runtipi:
+  schema_version: 2

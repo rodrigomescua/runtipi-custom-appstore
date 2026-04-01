@@ -1,0 +1,162 @@
+# Dawarich - Dynamic Compose v2 YAML Format with Multiple Services
+# Converted from JSON format: 4 services (Redis, PostgreSQL, Web, Sidekiq Worker)
+version: '3'
+
+services:
+  # Service 1: Redis Cache
+  dawarich_redis:
+    image: redis:7.4-alpine
+    container_name: dawarich_redis
+    command: redis-server
+    volumes:
+      # Shared data volume for Redis
+      - ${APP_DATA_DIR}/data/dawarich_shared:/data
+    # No x-runtipi config for non-main services
+
+  # Service 2: PostgreSQL Database with PostGIS extension
+  dawarich_db:
+    image: postgis/postgis:17-3.5-alpine
+    container_name: dawarich_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=dawarich_development
+    volumes:
+      # PostgreSQL data directory
+      - ${APP_DATA_DIR}/data/dawarich_db_data:/var/lib/postgresql/data
+      # Shared data volume
+      - ${APP_DATA_DIR}/data/dawarich_shared:/var/shared
+    healthcheck:
+      test: pg_isready -U postgres -d dawarich_development
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    shm_size: 1G            # Temporary file system size for performance
+    # No x-runtipi config for database service
+
+  # Service 3: Dawarich Web Application (MAIN SERVICE)
+  dawarich:
+    image: freikin/dawarich:1.6.0
+    container_name: dawarich
+    ports:
+      # Host port 8824 (from config.json) maps to container port 3000
+      - "8824:3000"
+    command:
+      - bin/rails
+      - server
+      - -p
+      - "3000"
+      - -b
+      - "::"
+    environment:
+      # Rails configuration
+      - RAILS_ENV=development
+      # Redis connection
+      - REDIS_URL=redis://dawarich_redis:6379
+      # Database connection
+      - DATABASE_HOST=dawarich_db
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=password
+      - DATABASE_NAME=dawarich_development
+      # Application settings
+      - MIN_MINUTES_SPENT_IN_CITY=6
+      - APPLICATION_HOSTS=localhost,dawarich.murkmesc.top
+      - DISTANCE_UNIT=km
+      - TIME_ZONE=${TZ}
+      - APPLICATION_PROTOCOL=http
+      # Prometheus metrics (optional)
+      - PROMETHEUS_EXPORTER_ENABLED=false
+      - PROMETHEUS_EXPORTER_HOST=0.0.0.0
+      - PROMETHEUS_EXPORTER_PORT=9394
+      # Dawarich-specific
+      - SELF_HOSTED=true
+      - STORE_GEODATA=true
+      # Photon API (reverse geocoding service)
+      - PHOTON_API_HOST=${PHOTON_URL}:${PHOTON_PORT}
+      - PHOTON_API_USE_HTTPS=false
+    volumes:
+      # Public files directory
+      - ${APP_DATA_DIR}/data/dawarich_public:/var/app/public
+      # Watched folder for imports
+      - ${APP_DATA_DIR}/data/dawarich_watched:/var/app/tmp/imports/watched
+      # Storage directory
+      - ${APP_DATA_DIR}/data/dawarich_storage:/var/app/storage
+      # Database backups
+      - ${APP_DATA_DIR}/data/dawarich_db_data:/dawarich_db_data
+    healthcheck:
+      test: "wget -qO - http://127.0.0.1:3000/api/v1/health | grep -q \"status.*ok\""
+      interval: 10s
+      timeout: 10s
+      retries: 30
+    entrypoint: web-entrypoint.sh
+    tty: true
+    stdin_open: true
+    depends_on:
+      # Wait for database to start (not health check due to custom health requirements)
+      dawarich_db:
+        condition: service_started
+      # Wait for Redis to start
+      dawarich_redis:
+        condition: service_started
+    # Runtipi configuration for main service
+    x-runtipi:
+      is_main: true              # This is the main/exposed web service
+      internal_port: 3000        # Container internal port
+
+  # Service 4: Sidekiq Background Job Worker
+  dawarich_sidekiq:
+    image: freikin/dawarich:1.6.0
+    container_name: dawarich_sidekiq
+    command:
+      - sidekiq
+    environment:
+      # Rails configuration
+      - RAILS_ENV=development
+      # Redis connection for job queue
+      - REDIS_URL=redis://dawarich_redis:6379
+      # Database connection (same as web app)
+      - DATABASE_HOST=dawarich_db
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=password
+      - DATABASE_NAME=dawarich_development
+      # Application settings
+      - APPLICATION_HOSTS=localhost,dawarich.murkmesc.top
+      - BACKGROUND_PROCESSING_CONCURRENCY=10
+      - APPLICATION_PROTOCOL=http
+      # Prometheus metrics
+      - PROMETHEUS_EXPORTER_ENABLED=false
+      - PROMETHEUS_EXPORTER_HOST=dawarich
+      - PROMETHEUS_EXPORTER_PORT=9394
+      # Dawarich-specific
+      - SELF_HOSTED=true
+      - STORE_GEODATA=true
+      # Photon API
+      - PHOTON_API_HOST=${PHOTON_URL}:${PHOTON_PORT}
+      - PHOTON_API_USE_HTTPS=false
+    volumes:
+      # Same persistent volumes as web app
+      - ${APP_DATA_DIR}/data/dawarich_public:/var/app/public
+      - ${APP_DATA_DIR}/data/dawarich_watched:/var/app/tmp/imports/watched
+      - ${APP_DATA_DIR}/data/dawarich_storage:/var/app/storage
+    healthcheck:
+      test: pgrep -f sidekiq
+      interval: 10s
+      timeout: 10s
+      retries: 30
+    entrypoint: sidekiq-entrypoint.sh
+    tty: true
+    stdin_open: true
+    depends_on:
+      # Wait for dependencies with service_started condition
+      dawarich_db:
+        condition: service_started
+      dawarich_redis:
+        condition: service_started
+      # Also depend on web app starting first
+      dawarich:
+        condition: service_started
+    # No x-runtipi for background worker service
+
+# Runtipi root configuration
+x-runtipi:
+  schema_version: 2              # Dynamic Compose Specification v2

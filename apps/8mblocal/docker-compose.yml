@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  8mblocal:
+    image: jms1717/8mblocal:v134
+    ports:
+      - "8846:8001"
+    environment:
+      - AUTH_ENABLED=${AUTH_ENABLED}
+      - AUTH_USER=${AUTH_USER}
+      - AUTH_PASS=${AUTH_PASS}
+      - FILE_RETENTION_HOURS=${FILE_RETENTION_HOURS}
+      - WORKER_CONCURRENCY=${WORKER_CONCURRENCY}
+      - BACKEND_HOST=0.0.0.0
+      - BACKEND_PORT=8001
+      - REDIS_URL=redis://127.0.0.1:6379/0
+    volumes:
+      - ${APP_DATA_DIR}/data/uploads:/app/uploads
+      - ${APP_DATA_DIR}/data/outputs:/app/outputs
+    devices:
+      - /dev/dri:/dev/dri
+    x-runtipi:
+      is_main: true
+      internal_port: 8001
+
+x-runtipi:
+  schema_version: 2

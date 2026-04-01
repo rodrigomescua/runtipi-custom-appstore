@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  fileflows:
+    image: revenz/fileflows:latest
+    ports:
+      - "8836:5000"
+    environment:
+      - TempPathHost=/temp
+      - TZ=${TZ}
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ${ROOT_FOLDER_HOST}/media:/media
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${APP_DATA_DIR}/data/temp:/temp
+      - ${APP_DATA_DIR}/data/Data:/app/Data
+      - ${APP_DATA_DIR}/data/Logs:/app/Logs
+    devices:
+      - /dev/dri:/dev/dri
+    x-runtipi:
+      is_main: true
+      internal_port: 5000
+
+x-runtipi:
+  schema_version: 2

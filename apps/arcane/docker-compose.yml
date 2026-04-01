@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  arcane:
+    image: ghcr.io/getarcaneapp/arcane:v1.16.4
+    ports:
+      - "8851:3552"
+    environment:
+      - APP_URL=http://${APP_DOMAIN}:${APP_PORT}
+      - PUID=1000
+      - PGID=1000
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY}
+      - JWT_SECRET=${JWT_SECRET}
+      - TZ=${TZ}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${APP_DATA_DIR}/data/arcane-data:/app/data
+    x-runtipi:
+      is_main: true
+      internal_port: 3552
+
+x-runtipi:
+  schema_version: 2

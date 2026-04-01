@@ -6,7 +6,7 @@
   "dynamic_config": true,
   "port": 8847,
   "id": "stash",
-  "tipi_version": 2,
+  "tipi_version": 3,
   "version": "v0.31.0",
   "categories": [
     "media"
@@ -21,6 +21,6 @@
     "amd64"
   ],
   "created_at": 1691943801422,
-  "updated_at": 1774843788330,
+  "updated_at": 1775079113000,
   "min_tipi_version": "4.5.0"
 }

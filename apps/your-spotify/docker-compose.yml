@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  your-spotify:
+    image: yooooomi/your_spotify_client:1.19.0
+    ports:
+      - "8850:3000"
+    environment:
+      - API_ENDPOINT=http://${INTERNAL_IP}:32500
+    depends_on:
+      your-spotify-server:
+        condition: service_started
+    x-runtipi:
+      is_main: true
+      internal_port: 3000
+
+  your-spotify-server:
+    image: yooooomi/your_spotify_server:1.19.0
+    ports:
+      - "32500:8080"
+    environment:
+      - API_ENDPOINT=http://${INTERNAL_IP}:32500
+      - CLIENT_ENDPOINT=http://${INTERNAL_IP}:${APP_PORT}
+      - SPOTIFY_PUBLIC=${SPOTIFY_PUBLIC}
+      - SPOTIFY_SECRET=${SPOTIFY_SECRET}
+      - MONGO_ENDPOINT=mongodb://your-spotify-db:27017/your_spotify
+      - CORS=i-want-a-security-vulnerability-and-want-to-allow-all-origins
+    depends_on:
+      your-spotify-db:
+        condition: service_started
+
+  your-spotify-db:
+    image: mongo:4.4.29
+    volumes:
+      - ${APP_DATA_DIR}/data/db:/data/db
+
+x-runtipi:
+  schema_version: 2
