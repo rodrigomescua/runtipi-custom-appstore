@@ -11,6 +11,10 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/pb_data:/app/pb_data
     network_mode: host
+    cap_add:
+      - NET_RAW # NET_RAW is required for privileged ping and network device scan (nmap)
+    cap_drop:
+      - ALL
     x-runtipi:
       is_main: true
       internal_port: 8090
