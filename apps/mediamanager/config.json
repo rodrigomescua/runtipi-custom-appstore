@@ -66,5 +66,6 @@
       "env_variable": "APP_QBITTORRENT_PASSWORD",
       "hint": "The password for the qBittorrent instance."
     }
-  ]
+  ],
+  "urn": "tipi://mediamanager"
 }

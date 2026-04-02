@@ -22,5 +22,6 @@
   ],
   "created_at": 1735449600000,
   "updated_at": 1775081116000,
-  "form_fields": []
+  "form_fields": [],
+  "urn": "tipi://recommendarr"
 }

@@ -40,5 +40,6 @@
       "min": 32,
       "encoding": "hex"
     }
-  ]
+  ],
+  "urn": "tipi://arcane"
 }

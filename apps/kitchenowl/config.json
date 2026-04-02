@@ -29,5 +29,6 @@
       "required": true,
       "env_variable": "JWT_SECRET_KEY"
     }
-  ]
+  ],
+  "urn": "tipi://kitchenowl"
 }

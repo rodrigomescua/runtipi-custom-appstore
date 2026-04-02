@@ -26,5 +26,6 @@
   "no_gui": true,
   "uid": 1000,
   "gid": 1000,
-  "form_fields": []
+  "form_fields": [],
+  "urn": "tipi://byparr"
 }

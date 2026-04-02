@@ -59,5 +59,6 @@
       "env_variable": "WORKER_CONCURRENCY",
       "default": "4"
     }
-  ]
+  ],
+  "urn": "tipi://8mblocal"
 }

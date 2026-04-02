@@ -40,5 +40,6 @@
       "required": true,
       "env_variable": "PHOTON_PORT"
     }
-  ]
+  ],
+  "urn": "tipi://reitti"
 }

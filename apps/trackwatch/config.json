@@ -40,5 +40,6 @@
       "label": "Secret Key (Random String)",
       "required": true
     }
-  ]
+  ],
+  "urn": "tipi://trackwatch"
 }

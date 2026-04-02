@@ -23,5 +23,6 @@
   ],
   "created_at": 1743120000000,
   "updated_at": 1775081116000,
-  "form_fields": []
+  "form_fields": [],
+  "urn": "tipi://fileflows"
 }

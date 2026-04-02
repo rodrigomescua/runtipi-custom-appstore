@@ -28,5 +28,6 @@
       "env_variable": "ALLOW_USER_REGISTRATION",
       "default": "false"
     }
-  ]
+  ],
+  "urn": "tipi://wallabag"
 }

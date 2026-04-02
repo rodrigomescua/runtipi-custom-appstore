@@ -30,5 +30,6 @@
       "min": 32,
       "env_variable": "BLINKO_NEXTAUTH_SECRET"
     }
-  ]
+  ],
+  "urn": "tipi://blinko"
 }

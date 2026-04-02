@@ -46,5 +46,6 @@
       "hint": "Password for the initial admin user",
       "min": 8
     }
-  ]
+  ],
+  "urn": "tipi://linkding"
 }

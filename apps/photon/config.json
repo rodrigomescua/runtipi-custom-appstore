@@ -23,5 +23,6 @@
     "amd64"
   ],
   "created_at": 1745844033706,
-  "updated_at": 1775081116000
+  "updated_at": 1775081116000,
+  "urn": "tipi://photon"
 }

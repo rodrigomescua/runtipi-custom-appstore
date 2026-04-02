@@ -32,5 +32,6 @@
   ],
   "dynamic_config": true,
   "created_at": 1767391120611,
-  "updated_at": 1775081116000
+  "updated_at": 1775081116000,
+  "urn": "tipi://qbitwebui"
 }

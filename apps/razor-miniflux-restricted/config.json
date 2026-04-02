@@ -83,5 +83,6 @@
       "min": 1,
       "env_variable": "MARK_STARRED_READ"
     }
-  ]
+  ],
+  "urn": "tipi://razor-miniflux-restricted"
 }

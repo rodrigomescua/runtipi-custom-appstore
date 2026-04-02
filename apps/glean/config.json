@@ -64,5 +64,6 @@
       "env_variable": "DEBUG",
       "default": "false"
     }
-  ]
+  ],
+  "urn": "tipi://glean"
 }

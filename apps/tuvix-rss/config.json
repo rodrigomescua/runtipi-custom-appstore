@@ -48,5 +48,6 @@
       "label": "Admin Password",
       "required": true
     }
-  ]
+  ],
+  "urn": "tipi://tuvix-rss"
 }

@@ -62,5 +62,6 @@
       "min": 1,
       "env_variable": "IS_TOP"
     }
-  ]
+  ],
+  "urn": "tipi://razor-iptv"
 }

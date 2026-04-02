@@ -60,5 +60,6 @@
       "env_variable": "GEOPULSE_ADMIN_EMAIL",
       "hint": "Email of admin user. Existing or new user with this email will be promoted to admin"
     }
-  ]
+  ],
+  "urn": "tipi://geopulse"
 }

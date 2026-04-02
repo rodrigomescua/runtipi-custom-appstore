@@ -42,5 +42,6 @@
       "encoding": "base64",
       "hint": "PostgreSQL database password"
     }
-  ]
+  ],
+  "urn": "tipi://m3u-editor"
 }
