@@ -3,6 +3,7 @@ import { appInfoSchema, dynamicComposeSchema } from '@runtipi/common/schemas'
 import { fromError } from 'zod-validation-error';
 import fs from 'node:fs'
 import path from 'node:path'
+import yaml from 'js-yaml'
 
 const getApps = async () => {
   const appsDir = await fs.promises.readdir(path.join(process.cwd(), 'apps'))
@@ -29,7 +30,7 @@ describe("each app should have the required files", async () => {
   const apps = await getApps()
 
   for (const app of apps) {
-    const files = ['config.json', 'docker-compose.json', 'metadata/logo.jpg', 'metadata/description.md']
+    const files = ['config.json', 'docker-compose.yml', 'metadata/logo.jpg', 'metadata/description.md']
 
     for (const file of files) {
       test(`app ${app} should have ${file}`, async () => {
@@ -58,17 +59,17 @@ describe("each app should have a valid config.json", async () => {
   }
 })
 
-describe("each app should have a valid docker-compose.json", async () => {
+describe("each app should have a valid docker-compose.yml", async () => {
   const apps = await getApps()
 
   for (const app of apps) {
-    test(`app ${app} should have a valid docker-compose.json`, async () => {
-      const fileContent = await getFile(app, 'docker-compose.json')
-      const parsed = dynamicComposeSchema.safeParse(JSON.parse(fileContent || '{}'))
+    test(`app ${app} should have a valid docker-compose.yml`, async () => {
+      const fileContent = await getFile(app, 'docker-compose.yml')
+      const parsed = dynamicComposeSchema.safeParse(yaml.load(fileContent || '{}'))
 
       if (!parsed.success) {
         const validationError = fromError(parsed.error);
-        console.error(`Error parsing docker-compose.json for app ${app}:`, validationError.toString());
+        console.error(`Error parsing docker-compose.yml for app ${app}:`, validationError.toString());
       }
 
       expect(parsed.success).toBe(true)
