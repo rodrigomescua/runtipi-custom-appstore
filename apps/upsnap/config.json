@@ -11,7 +11,7 @@
     "utilities"
   ],
   "description": "A simple wake on lan web app written with SvelteKit, Go and PocketBase.",
-  "tipi_version": 24,
+  "tipi_version": 25,
   "version": "5.3.2",
   "source": "https://github.com/seriousm4x/UpSnap",
   "exposable": true,
@@ -20,6 +20,6 @@
     "amd64"
   ],
   "created_at": 1733750038001,
-  "updated_at": 1775081116000,
+  "updated_at": 1775260170796,
   "urn": "tipi://upsnap"
 }

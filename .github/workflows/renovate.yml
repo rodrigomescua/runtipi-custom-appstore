@@ -34,7 +34,7 @@ jobs:
           private-key: ${{ secrets.PRIVATE_KEY }}
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup node
         uses: actions/setup-node@v4
@@ -45,7 +45,7 @@ jobs:
         uses: oven-sh/setup-bun@v2
 
       - name: Cache bun dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.bun/install/global
           key: ${{ runner.os }}-bun-renovate-${{ hashFiles('bun.lockb') }}

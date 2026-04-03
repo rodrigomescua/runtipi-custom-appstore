@@ -1,7 +1,7 @@
 
 services:
   dispatcharr:
-    image: ghcr.io/dispatcharr/dispatcharr:0.21.1
+    image: ghcr.io/dispatcharr/dispatcharr:0.22.0
     environment:
       - DISPATCHARR_ENV=aio
       - REDIS_HOST=localhost
