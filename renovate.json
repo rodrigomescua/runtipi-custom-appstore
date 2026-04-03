@@ -9,24 +9,11 @@
   "addLabels": [
     "renovate"
   ],
-  "enabledManagers": [
-    "custom.regex"
-  ],
+
   "automergeStrategy": "rebase",
   "prCreation": "immediate",
   "rebaseWhen": "conflicted",
-  "customManagers": [
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/^apps/.+/docker-compose\\.json$/"
-      ],
-      "matchStrings": [
-        "\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","
-      ],
-      "datasourceTemplate": "docker"
-    }
-  ],
+
   "packageRules": [
     {
       "matchUpdateTypes": [
@@ -93,7 +80,7 @@
     ],
     "fileFilters": [
       "apps/**/config.json",
-      "apps/**/docker-compose.json"
+      "apps/**/docker-compose.yml"
     ],
     "executionMode": "branch"
   }

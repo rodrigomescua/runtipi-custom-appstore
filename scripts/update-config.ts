@@ -18,18 +18,12 @@ interface DockerComposeYml {
   [key: string]: unknown;
 }
 
-interface DockerComposeJson {
-  services: Array<{
-    name: string;
-    image: string;
-    isMain?: boolean;
-  }>;
-}
 
-export async function readYamlFile<T>(filepath: string): Promise<T | null> {
+
+export async function readYamlFile(filepath: string): Promise<any | null> {
   try {
     const content = await fs.readFile(filepath, "utf-8");
-    return yaml.load(content) as T;
+    return yaml.load(content);
   } catch (_) {
     return null;
   }
@@ -45,48 +39,37 @@ const updateAppConfig = async (packageFile: string) => {
     const packageRoot = path.dirname(packageFile);
     const configPath = path.join(packageRoot, "config.json");
     const dockerComposeYmlPath = path.join(packageRoot, "docker-compose.yml");
-    const dockerComposeJsonPath = path.join(packageRoot, "docker-compose.json");
 
     const config = await readJsonFile<AppInfo>(configPath);
-    const dockerComposeYml = await readYamlFile<DockerComposeYml>(dockerComposeYmlPath);
-    const dockerComposeJson = await readJsonFile<DockerComposeJson>(dockerComposeJsonPath);
+    const dockerComposeYml = await readYamlFile(dockerComposeYmlPath);
 
     // Extract main service image version
     let mainServiceVersion: string | null = null;
     
-    if (dockerComposeJson) {
-      for (const service of dockerComposeJson.services) {
-        if (service.isMain) {
-          const versionMatch = service.image.match(/:([^:]+)$/);
-          if (versionMatch) {
-            mainServiceVersion = versionMatch[1];
+    if (dockerComposeYml && dockerComposeYml.services) {
+      for (const service of Object.values<any>(dockerComposeYml.services)) {
+        if (service['x-runtipi'] && service['x-runtipi'].is_main) {
+          if (service.image) {
+            const versionMatch = service.image.match(/:([^:]+)$/);
+            if (versionMatch) {
+              mainServiceVersion = versionMatch[1];
+            }
           }
           break;
         }
       }
     }
 
-    if (dockerComposeYml) {
-      dockerComposeYml.services = Object.fromEntries(
-        Object.entries(dockerComposeYml.services).map(([serviceName, service]) => {
-          // No-op: YAML services are not modified in this workflow
-          return [serviceName, service];
-        }),
-      );
-    }
-
-    // Update config.json only with the main service version
-    if (mainServiceVersion) {
+    if (!mainServiceVersion) {
+      console.warn("Could not find main service version in docker-compose.yml");
+    } else {
       config.version = mainServiceVersion;
     }
 
     config.tipi_version = config.tipi_version + 1;
     config.updated_at = Date.now();
 
-    if (dockerComposeYml) {
-      await fs.writeFile(dockerComposeYmlPath, yaml.dump(dockerComposeYml, { lineWidth: -1, noRefs: true, sortKeys: false, indent: 2 }));
-    }
-    await fs.writeFile(configPath, JSON.stringify(config, null, 2));
+    await fs.writeFile(configPath, JSON.stringify(config, null, 2) + "\n");
     
     console.log(`✓ Updated config.json: version=${mainServiceVersion || 'unchanged'}, tipi_version=${config.tipi_version}`);
   } catch (e) {
