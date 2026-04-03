@@ -1,4 +1,3 @@
-
 services:
   m3u-editor_redis:
     image: redis:alpine3.22
@@ -45,7 +44,7 @@ services:
       retries: 12
 
   m3u-editor:
-    image: sparkison/m3u-editor:dev-0.10.30
+    image: sparkison/m3u-editor:dev-0.10.32
     environment:
       - TZ=${TZ}
       - APP_URL=http://${APP_DOMAIN}
