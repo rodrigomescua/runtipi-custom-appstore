@@ -6,14 +6,19 @@
   "short_desc": "FileBrowser Quantum is a web-based file manager and browser.",
   "author": "gtsteffaniak",
   "port": 8837,
-  "categories": ["utilities"],
+  "categories": [
+    "utilities"
+  ],
   "description": "FileBrowser Quantum provides a file managing interface within a specified directory and it can be used to upload, delete, preview, rename and edit your files.",
-  "tipi_version": 1,
+  "tipi_version": 2,
   "version": "stable",
   "source": "https://github.com/gtsteffaniak/filebrowser",
   "exposable": true,
   "dynamic_config": true,
-  "supported_architectures": ["amd64", "arm64"],
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
   "created_at": 1732627200000,
   "updated_at": 1732627200000,
   "form_fields": [],
