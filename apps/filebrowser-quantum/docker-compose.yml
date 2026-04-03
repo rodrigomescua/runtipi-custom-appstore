@@ -4,7 +4,7 @@ services:
   filebrowser-quantum:
     image: gtstef/filebrowser:stable
     volumes:
-      - ${APP_DATA_DIR}/data:/home/filebrowser/data
+      - ${APP_DATA_DIR}/data/data:/home/filebrowser/data
       - ${ROOT_FOLDER_HOST}:/server
     environment:
       - "FILEBROWSER_CONFIG=data/config.yaml" # using our config file at ./data/config.yaml

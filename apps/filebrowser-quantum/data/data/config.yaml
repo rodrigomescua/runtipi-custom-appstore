@@ -1,0 +1,24 @@
+server:
+  database: "data/database.db"
+  cacheDir: "data/tmp"
+  sources:
+    - path: "/server"
+      name: Home
+      config:
+        defaultUserScope: "/users/" # new users will get created in /users/<username>
+        defaultEnabled: true # new users automatically get access to the source
+        createUserDir: true # a user "bill" will see files from /files/users/bill
+    - path: "/home/filebrowser" # mount the docker home folder for convenience
+      name: Backend
+    # Add your sources here.
+  #externalUrl: 'https://<YOUR_IP>:8900' # if you plan to share externally, share links will be generated with this url
+  maxArchiveSize: 50 # maxiumum pre-archive size users are allowed to download at once.
+auth:
+  tokenExpirationHours: 2
+  methods:
+    password:
+      enabled: true
+      minLength: 5
+      signup: true
+  adminUsername: {{APP_ADMIN_USERNAME}}
+  adminPassword: {{APP_ADMIN_PASSWORD}}
