@@ -5,7 +5,7 @@ services:
     image: gtstef/filebrowser:stable
     volumes:
       - ${APP_DATA_DIR}/data:/home/filebrowser/data
-      - ${APP_DATA_DIR}/data/folder:/folder
+      - ${ROOT_FOLDER_HOST}:/server
     restart: unless-stopped
     x-runtipi:
       is_main: true
