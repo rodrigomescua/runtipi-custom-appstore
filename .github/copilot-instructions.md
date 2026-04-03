@@ -11,7 +11,7 @@ This is a custom app store for [Runtipi](https://github.com/runtipi/runtipi), a 
 2. `docker-compose.yml` - Dynamic container configuration (YAML with `x-runtipi` extensions, NOT JSON)
 3. `metadata/` folder with `logo.jpg` and `description.md`
 
-**⭐ IMPORTANT UPDATE (April 2026):** The Dynamic Compose format has changed from JSON (legacy) to **YAML with `x-runtipi` extensions**. All apps must use `docker-compose.yml`, not `docker-compose.json`.
+**⭐ IMPORTANT UPDATE (April 2026):** The Dynamic Compose format has changed from JSON (legacy) to **YAML with `x-runtipi` extensions**. All apps must use `docker-compose.yml`, not `docker-compose.yml`.
 
 **Note:** This repository is no longer accepting new apps (see warning in README.md); contributions are limited to bug fixes for existing apps.
 
@@ -22,7 +22,7 @@ This is a custom app store for [Runtipi](https://github.com/runtipi/runtipi), a 
 ```
 linkding/
 ├── config.json                 # 51 lines: metadata + 3 form fields
-├── docker-compose.json         # 1 service (linkding)
+├── docker-compose.yml         # 1 service (linkding)
 └── metadata/
     ├── description.md
     └── logo.jpg
@@ -33,7 +33,7 @@ linkding/
 ```
 dawarich/
 ├── config.json                 # 61 lines: metadata + 2 form fields
-├── docker-compose.json         # 3 services: dawarich_redis, dawarich_db, dawarich
+├── docker-compose.yml         # 3 services: dawarich_redis, dawarich_db, dawarich
 └── metadata/
     ├── description.md
     └── logo.jpg
@@ -45,28 +45,28 @@ dawarich/
 - New apps MUST use ports in the range 8800-8999
 - **CRITICAL:** Always verify port availability BEFORE creating the app:
   1. Search for the chosen port number in ALL `apps/*/config.json` files using: `grep -r "\"port\": 8XXX" apps/`
-  2. Search for the chosen port in ALL `apps/*/docker-compose.json` files
+  2. Search for the chosen port in ALL `apps/*/docker-compose.yml` files
   3. Check README.md apps table for any documented port assignments
   4. Only after confirming it's unused, assign it to the new app
 - The `port` field in `config.json` is the **exposed host port**, not the internal container port
-- Internal container port goes in `docker-compose.json` under `internalPort`
+- Internal container port goes in `docker-compose.yml` under `internalPort`
 
 **⚠️ CRITICAL DISTINCTION - NEVER CONFUSE `port` WITH `internalPort`**
 
 | Campo | Arquivo | Descrição | Range | Restrição |
 |-------|---------|-----------|-------|-----------|
 | `port` | config.json | Porta EXPOSTA no host | 8800-8999 | **OBRIGATÓRIO verificar range e disponibilidade** |
-| `internalPort` | docker-compose.json | Porta DENTRO do container | Qualquer | Deve corresponder à documentação da aplicação |
+| `internalPort` | docker-compose.yml | Porta DENTRO do container | Qualquer | Deve corresponder à documentação da aplicação |
 
 **Erro Comum:**
 ```json
 // ❌ ERRADO - porta config.json fora do range
 "port": 7476,  // Em config.json - viola range 8800-8999!
-"internalPort": 7476,  // Em docker-compose - pode estar correto se a app usa 7476 internamente
+internal_port: 7476,  // Em docker-compose - pode estar correto se a app usa 7476 internamente
 
 // ✅ CORRETO
 "port": 8852,  // Em config.json - dentro do range 8800-8999
-"internalPort": 7476,  // Em docker-compose - porta interna real da aplicação
+internal_port: 7476,  // Em docker-compose - porta interna real da aplicação
 ```
 
 **Exemplo Real (Linkding):**
@@ -74,8 +74,8 @@ dawarich/
 // config.json
 "port": 8830  // Host: acessa em http://host:8830 (RANGE 8800-8999 ✅)
 
-// docker-compose.json
-"internalPort": 9090  // Container: app roda em :9090 (conforme documentação da app ✅)
+// docker-compose.yml
+internal_port: 9090  // Container: app roda em :9090 (conforme documentação da app ✅)
 ```
 Resultado: Container porta 9090 → Host porta 8830
 
@@ -89,12 +89,12 @@ Resultado: Container porta 9090 → Host porta 8830
 // config.json
 "port": 8830
 
-// docker-compose.json
-"internalPort": 9090  // Container runs on 9090, exposed to host on 8830
+// docker-compose.yml
+internal_port: 9090  // Container runs on 9090, exposed to host on 8830
 ```
 
 ### Version Management
-**CRITICAL - DO NOT SKIP:** The `version` field in `config.json` MUST exactly match the image tag in `docker-compose.json`.
+**CRITICAL - DO NOT SKIP:** The `version` field in `config.json` MUST exactly match the image tag in `docker-compose.yml`.
 
 - Always check **GitHub Releases** (`https://github.com/{owner}/{repo}/releases`) or **Docker Hub** for the latest stable version
 - Never use `latest` tag in production (only for development/testing)
@@ -150,7 +150,7 @@ You MUST verify the exact tag format from the registry WHERE THE APP'S OFFICIAL 
 
 6. **After setting the tag:**
    - `config.json` version: `"version": "{EXACT_TAG}"`
-   - `docker-compose.json` image: `"image": "registry/owner/name:{EXACT_TAG}"`
+   - `docker-compose.yml` image: `"image": "registry/owner/name:{EXACT_TAG}"`
    - Both MUST match exactly character-for-character
 
 **Real examples from mistakes made:**
@@ -182,7 +182,7 @@ You MUST verify the exact tag format from the registry WHERE THE APP'S OFFICIAL 
 // config.json
 "version": "1.44.1"
 
-// docker-compose.json
+// docker-compose.yml
 "image": "sissbruecker/linkding:1.44.1"  // MUST MATCH exactly
 ```
 
@@ -194,7 +194,7 @@ You MUST verify the exact tag format from the registry WHERE THE APP'S OFFICIAL 
 "created_at": 1731806736001,
 "updated_at": 1731806736001
 
-// docker-compose.json
+// docker-compose.yml
 "image": "ghcr.io/rodrigomescua/blazorrssdocker:20250928-055530"  // Matches version
 ```
 
@@ -203,7 +203,7 @@ The `form_fields` array defines user input during installation. Can be empty `[]
 
 **CRITICAL RULE - Database Credentials:**
 - **NEVER ask for database credentials via form_fields**
-- Database usernames, passwords, and database names should be hardcoded in `docker-compose.json`
+- Database usernames, passwords, and database names should be hardcoded in `docker-compose.yml`
 - Use simple, default values related to the app name (e.g., app "piwigo" → user: "piwigo", password: "piwigo", db: "piwigo")
 - Example from Dawarich: `POSTGRES_USER: "postgres"`, `POSTGRES_PASSWORD: "password"`, `POSTGRES_DB: "dawarich_development"`
 - This applies to all database types: PostgreSQL, MariaDB, MySQL, MongoDB, etc.
@@ -335,7 +335,7 @@ x-runtipi:
 | Root structure | `{ "schemaVersion": 2, ... }` | `version: '3'` + `x-runtipi:` |
 | Services | Array `[{name, image, ...}]` | Object with service names as keys |
 | is_main | `"isMain": true` | `x-runtipi.is_main: true` |
-| Internal port | `"internalPort": 3000` | `x-runtipi.internal_port: 3000` |
+| Internal port | `internal_port: 3000` | `x-runtipi.internal_port: 3000` |
 | Environment | `[{"key": "K", "value": "V"}]` | List: `- KEY=value` |
 | Ports | (in config.json) | `ports: ["8830:3000"]` |
 | Volumes | `[{hostPath, containerPath}]` | `- /host:/container` |
@@ -458,7 +458,7 @@ x-runtipi:
       "name": "linkding",
       "image": "sissbruecker/linkding:1.44.1",
       "isMain": true,
-      "internalPort": 9090,
+      internal_port: 9090,
       "environment": [
         {
           "key": "LD_SUPERUSER_NAME",
@@ -540,7 +540,7 @@ x-runtipi:
       "name": "dawarich",
       "image": "freikin/dawarich:0.36.1",
       "isMain": true,
-      "internalPort": 3000,
+      internal_port: 3000,
       "command": [
         "bin/rails",
         "server",
@@ -608,13 +608,13 @@ The **last part** is ONLY the final directory/file name, not the entire path:
 
 ### Configuration Schema Validation
 
-Both `config.json` and `docker-compose.json` use schemas:
+Both `config.json` and `docker-compose.yml` use schemas:
 - `$schema` in config.json should be: `https://schemas.runtipi.io/v2/app-info.json`
-- `$schema` in docker-compose.json should be: `https://schemas.runtipi.io/v2/dynamic-compose.json`
+- `$schema` in docker-compose.yml should be: `https://schemas.runtipi.io/v2/dynamic-compose.json`
 
 Validation schemas from `@runtipi/common/schemas`:
 - `appInfoSchema` for config.json
-- `dynamicComposeSchema` for docker-compose.json
+- `dynamicComposeSchema` for docker-compose.yml
 
 ### Complete config.json Example (Linkding)
 ```json
@@ -710,31 +710,31 @@ bun test
 ```
 
 The tests in `__tests__/apps.test.ts` verify:
-1. Required files exist (config.json, docker-compose.json, logo.jpg, description.md)
+1. Required files exist (config.json, docker-compose.yml, logo.jpg, description.md)
 2. config.json passes schema validation
-3. docker-compose.json passes schema validation
+3. docker-compose.yml passes schema validation
 
 **What the tests check for each app:**
 - ✅ `apps/{app-id}/config.json` exists and is valid JSON
-- ✅ `apps/{app-id}/docker-compose.json` exists and is valid JSON
+- ✅ `apps/{app-id}/docker-compose.yml` exists and is valid JSON
 - ✅ `apps/{app-id}/metadata/logo.jpg` exists
 - ✅ `apps/{app-id}/metadata/description.md` exists
 - ✅ config.json passes `appInfoSchema` validation
-- ✅ docker-compose.json passes `dynamicComposeSchema` validation
+- ✅ docker-compose.yml passes `dynamicComposeSchema` validation
 
 **Test output example:**
 ```
 ✓ app linkding should have config.json
-✓ app linkding should have docker-compose.json
+✓ app linkding should have docker-compose.yml
 ✓ app linkding should have metadata/logo.jpg
 ✓ app linkding should have metadata/description.md
 ✓ app linkding should have a valid config.json
-✓ app linkding should have a valid docker-compose.json
+✓ app linkding should have a valid docker-compose.yml
 ```
 
 If tests fail, check for:
 - Missing required fields in config.json (name, id, port, version, etc.)
-- Version mismatch between `config.json` version and `docker-compose.json` image tag
+- Version mismatch between `config.json` version and `docker-compose.yml` image tag
 - Missing `"isMain": true` on the main service in multi-service apps
 - Invalid port ranges or volume path patterns
 - Services array issues (must be array, not object)
@@ -743,15 +743,15 @@ If tests fail, check for:
 ### Updating App Versions
 Use the version update script:
 ```bash
-bun scripts/update-config.ts <path-to-docker-compose.json>
+bun scripts/update-config.ts <path-to-docker-compose.yml>
 ```
 
 **Parameter:**
-- `<path-to-docker-compose.json>`: Full path to the docker-compose.json file
+- `<path-to-docker-compose.yml>`: Full path to the docker-compose.yml file
 
 **Example:**
 ```bash
-bun scripts/update-config.ts apps/linkding/docker-compose.json
+bun scripts/update-config.ts apps/linkding/docker-compose.yml
 ```
 
 This script automatically:
@@ -763,14 +763,14 @@ This script automatically:
 - Works with both JSON and YAML compose files
 
 **How Renovate Integration Works:**
-- Renovate detects all Docker image updates in a single `docker-compose.json` file
+- Renovate detects all Docker image updates in a single `docker-compose.yml` file
 - Instead of creating multiple PRs, it creates **one grouped PR** with all updates
 - Uses `executionMode: "branch"` to collect all changes before running the script
 - Script runs **once per app file** after all image updates are staged
 - This prevents `tipi_version` conflicts when multiple images in the same file are updated
 
 **Important notes:**
-- Script only reads from `docker-compose.json`, doesn't need parameters for individual images
+- Script only reads from `docker-compose.yml`, doesn't need parameters for individual images
 - Always verify the new versions exist on Docker Hub or GitHub Releases before merging
 
 ### Package Management
@@ -781,7 +781,7 @@ This script automatically:
 - Commands: `bun test` (run validation), `bun scripts/update-config.ts` (update versions)
 
 ### Renovate Automation & Grouped PRs
-Renovate automatically detects Docker image updates in all `apps/*/docker-compose.json` files:
+Renovate automatically detects Docker image updates in all `apps/*/docker-compose.yml` files:
 
 **Key Design:**
 - Multiple image updates in the same file are **grouped into one PR**
@@ -798,22 +798,22 @@ The following database/cache images are never auto-updated (managed manually):
 **Workflow:**
 1. Renovate detects updates via regex: `/^apps\/.+\/docker-compose\.json$/`
 2. Groups updates by app/file using `executionMode: "branch"`
-3. Stages all image changes in docker-compose.json
+3. Stages all image changes in docker-compose.yml
 4. Runs: `bun install && bun run test`
-5. Runs: `bun ./scripts/update-config.ts apps/{app}/docker-compose.json`
+5. Runs: `bun ./scripts/update-config.ts apps/{app}/docker-compose.yml`
 6. Script extracts main service version and updates config.json
 7. Creates single PR with all changes
 8. Manual review required (`automerge: false`)
 
 ### File Structure Rules
 **DO NOT INCLUDE:**
-- `docker-compose.yml` or `docker-compose.yaml` (always `.json`)
-- `docker-compose.json` AND `docker-compose.yml` in same app
-- `.yml` files anywhere in the app folder
+- `docker-compose.json` (always use `.yml`)
+- BOTH `.json` and `.yml` files in the same app folder
+- `.yaml` extension (always use `.yml`)
 
 **MUST INCLUDE:**
 - `config.json` with `$schema` field
-- `docker-compose.json` with `$schema` field and `schemaVersion: 2`
+- `docker-compose.yml` with `$schema` field and `schemaVersion: 2`
 - `metadata/logo.jpg` (512x512 JPG)
 - `metadata/description.md` (brief description of the app)
 
@@ -833,16 +833,16 @@ The following database/cache images are never auto-updated (managed manually):
    - **SOLUTION:** ALWAYS run verification search before creating the app
    - **Command:** `grep -rh '"port"' apps/*/config.json | grep -oP ':\s*\K\d+' | sort -n | uniq`
    - **Do this FIRST** before creating config.json
-   - Check ALL files (config.json + docker-compose.json) for existing ports
+   - Check ALL files (config.json + docker-compose.yml) for existing ports
    - This prevents wasted work and conflicts
 
-2. ❌ **Using `docker-compose.yml` instead of `docker-compose.json`**
-   - Always use `.json` format only
+2. ❌ **Using `docker-compose.json` instead of `docker-compose.yml`**
+   - Always use `.yml` format only
    - Never have both `.yml` and `.json` in same app
 
 3. ❌ **`version` field not matching image tag**
    - config.json `"version": "1.44.1"` MUST match
-   - docker-compose.json `"image": "sissbruecker/linkding:1.44.1"`
+   - docker-compose.yml `"image": "sissbruecker/linkding:1.44.1"`
    - This is the #1 validation failure cause
    - **Common mistake:** Assuming `v0.7.2` when registry has `0.7.2` (or vice versa)
    - **Solution:** Always visit the Docker registry package page directly to verify the exact tag format
@@ -860,7 +860,7 @@ The following database/cache images are never auto-updated (managed manually):
 
 6. ❌ **Using container port in `port` field**
    - config.json `"port": 8830` (exposed host port)
-   - docker-compose.json `"internalPort": 9090` (container port)
+   - docker-compose.yml `internal_port: 9090` (container port)
    - These are DIFFERENT - don't confuse them
 
 7. ❌ **Invalid volume paths**
@@ -883,7 +883,7 @@ The following database/cache images are never auto-updated (managed manually):
     - RIGHT: `"created_at": 1732627200000` (in milliseconds)
     - Use `Date.now()` to generate correct timestamp
 
-11. ❌ **Missing `schemaVersion: 2` in docker-compose.json**
+11. ❌ **Missing `schemaVersion: 2` in docker-compose.yml**
     - Always include: `"schemaVersion": 2`
     - Never use 1 or 3
 
@@ -924,7 +924,7 @@ The following database/cache images are never auto-updated (managed manually):
 
 ## Environment Variables Common Mistakes
 
-**CRITICAL:** Many app failures are caused by missing or incorrect environment variables in `docker-compose.json`. Always compare with the official app's documentation.
+**CRITICAL:** Many app failures are caused by missing or incorrect environment variables in `docker-compose.yml`. Always compare with the official app's documentation.
 
 ### Database Connection Strings (PostgreSQL, MySQL, etc)
 
@@ -953,7 +953,7 @@ The following database/cache images are never auto-updated (managed manually):
 
 ### Complete Environment Variables List
 
-**MISTAKE #3: Missing environment variables in docker-compose.json**
+**MISTAKE #3: Missing environment variables in docker-compose.yml**
 - ❌ WRONG: Only including database and redis URLs, ignoring other config
 - ✅ RIGHT: Include ALL variables from `.env.example` (even optional ones with defaults)
 
@@ -966,7 +966,7 @@ The following database/cache images are never auto-updated (managed manually):
 **HOW TO FIX:**
 1. Find the official app's `.env.example` file
 2. Extract ALL variable names and their defaults
-3. Include in `docker-compose.json` environment array
+3. Include in `docker-compose.yml` environment array
 4. Use Runtipi's form_fields for user-configurable values: `"${ENV_VARIABLE_NAME}"`
 5. Use hardcoded defaults for fixed values (e.g., `"NODE_ENV": "production"`)
 
@@ -1051,12 +1051,12 @@ Use this checklist when creating a new app:
    - [ ] Set `dynamic_config: true`
    - [ ] Include `created_at` and `updated_at`
 
-3. **docker-compose.json**
+3. **docker-compose.yml**
    - [ ] Add `$schema` and `schemaVersion: 2`
    - [ ] Make `services` an array
    - [ ] Set `image` tag to exact version (no `latest`)
    - [ ] **CRITICAL:** Image tag MUST match config.json `version` exactly, character-for-character
-   - [ ] Verify dependency versions match the official app's docker-compose.json (PostgreSQL, Redis, etc.)
+   - [ ] Verify dependency versions match the official app's docker-compose.yml (PostgreSQL, Redis, etc.)
    - [ ] Set `internalPort` for each service
    - [ ] Only ONE service has `"isMain": true`
    - [ ] Volume `hostPath` uses `${APP_DATA_DIR}/data/{last-part}`
@@ -1076,7 +1076,7 @@ Use this checklist when creating a new app:
 
 ## Renovate Bot Setup & Automation
 
-Renovate automatically detects and updates Docker images in all `apps/*/docker-compose.json` files.
+Renovate automatically detects and updates Docker images in all `apps/*/docker-compose.yml` files.
 
 **Key Configuration Details:**
 
@@ -1085,7 +1085,7 @@ Renovate automatically detects and updates Docker images in all `apps/*/docker-c
 - Custom regex pattern: `"image": "(?<depName>.*?):(?<currentValue>.*?)"`
 - `executionMode: "branch"` - Groups all updates in single PR per file
 - `postUpgradeTasks` - Runs: `bun install` → `bun ./scripts/update-config.ts` → `bun run test`
-- `fileFilters` - Restricted to only `apps/**/config.json` and `apps/**/docker-compose.json` (excludes lock files)
+- `fileFilters` - Restricted to only `apps/**/config.json` and `apps/**/docker-compose.yml` (excludes lock files)
 
 **GitHub Actions Workflow (.github/workflows/renovate.yml):**
 - Runs on schedule: **2x daily** (7am and 7pm UTC = 4am and 4pm Brasília time)
@@ -1113,7 +1113,7 @@ Renovate automatically detects and updates Docker images in all `apps/*/docker-c
    - **After:** 3 images in dawarich → 1 grouped PR
 
 4. **Configured post-upgrade command execution order**
-   - **Order:** `bun install` → `bun ./scripts/update-config.ts apps/{app}/docker-compose.json` → `bun run test`
+   - **Order:** `bun install` → `bun ./scripts/update-config.ts apps/{app}/docker-compose.yml` → `bun run test`
    - **Why:** Dependencies must be installed before script runs
    - **Impact:** Script can import js-yaml without errors
 
@@ -1129,22 +1129,22 @@ Renovate automatically detects and updates Docker images in all `apps/*/docker-c
 
 7. **Configured `groupName` and `groupSlug`**
    - **Pattern:** Groups by app folder (e.g., `dawarich-docker-updates`)
-   - **Why:** All images in same docker-compose.json file grouped together
+   - **Why:** All images in same docker-compose.yml file grouped together
    - **Impact:** Single PR containing all updates for an app
 
 8. **Restricted `fileFilters` to prevent lock file commits**
    - **Before:** `fileFilters: ["**/*"]` (too permissive)
-   - **After:** `fileFilters: ["apps/**/config.json", "apps/**/docker-compose.json"]`
+   - **After:** `fileFilters: ["apps/**/config.json", "apps/**/docker-compose.yml"]`
    - **Why:** Prevents `bun.lockb` from being committed in Renovate PRs
    - **Impact:** Clean PRs with only config changes
 
 **How Renovate Workflow Works:**
 
-1. Renovate detects Docker image updates in `apps/*/docker-compose.json`
+1. Renovate detects Docker image updates in `apps/*/docker-compose.yml`
 2. Groups all updates for same app file into one branch/PR
 3. Stages all image version changes
 4. Runs: `bun install` (install dependencies)
-5. Runs: `bun ./scripts/update-config.ts apps/{app}/docker-compose.json`
+5. Runs: `bun ./scripts/update-config.ts apps/{app}/docker-compose.yml`
    - Script extracts main service image version
    - Updates `version` field in corresponding `config.json`
    - Increments `tipi_version` by 1
@@ -1171,7 +1171,7 @@ To use Renovate properly:
 | `js-yaml not found` error | `js-yaml` in devDependencies | Move to dependencies in package.json |
 | Commands not executing | `allowedCommands` not set | Add `RENOVATE_ALLOWED_POST_UPGRADE_COMMANDS` to workflow env |
 | HTTP 403 Forbidden | GITHUB_TOKEN lacks scopes | Use RENOVATE_TOKEN with `repo` + `workflow` scopes |
-| Lock file in PR | Overly permissive fileFilters | Restrict to `apps/**/config.json` and `apps/**/docker-compose.json` |
+| Lock file in PR | Overly permissive fileFilters | Restrict to `apps/**/config.json` and `apps/**/docker-compose.yml` |
 | Database services updating | Not in ignore list | Add to `matchPackageNames` with `enabled: false` |
 | `tipi_version` conflicts | Multiple script runs per file | Use `executionMode: "branch"` to group updates |
 
@@ -1205,7 +1205,7 @@ This validates configuration and shows what updates would be detected without ma
 **KNOWN VIOLATION - Needs Fixing:**
 - **`apps/razor-pricehistory/`** - Contains BOTH `docker-compose.json` AND `docker-compose.yml`
   - This violates rule #1 in "Common Mistakes to Avoid"
-  - Solution: Delete the `.yml` file, keep only `.json`
+  - Solution: Delete the `.json` file, keep only `.yml`
   - This will likely cause test failures until resolved
 
 ## Important Notes

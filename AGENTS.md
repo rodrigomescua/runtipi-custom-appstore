@@ -132,13 +132,13 @@ Host path uses only the **last part** of container path:
 Tests in `__tests__/apps.test.ts` verify:
 1. Required files exist
 2. config.json passes `appInfoSchema` validation
-3. docker-compose.json passes `dynamicComposeSchema` validation
+3. docker-compose.yml passes `dynamicComposeSchema` validation
 
 Run `bun test` before committing any app changes.
 
 ## Renovate Automation
 
-Renovate automatically updates Docker images in `apps/*/docker-compose.json`:
+Renovate automatically updates Docker images in `apps/*/docker-compose.yml`:
 - Creates grouped PRs per app file
 - Runs `bun scripts/update-config.ts` to sync config.json version
 - Database images (redis, postgres, mariadb, etc.) are excluded from auto-updates
@@ -148,7 +148,7 @@ Renovate automatically updates Docker images in `apps/*/docker-compose.json`:
 1. **Port conflicts** - Always verify availability first
 2. **Version mismatch** - config.json version must match docker image tag exactly
 3. **Using `latest` tag** - Always use specific versions
-4. **Wrong services format** - Must be array, not object
-5. **Array `dependsOn`** - Use object format with `service_healthy` condition
+4. **Wrong services format** - Must be a YAML object, not a JSON array
+5. **Array `depends_on`** - Usually objects with `condition: service_healthy` in newer compose
 6. **Full paths in volumes** - Use only last directory name
 7. **Timestamps in seconds** - Must be milliseconds (use `Date.now()`)

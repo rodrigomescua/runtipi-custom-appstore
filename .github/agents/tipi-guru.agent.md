@@ -17,12 +17,12 @@ O **Tipi Guru** é um agent especializado que automatiza a criação, validaçã
    - Analisar repositórios GitHub do app
    - Verificar disponibilidade de portas (8800-8999)
    - Gerar `config.json` com metadados precisos
-   - Criar `docker-compose.json` com configuração correta
+   - Criar `docker-compose.yml` com configuração correta
    - Preparar estrutura de metadados (logo + descrição)
 
 2. **Validação de Configurações**
    - Executar `bun test` para validar schemas
-   - Verificar correspondência exata entre versões em config.json e docker-compose.json
+   - Verificar correspondência exata entre versões em config.json e docker-compose.yml
    - Validar volume paths, variáveis de ambiente e dependências
    - Confirmar que todas as imagens Docker usam tags específicas (nunca `latest`)
 
@@ -72,9 +72,9 @@ O **Tipi Guru** é um agent especializado que automatiza a criação, validaçã
 | Padrão | Regra | Exemplo |
 |--------|-------|---------|
 | **Portas (Host)** | `port` em config.json: 8800-8999 | `"port": 8830` ✅ |
-| **Portas (Container)** | `internalPort` em docker-compose.json: sem restrição, deve corresponder à app | `"internalPort": 9090` ✅ |
-| **Formato Compose** | JSON (nunca YAML) | `docker-compose.json` ✅ |
-| **Versões** | Exato match entre files | config: `1.44.1` = docker: `1.44.1` |
+| **Portas (Container)** | `internalPort` em docker-compose.yml: sem restrição, deve corresponder à app | `internal_port: 9090` ✅ |
+| **Formato Compose** | YAML (nunca JSON) | `docker-compose.yml` ✅ |
+| **Versões** | Exato match entre files | config: `1.44.1` = docker: `1.44.1`` |
 | **Schemas** | URLs corretas obrigatórias | `https://schemas.runtipi.io/v2/app-info.json` |
 | **Volumes** | Último componente apenas | `/data` → `${APP_DATA_DIR}/data/data` |
 | **Dependências** | Object com `service_healthy` | ✅ Nunca arrays |
@@ -90,10 +90,10 @@ O **Tipi Guru** é um agent especializado que automatiza a criação, validaçã
   - Deve ser verificado para evitar conflitos
   - Exemplo: `"port": 8830` significa que a aplicação será acessível em `http://host:8830`
 
-- **`internalPort` em docker-compose.json** (porta DENTRO do container)
+- **`internalPort` em docker-compose.yml** (porta DENTRO do container)
   - SEM restrição de range
   - Corresponde à documentação da aplicação (porta onde a app roda internamente)
-  - Exemplo: `"internalPort": 9090` significa que a app roda na porta 9090 dentro do container
+  - Exemplo: `internal_port: 9090` significa que a app roda na porta 9090 dentro do container
   - A porta 9090 interna é mapeada para 8830 no host (via `port` do config.json)
 
 **Exemplo Real (Linkding):**
@@ -101,8 +101,8 @@ O **Tipi Guru** é um agent especializado que automatiza a criação, validaçã
 // config.json
 "port": 8830  // Host: acessa em http://host:8830
 
-// docker-compose.json
-"internalPort": 9090  // Container: app roda em :9090
+// docker-compose.yml
+internal_port: 9090  // Container: app roda em :9090
 ```
 Resultado: Container porta 9090 → Host porta 8830
 
@@ -110,11 +110,11 @@ Resultado: Container porta 9090 → Host porta 8830
 ```json
 // ❌ ERRADO
 "port": 9090,  // (fora do range 8800-8999)
-"internalPort": 8830,  // (não corresponde à app)
+internal_port: 8830,  // (não corresponde à app)
 
 // ✅ CORRETO
 "port": 8830,  // (dentro do range)
-"internalPort": 9090,  // (porta real da app)
+internal_port: 9090,  // (porta real da app)
 ```
 
 ### 🚫 Limites e Restrições
@@ -124,9 +124,9 @@ O agent **NÃO** fará:
 - ❌ Usar tags `latest` em imagens Docker
 - ❌ Criar apps fora da estrutura padrão
 - ❌ Ignorar validação de schemas
-- ❌ Usar formatos YAML em docker-compose
+- ❌ Usar formatos JSON em docker-compose
 - ❌ Pular validação com `bun test`
-- ❌ Confundir porta exposta (config.json) com interna (docker-compose.json)
+- ❌ Confundir porta exposta (config.json) com interna (docker-compose.yml)
 - ❌ **Assumir formato de tag Docker sem verificar registry (CRÍTICO!)**
 
 #### ⚠️ VERIFICAÇÃO OBRIGATÓRIA DE TAGS DOCKER
@@ -182,7 +182,7 @@ O agent **NÃO** fará:
 - [x] Verificação de porta 8850 (disponível)
 - [x] Análise do repositório GitHub
 - [x] Criação de config.json validado
-- [x] Geração de docker-compose.json
+- [x] Geração de docker-compose.yml
 - [x] Estrutura de metadados preparada
 - [x] `bun test` passou com sucesso
 
@@ -241,7 +241,7 @@ O agent **NÃO** fará:
 2. ✅ Analisar repo GitHub (releases, docker-compose, .env)
 3. ✅ Consultar Docker Hub/GHCR para confirmar tag exata
 4. ✅ Gerar config.json com versão `v2.1.0`
-5. ✅ Criar docker-compose.json com `internalPort: 3000`
+5. ✅ Criar docker-compose.yml com `internalPort: 3000`
 6. ✅ Preparar metadados (logo + description.md)
 7. ✅ Executar `bun test` - deve passar 100%
 8. ✅ Relatar sucesso com checklist completa
