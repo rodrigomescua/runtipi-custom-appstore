@@ -56,15 +56,11 @@ describe("each app should have a valid config.json", async () => {
       const parsed = JSON.parse(fileContent || '{}')
       
       // Note: Schema validation using appInfoSchema
-      // Arktype schemas use .allows() method instead of Zod's .safeParse()
-      const isValid = appInfoSchema.allows(parsed)
+      const result = appInfoSchema(parsed);
+      const isValid = !(result instanceof Error) && !(Array.isArray(result));
       
       if (!isValid) {
-        try {
-          appInfoSchema.assert(parsed)
-        } catch (e: any) {
-          console.error(`Error parsing config.json for app ${app}:`, e.message);
-        }
+        console.error(`Error parsing config.json for app ${app}:`, result);
       }
 
       expect(isValid).toBe(true)
