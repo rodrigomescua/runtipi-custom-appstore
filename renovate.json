@@ -69,6 +69,13 @@
       ],
       "versioning": "regex:^dev-(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$",
       "pinDigests": false
+    },
+    {
+      "description": "Do not update the renovate workflow itself to keep node-version: 22",
+      "matchFileNames": [
+        ".github/workflows/renovate.yml"
+      ],
+      "enabled": false
     }
   ],
   "postUpgradeTasks": {

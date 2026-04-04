@@ -39,7 +39,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: "22" # IMPORTANT: Renovate v40 requires Node 22 strictly. Do not change.
 
       - name: Setup bun
         uses: oven-sh/setup-bun@v2
