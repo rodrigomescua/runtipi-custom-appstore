@@ -48,9 +48,9 @@ jobs:
         uses: actions/cache@v5
         with:
           path: ~/.bun/install/global
-          key: ${{ runner.os }}-bun-renovate-${{ hashFiles('bun.lockb') }}
+          key: ${{ runner.os }}-bun-renovate-node24-${{ hashFiles('bun.lockb') }}
           restore-keys: |
-            ${{ runner.os }}-bun-renovate-
+            ${{ runner.os }}-bun-renovate-node24-
 
       - name: Install Renovate
         run: bun install -g renovate@40 re2
