@@ -26,7 +26,7 @@ Ensure the user has provided the app name and a link to the app's official docum
 
 4. **Generate App Configuration & Descriptions**
    - Use your `write_to_file` tool to create `apps/<app-name>/config.json`. Ensure it strictly adheres to `AGENTS.md` (e.g. `tipi_version: 1`, timestamps in ms).
-   - Use your `write_to_file` tool to create `apps/<app-name>/docker-compose.yml`. Remember: YAML format, exactly one `x-runtipi.is_main: true`, valid `depends_on` object with `condition: service_healthy`. Let database secrets be hardcoded.
+   - Use your `write_to_file` tool to create `apps/<app-name>/docker-compose.yml`. Remember: YAML format, exactly one `x-runtipi.is_main: true`, valid `depends_on` object with `condition: service_healthy`. Let database secrets be hardcoded. **IMPORTANT: Do NOT include a `ports:` block in the service definition, as Runtipi manages this via `internal_port`.**
    - Use your `write_to_file` tool to create `apps/<app-name>/metadata/description.md`. 
 
 // turbo

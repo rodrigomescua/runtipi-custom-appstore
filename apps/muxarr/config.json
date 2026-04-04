@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Muxarr",
+  "id": "muxarr",
+  "available": true,
+  "short_desc": "Strip unwanted audio and subtitle tracks from media files",
+  "author": "KirovAir",
+  "port": 8862,
+  "categories": ["media"],
+  "description": "Muxarr is a quick and easy way to strip unwanted audio and subtitle tracks from your media files. It uses mkvmerge to remux files without re-encoding, ensuring zero quality loss. It integrates with Sonarr and Radarr for automatic track detection and processing.",
+  "tipi_version": 1,
+  "version": "0.6.2",
+  "source": "https://github.com/KirovAir/muxarr",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "created_at": 1743727458000,
+  "updated_at": 1743727458000,
+  "form_fields": [],
+  "urn": "tipi://muxarr"
+}

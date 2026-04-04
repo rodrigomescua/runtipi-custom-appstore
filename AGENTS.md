@@ -36,13 +36,14 @@ apps/<app-id>/
 ## Critical Rules
 
 ### Port Assignment
-- **Range:** 8800-8999 only
+- **Range:** 8800-8999 only (defined in `config.json` only)
 - **ALWAYS verify port availability BEFORE creating an app:**
   ```bash
   grep -rh '"port"' apps/*/config.json | grep -oP ':\s*\K\d+' | sort -n | uniq
   ```
 - `port` in config.json = exposed host port (8800-8999)
 - `internal_port` in docker-compose.yml under `x-runtipi` = container's internal port (any value)
+- **IMPORTANT:** Never add a `ports:` section to `docker-compose.yml`. Runtipi maps the host port from `config.json` to the `internal_port` automatically.
 
 ### Version Matching (Critical)
 The `version` in config.json MUST exactly match the image tag in docker-compose.yml:
@@ -67,8 +68,6 @@ version: '3'
 services:
   app-name:
     image: registry/image:version
-    ports:
-      - "8830:3000"  # hostPort:containerPort
     environment:
       - KEY=value
       - ANOTHER=${ENV_VAR}

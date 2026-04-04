@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  muxarr:
+    image: ghcr.io/kirovair/muxarr:0.6.2
+    container_name: muxarr
+    environment:
+      - TZ=${TZ}
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ${APP_DATA_DIR}/data:/data
+      - ${ROOT_FOLDER_HOST}/media/data:/media
+    restart: unless-stopped
+    x-runtipi:
+      is_main: true
+      internal_port: 8183
+
+x-runtipi:
+  schema_version: 2
