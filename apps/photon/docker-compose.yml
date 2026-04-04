@@ -1,4 +1,3 @@
-
 services:
   photon:
     image: rtuszik/photon-docker:2.1.1

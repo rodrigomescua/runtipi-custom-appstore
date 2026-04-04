@@ -1,4 +1,3 @@
-
 services:
   fileflows:
     image: revenz/fileflows:latest

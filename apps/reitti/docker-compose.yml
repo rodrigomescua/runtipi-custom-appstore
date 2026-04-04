@@ -1,4 +1,3 @@
-
 services:
   reitti_postgis:
     image: postgis/postgis:17-3.5-alpine

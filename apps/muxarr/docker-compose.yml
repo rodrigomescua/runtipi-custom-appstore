@@ -1,9 +1,6 @@
-version: '3'
-
 services:
   muxarr:
     image: ghcr.io/kirovair/muxarr:0.6.2
-    container_name: muxarr
     environment:
       - TZ=${TZ}
       - PUID=1000

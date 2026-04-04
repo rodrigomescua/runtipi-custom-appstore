@@ -1,4 +1,3 @@
-
 services:
   razor-finance:
     image: ghcr.io/rodrigomescua/razorfinance:202512080458

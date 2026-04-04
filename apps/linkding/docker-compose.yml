@@ -4,7 +4,6 @@
 services:
   linkding:
     image: sissbruecker/linkding:1.45.0
-    container_name: linkding
     environment:
       # User configuration from form_fields
       - LD_SUPERUSER_NAME=${LD_SUPERUSER_NAME}
@@ -17,9 +16,9 @@ services:
       - ${APP_DATA_DIR}/data/data:/etc/linkding/data
     # Runtipi-specific metadata
     x-runtipi:
-      is_main: true              # This is the main/exposed service
-      internal_port: 9090        # Container internal port
+      is_main: true # This is the main/exposed service
+      internal_port: 9090 # Container internal port
 
 # Runtipi root configuration
 x-runtipi:
-  schema_version: 2              # Dynamic Compose Specification v2
+  schema_version: 2 # Dynamic Compose Specification v2

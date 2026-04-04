@@ -1,4 +1,3 @@
-
 services:
   recommendarr:
     image: tannermiddleton/recommendarr:v1.4.4

@@ -1,4 +1,3 @@
-
 services:
   your-spotify:
     image: yooooomi/your_spotify_client:1.19.0

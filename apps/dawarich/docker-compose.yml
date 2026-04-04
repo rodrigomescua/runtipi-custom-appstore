@@ -30,7 +30,7 @@ services:
       interval: 10s
       timeout: 10s
       retries: 5
-    shm_size: 1G            # Temporary file system size for performance
+    shm_size: 1G # Temporary file system size for performance
     # No x-runtipi config for database service
 
   # Service 3: Dawarich Web Application (MAIN SERVICE)
@@ -80,7 +80,7 @@ services:
       # Database backups
       - ${APP_DATA_DIR}/data/dawarich_db_data:/dawarich_db_data
     healthcheck:
-      test: "wget -qO - http://127.0.0.1:3000/api/v1/health | grep -q \"status.*ok\""
+      test: 'wget -qO - http://127.0.0.1:3000/api/v1/health | grep -q "status.*ok"'
       interval: 10s
       timeout: 10s
       retries: 30
@@ -96,8 +96,8 @@ services:
         condition: service_started
     # Runtipi configuration for main service
     x-runtipi:
-      is_main: true              # This is the main/exposed web service
-      internal_port: 3000        # Container internal port
+      is_main: true # This is the main/exposed web service
+      internal_port: 3000 # Container internal port
 
   # Service 4: Sidekiq Background Job Worker
   dawarich_sidekiq:
@@ -155,4 +155,4 @@ services:
 
 # Runtipi root configuration
 x-runtipi:
-  schema_version: 2              # Dynamic Compose Specification v2
+  schema_version: 2 # Dynamic Compose Specification v2

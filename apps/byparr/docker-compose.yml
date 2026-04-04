@@ -1,4 +1,3 @@
-
 services:
   byparr:
     image: ghcr.io/thephaseless/byparr:2.1.0

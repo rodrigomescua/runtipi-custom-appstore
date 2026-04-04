@@ -286,7 +286,6 @@ services:
   # Main service name (unique identifier)
   myservice:
     image: registry/image:version  # MUST match config.json "version" field
-    container_name: optional-name
     ports:
       - "8830:3000"  # Format: "hostPort:containerPort" (always strings)
     

@@ -1,4 +1,3 @@
-
 services:
   vcompose:
     image: ghcr.io/zbrave/vcompose:latest

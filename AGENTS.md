@@ -63,8 +63,6 @@ image: sissbruecker/linkding:1.44.1  # MUST MATCH exactly
 
 ### docker-compose.yml Format (YAML with x-runtipi)
 ```yaml
-version: '3'
-
 services:
   app-name:
     image: registry/image:version

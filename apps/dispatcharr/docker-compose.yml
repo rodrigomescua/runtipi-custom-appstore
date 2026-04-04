@@ -1,4 +1,3 @@
-
 services:
   dispatcharr:
     image: ghcr.io/dispatcharr/dispatcharr:0.22.0

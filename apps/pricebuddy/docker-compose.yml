@@ -1,4 +1,3 @@
-
 services:
   pricebuddy:
     image: jez500/pricebuddy:v1.0.46

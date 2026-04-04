@@ -1,4 +1,3 @@
-
 services:
   kitchenowl:
     image: tombursch/kitchenowl:v0.7.7

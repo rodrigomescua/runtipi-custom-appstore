@@ -1,4 +1,3 @@
-
 services:
   razor-pricehistory:
     image: romesc/razorpricehistory:1743737648

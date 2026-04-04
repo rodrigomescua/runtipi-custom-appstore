@@ -1,4 +1,3 @@
-
 services:
   blinko:
     image: blinkospace/blinko:1.8.6

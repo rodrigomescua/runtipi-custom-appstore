@@ -1,4 +1,3 @@
-
 services:
   mermaid-live-editor:
     image: ghcr.io/mermaid-js/mermaid-live-editor:latest

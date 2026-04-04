@@ -1,4 +1,3 @@
-
 services:
   razor-miniflux-restricted:
     image: romesc/razorminiflux:1774742086

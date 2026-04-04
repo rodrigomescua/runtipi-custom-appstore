@@ -1,4 +1,3 @@
-
 services:
   arcane:
     image: ghcr.io/getarcaneapp/arcane:v1.16.4
