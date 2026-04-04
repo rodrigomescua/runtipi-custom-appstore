@@ -67,8 +67,7 @@
       "matchPackageNames": [
         "sparkison/m3u-editor"
       ],
-      "versioning": "loose",
-      "versionStrategy": "loose",
+      "versioning": "regex:^dev-(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$",
       "pinDigests": false
     }
   ],
