@@ -18,9 +18,9 @@ If you want to see new apps on Tipi you can either:
 - [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
 - Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
 
-## Apps available (39)
+## Apps available (40)
 
-| Name                                                                         | Description                                                                                        | Port | Dynamic (39) |
+| Name                                                                         | Description                                                                                        | Port | Dynamic (40) |
 | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                            | Self-hosted GPU video compressor                                                                   | 8846 | yes          |
 | [Arcane](https://github.com/getarcaneapp/arcane)                             | Modern Docker Management, Made for Everyone                                                        | 8851 | yes          |
@@ -40,6 +40,7 @@ If you want to see new apps on Tipi you can either:
 | [M3U Editor](https://github.com/sparkison/m3u-editor)                        | Full-featured IPTV playlist editor with EPG management                                             | 8833 | yes          |
 | [MediaManager](https://github.com/maxdorninger/MediaManager)                 | Media Manager                                                                                      | 8838 | yes          |
 | [Mermaid Live Editor](https://github.com/mermaid-js/mermaid-live-editor)     | Edit, preview and share mermaid diagrams                                                           | 8854 | yes          |
+| [Muxarr](https://github.com/KirovAir/muxarr)                                 | Strip unwanted audio and subtitle tracks from media files                                          | 8862 | yes          |
 | [Omoide](https://github.com/EinAeffchen/Omoide)                              | Offline-first photo and video library with AI organization                                         | 8841 | yes          |
 | [Photon](https://github.com/rtuszik/photon-docker)                           | This is an unofficial docker image for Photon                                                      | 8825 | yes          |
 | [Piwigo](https://github.com/Piwigo/Piwigo)                                   | Open-source photo gallery software                                                                 | 8849 | yes          |
