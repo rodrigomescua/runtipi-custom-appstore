@@ -10,8 +10,8 @@
     "media"
   ],
   "description": "Muxarr is a quick and easy way to strip unwanted audio and subtitle tracks from your media files. It uses mkvmerge to remux files without re-encoding, ensuring zero quality loss. It integrates with Sonarr and Radarr for automatic track detection and processing.",
-  "tipi_version": 4,
-  "version": "0.7.2",
+  "tipi_version": 5,
+  "version": "0.7.4",
   "source": "https://github.com/KirovAir/muxarr",
   "exposable": true,
   "dynamic_config": true,
@@ -20,7 +20,7 @@
     "arm64"
   ],
   "created_at": 1743727458000,
-  "updated_at": 1775423835624,
+  "updated_at": 1775470166996,
   "form_fields": [],
   "urn": "tipi://muxarr"
 }
