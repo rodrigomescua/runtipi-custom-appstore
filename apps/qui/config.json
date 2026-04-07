@@ -5,8 +5,8 @@
   "port": 8852,
   "name": "Qui",
   "description": "Qui is a fast, modern web interface for qBittorrent with multi-instance support. Manage all your qBittorrent instances from a single, lightweight application. Features include cross-seeding, rule-based automations, scheduled backups with restore capabilities, and a transparent reverse proxy for external apps.",
-  "version": "v1.15.0",
-  "tipi_version": 9,
+  "version": "v1.16.0",
+  "tipi_version": 10,
   "short_desc": "Modern qBittorrent web interface",
   "author": "autobrr",
   "source": "https://github.com/autobrr/qui",
@@ -42,6 +42,6 @@
   ],
   "dynamic_config": true,
   "created_at": 1767391921919,
-  "updated_at": 1775081116000,
+  "updated_at": 1775584324166,
   "urn": "tipi://qui"
 }
