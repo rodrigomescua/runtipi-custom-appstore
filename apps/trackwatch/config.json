@@ -35,10 +35,13 @@
       "required": true
     },
     {
-      "type": "password",
-      "env_variable": "SECRET_KEY",
+      "type": "random",
       "label": "Secret Key (Random String)",
-      "required": true
+      "required": true,
+      "env_variable": "SECRET_KEY",
+      "hint": "32 bytes encryption key for data security (raw/base64/hex format)",
+      "min": 32,
+      "encoding": "hex"
     }
   ],
   "urn": "tipi://trackwatch"

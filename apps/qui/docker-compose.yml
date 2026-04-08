@@ -1,6 +1,6 @@
 services:
   qui:
-    image: ghcr.io/autobrr/qui:v1.15.0
+    image: ghcr.io/autobrr/qui:v1.16.0
     environment:
       - QUI__SESSION_SECRET=${QUI_SESSION_SECRET}
       - QUI__LOG_LEVEL=${QUI_LOG_LEVEL}
