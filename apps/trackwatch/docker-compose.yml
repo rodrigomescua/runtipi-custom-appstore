@@ -1,17 +1,63 @@
 services:
+  trackwatch-db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=trackwatch
+      - POSTGRES_PASSWORD=trackwatch
+      - POSTGRES_DB=trackwatch
+      - TZ=${TZ}
+    volumes:
+      - ${APP_DATA_DIR}/data/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U trackwatch -d trackwatch"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
   trackwatch:
-    image: ghcr.io/emlopezr/trackwatch:2.1.1
+    image: ghcr.io/emlopezr/trackwatch:latest
+    command: >
+      /bin/bash -c "
+      sed -i 's/export DATABASE_HOST=\"127.0.0.1\"/export DATABASE_HOST=\"trackwatch-db\"/g' /entrypoint-aio.sh &&
+      sed -i 's/export DATABASE_PASSWORD=\"$DB_PASS\"/export DATABASE_PASSWORD=\"trackwatch\"/g' /entrypoint-aio.sh &&
+      sed -i '/program:postgresql/,/priority/d' /etc/supervisord.conf &&
+      /entrypoint-aio.sh"
+    environment:
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
+      - SECRET_KEY=${SECRET_KEY}
+      - DATABASE_NAME=trackwatch
+      - DATABASE_USER=trackwatch
+      - DATABASE_PASSWORD=trackwatch
+      - TZ=${TZ}
+    depends_on:
+      trackwatch-db:
+        condition: service_healthy
+    restart: unless-stopped
+    x-runtipi:
+      is_main: true
+      internal_port: 80
+
+  trackwatch-scheduler:
+    image: ghcr.io/emlopezr/trackwatch:latest
+    command: >
+      /bin/bash -c "
+      export DATABASE_HOST=trackwatch-db;
+      export DATABASE_PORT=5432;
+      export DATABASE_NAME=trackwatch;
+      export DATABASE_USER=trackwatch;
+      export DATABASE_PASSWORD=trackwatch;
+      python manage.py run_scheduler"
     environment:
       - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
       - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
       - SECRET_KEY=${SECRET_KEY}
       - TZ=${TZ}
-    volumes:
-      - ${APP_DATA_DIR}/data/data:/var/lib/postgresql/data
+    depends_on:
+      trackwatch:
+        condition: service_started
     restart: unless-stopped
-    x-runtipi:
-      is_main: true
-      internal_port: 80
 
 x-runtipi:
   schema_version: 2
