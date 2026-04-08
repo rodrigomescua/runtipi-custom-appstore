@@ -1,6 +1,6 @@
 services:
   trackwatch:
-    image: ghcr.io/emlopezr/trackwatch:2.1.1
+    image: ghcr.io/emlopezr/trackwatch:latest
     environment:
       - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
       - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
