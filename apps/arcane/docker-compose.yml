@@ -1,6 +1,6 @@
 services:
   arcane:
-    image: ghcr.io/getarcaneapp/arcane:v1.17.2
+    image: ghcr.io/getarcaneapp/arcane:v1.17.3
     environment:
       - APP_URL=http://${APP_DOMAIN}:${APP_PORT}
       - PUID=1000
