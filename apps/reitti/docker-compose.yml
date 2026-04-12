@@ -48,7 +48,7 @@ services:
       retries: 3
 
   reitti:
-    image: dedicatedcode/reitti:3.4.1
+    image: dedicatedcode/reitti:4.0.0
     volumes:
       - ${APP_DATA_DIR}/data/data:/data
     environment:
