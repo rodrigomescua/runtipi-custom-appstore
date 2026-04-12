@@ -13,19 +13,6 @@ services:
       timeout: 5s
       retries: 5
 
-  reitti_rabbitmq:
-    image: rabbitmq:3-management-alpine
-    environment:
-      - RABBITMQ_DEFAULT_USER=reitti
-      - RABBITMQ_DEFAULT_PASS=reitti
-    volumes:
-      - ${APP_DATA_DIR}/data/rabbitmq_mnesia:/var/lib/rabbitmq/mnesia
-    healthcheck:
-      test: rabbitmq-diagnostics check_port_connectivity
-      interval: 30s
-      timeout: 10s
-      retries: 5
-
   reitti_redis:
     image: redis:7-alpine
     volumes:
@@ -36,19 +23,19 @@ services:
       timeout: 5s
       retries: 5
 
-  tile-cache:
-    image: nginx:alpine
-    environment:
-      - NGINX_CACHE_SIZE=1g
-    command: sh -c "mkdir -p /var/cache/nginx/tiles && cat > /etc/nginx/nginx.conf << 'EOF'\nevents {\n  worker_connections 1024;\n}\nhttp {\n  proxy_cache_path /var/cache/nginx/tiles levels=1:2 keys_zone=tiles:10m max_size=1g inactive=30d use_temp_path=off;\n  \n  server {\n    listen 80;\n    location / {\n      proxy_pass https://tile.openstreetmap.org/;\n      proxy_set_header Host tile.openstreetmap.org;\n      proxy_set_header User-Agent \"Reitti/1.0\";\n      proxy_cache tiles;\n      proxy_cache_valid 200 30d;\n      proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504;\n    }\n  }\n}\nEOF\nnginx -g 'daemon off;'\""
+  reitti_tile_cache:
+    image: dedicatedcode/reitti-tile-cache:next
+    restart: unless-stopped
     healthcheck:
-      test: wget --quiet --tries=1 --spider http://127.0.0.1/0/0/0.png || exit 1
-      interval: 30s
-      timeout: 10s
-      retries: 3
+      test: wget --quiet --tries=1 --spider http://127.0.0.1/osm/0/0/0.png || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - ${APP_DATA_DIR}/data/tile-cache:/var/cache/nginx
 
   reitti:
-    image: dedicatedcode/reitti:3.4.1
+    image: dedicatedcode/reitti:4.0.0
     volumes:
       - ${APP_DATA_DIR}/data/data:/data
     environment:
@@ -57,26 +44,13 @@ services:
       - POSTGIS_DB=reittidb
       - POSTGIS_USER=reitti
       - POSTGIS_PASSWORD=reitti
-      - RABBITMQ_HOST=reitti_rabbitmq
-      - RABBITMQ_PORT=5672
-      - RABBITMQ_USER=reitti
-      - RABBITMQ_PASSWORD=reitti
-      - REDIS_HOST=reitti_redis
-      - REDIS_PORT=6379
-      - PHOTON_BASE_URL=http://${PHOTON_HOST}:${PHOTON_PORT}
-      - PROCESSING_WAIT_TIME=8
-      - DANGEROUS_LIFE=false
-      - SERVER_PORT=8080
-      - APP_UID=1000
-      - APP_GID=1000
     depends_on:
       reitti_postgis:
         condition: service_healthy
-      reitti_rabbitmq:
-        condition: service_healthy
+        restart: true
       reitti_redis:
         condition: service_healthy
-      tile-cache:
+      reitti_tile_cache:
         condition: service_healthy
     x-runtipi:
       is_main: true
