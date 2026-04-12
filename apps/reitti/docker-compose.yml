@@ -9,6 +9,8 @@ services:
       - POSTGIS_DB=reittidb
       - POSTGIS_USER=reitti
       - POSTGIS_PASSWORD=reitti
+      - REDIS_HOST=reitti_redis
+      - REDIS_PORT=6379
     depends_on:
       reitti_postgis:
         condition: service_healthy
