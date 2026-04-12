@@ -1,4 +1,25 @@
 services:
+  reitti:
+    image: dedicatedcode/reitti:4.0.0
+    volumes:
+      - ${APP_DATA_DIR}/data/data:/data
+    environment:
+      - POSTGIS_HOST=reitti_postgis
+      - POSTGIS_PORT=5432
+      - POSTGIS_DB=reittidb
+      - POSTGIS_USER=reitti
+      - POSTGIS_PASSWORD=reitti
+    depends_on:
+      reitti_postgis:
+        condition: service_healthy
+        restart: true
+      reitti_redis:
+        condition: service_healthy
+      reitti_tile_cache:
+        condition: service_healthy
+    x-runtipi:
+      is_main: true
+      internal_port: 8080
   reitti_postgis:
     image: postgis/postgis:17-3.5-alpine
     environment:
@@ -33,28 +54,6 @@ services:
       retries: 5
     volumes:
       - ${APP_DATA_DIR}/data/tile-cache:/var/cache/nginx
-
-  reitti:
-    image: dedicatedcode/reitti:4.0.0
-    volumes:
-      - ${APP_DATA_DIR}/data/data:/data
-    environment:
-      - POSTGIS_HOST=reitti_postgis
-      - POSTGIS_PORT=5432
-      - POSTGIS_DB=reittidb
-      - POSTGIS_USER=reitti
-      - POSTGIS_PASSWORD=reitti
-    depends_on:
-      reitti_postgis:
-        condition: service_healthy
-        restart: true
-      reitti_redis:
-        condition: service_healthy
-      reitti_tile_cache:
-        condition: service_healthy
-    x-runtipi:
-      is_main: true
-      internal_port: 8080
 
 x-runtipi:
   schema_version: 2
