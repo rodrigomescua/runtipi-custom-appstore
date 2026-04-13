@@ -44,7 +44,7 @@ services:
       retries: 12
 
   m3u-editor:
-    image: sparkison/m3u-editor:dev-0.11.24
+    image: sparkison/m3u-editor:dev-0.11.25
     environment:
       - TZ=${TZ}
       - APP_URL=http://${APP_DOMAIN}
