@@ -1,6 +1,6 @@
 services:
   stash:
-    image: stashapp/stash:v0.31.0
+    image: stashapp/stash:v0.31.1
     environment:
       - STASH_STASH=/media/data/top/
       - STASH_GENERATED=/generated/
