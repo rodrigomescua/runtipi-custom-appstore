@@ -13,8 +13,8 @@
     "media",
     "utilities"
   ],
-  "version": "0.25.0",
-  "tipi_version": 6,
+  "version": "0.25.1",
+  "tipi_version": 7,
   "source": "https://github.com/FuzzyGrim/Yamtrack",
   "exposable": true,
   "no_gui": false,
@@ -47,6 +47,6 @@
     }
   ],
   "created_at": 1735329600000,
-  "updated_at": 1775081116000,
+  "updated_at": 1776139857072,
   "urn": "tipi://yamtrack"
 }
