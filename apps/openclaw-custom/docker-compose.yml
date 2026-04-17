@@ -1,6 +1,7 @@
 services:
   openclaw-custom:
     image: 'alpine/openclaw:latest'
+    user: "1000:1000"
     volumes:
       - '${APP_DATA_DIR}/config:/home/node/.openclaw'
       - '${APP_DATA_DIR}/workspace:/home/node/.openclaw/workspace'
