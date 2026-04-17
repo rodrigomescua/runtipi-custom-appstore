@@ -1,6 +1,6 @@
 services:
   qbitwebui:
-    image: ghcr.io/maciejonos/qbitwebui:2.42.3
+    image: ghcr.io/maciejonos/qbitwebui:2.43.0
     environment:
       - ENCRYPTION_KEY=${ENCRYPTION_KEY}
     volumes:
