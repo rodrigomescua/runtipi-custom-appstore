@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "OpenClaw (Custom)",
+  "port": 18789,
+  "available": true,
+  "exposable": true,
+  "dynamic_config": true,
+  "id": "openclaw-custom",
+  "tipi_version": 1,
+  "version": "latest",
+  "categories": ["ai"],
+  "description": "OpenClaw is a personal AI assistant you run on your own devices. It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, BlueBubbles, IRC, Microsoft Teams, Matrix, Feishu, LINE, Mattermost, Nextcloud Talk, Nostr, Synology Chat, Tlon, Twitch, Zalo, Zalo Personal, WebChat). It can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant. If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.",
+  "short_desc": "OpenClaw is a personal AI assistant you run on your own devices. It answers you on the channels you already use.",
+  "author": "OpenClaw",
+  "source": "https://github.com/openclaw/openclaw",
+  "website": "https://openclaw.ai",
+  "supported_architectures": ["arm64", "amd64"],
+  "created_at": 1774180993200,
+  "updated_at": 1774180993200,
+  "min_tipi_version": "4.8.0"
+}

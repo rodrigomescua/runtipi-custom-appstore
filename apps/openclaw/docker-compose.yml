@@ -1,0 +1,14 @@
+services:
+  openclaw-custom:
+    image: 'alpine/openclaw:latest'
+    volumes:
+      - '${APP_DATA_DIR}/config:/home/node/.openclaw'
+      - '${APP_DATA_DIR}/workspace:/home/node/.openclaw/workspace'
+    environment:
+      - 'HOME=/home/node'
+      - 'NODE_ENV=production'
+    x-runtipi:
+      internal_port: 18789
+      is_main: true
+x-runtipi:
+  schema_version: 2
