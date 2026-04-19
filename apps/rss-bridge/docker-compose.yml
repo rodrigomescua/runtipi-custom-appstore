@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  rss-bridge:
+    image: rssbridge/rss-bridge:latest
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+    restart: unless-stopped
+    x-runtipi:
+      is_main: true
+      internal_port: 80
+
+x-runtipi:
+  schema_version: 2

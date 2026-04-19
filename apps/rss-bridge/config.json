@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "RSS-Bridge",
+  "id": "rss-bridge",
+  "available": true,
+  "short_desc": "Generate RSS feeds for websites without one",
+  "author": "RSS-Bridge Community",
+  "port": 8864,
+  "categories": ["utilities", "network"],
+  "description": "RSS-Bridge is a PHP web application that generates web feeds for websites that don't have one. It provides access to content from various websites through RSS feeds, allowing you to aggregate and monitor updates from multiple sources in one place.",
+  "tipi_version": 1,
+  "version": "latest",
+  "source": "https://github.com/RSS-Bridge/rss-bridge",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "created_at": 1745086528000,
+  "updated_at": 1745086528000,
+  "form_fields": [],
+  "urn": "tipi://rss-bridge"
+}
