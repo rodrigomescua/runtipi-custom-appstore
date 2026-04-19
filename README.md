@@ -18,9 +18,9 @@ If you want to see new apps on Tipi you can either:
 - [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
 - Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
 
-## Apps available (42)
+## Apps available (43)
 
-| Name                                                                         | Description                                                                                                      | Port  | Dynamic (42) |
+| Name                                                                         | Description                                                                                                      | Port  | Dynamic (43) |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ----- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                            | Self-hosted GPU video compressor                                                                                 | 8846  | yes          |
 | [Arcane](https://github.com/getarcaneapp/arcane)                             | Modern Docker Management, Made for Everyone                                                                      | 8851  | yes          |
@@ -56,6 +56,7 @@ If you want to see new apps on Tipi you can either:
 | [Razor Price History](https://github.com/romesc/RazorPriceHistory)           | Razor Price History                                                                                              | 8820  | yes          |
 | [Recommendarr](https://github.com/fingerthief/recommendarr)                  | AI-powered TV and movie recommendations based on your library                                                    | 8827  | yes          |
 | [Reitti](https://github.com/dedicatedcode/reitti)                            | Personal Location Tracking & Analysis - Self-hosted alternative to Google Timeline                               | 8826  | yes          |
+| [RSS-Bridge](https://github.com/RSS-Bridge/rss-bridge)                       | Generate RSS feeds for websites without one                                                                      | 8864  | yes          |
 | [Stash](https://github.com/stashapp/stash)                                   | Organize and serve media.                                                                                        | 8847  | yes          |
 | [TrackWatch](https://github.com/emlopezr/trackwatch)                         | Self-hosted Spotify release tracker                                                                              | 8834  | yes          |
 | [Tuvix RSS](https://github.com/TechSquidTV/Tuvix-RSS)                        | Self-hosted RSS aggregator                                                                                       | 8835  | yes          |
