@@ -12,8 +12,8 @@
     "featured"
   ],
   "description": "MurkRSS is a powerful RSS feed generator that combines heuristic scraping with custom CSS selectors and a visual sandbox. It allows you to generate RSS feeds for websites that don't provide them natively, featuring a point-and-click selector for easy configuration.",
-  "tipi_version": 6,
-  "version": "1.2.0",
+  "tipi_version": 7,
+  "version": "1.2.1",
   "source": "https://github.com/rodrigomescua/MurkRSS",
   "exposable": true,
   "dynamic_config": true,
