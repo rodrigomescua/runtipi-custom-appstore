@@ -1,0 +1,17 @@
+services:
+  murkrss:
+    image: ghcr.io/rodrigomescua/murkrss:1.0.5
+    environment:
+      - TZ=${TZ}
+      - FLARESOLVERR_URL=${FLARESOLVERR_URL}
+      - FRESHRSS_URL=${FRESHRSS_URL}
+      - WORKER_INTERVAL=${WORKER_INTERVAL}
+    volumes:
+      - ${APP_DATA_DIR}/data/data:/app/data
+    restart: unless-stopped
+    x-runtipi:
+      is_main: true
+      internal_port: 8080
+
+x-runtipi:
+  schema_version: 2
