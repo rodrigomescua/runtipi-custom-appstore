@@ -1,6 +1,6 @@
 services:
   murkrss:
-    image: ghcr.io/rodrigomescua/murkrss:1.0.7
+    image: ghcr.io/rodrigomescua/murkrss:1.0.8
     environment:
       - TZ=${TZ}
       - FLARESOLVERR_URL=${FLARESOLVERR_URL}
