@@ -1,6 +1,6 @@
 services:
   reitti:
-    image: dedicatedcode/reitti:4.0.2
+    image: dedicatedcode/reitti:4.0.3
     volumes:
       - ${APP_DATA_DIR}/data/data:/data
     environment:
