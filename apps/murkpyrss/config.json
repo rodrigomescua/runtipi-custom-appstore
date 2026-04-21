@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "MurkPyRSS",
+  "id": "murkpyrss",
+  "available": true,
+  "short_desc": "Modern Scraping & Autonomous RSS Generator",
+  "author": "Rodrigo Mescua",
+  "port": 8865,
+  "categories": [
+    "utilities",
+    "automation",
+    "featured"
+  ],
+  "description": "MurkPyRSS is a powerful RSS feed generator that combines modern scraping with custom CSS selectors and a visual sandbox. It allows you to generate RSS feeds for websites that don't provide them natively.",
+  "tipi_version": 1,
+  "version": "202604210604",
+  "source": "https://github.com/rodrigomescua/murkpyrss",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "created_at": 1776568800000,
+  "updated_at": 1776752046446,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "FlareSolverr URL",
+      "hint": "URL of your FlareSolverr instance (e.g., http://flaresolverr:8191)",
+      "required": false,
+      "env_variable": "FLARESOLVERR_URL"
+    }
+  ],
+  "urn": "tipi://murkpyrss"
+}
