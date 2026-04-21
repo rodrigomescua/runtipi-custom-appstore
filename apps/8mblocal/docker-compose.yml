@@ -1,6 +1,6 @@
 services:
   8mblocal:
-    image: jms1717/8mblocal:v136
+    image: jms1717/8mblocal:v137
     environment:
       - AUTH_ENABLED=${AUTH_ENABLED}
       - AUTH_USER=${AUTH_USER}
