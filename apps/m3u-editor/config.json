@@ -11,8 +11,8 @@
     "utilities"
   ],
   "description": "M3U Editor is a comprehensive IPTV management platform featuring playlist editing, EPG (Electronic Program Guide) management, Xtream API output, series management with .strm file support, post-processing with custom scripts/webhooks/email, and much more. Supports M3U, M3U8, M3U+, Xtream codes API, XMLTV files, and Schedules Direct integration for EPG data.",
-  "tipi_version": 35,
-  "version": "dev-0.11.27",
+  "tipi_version": 36,
+  "version": "dev-0.11.28",
   "source": "https://github.com/sparkison/m3u-editor",
   "website": "https://sparkison.github.io/m3u-editor-docs",
   "exposable": true,
@@ -22,7 +22,7 @@
     "arm64"
   ],
   "created_at": 1735614000000,
-  "updated_at": 1776312985133,
+  "updated_at": 1776707533209,
   "form_fields": [
     {
       "type": "random",
