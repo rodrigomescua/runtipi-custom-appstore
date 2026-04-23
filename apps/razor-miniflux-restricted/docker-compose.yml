@@ -1,6 +1,6 @@
 services:
   razor-miniflux-restricted:
-    image: romesc/razorminiflux:1776955111
+    image: romesc/razorminiflux:1776956921
     environment:
       - FRESHRSS_CONNECTIONSTRING=${FRESHRSS_CONNECTIONSTRING}
       - FRESHRSS_TABLE_PREFIX=${FRESHRSS_TABLE_PREFIX}
