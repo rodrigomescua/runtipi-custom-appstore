@@ -2,7 +2,7 @@ version: "3"
 
 services:
   murkpyrss:
-    image: ghcr.io/rodrigomescua/murkpyrss:202604231824
+    image: ghcr.io/rodrigomescua/murkpyrss:202604231836
     restart: always
     environment:
       - TZ=${TZ}
