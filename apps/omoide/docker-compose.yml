@@ -1,6 +1,6 @@
 services:
   omoide:
-    image: einaeffchen/omoide:0.6.3
+    image: einaeffchen/omoide:0.6.4
     environment:
       - OMOIDE_GENERAL__PRESENTATION_MODE=false
       - OMOIDE_GENERAL__ENABLE_PEOPLE=true
