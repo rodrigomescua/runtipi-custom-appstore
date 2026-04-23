@@ -12,7 +12,7 @@
     "featured"
   ],
   "description": "MurkPyRSS is a powerful RSS feed generator that combines modern scraping with custom CSS selectors and a visual sandbox. It allows you to generate RSS feeds for websites that don't provide them natively.",
-  "tipi_version": 14,
+  "tipi_version": 16,
   "version": "202604211840",
   "source": "https://github.com/rodrigomescua/murkpyrss",
   "exposable": true,
@@ -30,6 +30,14 @@
       "hint": "URL of your FlareSolverr instance (e.g., http://flaresolverr:8191)",
       "required": false,
       "env_variable": "FLARESOLVERR_URL"
+    },
+    {
+      "type": "boolean",
+      "label": "Is Top (Optional)",
+      "hint": "true if you want to",
+      "required": false,
+      "env_variable": "IS_TOP",
+      "default": false
     }
   ],
   "urn": "tipi://murkpyrss"

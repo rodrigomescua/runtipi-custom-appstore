@@ -6,7 +6,8 @@ services:
     restart: always
     environment:
       - TZ=${TZ}
-      - FLARESOLVERR_URL=${FLARESOLVERR_URL}
+      - FLARESOLVERR_URL=${FLARESOLVERR_URL},
+      - IS_TOP=${IS_TOP}
     volumes:
       - ${APP_DATA_DIR}/data/data:/app/data
     x-runtipi:
