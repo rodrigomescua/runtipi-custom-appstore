@@ -1,6 +1,6 @@
 services:
   dockhand:
-    image: fnsys/dockhand:v1.0.26
+    image: fnsys/dockhand:v1.0.27
     user: "0:0"
     environment:
       - TZ=${TZ}
