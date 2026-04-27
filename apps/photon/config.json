@@ -6,8 +6,8 @@
   "dynamic_config": true,
   "port": 8825,
   "id": "photon",
-  "tipi_version": 14,
-  "version": "2.1.1",
+  "tipi_version": 15,
+  "version": "2.2.0",
   "description": "Photon is an open-source geocoding solution built for OpenStreetMap (OSM) data, providing features such as search-as-you-type and reverse geocoding.",
   "short_desc": "This is an unofficial docker image for Photon",
   "author": "rtuszik",
@@ -23,6 +23,6 @@
     "amd64"
   ],
   "created_at": 1745844033706,
-  "updated_at": 1775081116000,
+  "updated_at": 1777089229470,
   "urn": "tipi://photon"
 }
