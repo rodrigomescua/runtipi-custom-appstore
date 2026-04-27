@@ -1,6 +1,6 @@
 services:
   kitchenowl:
-    image: tombursch/kitchenowl:v0.7.7
+    image: tombursch/kitchenowl:v0.7.8
     environment:
       - TZ=${TZ}
       - JWT_SECRET_KEY=${JWT_SECRET_KEY}
