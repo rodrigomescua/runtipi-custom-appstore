@@ -35,7 +35,7 @@ services:
 
   # Service 3: Dawarich Web Application (MAIN SERVICE)
   dawarich:
-    image: freikin/dawarich:1.7.0
+    image: freikin/dawarich:1.7.2
     container_name: dawarich
     command:
       - bin/rails
@@ -101,7 +101,7 @@ services:
 
   # Service 4: Sidekiq Background Job Worker
   dawarich_sidekiq:
-    image: freikin/dawarich:1.7.0
+    image: freikin/dawarich:1.7.2
     container_name: dawarich_sidekiq
     command:
       - sidekiq
