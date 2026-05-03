@@ -1,6 +1,6 @@
 services:
   openclaw-custom:
-    image: 'alpine/openclaw:2026.4.27'
+    image: 'alpine/openclaw:2026.5.2'
     user: "1000:1000"
     volumes:
       - '${APP_DATA_DIR}/config:/home/node/.openclaw'
