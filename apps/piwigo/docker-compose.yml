@@ -16,7 +16,7 @@ services:
       retries: 5
 
   piwigo:
-    image: piwigo/piwigo:16.3.0
+    image: piwigo/piwigo:16.4.0
     environment:
       - TZ=${TZ}
     depends_on:
