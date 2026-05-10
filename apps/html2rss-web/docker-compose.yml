@@ -11,8 +11,6 @@ services:
       - BROWSERLESS_IO_WEBSOCKET_URL=ws://browserless:4002
       - BROWSERLESS_IO_API_TOKEN=html2rss-browserless
       - BOTASAURUS_SCRAPER_URL=http://botasaurus:4010
-    volumes:
-      - ${APP_DATA_DIR}/data/config:/app/config
     depends_on:
       botasaurus:
         condition: service_started

@@ -11,7 +11,7 @@
     "network"
   ],
   "description": "html2rss-web serves RSS/JSON feeds from website sources using a Ruby (Roda) backend and a Preact frontend. It converts arbitrary websites into RSS 2.0 feeds and provides a web UI for creating and managing feed URLs. Supports signed, per-account feed URLs and multiple extraction strategies.",
-  "tipi_version": 1,
+  "tipi_version": 2,
   "version": "1.2.0",
   "source": "https://github.com/html2rss/html2rss-web",
   "website": "https://html2rss.github.io",
