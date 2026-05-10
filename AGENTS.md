@@ -33,6 +33,10 @@ apps/<app-id>/
     └── description.md    # Brief app description
 ```
 
+### Logo Guidelines
+- **No rounded corners**: Never use rounded corners for logos. They should have sharp, square edges.
+- **No button-like backgrounds**: The logo graphic should fill the canvas and act as the icon itself. It should not look like an icon placed inside a smaller button or box within the image.
+
 ## Critical Rules
 
 ### Port Assignment
