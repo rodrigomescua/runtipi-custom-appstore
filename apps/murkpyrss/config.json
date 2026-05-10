@@ -12,8 +12,8 @@
     "featured"
   ],
   "description": "MurkPyRSS is a powerful RSS feed generator that combines modern scraping with custom CSS selectors and a visual sandbox. It allows you to generate RSS feeds for websites that don't provide them natively.",
-  "tipi_version": 23,
-  "version": "202605100048",
+  "tipi_version": 24,
+  "version": "202605100224",
   "source": "https://github.com/rodrigomescua/murkpyrss",
   "exposable": true,
   "dynamic_config": true,
@@ -22,7 +22,7 @@
     "arm64"
   ],
   "created_at": 1776568800000,
-  "updated_at": 1778374378612,
+  "updated_at": 1778388434456,
   "form_fields": [
     {
       "type": "text",
