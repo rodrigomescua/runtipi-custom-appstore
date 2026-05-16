@@ -170,11 +170,11 @@ You MUST verify the exact tag format from the registry WHERE THE APP'S OFFICIAL 
 - **Why This Matters:** Apps using incorrect tags will fail at runtime with "image not found" errors, wasting deployment time
 
 **CRITICAL LESSON - qbitwebui Tag Format (Jan 9, 2026):**
-- **WRONG:** `ghcr.io/maciejonos/qbitwebui:v2.23.0` ❌ (tag doesn't exist on GHCR)
-- **RIGHT:** `ghcr.io/maciejonos/qbitwebui:2.23.0` ✅ (actual tag on GHCR)
+- **WRONG:** `ghcr.io/mkbula/qbitwebui:v2.23.0` ❌ (tag doesn't exist on GHCR)
+- **RIGHT:** `ghcr.io/mkbula/qbitwebui:2.23.0` ✅ (actual tag on GHCR)
 - **Root Cause:** Assumed GitHub Release `v2.23.0` would match GHCR tag with 'v' prefix
-- **Solution Applied:** Visit `https://github.com/Maciejonos/qbitwebui/pkgs/container/qbitwebui` and confirmed tags are `2.23`, `2.23.0` WITHOUT 'v'
-- **Command shown:** `docker pull ghcr.io/maciejonos/qbitwebui:2.23` (no 'v')
+- **Solution Applied:** Visit `https://github.com/mkbula/qbitwebui/pkgs/container/qbitwebui` and confirmed tags are `2.23`, `2.23.0` WITHOUT 'v'
+- **Command shown:** `docker pull ghcr.io/mkbula/qbitwebui:2.23` (no 'v')
 - **Why This Matters:** Different projects use different conventions - ALWAYS verify the actual registry page
 
 **Concrete example (Linkding):**

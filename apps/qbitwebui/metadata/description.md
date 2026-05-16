@@ -1,7 +1,7 @@
 # qBitWebUI
 
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/Maciejonos/qbitwebui)
-[![Docker](https://img.shields.io/badge/Docker-GHCR-blue?logo=docker)](https://ghcr.io/maciejonos/qbitwebui)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/Maciejmkbulaonos/qbitwebui)
+[![Docker](https://img.shields.io/badge/Docker-GHCR-blue?logo=docker)](https://ghcr.io/mkbula/qbitwebui)
 
 ## Overview
 
