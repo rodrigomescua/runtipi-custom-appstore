@@ -18,9 +18,9 @@ If you want to see new apps on Tipi you can either:
 - [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
 - Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
 
-## Apps available (44)
+## Apps available (46)
 
-| Name                                                                         | Description                                                                                                      | Port  | Dynamic (44) |
+| Name                                                                         | Description                                                                                                      | Port  | Dynamic (46) |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ----- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                            | Self-hosted GPU video compressor                                                                                 | 8846  | yes          |
 | [Arcane](https://github.com/getarcaneapp/arcane)                             | Modern Docker Management, Made for Everyone                                                                      | 8851  | yes          |
@@ -48,7 +48,7 @@ If you want to see new apps on Tipi you can either:
 | [Photon](https://github.com/rtuszik/photon-docker)                           | This is an unofficial docker image for Photon                                                                    | 8825  | yes          |
 | [Piwigo](https://github.com/Piwigo/Piwigo)                                   | Open-source photo gallery software                                                                               | 8849  | yes          |
 | [PriceBuddy](https://github.com/jez500/pricebuddy)                           | Self-hosted price tracker with notifications                                                                     | 8839  | yes          |
-| [qBitWebUI](https://github.com/mkbula/qbitwebui)                         | Modern qBittorrent web interface                                                                                 | 8853  | yes          |
+| [qBitWebUI](https://github.com/mkbula/qbitwebui)                             | Modern qBittorrent web interface                                                                                 | 8853  | yes          |
 | [Qui](https://github.com/autobrr/qui)                                        | Modern qBittorrent web interface                                                                                 | 8852  | yes          |
 | [Razor Finance](https://github.com/rodrigomescua/RazorFinanceDocker)         | Gerenciamento financeiro                                                                                         | 8840  | yes          |
 | [Razor IPTV](https://github.com/romesc/RazorIptvDocker)                      | Razor IPTV                                                                                                       | 8821  | yes          |
@@ -59,7 +59,9 @@ If you want to see new apps on Tipi you can either:
 | [Reitti](https://github.com/dedicatedcode/reitti)                            | Personal Location Tracking & Analysis - Self-hosted alternative to Google Timeline                               | 8826  | yes          |
 | [RSS-Bridge](https://github.com/RSS-Bridge/rss-bridge)                       | Generate RSS feeds for websites without one                                                                      | 8864  | yes          |
 | [Stash](https://github.com/stashapp/stash)                                   | Organize and serve media.                                                                                        | 8847  | yes          |
+| [Sure](https://github.com/we-promise/sure)                                   | Self-hosted personal finance app                                                                                 | 8866  | yes          |
 | [TrackWatch](https://github.com/emlopezr/trackwatch)                         | Self-hosted Spotify release tracker                                                                              | 8834  | yes          |
+| [Tuliprox](https://github.com/euzu/tuliprox)                                 | Powerful IPTV proxy and M3U/Xtream playlist processor                                                            | 8855  | yes          |
 | [Tuvix RSS](https://github.com/TechSquidTV/Tuvix-RSS)                        | Self-hosted RSS aggregator                                                                                       | 8835  | yes          |
 | [Upsnap](https://github.com/seriousm4x/UpSnap)                               | A simple wake on lan web app written with SvelteKit, Go and PocketBase.                                          | 8090  | yes          |
 | [VCompose](https://github.com/zbrave/vcompose)                               | Visual Docker Compose Builder                                                                                    | 8861  | yes          |
