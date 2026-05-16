@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Sure",
+  "id": "sure",
+  "available": true,
+  "short_desc": "Self-hosted personal finance app",
+  "author": "we-promise",
+  "port": 8866,
+  "categories": ["finance"],
+  "description": "Sure is a self-hosted personal finance app.",
+  "tipi_version": 1,
+  "version": "0.7.1-alpha.7",
+  "source": "https://github.com/we-promise/sure",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "created_at": 1732627200000,
+  "updated_at": 1732627200000,
+  "form_fields": [],
+  "urn": "tipi://sure"
+}

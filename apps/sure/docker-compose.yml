@@ -1,0 +1,79 @@
+version: '3'
+
+services:
+  sure:
+    image: ghcr.io/we-promise/sure:0.7.1-alpha.7
+    volumes:
+      - ${APP_DATA_DIR}/data/storage:/rails/storage
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=sure_user
+      - POSTGRES_PASSWORD=sure_password
+      - POSTGRES_DB=sure_production
+      - SECRET_KEY_BASE=a7523c3d0ae56415046ad8abae168d71074a79534a7062258f8d1d51ac2f76d3c3bc86d86b6b0b307df30d9a6a90a2066a3fa9e67c5e6f374dbd7dd4e0778e13
+      - SELF_HOSTED=true
+      - RAILS_FORCE_SSL=false
+      - RAILS_ASSUME_SSL=false
+      - DB_HOST=sure-db
+      - DB_PORT=5432
+      - REDIS_URL=redis://sure-redis:6379/1
+    depends_on:
+      sure-db:
+        condition: service_healthy
+      sure-redis:
+        condition: service_healthy
+    x-runtipi:
+      is_main: true
+      internal_port: 3000
+
+  sure-worker:
+    image: ghcr.io/we-promise/sure:0.7.1-alpha.7
+    command: bundle exec sidekiq
+    volumes:
+      - ${APP_DATA_DIR}/data/storage:/rails/storage
+    restart: unless-stopped
+    depends_on:
+      sure-db:
+        condition: service_healthy
+      sure-redis:
+        condition: service_healthy
+    environment:
+      - POSTGRES_USER=sure_user
+      - POSTGRES_PASSWORD=sure_password
+      - POSTGRES_DB=sure_production
+      - SECRET_KEY_BASE=a7523c3d0ae56415046ad8abae168d71074a79534a7062258f8d1d51ac2f76d3c3bc86d86b6b0b307df30d9a6a90a2066a3fa9e67c5e6f374dbd7dd4e0778e13
+      - SELF_HOSTED=true
+      - RAILS_FORCE_SSL=false
+      - RAILS_ASSUME_SSL=false
+      - DB_HOST=sure-db
+      - DB_PORT=5432
+      - REDIS_URL=redis://sure-redis:6379/1
+
+  sure-db:
+    image: postgres:16
+    restart: unless-stopped
+    volumes:
+      - ${APP_DATA_DIR}/data/postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=sure_user
+      - POSTGRES_PASSWORD=sure_password
+      - POSTGRES_DB=sure_production
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  sure-redis:
+    image: redis:latest
+    restart: unless-stopped
+    volumes:
+      - ${APP_DATA_DIR}/data/redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+x-runtipi:
+  schema_version: 2

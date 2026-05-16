@@ -34,8 +34,18 @@ apps/<app-id>/
 ```
 
 ### Logo Guidelines
+- **Format**: 512x512 JPG.
 - **No rounded corners**: Never use rounded corners for logos. They should have sharp, square edges.
 - **No button-like backgrounds**: The logo graphic should fill the canvas and act as the icon itself. It should not look like an icon placed inside a smaller button or box within the image.
+- **Sources (Search Order)**: 
+  1. Primary source: [selfh.st/icons/](https://selfh.st/icons/). Download as PNG.
+  2. Secondary sources: GitHub repository or the official project website.
+  3. Final fallback: Ask the USER to create/provide one manually only if not found in the above sources.
+- **Processing**: Convert the downloaded image to a 512x512 JPG.
+- **Backgrounds for Transparency**:
+  - **Light Logo**: If the logo is predominantly light-colored with a transparent background, use a **dark gray** background.
+  - **Dark Logo**: If the logo is predominantly dark-colored with a transparent background, use a **very light gray** background.
+- **Margins**: Always include a safety margin (padding) of approximately 15-20% between the logo graphic and the edges of the 512x512 canvas. This ensures the content is not cut off when the UI applies rounded corners or button frames.
 
 ## Critical Rules
 

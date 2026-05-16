@@ -71,6 +71,13 @@
       "pinDigests": false
     },
     {
+      "description": "Allow alpha versions for Sure",
+      "matchPackageNames": [
+        "ghcr.io/we-promise/sure"
+      ],
+      "ignoreUnstable": false
+    },
+    {
       "description": "Do not update the renovate workflow itself to keep node-version: 22",
       "matchFileNames": [
         ".github/workflows/renovate.yml"
