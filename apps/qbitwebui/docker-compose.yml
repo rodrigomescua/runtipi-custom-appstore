@@ -1,6 +1,6 @@
 services:
   qbitwebui:
-    image: ghcr.io/mkbula/qbitwebui:2.44.0
+    image: ghcr.io/mkbula/qbitwebui:2.44.1
     environment:
       - ENCRYPTION_KEY=${ENCRYPTION_KEY}
     volumes:
