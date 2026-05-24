@@ -4,30 +4,55 @@ This directory contains specialized instructions and reusable skills for develop
 
 ## 📋 Available Files
 
-### Instructions (`.instructions.md`)
+### Instructions (`.instruction.md`)
 Applied automatically when editing matching files.
 
-- **[app-version-update.instructions.md](app-version-update.instructions.md)**
+- **[app-version-update.instruction.md](app-version-update.instruction.md)**
   - **Scope:** Updating app versions, image tags, and configuration
   - **Applies to:** `apps/*/config.json` and `apps/*/docker-compose.yml`
   - **Use when:** Bumping image versions, updating app metadata
 
-### Skills (`.SKILL.md`)
-Reusable workflows that can be invoked directly.
+### Skills (`.skill.md`)
+Reusable workflows that can be invoked directly or used by agents.
 
-- **[logo-conversion.SKILL.md](logo-conversion.SKILL.md)**
+**Core App Creation Skills:**
+
+- **[logo-conversion.skill.md](logo-conversion.skill.md)**
   - **Purpose:** Convert app logos to 512×512 JPG with proper margins and backgrounds
-  - **Input:** GitHub URL to logo, app name
+  - **Input:** GitHub URL to logo, app name, brightness analysis
   - **Output:** Validated logo.jpg file meeting all AGENTS.md guidelines
   - **Use case:** Creating new apps, updating logos
   - **Example:** `convert logo for stationarr from https://github.com/...`
 
-- **[app-creation.SKILL.md](app-creation.SKILL.md)**
-  - **Purpose:** Automated workflow for creating new Runtipi apps from scratch
+- **[port-assignment.skill.md](port-assignment.skill.md)**
+  - **Purpose:** Find available ports and verify port uniqueness in 8800-8999 range
+  - **Input:** App name or specific port to verify
+  - **Output:** Available port number with conflict analysis
+  - **Use case:** Assigning ports for new apps, conflict detection
+  - **Example:** `find available port for my-app`
+
+- **[form-fields-generator.skill.md](form-fields-generator.skill.md)**
+  - **Purpose:** Generate user-configurable form fields based on app requirements
+  - **Input:** App documentation, feature list, requirements
+  - **Output:** JSON array of form field objects with validation rules
+  - **Use case:** Creating config forms for apps, environment variable management
+  - **Example:** `generate form fields for linkding from its documentation`
+
+- **[docker-compose-validation.skill.md](docker-compose-validation.skill.md)**
+  - **Purpose:** Validate Docker Compose configurations against Runtipi requirements
+  - **Input:** docker-compose.yml file or app name
+  - **Output:** Validation report with errors, warnings, recommendations
+  - **Use case:** Quality assurance, catching configuration errors before deployment
+  - **Example:** `validate docker-compose for stationarr`
+
+**Complete Workflows:**
+
+- **[app-creation.skill.md](app-creation.skill.md)**
+  - **Purpose:** Complete 7-step workflow for creating new Runtipi apps from scratch
   - **Input:** App name, GitHub repository URL
-  - **Output:** Complete app directory with config.json, docker-compose.yml, metadata
-  - **Powered by:** `tipi-guru` agent
-  - **Use case:** Adding new apps to the store
+  - **Output:** Complete app directory with all required files
+  - **Powered by:** `tipi-guru` agent (specialized autonomous agent)
+  - **Use case:** Adding new apps to the store (primary workflow)
   - **Example:** `create app based on https://github.com/owner/repo`
 
 ### Agents
@@ -104,37 +129,74 @@ runSubagent({
 
 ---
 
-## 📊 Relationship: tipi-guru → app-creation Skill
+## 📊 Relationship: tipi-guru → app-creation Skill → Component Skills
 
 ```
 User: "create app for Stationarr from [URL]"
          ↓
     runSubagent("tipi-guru")
          ↓
-    tipi-guru follows app-creation.SKILL.md
+    tipi-guru follows app-creation.skill.md
          ↓
     Executes 7-step workflow:
-    1. Verify app info
-    2. Find available port
-    3. Initialize directory
-    4. Generate config
-    5. Fetch & process logo
-    6. Validate
-    7. Summarize
+    1. ✓ Verify app info (analyze repo)
+    2. ✓ Find available port (uses port-assignment.skill.md)
+    3. ✓ Initialize directory structure
+    4. ✓ Generate app config & descriptions
+    5. ✓ Fetch & process logo (uses logo-conversion.skill.md)
+    6. ✓ Validate everything (uses docker-compose-validation.skill.md)
+       - Checks form fields (uses form-fields-generator.skill.md analysis)
+    7. ✓ Summarize and report
          ↓
-    Returns: Complete app directory
+    Returns: Complete app directory (all files created)
+         ↓
+    User runs: bun test
+         ↓
+    Validates against schema (282/282 tests expected)
+```
+
+**Skills are independent but often used together:**
+
+```
+Workflow Dependencies:
+├─ app-creation.skill
+│  ├─ Uses: port-assignment.skill
+│  ├─ Uses: logo-conversion.skill
+│  ├─ Uses: form-fields-generator.skill (analysis)
+│  ├─ Uses: docker-compose-validation.skill
+│  └─ Produces: Complete app directory
+│
+├─ port-assignment.skill
+│  └─ Standalone: Can verify port without creating app
+│
+├─ logo-conversion.skill
+│  └─ Standalone: Can convert logo independent of app
+│
+├─ form-fields-generator.skill
+│  └─ Standalone: Can generate fields without app
+│
+└─ docker-compose-validation.skill
+   └─ Standalone: Can validate existing configs
 ```
 
 ## 📖 Quick Reference
 
 | File | Type | Used For |
 |------|------|----------|
-| app-version-update.instructions.md | Instruction | Auto-applied when editing versions |
-| logo-conversion.SKILL.md | Skill | Logo processing & conversion |
-| app-creation.SKILL.md | Skill | Complete app creation workflow |
-| (tipi-guru) | Agent | Specialized app creation with validation |
+| app-version-update.instruction.md | Instruction | Auto-applied when editing versions |
+| logo-conversion.skill.md | Skill | Logo processing & conversion |
+| port-assignment.skill.md | Skill | Port verification & assignment |
+| form-fields-generator.skill.md | Skill | Form field generation & validation |
+| docker-compose-validation.skill.md | Skill | Docker configuration validation |
+| app-creation.skill.md | Skill | Complete app creation workflow |
+| (tipi-guru) | Agent | Specialized app creation with expertise |
 
 ## 🔧 Adding New Skills/Instructions
+
+### Nomenclature Standard
+- **Skills:** `{name}.skill.md` (lowercase)
+- **Instructions:** `{name}.instruction.md` (lowercase)
+- **README:** Always include in `.github/instructions/README.md`
 
 ### Instruction File
 ```yaml
