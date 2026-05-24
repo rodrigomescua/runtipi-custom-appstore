@@ -8,7 +8,7 @@
   "port": 8867,
   "categories": ["utilities"],
   "description": "Stationarr is a self-hosted IPTV playlist editor and EPG (Electronic Program Guide) manager. Import legally obtained M3U playlists, organize channels, match XMLTV programme guide data from authorized or public sources, and serve a clean edited playlist directly to your IPTV player. Features include multi-user accounts, playlist management, visual channel editor, M3U import via file or URL, full-text search, bulk operations, EPG source management, automatic EPG matching by channel ID and display name, logo management, hosted M3U and XMLTV output URLs, admin panel with user management, and optional iptv-org/epg scraper integration via Docker sidecar.",
-  "tipi_version": 1,
+  "tipi_version": 2,
   "version": "1.1.0",
   "source": "https://github.com/rroy676/Stationarr",
   "urn": "tipi://stationarr",
@@ -16,7 +16,7 @@
   "dynamic_config": true,
   "supported_architectures": ["amd64", "arm64"],
   "created_at": 1748125440000,
-  "updated_at": 1748125440000,
+  "updated_at": 1748234400000,
   "form_fields": [
     {
       "type": "random",
