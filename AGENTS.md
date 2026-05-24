@@ -75,6 +75,13 @@ image: sissbruecker/linkding:1.44.1  # MUST MATCH exactly
 - **CRITICAL:** GitHub Releases often use a `v` prefix (e.g., `v0.7.1`) while the Docker Image in GHCR may NOT (e.g., `0.7.1`). ALWAYS check the Packages/Registry tab to confirm the exact string.
 - Check GitHub Actions workflows for tag transformation logic
 
+**CRITICAL - Manual compose edits require config bump:**
+- If `apps/*/docker-compose.yml` is manually changed, also update `apps/*/config.json`
+- Increment `tipi_version` by 1
+- Update `updated_at` with current timestamp in milliseconds
+- Keep docker-compose and config changes in the same commit
+- Exception: image-only updates done via `bun scripts/update-config.ts`
+
 ### docker-compose.yml Format (YAML with x-runtipi)
 ```yaml
 services:

@@ -102,6 +102,13 @@ internal_port: 9090  // Container runs on 9090, exposed to host on 8830
 - `tipi_version` increments with each config change (starts at 1 for new apps)
 - Timestamps (`created_at`, `updated_at`) are in milliseconds; use `Date.now()`
 
+**CRITICAL RULE - Manual docker-compose edits:**
+- Any manual change in `apps/*/docker-compose.yml` MUST also update `apps/*/config.json`
+- Increment `tipi_version` by 1
+- Update `updated_at` with current timestamp in milliseconds
+- Commit both files together in the same commit
+- Exception: image-only version bumps handled by `bun scripts/update-config.ts`
+
 **CRITICAL: Verifying Docker Image Tags**
 
 You MUST verify the exact tag format from the registry WHERE THE APP'S OFFICIAL DOCUMENTATION USES IT, not assume or guess:
