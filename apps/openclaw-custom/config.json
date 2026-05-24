@@ -6,8 +6,8 @@
   "exposable": true,
   "dynamic_config": true,
   "id": "openclaw-custom",
-  "tipi_version": 15,
-  "version": "2026.5.20",
+  "tipi_version": 16,
+  "version": "2026.5.22",
   "urn": "tipi://openclaw-custom",
   "categories": [
     "ai"
@@ -22,7 +22,7 @@
     "amd64"
   ],
   "created_at": 1774180993200,
-  "updated_at": 1779426287548,
+  "updated_at": 1779599020652,
   "min_tipi_version": "4.8.0",
   "form_fields": []
 }
