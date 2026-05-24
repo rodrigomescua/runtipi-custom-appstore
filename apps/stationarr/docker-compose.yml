@@ -1,8 +1,24 @@
 version: '3'
 
 services:
+  scraper:
+    image: iptv-org/epg:latest
+    volumes:
+      - ${APP_DATA_DIR}/scraper:/epg
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    x-runtipi:
+      internal_port: 3000
+
   stationarr:
     image: rroy676/stationarr:1.1.0
+    depends_on:
+      scraper:
+        condition: service_healthy
     environment:
       - PORT=3000
       - NODE_ENV=production
@@ -11,7 +27,7 @@ services:
       - JWT_EXPIRES_IN=${JWT_EXPIRES_IN:-7d}
       - REGISTRATION_OPEN=${REGISTRATION_OPEN:-true}
       - BASE_URL=http://${APP_DOMAIN}:${APP_PORT}
-      - SCRAPER_URL=http://epg:3000
+      - SCRAPER_URL=http://scraper:3000
       - SCRAPER_CHANNELS_PATH=/app/data/scraper/channels.xml
     volumes:
       - ${APP_DATA_DIR}/data:/app/data
