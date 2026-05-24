@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  stationarr:
+    image: rroy676/stationarr:1.1.0
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+      - DATA_DIR=/app/data
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN:-7d}
+      - REGISTRATION_OPEN=${REGISTRATION_OPEN:-true}
+      - BASE_URL=http://${APP_DOMAIN}:${APP_PORT}
+      - SCRAPER_URL=http://epg:3000
+      - SCRAPER_CHANNELS_PATH=/app/data/scraper/channels.xml
+    volumes:
+      - ${APP_DATA_DIR}/data:/app/data
+      - ${APP_DATA_DIR}/scraper:/app/data/scraper
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 0s
+      start_interval: 0s
+    x-runtipi:
+      is_main: true
+      internal_port: 3000
+
+x-runtipi:
+  schema_version: 2

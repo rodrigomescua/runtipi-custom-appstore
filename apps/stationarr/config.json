@@ -1,0 +1,47 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Stationarr",
+  "id": "stationarr",
+  "available": true,
+  "short_desc": "IPTV playlist editor, EPG matcher, and self-hosted companion",
+  "author": "Robert Roy",
+  "port": 8867,
+  "categories": ["utilities"],
+  "description": "Stationarr is a self-hosted IPTV playlist editor and EPG (Electronic Program Guide) manager. Import legally obtained M3U playlists, organize channels, match XMLTV programme guide data from authorized or public sources, and serve a clean edited playlist directly to your IPTV player. Features include multi-user accounts, playlist management, visual channel editor, M3U import via file or URL, full-text search, bulk operations, EPG source management, automatic EPG matching by channel ID and display name, logo management, hosted M3U and XMLTV output URLs, admin panel with user management, and optional iptv-org/epg scraper integration via Docker sidecar.",
+  "tipi_version": 1,
+  "version": "1.1.0",
+  "source": "https://github.com/rroy676/Stationarr",
+  "urn": "tipi://stationarr",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "created_at": 1748125440000,
+  "updated_at": 1748125440000,
+  "form_fields": [
+    {
+      "type": "random",
+      "label": "JWT Secret",
+      "required": true,
+      "env_variable": "JWT_SECRET",
+      "hint": "Secret for signing JWT tokens — use a long random string",
+      "min": 32,
+      "encoding": "hex"
+    },
+    {
+      "type": "text",
+      "label": "JWT Expires In",
+      "required": false,
+      "env_variable": "JWT_EXPIRES_IN",
+      "hint": "Token expiry duration (default: 7d)",
+      "default": "7d"
+    },
+    {
+      "type": "boolean",
+      "label": "Allow Registration",
+      "required": false,
+      "env_variable": "REGISTRATION_OPEN",
+      "hint": "Allow new user signups after the first admin account is created (default: true)",
+      "default": "true"
+    }
+  ]
+}
