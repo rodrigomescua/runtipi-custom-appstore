@@ -11,11 +11,8 @@ services:
       - JWT_EXPIRES_IN=${JWT_EXPIRES_IN:-7d}
       - REGISTRATION_OPEN=${REGISTRATION_OPEN:-true}
       - BASE_URL=http://${APP_DOMAIN}:${APP_PORT}
-      - SCRAPER_URL=http://epg:3000
-      - SCRAPER_CHANNELS_PATH=/app/data/scraper/channels.xml
     volumes:
       - ${APP_DATA_DIR}/data:/app/data
-      - ${APP_DATA_DIR}/scraper:/app/data/scraper
     healthcheck:
       test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/health"]
       interval: 30s
