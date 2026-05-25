@@ -10,8 +10,8 @@
     "utilities"
   ],
   "description": "Rustavoid is a self-hosted web application built with Rust and Axum for registering products, services, and companies that delivered a bad experience, helping you avoid future repurchases. Features server-side rendered templates with Askama, async interactions via HTMX, and persistent storage using SQLite.",
-  "tipi_version": 3,
-  "version": "1779746723",
+  "tipi_version": 4,
+  "version": "1779748603",
   "source": "https://github.com/rodrigomescua/Rustavoid",
   "urn": "tipi://rustavoid",
   "exposable": true,
@@ -20,6 +20,6 @@
     "amd64"
   ],
   "created_at": 1748131200000,
-  "updated_at": 1748131200000,
+  "updated_at": 1779748937466,
   "form_fields": []
 }
