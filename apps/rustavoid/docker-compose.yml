@@ -2,7 +2,7 @@ version: '3'
 
 services:
   rustavoid:
-    image: ghcr.io/rodrigomescua/rustavoid:1779746723
+    image: ghcr.io/rodrigomescua/rustavoid:1779748603
     environment:
       - PORT=8080
       - DATABASE_URL=sqlite:///app/data/rustavoid.db?mode=rwc
