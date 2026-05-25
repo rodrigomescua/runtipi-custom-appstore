@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^curl -s \"https://api\\.github\\.com/repos/rodrigomescua/Rustavoid/contents/\\.github/workflows\" 2>/dev/null \\| python3 -c \"import sys,json; data=json\\.load\\(sys\\.stdin\\); \\[print\\(f\\['name'\\]\\) for f in data\\]\" 2>/dev/null \\|\\| echo \"No workflows found\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Rustavoid",
+  "id": "rustavoid",
+  "available": true,
+  "short_desc": "Self-hosted app to register products and companies to avoid",
+  "author": "rodrigomescua",
+  "port": 8856,
+  "categories": ["utilities"],
+  "description": "Rustavoid is a self-hosted web application built with Rust and Axum for registering products, services, and companies that delivered a bad experience, helping you avoid future repurchases. Features server-side rendered templates with Askama, async interactions via HTMX, and persistent storage using SQLite.",
+  "tipi_version": 1,
+  "version": "1779746723",
+  "source": "https://github.com/rodrigomescua/Rustavoid",
+  "urn": "tipi://rustavoid",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64"],
+  "created_at": 1748131200000,
+  "updated_at": 1748131200000,
+  "form_fields": []
+}
