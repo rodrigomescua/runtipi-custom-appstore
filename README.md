@@ -18,9 +18,9 @@ If you want to see new apps on Tipi you can either:
 - [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
 - Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
 
-## Apps available (47)
+## Apps available (48)
 
-| Name                                                                         | Description                                                                                                      | Port  | Dynamic (47) |
+| Name                                                                         | Description                                                                                                      | Port  | Dynamic (48) |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ----- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                            | Self-hosted GPU video compressor                                                                                 | 8846  | yes          |
 | [Arcane](https://github.com/getarcaneapp/arcane)                             | Modern Docker Management, Made for Everyone                                                                      | 8851  | yes          |
@@ -58,6 +58,7 @@ If you want to see new apps on Tipi you can either:
 | [Recommendarr](https://github.com/fingerthief/recommendarr)                  | AI-powered TV and movie recommendations based on your library                                                    | 8827  | yes          |
 | [Reitti](https://github.com/dedicatedcode/reitti)                            | Personal Location Tracking & Analysis - Self-hosted alternative to Google Timeline                               | 8826  | yes          |
 | [RSS-Bridge](https://github.com/RSS-Bridge/rss-bridge)                       | Generate RSS feeds for websites without one                                                                      | 8864  | yes          |
+| [Rustavoid](https://github.com/rodrigomescua/Rustavoid)                      | Self-hosted app to register products and companies to avoid                                                      | 8856  | yes          |
 | [Stash](https://github.com/stashapp/stash)                                   | Organize and serve media.                                                                                        | 8847  | yes          |
 | [Stationarr](https://github.com/rroy676/Stationarr)                          | IPTV playlist editor, EPG matcher, and self-hosted companion                                                     | 8867  | yes          |
 | [Sure](https://github.com/we-promise/sure)                                   | Self-hosted personal finance app                                                                                 | 8866  | yes          |
