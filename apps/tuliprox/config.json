@@ -11,8 +11,8 @@
     "network"
   ],
   "description": "Tuliprox is a powerful self-hosted IPTV proxy and playlist processor. It supports Xtream Codes API and M3U playlist sources, provides reverse proxy streaming, advanced filtering and mapping with a custom DSL, TMDB/PTT metadata enrichment, zero-downtime config reloads, and an embedded web UI. No external database required — all storage uses embedded B+Tree databases.",
-  "tipi_version": 1,
-  "version": "3.3.0",
+  "tipi_version": 2,
+  "version": "3.3.41",
   "source": "https://github.com/euzu/tuliprox",
   "exposable": true,
   "dynamic_config": true,
@@ -21,6 +21,6 @@
     "arm64"
   ],
   "created_at": 1747353600000,
-  "updated_at": 1747353600000,
+  "updated_at": 1779909272252,
   "form_fields": []
 }
