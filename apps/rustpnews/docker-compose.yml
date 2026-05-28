@@ -2,7 +2,7 @@ version: '3'
 
 services:
   rustpnews:
-    image: ghcr.io/rodrigomescua/rustpnews:202605281307
+    image: ghcr.io/rodrigomescua/rustpnews:202605281344
     restart: unless-stopped
     volumes:
       - ${APP_DATA_DIR}/data/App_Data:/app/App_Data
