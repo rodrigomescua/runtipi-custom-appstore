@@ -11,7 +11,7 @@
     "media"
   ],
   "description": "Rustpnews is a high-performance, self-hosted developer news aggregator and RSS polling service built with Rust. It polls developer feeds, aggregates changes, and tracks news with configurable concurrency, paging, and overlaps.",
-  "tipi_version": 5,
+  "tipi_version": 6,
   "version": "202605291258",
   "source": "https://github.com/rodrigomescua/rustpnews",
   "urn": "tipi://rustpnews",

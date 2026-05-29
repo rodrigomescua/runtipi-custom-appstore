@@ -5,13 +5,11 @@ services:
     image: ghcr.io/rodrigomescua/rustpnews:202605291258
     restart: unless-stopped
     volumes:
-      - ${APP_DATA_DIR}/data/App_Data:/app/App_Data
+      - ${APP_DATA_DIR}/data/data:/app/data
     environment:
       - RUSTPNEWS_API_TOKEN=${RUSTPNEWS_API_TOKEN}
       - RUSTPNEWS_POLL_INTERVAL_SECONDS=120
-      - RUSTPNEWS_PAGE_SIZE=25
       - RUSTPNEWS_DETAIL_CONCURRENCY=4
-      - RUSTPNEWS_MAX_PAGES=10
       - RUSTPNEWS_FROM_OVERLAP_MINUTES=5
       - RUSTPNEWS_CHANGES_RETRY_ATTEMPTS=3
       - RUSTPNEWS_CHANGES_RETRY_BASE_DELAY_MS=500
