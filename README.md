@@ -18,14 +18,15 @@ If you want to see new apps on Tipi you can either:
 - [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
 - Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
 
-## Apps available (49)
+## Apps available (50)
 
-| Name                                                                         | Description                                                                                                      | Port  | Dynamic (49) |
+| Name                                                                         | Description                                                                                                      | Port  | Dynamic (50) |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ----- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                            | Self-hosted GPU video compressor                                                                                 | 8846  | yes          |
 | [Arcane](https://github.com/getarcaneapp/arcane)                             | Modern Docker Management, Made for Everyone                                                                      | 8851  | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                             | Note taking, to-do and moodboard application                                                                     | 8831  | yes          |
 | [Byparr](https://github.com/ThePhaseless/Byparr)                             | Bypass Cloudflare and DDoS-GuARD.                                                                                | 8191  | yes          |
+| [Cinephage](https://github.com/MoldyTaint/Cinephage)                         | Unified self-hosted media management in one app                                                                  | 8858  | yes          |
 | [Dawarich](https://github.com/Freika/dawarich)                               | Self-hostable alternative to Google Location History (Google Maps Timeline)                                      | 8824  | yes          |
 | [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr)                    | Ultimate IPTV & Stream Management Companion                                                                      | 8843  | yes          |
 | [Dockhand](https://github.com/Finsys/dockhand)                               | Modern Docker management UI with real-time monitoring                                                            | 8832  | yes          |
