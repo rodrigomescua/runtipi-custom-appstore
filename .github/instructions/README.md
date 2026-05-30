@@ -2,6 +2,13 @@
 
 This directory contains specialized instructions and reusable skills for development on the Runtipi Custom App Store project.
 
+## Compatibility Note
+
+Skill files in this folder are mirrored to `.github/skills/<skill-name>/SKILL.md` to improve compatibility with tooling that auto-discovers skills using the `SKILL.md` convention.
+
+- Primary editable source: `.github/instructions/*.skill.md`
+- Mirrored compatibility source: `.github/skills/*/SKILL.md`
+
 ## 📋 Available Files
 
 ### Instructions (`.instruction.md`)

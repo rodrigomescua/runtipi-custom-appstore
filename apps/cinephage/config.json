@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Cinephage",
+  "id": "cinephage",
+  "available": true,
+  "short_desc": "Unified self-hosted media management in one app",
+  "author": "MoldyTaint",
+  "port": 8858,
+  "categories": [
+    "media"
+  ],
+  "description": "Cinephage is a unified self-hosted media management platform that combines discovery, monitoring, indexers, subtitle workflows, and streaming-oriented tooling in a single interface.",
+  "tipi_version": 1,
+  "version": "0.11.0",
+  "source": "https://github.com/MoldyTaint/Cinephage",
+  "urn": "tipi://cinephage",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "created_at": 1780152799383,
+  "updated_at": 1780152799383,
+  "form_fields": [
+    {
+      "type": "random",
+      "label": "Better Auth Secret",
+      "required": true,
+      "env_variable": "BETTER_AUTH_SECRET",
+      "hint": "Secret used for session signing and API key encryption",
+      "min": 32,
+      "encoding": "base64"
+    }
+  ]
+}
