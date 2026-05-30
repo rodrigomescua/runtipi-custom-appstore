@@ -8,6 +8,8 @@ services:
       - ORIGIN=http://${APP_DOMAIN}:${APP_PORT}
       - BETTER_AUTH_URL=http://${APP_DOMAIN}:${APP_PORT}
       - TZ=${TZ}
+      - PUID=1000
+      - PGID=1000
     volumes:
       - ${APP_DATA_DIR}/data/config:/config
       - ${ROOT_FOLDER_HOST}/media:/media
