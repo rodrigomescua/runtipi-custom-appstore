@@ -7,6 +7,9 @@ services:
       - TZ=${TZ}
       - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
       - CONDENSEIT_DATA_DIR=/app/data
+      - CONDENSEIT_SCHEDULER_ENABLED=1
+      - CONDENSEIT_AUTH_PASSWORD=${CONDENSEIT_AUTH_PASSWORD}
+      - DIGEST_PWA_SESSION_SECRET=${DIGEST_PWA_SESSION_SECRET}
     volumes:
       - ${APP_DATA_DIR}/data:/app/data
     x-runtipi:

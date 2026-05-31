@@ -11,7 +11,7 @@
     "ai"
   ],
   "description": "CondenseIt is a self-hosted daily news digest generator. It collects feeds from RSS, YouTube channels, Reddit, Hacker News, Google News, and website change detection, summarizes them using local (Ollama) or remote (OpenRouter, OpenAI) LLMs, and prioritizes content based on your personal reading habits using a smart re-ranking system.",
-  "tipi_version": 2,
+  "tipi_version": 3,
   "version": "2.7.6",
   "source": "https://github.com/wildlifechorus/condenseit",
   "urn": "tipi://condenseit",
@@ -30,6 +30,22 @@
       "required": true,
       "env_variable": "OPENROUTER_API_KEY",
       "hint": "API key for OpenRouter to access LLMs"
+    },
+    {
+      "type": "password",
+      "label": "Password",
+      "required": true,
+      "env_variable": "CONDENSEIT_AUTH_PASSWORD",
+      "hint": "Password for CondenseIt"
+    },
+    {
+      "type": "random",
+      "label": "Session Secret",
+      "required": true,
+      "env_variable": "DIGEST_PWA_SESSION_SECRET",
+      "min": 32,
+      "encoding": "base64",
+      "hint": "Session secret for CondenseIt"
     }
   ]
 }
