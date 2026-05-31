@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "CondenseIt",
+  "id": "condenseit",
+  "available": true,
+  "short_desc": "Self-hosted AI daily news digest from RSS feeds, YouTube channels, and web pages.",
+  "author": "wildlifechorus",
+  "port": 8868,
+  "categories": [
+    "utilities",
+    "ai"
+  ],
+  "description": "CondenseIt is a self-hosted daily news digest generator. It collects feeds from RSS, YouTube channels, Reddit, Hacker News, Google News, and website change detection, summarizes them using local (Ollama) or remote (OpenRouter, OpenAI) LLMs, and prioritizes content based on your personal reading habits using a smart re-ranking system.",
+  "tipi_version": 2,
+  "version": "2.7.6",
+  "source": "https://github.com/wildlifechorus/condenseit",
+  "urn": "tipi://condenseit",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "created_at": 1779896030000,
+  "updated_at": 1779896030000,
+  "form_fields": [
+    {
+      "type": "password",
+      "label": "OpenRouter API Key",
+      "required": true,
+      "env_variable": "OPENROUTER_API_KEY",
+      "hint": "API key for OpenRouter to access LLMs"
+    }
+  ]
+}
