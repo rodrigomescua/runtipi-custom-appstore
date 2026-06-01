@@ -18,15 +18,16 @@ If you want to see new apps on Tipi you can either:
 - [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
 - Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
 
-## Apps available (50)
+## Apps available (52)
 
-| Name                                                                         | Description                                                                                                      | Port  | Dynamic (50) |
+| Name                                                                         | Description                                                                                                      | Port  | Dynamic (52) |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ----- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                            | Self-hosted GPU video compressor                                                                                 | 8846  | yes          |
 | [Arcane](https://github.com/getarcaneapp/arcane)                             | Modern Docker Management, Made for Everyone                                                                      | 8851  | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                             | Note taking, to-do and moodboard application                                                                     | 8831  | yes          |
 | [Byparr](https://github.com/ThePhaseless/Byparr)                             | Bypass Cloudflare and DDoS-GuARD.                                                                                | 8191  | yes          |
 | [Cinephage](https://github.com/MoldyTaint/Cinephage)                         | Unified self-hosted media management in one app                                                                  | 8858  | yes          |
+| [CondenseIt](https://github.com/wildlifechorus/condenseit)                   | Self-hosted AI daily news digest from RSS feeds, YouTube channels, and web pages.                                | 8868  | yes          |
 | [Dawarich](https://github.com/Freika/dawarich)                               | Self-hostable alternative to Google Location History (Google Maps Timeline)                                      | 8824  | yes          |
 | [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr)                    | Ultimate IPTV & Stream Management Companion                                                                      | 8843  | yes          |
 | [Dockhand](https://github.com/Finsys/dockhand)                               | Modern Docker management UI with real-time monitoring                                                            | 8832  | yes          |
@@ -61,6 +62,7 @@ If you want to see new apps on Tipi you can either:
 | [RSS-Bridge](https://github.com/RSS-Bridge/rss-bridge)                       | Generate RSS feeds for websites without one                                                                      | 8864  | yes          |
 | [Rustavoid](https://github.com/rodrigomescua/Rustavoid)                      | Self-hosted app to register products and companies to avoid                                                      | 8856  | yes          |
 | [Rustpnews](https://github.com/rodrigomescua/rustpnews)                      | Self-hosted developer news aggregator and RSS polling service                                                    | 8857  | yes          |
+| [Ruststash](https://github.com/rodrigomescua/ruststash)                      | Self-hosted StashDB scrapper                                                                                     | 8859  | yes          |
 | [Stash](https://github.com/stashapp/stash)                                   | Organize and serve media.                                                                                        | 8847  | yes          |
 | [Stationarr](https://github.com/rroy676/Stationarr)                          | IPTV playlist editor, EPG matcher, and self-hosted companion                                                     | 8867  | yes          |
 | [Sure](https://github.com/we-promise/sure)                                   | Self-hosted personal finance app                                                                                 | 8866  | yes          |
