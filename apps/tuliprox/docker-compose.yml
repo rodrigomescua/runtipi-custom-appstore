@@ -1,6 +1,6 @@
 services:
   tuliprox:
-    image: ghcr.io/euzu/tuliprox-alpine:3.3.43
+    image: ghcr.io/euzu/tuliprox-alpine:3.3.44
     environment:
       - TZ=${TZ}
     volumes:
