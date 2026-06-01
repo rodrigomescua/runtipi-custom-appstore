@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   rustpnews:
     image: ghcr.io/rodrigomescua/rustpnews:202605292048

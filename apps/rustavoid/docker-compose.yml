@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   rustavoid:
     image: ghcr.io/rodrigomescua/rustavoid:1779748603

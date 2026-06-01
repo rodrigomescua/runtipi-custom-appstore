@@ -1,0 +1,21 @@
+services:
+  ruststash:
+    image: ghcr.io/rodrigomescua/ruststash:20260601204416
+    restart: unless-stopped
+    volumes:
+      - ${APP_DATA_DIR}/data/data:/data
+    environment:
+      - STASHDB_API_TOKEN=${STASHDB_API_TOKEN}
+      - TZ=${TZ}
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    x-runtipi:
+      is_main: true
+      internal_port: 8080
+
+x-runtipi:
+  schema_version: 2
