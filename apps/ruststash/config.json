@@ -26,10 +26,10 @@
   "form_fields": [
     {
       "type": "password",
-      "label": "API Token",
+      "label": "API Key",
       "required": true,
-      "env_variable": "STASHDB_API_TOKEN",
-      "hint": "Token for accessing the StashDB API",
+      "env_variable": "STASHDB_API_KEY",
+      "hint": "Key for accessing the StashDB API",
       "min": 32,
       "max": 200
     }

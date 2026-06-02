@@ -5,7 +5,7 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/data:/data
     environment:
-      - STASHDB_API_TOKEN=${STASHDB_API_TOKEN}
+      - STASHDB_API_KEY=${STASHDB_API_KEY}
       - TZ=${TZ}
     healthcheck:
       test: ["CMD", "curl", "-fsS", "http://localhost:8080/health"]
