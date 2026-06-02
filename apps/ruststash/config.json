@@ -11,7 +11,7 @@
     "media"
   ],
   "description": "Rust web app that consumes the StashDB GraphQL API and persists local studio/performer reactions in SQLite.",
-  "tipi_version": 1,
+  "tipi_version": 2,
   "version": "20260601204416",
   "source": "https://github.com/rodrigomescua/ruststash",
   "urn": "tipi://ruststash",
@@ -29,7 +29,9 @@
       "label": "API Token",
       "required": true,
       "env_variable": "STASHDB_API_TOKEN",
-      "hint": "Token for accessing the StashDB API"
+      "hint": "Token for accessing the StashDB API",
+      "min": 32,
+      "max": 200
     }
   ]
 }
