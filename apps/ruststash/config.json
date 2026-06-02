@@ -11,8 +11,8 @@
     "media"
   ],
   "description": "Rust web app that consumes the StashDB GraphQL API and persists local studio/performer reactions in SQLite.",
-  "tipi_version": 2,
-  "version": "20260601204416",
+  "tipi_version": 3,
+  "version": "latest",
   "source": "https://github.com/rodrigomescua/ruststash",
   "urn": "tipi://ruststash",
   "exposable": true,
