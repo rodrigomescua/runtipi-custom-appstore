@@ -2,7 +2,7 @@ version: '3'
 
 services:
   stationarr:
-    image: rroy676/stationarr:1.1.0
+    image: rroy676/stationarr:1.1.1
     environment:
       - PORT=3000
       - NODE_ENV=production
