@@ -1,6 +1,6 @@
 services:
   condenseit:
-    image: ghcr.io/wildlifechorus/condenseit:2.7.6
+    image: ghcr.io/wildlifechorus/condenseit:2.8.0
     command: ["condenseit", "serve", "--host", "0.0.0.0", "--port", "8899"]
     environment:
       - DATA_DIR=/app/data
