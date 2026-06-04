@@ -12,14 +12,14 @@
     "featured"
   ],
   "description": "A smart grocery list and recipe manager.",
-  "tipi_version": 11,
-  "version": "v0.7.8",
+  "tipi_version": 12,
+  "version": "v0.7.9",
   "source": "https://github.com/tombursch/kitchenowl",
   "supported_architectures": [
     "amd64"
   ],
   "created_at": 1731806734301,
-  "updated_at": 1777224746005,
+  "updated_at": 1780596699537,
   "form_fields": [
     {
       "type": "text",
