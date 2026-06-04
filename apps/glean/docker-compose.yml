@@ -30,40 +30,29 @@ services:
       - DATABASE_URL=postgresql+asyncpg://glean:glean@postgres:5432/glean
       - REDIS_URL=redis://redis:6379/0
       - SECRET_KEY=${SECRET_KEY}
-      - CORS_ORIGINS=["http://localhost", "http://localhost:80", "http://${APP_DOMAIN}:${APP_PORT}", "https://${APP_DOMAIN}"]
+      - CORS_ORIGINS=["http://localhost", "http://localhost:3000", "http://localhost:3001", "http://${APP_DOMAIN}:${APP_PORT}", "https://${APP_DOMAIN}"]
       - DEBUG=${DEBUG}
       - RUN_MIGRATIONS=true
       - CREATE_ADMIN=${CREATE_ADMIN}
       - ADMIN_USERNAME=${ADMIN_USERNAME}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
-      - ADMIN_PORT=8847
       - ADMIN_ROLE=super_admin
-      - LOG_LEVEL=INFO
-      - EMBEDDING_PROVIDER=sentence-transformers
-      - EMBEDDING_MODEL=all-MiniLM-L6-v2
-      - EMBEDDING_DIMENSION=384
-      - EMBEDDING_BATCH_SIZE=20
-      - EMBEDDING_MAX_RETRIES=3
-      - EMBEDDING_TIMEOUT=30
       - MILVUS_HOST=milvus
       - MILVUS_PORT=19530
-      - MILVUS_ENTRIES_COLLECTION=entries
-      - MILVUS_PREFS_COLLECTION=user_preferences
-      - PREFERENCE_DEFAULT_SCORE=50.0
-      - PREFERENCE_CONFIDENCE_THRESHOLD=10
-      - PREFERENCE_LIKE_WEIGHT=1.0
-      - PREFERENCE_BOOKMARK_WEIGHT=0.7
-      - PREFERENCE_SOURCE_BOOST_MAX=5.0
-      - PREFERENCE_AUTHOR_BOOST_MAX=3.0
-      - SCORE_RECOMMEND_THRESHOLD=70.0
-      - SCORE_LOW_INTEREST_THRESHOLD=40.0
-      - SCORE_CACHE_TTL=3600
+      - LOG_LEVEL=INFO
+      - LOG_FILE=/app/logs/glean-api.log
+      - LOG_ROTATION=100 MB
+      - LOG_RETENTION=30 days
+      - LOG_COMPRESSION=gz
+      - LOG_SERIALIZE=false
     volumes:
       - ${APP_DATA_DIR}/data/logs:/app/logs
     depends_on:
       postgres:
         condition: service_healthy
       redis:
+        condition: service_healthy
+      milvus:
         condition: service_healthy
     healthcheck:
       test: curl -f http://localhost:8000/api/health || exit 1
@@ -79,7 +68,14 @@ services:
       - DATABASE_URL=postgresql+asyncpg://glean:glean@postgres:5432/glean
       - REDIS_URL=redis://redis:6379/0
       - SECRET_KEY=${SECRET_KEY}
+      - MILVUS_HOST=milvus
+      - MILVUS_PORT=19530
       - LOG_LEVEL=INFO
+      - LOG_FILE=/app/logs/glean-worker.log
+      - LOG_ROTATION=100 MB
+      - LOG_RETENTION=30 days
+      - LOG_COMPRESSION=gz
+      - LOG_SERIALIZE=false
     volumes:
       - ${APP_DATA_DIR}/data/logs:/app/logs
     depends_on:
@@ -88,6 +84,8 @@ services:
       redis:
         condition: service_healthy
       backend:
+        condition: service_healthy
+      milvus:
         condition: service_healthy
     command: uv run --no-sync arq glean_worker.main.WorkerSettings
 
@@ -99,6 +97,61 @@ services:
     x-runtipi:
       is_main: true
       internal_port: 80
+
+  admin:
+    image: ghcr.io/leslieleung/glean-admin:0.2.6
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  milvus-etcd:
+    image: quay.io/coreos/etcd:v3.5.5
+    environment:
+      - ETCD_AUTO_COMPACTION_MODE=revision
+      - ETCD_AUTO_COMPACTION_RETENTION=1000
+      - ETCD_QUOTA_BACKEND_BYTES=4294967296
+      - ETCD_SNAPSHOT_COUNT=50000
+    volumes:
+      - ${APP_DATA_DIR}/data/etcd:/etcd
+    command: etcd -advertise-client-urls=http://milvus-etcd:2379 -listen-client-urls http://0.0.0.0:2379 --data-dir /etcd
+    healthcheck:
+      test: etcdctl endpoint health
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  milvus-minio:
+    image: minio/minio:RELEASE.2023-03-20T20-16-18Z
+    environment:
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=minioadmin
+    volumes:
+      - ${APP_DATA_DIR}/data/minio_data:/minio_data
+    command: minio server /minio_data
+    healthcheck:
+      test: curl -f http://localhost:9000/minio/health/live || exit 1
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  milvus:
+    image: milvusdb/milvus:v2.6.6
+    command: ["milvus", "run", "standalone"]
+    environment:
+      - ETCD_ENDPOINTS=milvus-etcd:2379
+      - MINIO_ADDRESS=milvus-minio:9000
+    volumes:
+      - ${APP_DATA_DIR}/data/milvus:/var/lib/milvus
+    depends_on:
+      milvus-etcd:
+        condition: service_healthy
+      milvus-minio:
+        condition: service_healthy
+    healthcheck:
+      test: curl -f http://localhost:9091/healthz || exit 1
+      interval: 30s
+      timeout: 20s
+      retries: 3
 
 x-runtipi:
   schema_version: 2
