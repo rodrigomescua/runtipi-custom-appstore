@@ -10,6 +10,9 @@ services:
       - IS_TOP=${IS_TOP}
       - MARK_STARRED_READ=${MARK_STARRED_READ}
       - TZ=${TZ}
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ENABLE_SPECTOR="false"
     volumes:
       - ${APP_DATA_DIR}/data/db:/app/db
     x-runtipi:
