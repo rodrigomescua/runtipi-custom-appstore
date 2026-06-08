@@ -1,6 +1,6 @@
 services:
   ruststash:
-    image: ghcr.io/rodrigomescua/ruststash:202606071505
+    image: ghcr.io/rodrigomescua/ruststash:202606080559
     restart: unless-stopped
     volumes:
       - ${APP_DATA_DIR}/data/data:/data
