@@ -16,6 +16,10 @@ on:
           - WARN
           - ERROR
           - FATAL
+      source_repo:
+        type: string
+        description: Optional GitHub repository in owner/repo format to limit Renovate to matching apps
+        required: false
   schedule:
     - cron: 0 9 * * *   # 6:00 AM America/Sao_Paulo (UTC-3)
     - cron: 0 17 * * *  # 2:00 PM America/Sao_Paulo (UTC-3)
@@ -55,7 +59,71 @@ jobs:
       - name: Install Renovate
         run: bun install -g renovate@40 re2
 
+      - name: Resolve source_repo filter
+        id: source-filter
+        shell: bash
+        env:
+          SOURCE_REPO_INPUT: ${{ github.event.inputs.source_repo || '' }}
+        run: |
+          if [ -z "$SOURCE_REPO_INPUT" ]; then
+            echo "apply_filter=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          NORMALIZED_REPO=$(printf '%s' "$SOURCE_REPO_INPUT" | tr '[:upper:]' '[:lower:]')
+
+          if [[ ! "$NORMALIZED_REPO" =~ ^[a-z0-9._-]+/[a-z0-9._-]+$ ]]; then
+            echo "Invalid source_repo '$SOURCE_REPO_INPUT'. Expected owner/repo format." >&2
+            exit 1
+          fi
+
+          MATCHED_PATHS=$(
+            find apps -mindepth 2 -maxdepth 2 -name config.json -print0 |
+              xargs -0 jq -r \
+                --arg repo "$NORMALIZED_REPO" '
+                  select(.source != null) as $cfg
+                  | ($cfg.source | ascii_downcase | capture("^https://github\\.com/(?<repo>[^/]+/[^/]+)/?$")?) as $match
+                  | select($match.repo == $repo)
+                  | input_filename
+                ' |
+              sed 's|/config\.json$||' |
+              sort -u
+          )
+
+          if [ -z "$MATCHED_PATHS" ]; then
+            echo "No apps found with config.json.source matching '$NORMALIZED_REPO'." >&2
+            exit 1
+          fi
+
+          INCLUDE_PATHS_JSON=$(printf '%s\n' "$MATCHED_PATHS" | jq -R . | jq -s 'map(. + "/**")')
+
+          jq -n \
+            --argjson includePaths "$INCLUDE_PATHS_JSON" \
+            '{ includePaths: $includePaths }' > renovate-filter.json
+
+          echo "apply_filter=true" >> "$GITHUB_OUTPUT"
+          echo "normalized_repo=$NORMALIZED_REPO" >> "$GITHUB_OUTPUT"
+          {
+            echo "matched_paths<<EOF"
+            printf '%s\n' "$MATCHED_PATHS"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Show source_repo filter
+        if: steps.source-filter.outputs.apply_filter == 'true'
+        shell: bash
+        run: |
+          echo "Filtering Renovate for source repo: ${{ steps.source-filter.outputs.normalized_repo }}"
+          echo "Matched app paths:"
+          printf '%s\n' "${{ steps.source-filter.outputs.matched_paths }}"
+
       - name: Run renovate
         env:
           RENOVATE_ALLOWED_POST_UPGRADE_COMMANDS: '["^bun install$","^bun \\./scripts/update-config\\.ts .*$","^bun run test$"]'
-        run: LOG_LEVEL=${{ github.event.inputs.log_level || 'INFO' }} renovate --token ${{ steps.app-token.outputs.token }} ${{ github.repository }}
+        shell: bash
+        run: |
+          if [ "${{ steps.source-filter.outputs.apply_filter }}" = "true" ]; then
+            export RENOVATE_ADDITIONAL_CONFIG_FILE="renovate-filter.json"
+          fi
+
+          LOG_LEVEL=${{ github.event.inputs.log_level || 'INFO' }} renovate --token ${{ steps.app-token.outputs.token }} ${{ github.repository }}
