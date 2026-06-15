@@ -10,8 +10,8 @@
     "utilities"
   ],
   "description": "FileBrowser Quantum provides a file managing interface within a specified directory and it can be used to upload, delete, preview, rename and edit your files.",
-  "tipi_version": 15,
-  "version": "1.4.4-beta",
+  "tipi_version": 16,
+  "version": "1.5.0-beta",
   "source": "https://github.com/gtsteffaniak/filebrowser",
   "exposable": true,
   "dynamic_config": true,
@@ -20,7 +20,7 @@
     "arm64"
   ],
   "created_at": 1732627200000,
-  "updated_at": 1781153678423,
+  "updated_at": 1781373814125,
   "form_fields": [
     {
       "env_variable": "APP_ADMIN_USERNAME",
