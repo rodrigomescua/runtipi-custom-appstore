@@ -83,6 +83,7 @@
         "digest"
       ],
       "automerge": true,
+      "platformAutomerge": true,
       "recreateWhen": "always",
       "automergeType": "pr"
     },
