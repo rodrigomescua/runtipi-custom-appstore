@@ -63,6 +63,27 @@
       "groupName": "{{parentDir}}"
     },
     {
+      "description": "Automerge patch and digest updates for trusted app images",
+      "matchFileNames": [
+        "apps/dockhand/docker-compose.yml",
+        "apps/murkpyrss/docker-compose.yml",
+        "apps/murkrss/docker-compose.yml",
+        "apps/pricebuddy/docker-compose.yml",
+        "apps/razor-finance/docker-compose.yml",
+        "apps/razorstash/docker-compose.yml",
+        "apps/rustavoid/docker-compose.yml",
+        "apps/rustpnews/docker-compose.yml",
+        "apps/ruststash/docker-compose.yml",
+        "apps/tuliprox/docker-compose.yml"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "digest"
+      ],
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
       "description": "Allow dev-* tags for m3u-editor",
       "matchPackageNames": [
         "sparkison/m3u-editor"
