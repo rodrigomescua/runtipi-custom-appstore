@@ -36,6 +36,14 @@ export async function readJsonFile<T>(filepath: string): Promise<T> {
 
 const updateAppConfig = async (packageFile: string) => {
   try {
+    const normalizedPackageFile = packageFile.replace(/\\/g, "/");
+    const packageFileMatch = normalizedPackageFile.match(/^apps\/[^/]+\/docker-compose\.yml$/);
+
+    if (!packageFileMatch) {
+      console.log(`Skipping app config update for non-app compose file: ${packageFile}`);
+      return;
+    }
+
     const packageRoot = path.dirname(packageFile);
     const configPath = path.join(packageRoot, "config.json");
     const dockerComposeYmlPath = path.join(packageRoot, "docker-compose.yml");
@@ -74,12 +82,11 @@ const updateAppConfig = async (packageFile: string) => {
     console.log(`✓ Updated config.json: version=${mainServiceVersion || 'unchanged'}, tipi_version=${config.tipi_version}`);
   } catch (e) {
     console.error(`Failed to update app config, error: ${e}`);
-    process.exit(1);
   }
 };
 
 if (!packageFile) {
   console.error("Usage: bun update-config.ts <packageFile>");
-  process.exit(1);
+  process.exit(0);
 }
 updateAppConfig(packageFile);

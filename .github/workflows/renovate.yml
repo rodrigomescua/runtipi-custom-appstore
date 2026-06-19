@@ -95,14 +95,11 @@ jobs:
             exit 1
           fi
 
-          INCLUDE_PATHS_JSON=$(printf '%s\n' "$MATCHED_PATHS" | jq -R . | jq -s 'map(. + "/**")')
-
-          jq -n \
-            --argjson includePaths "$INCLUDE_PATHS_JSON" \
-            '{ includePaths: $includePaths }' > renovate-filter.json
+          INCLUDE_PATHS_JSON=$(printf '%s\n' "$MATCHED_PATHS" | jq -R . | jq -cs 'map(. + "/**")')
 
           echo "apply_filter=true" >> "$GITHUB_OUTPUT"
           echo "normalized_repo=$NORMALIZED_REPO" >> "$GITHUB_OUTPUT"
+          echo "include_paths=$INCLUDE_PATHS_JSON" >> "$GITHUB_OUTPUT"
           {
             echo "matched_paths<<EOF"
             printf '%s\n' "$MATCHED_PATHS"
@@ -123,7 +120,7 @@ jobs:
         shell: bash
         run: |
           if [ "${{ steps.source-filter.outputs.apply_filter }}" = "true" ]; then
-            export RENOVATE_ADDITIONAL_CONFIG_FILE="renovate-filter.json"
+            export RENOVATE_INCLUDE_PATHS='${{ steps.source-filter.outputs.include_paths }}'
           fi
 
           LOG_LEVEL=${{ github.event.inputs.log_level || 'INFO' }} renovate --token ${{ steps.app-token.outputs.token }} ${{ github.repository }}
