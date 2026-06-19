@@ -63,7 +63,7 @@
       "groupName": "{{parentDir}}"
     },
     {
-      "description": "Automerge patch and digest updates for trusted app images",
+      "description": "Automerge major, minor, patch, and digest updates for trusted app images",
       "matchFileNames": [
         "apps/dockhand/docker-compose.yml",
         "apps/murkpyrss/docker-compose.yml",
@@ -77,6 +77,8 @@
         "apps/tuliprox/docker-compose.yml"
       ],
       "matchUpdateTypes": [
+        "major",
+        "minor",
         "patch",
         "digest"
       ],
