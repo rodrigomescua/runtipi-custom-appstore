@@ -1,6 +1,6 @@
 services:
   pricebuddy:
-    image: jez500/pricebuddy:v1.0.49
+    image: jez500/pricebuddy:v1.0.50
     environment:
       - APP_URL=${APP_PROTOCOL:-http}://${APP_DOMAIN}
       - ASSET_URL=${APP_PROTOCOL:-http}://${APP_DOMAIN}
