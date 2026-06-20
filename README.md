@@ -18,9 +18,9 @@ If you want to see new apps on Tipi you can either:
 - [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
 - Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
 
-## Apps available (52)
+## Apps available (53)
 
-| Name                                                                         | Description                                                                                                      | Port  | Dynamic (52) |
+| Name                                                                         | Description                                                                                                      | Port  | Dynamic (53) |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ----- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                            | Self-hosted GPU video compressor                                                                                 | 8846  | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                             | Note taking, to-do and moodboard application                                                                     | 8831  | yes          |
@@ -28,6 +28,7 @@ If you want to see new apps on Tipi you can either:
 | [Cinephage](https://github.com/MoldyTaint/Cinephage)                         | Unified self-hosted media management in one app                                                                  | 8858  | yes          |
 | [CondenseIt](https://github.com/wildlifechorus/condenseit)                   | Self-hosted AI daily news digest from RSS feeds, YouTube channels, and web pages.                                | 8868  | yes          |
 | [Dawarich](https://github.com/Freika/dawarich)                               | Self-hostable alternative to Google Location History (Google Maps Timeline)                                      | 8824  | yes          |
+| [Degoog](https://github.com/degoog-org/degoog)                               | Self-hosted meta search engine                                                                                   | 8869  | yes          |
 | [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr)                    | Ultimate IPTV & Stream Management Companion                                                                      | 8843  | yes          |
 | [Dockhand](https://github.com/Finsys/dockhand)                               | Modern Docker management UI with real-time monitoring                                                            | 8832  | yes          |
 | [Faved](https://github.com/denho/faved)                                      | Self-hosted bookmark manager with tagging                                                                        | 8842  | yes          |
