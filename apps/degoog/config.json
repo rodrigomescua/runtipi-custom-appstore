@@ -5,10 +5,10 @@
   "available": true,
   "short_desc": "Self-hosted meta search engine",
   "author": "degoog-org",
-  "port": 8868,
+  "port": 8869,
   "categories": ["network", "utilities"],
   "description": "Degoog is a self-hosted meta search aggregator that queries multiple search engines and combines the results. It features a clean interface, support for extensions and plugins, built-in result indexer, and privacy-focused design with no tracking. Ideal for personal or small team use as a privacy-respecting alternative to commercial search engines.",
-  "tipi_version": 1,
+  "tipi_version": 2,
   "version": "0.21.0",
   "urn": "tipi://degoog",
   "source": "https://github.com/degoog-org/degoog",
@@ -17,7 +17,7 @@
   "dynamic_config": true,
   "supported_architectures": ["amd64", "arm64"],
   "created_at": 1750298400000,
-  "updated_at": 1750298400000,
+  "updated_at": 1781922731061,
   "form_fields": [
     {
       "type": "password",
