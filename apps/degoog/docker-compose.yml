@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  degoog:
+    image: ghcr.io/degoog-org/degoog:0.21.0
+    environment:
+      - TZ=${TZ}
+      - PUID=1000
+      - PGID=1000
+      - DEGOOG_SETTINGS_PASSWORDS=${DEGOOG_SETTINGS_PASSWORDS:-}
+    volumes:
+      - ${APP_DATA_DIR}/data/data:/app/data
+    healthcheck:
+      test: curl -fsS http://localhost:4444/readyz || exit 1
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+    x-runtipi:
+      is_main: true
+      internal_port: 4444
+
+x-runtipi:
+  schema_version: 2

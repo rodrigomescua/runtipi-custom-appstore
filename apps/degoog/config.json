@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Degoog",
+  "id": "degoog",
+  "available": true,
+  "short_desc": "Self-hosted meta search engine",
+  "author": "degoog-org",
+  "port": 8868,
+  "categories": ["network", "utilities"],
+  "description": "Degoog is a self-hosted meta search aggregator that queries multiple search engines and combines the results. It features a clean interface, support for extensions and plugins, built-in result indexer, and privacy-focused design with no tracking. Ideal for personal or small team use as a privacy-respecting alternative to commercial search engines.",
+  "tipi_version": 1,
+  "version": "0.21.0",
+  "urn": "tipi://degoog",
+  "source": "https://github.com/degoog-org/degoog",
+  "website": "https://degoog-org.github.io/docs/",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "created_at": 1750298400000,
+  "updated_at": 1750298400000,
+  "form_fields": [
+    {
+      "type": "password",
+      "label": "Settings Password",
+      "required": false,
+      "env_variable": "DEGOOG_SETTINGS_PASSWORDS",
+      "hint": "Optional password to protect the settings panel. Leave empty for no password.",
+      "min": 8
+    }
+  ]
+}
