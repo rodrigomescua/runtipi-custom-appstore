@@ -9,6 +9,7 @@ services:
       - ${APP_DATA_DIR}/data/authentik-data:/data
       - ${APP_DATA_DIR}/data/authentik-custom-templates:/templates
     environment:
+      - CATCHALL_DOMAIN=${CATCHALL_DOMAIN}
       - AUTHENTIK_POSTGRESQL__HOST=authentik-db
       - AUTHENTIK_POSTGRESQL__USER=authentik
       - AUTHENTIK_POSTGRESQL__NAME=authentik
@@ -34,6 +35,7 @@ services:
       - ${APP_DATA_DIR}/data/authentik-certs:/certs
       - ${APP_DATA_DIR}/data/authentik-custom-templates:/templates
     environment:
+      - CATCHALL_DOMAIN=${CATCHALL_DOMAIN}
       - AUTHENTIK_POSTGRESQL__HOST=authentik-db
       - AUTHENTIK_POSTGRESQL__USER=authentik
       - AUTHENTIK_POSTGRESQL__NAME=authentik
