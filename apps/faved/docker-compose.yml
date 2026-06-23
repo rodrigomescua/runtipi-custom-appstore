@@ -1,6 +1,6 @@
 services:
   faved:
-    image: denho/faved:2.9.0
+    image: denho/faved:2.9.1
     environment:
       - TZ=${TZ}
     volumes:
