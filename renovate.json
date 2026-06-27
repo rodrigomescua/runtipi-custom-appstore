@@ -71,6 +71,7 @@
         "apps/pricebuddy/docker-compose.yml",
         "apps/razor-finance/docker-compose.yml",
         "apps/razorstash/docker-compose.yml",
+        "apps/razorpnews/docker-compose.yml",
         "apps/rustavoid/docker-compose.yml",
         "apps/rustpnews/docker-compose.yml",
         "apps/ruststash/docker-compose.yml",
