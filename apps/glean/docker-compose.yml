@@ -25,7 +25,7 @@ services:
       retries: 5
 
   backend:
-    image: ghcr.io/leslieleung/glean-backend:0.2.6
+    image: ghcr.io/leslieleung/glean-backend:0.2.7
     environment:
       - DATABASE_URL=postgresql+asyncpg://glean:glean@postgres:5432/glean
       - REDIS_URL=redis://redis:6379/0
@@ -63,7 +63,7 @@ services:
     command: uv run --no-sync uvicorn glean_api.main:app --host 0.0.0.0 --port 8000
 
   worker:
-    image: ghcr.io/leslieleung/glean-backend:0.2.6
+    image: ghcr.io/leslieleung/glean-backend:0.2.7
     environment:
       - DATABASE_URL=postgresql+asyncpg://glean:glean@postgres:5432/glean
       - REDIS_URL=redis://redis:6379/0
@@ -90,7 +90,7 @@ services:
     command: uv run --no-sync arq glean_worker.main.WorkerSettings
 
   web:
-    image: ghcr.io/leslieleung/glean-web:0.2.6
+    image: ghcr.io/leslieleung/glean-web:0.2.7
     depends_on:
       backend:
         condition: service_healthy
@@ -99,7 +99,7 @@ services:
       internal_port: 80
 
   admin:
-    image: ghcr.io/leslieleung/glean-admin:0.2.6
+    image: ghcr.io/leslieleung/glean-admin:0.2.7
     depends_on:
       backend:
         condition: service_healthy
