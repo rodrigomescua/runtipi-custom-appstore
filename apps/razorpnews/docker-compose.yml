@@ -1,6 +1,6 @@
 services:
   razorpnews:
-    image: ghcr.io/rodrigomescua/razorpnews:202606281420
+    image: ghcr.io/rodrigomescua/razorpnews:202606281425
     restart: unless-stopped
     volumes:
       - ${APP_DATA_DIR}/data/data:/data
