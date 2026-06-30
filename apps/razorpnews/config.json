@@ -11,8 +11,8 @@
     "media"
   ],
   "description": "Rust web app that consumes the TPDB REST API and persists local studio/performer reactions in SQLite.",
-  "tipi_version": 12,
-  "version": "202606301310",
+  "tipi_version": 13,
+  "version": "202606301354",
   "source": "https://github.com/rodrigomescua/razorpnews",
   "urn": "tipi://razorpnews",
   "exposable": true,
@@ -22,7 +22,7 @@
     "arm64"
   ],
   "created_at": 1781555254594,
-  "updated_at": 1782825125685,
+  "updated_at": 1782827719769,
   "form_fields": [
     {
       "type": "password",
