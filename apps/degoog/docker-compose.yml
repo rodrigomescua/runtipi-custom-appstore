@@ -2,7 +2,7 @@ version: '3'
 
 services:
   degoog:
-    image: ghcr.io/degoog-org/degoog:0.22.0
+    image: ghcr.io/degoog-org/degoog:0.23.0
     environment:
       - TZ=${TZ}
       - PUID=1000
