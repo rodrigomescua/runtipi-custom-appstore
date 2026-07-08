@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  filegator:
+    image: filegator/filegator:v7.14.3
+    restart: unless-stopped
+    volumes:
+      - ${APP_DATA_DIR}/data/private:/var/www/filegator/private
+      - ${APP_DATA_DIR}/data/repository:/var/www/filegator/repository
+    x-runtipi:
+      is_main: true
+      internal_port: 8080
+
+x-runtipi:
+  schema_version: 2

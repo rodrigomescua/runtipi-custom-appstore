@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "FileGator",
+  "id": "filegator",
+  "available": true,
+  "short_desc": "Self-hosted file manager",
+  "author": "FileGator",
+  "port": 8835,
+  "categories": [
+    "utilities",
+    "data"
+  ],
+  "description": "FileGator is a free, open-source, self-hosted web application for managing files and folders. It provides multi-user access, role-based permissions, drag-and-drop uploads, chunked transfer support, and a clean browser-based interface for managing repository contents.",
+  "tipi_version": 1,
+  "version": "v7.14.3",
+  "source": "https://github.com/filegator/filegator",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "created_at": 1783543370351,
+  "updated_at": 1783543370351,
+  "form_fields": [],
+  "urn": "tipi://filegator"
+}
