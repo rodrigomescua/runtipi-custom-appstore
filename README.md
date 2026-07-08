@@ -1,22 +1,23 @@
-# Tipi App Store ⛺
+# Runtipi Custom App Store
 
-## How to get started
+This repository contains custom apps for [Runtipi](https://github.com/runtipi/runtipi). Each app follows the same file contract under `apps/<app-id>/`.
 
-1. Install **[Node.js](https://nodejs.org/en)** on your machine
-2. Install **[pnpm](https://pnpm.io/installation)** package manager
-3. Install dependencies (from the root of the project)
+## Getting Started
 
-```bash
-pnpm install
-```
+1. Install [Node.js](https://nodejs.org/en) if it is not already available.
+2. Install dependencies from the repository root with `bun install`.
+3. Run `bun test` after changing any app files.
 
-## How to sumbit an app
+## Contribution Flow
 
-If you want to see new apps on Tipi you can either:
+- Keep app changes inside `apps/<app-id>/`.
+- Update `config.json` and `docker-compose.yml` together when changing an image tag.
+- Use `bun scripts/update-config.ts apps/<app-name>/docker-compose.yml` after compose image updates.
+- Follow the canonical rules in [AGENTS.md](./AGENTS.md).
 
-- [Create a discussion](https://github.com/runtipi/runtipi-appstore/discussions) on this repository and members of the community will add it
-- [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
-- Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
+## App Requests
+
+If you want a new app added, open a discussion or create a pull request with the required app files. Use the project rules in [AGENTS.md](./AGENTS.md) before submitting.
 
 ## Apps available (53)
 

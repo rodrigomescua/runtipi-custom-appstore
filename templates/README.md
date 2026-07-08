@@ -1,21 +1,16 @@
-# Tipi App Store ⛺
+# Runtipi Custom App Store
 
-## How to get started
+## Getting Started
 
-1. Install **[Node.js](https://nodejs.org/en)** on your machine
-2. Install **[pnpm](https://pnpm.io/installation)** package manager
-3. Install dependencies (from the root of the project)
-```bash
-pnpm install
-```
+1. Install [Node.js](https://nodejs.org/en) if needed.
+2. Install dependencies from the repository root with `bun install`.
+3. Run `bun test` after changing app files.
 
-## How to sumbit an app
+## App Contributions
 
-If you want to see new apps on Tipi you can either:
-
-- [Create a discussion](https://github.com/runtipi/runtipi-appstore/discussions) on this repository and members of the community will add it
-- [Join the Discord](https://discord.gg/Bu9qEPnHsc) members of the community will add it.
-- Fork this repo and create the necessary files for a Tipi app. Follow this [guide](https://www.runtipi.io/docs/contributing/adding-a-new-app)`
+- Follow [AGENTS.md](../AGENTS.md) for the canonical repository rules.
+- Keep `config.json` and `docker-compose.yml` in sync when updating an app.
+- Use `bun scripts/update-config.ts apps/<app-name>/docker-compose.yml` after image-tag changes.
 
 ## Apps available (<!appsCount>)
 

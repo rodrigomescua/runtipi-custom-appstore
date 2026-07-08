@@ -1,0 +1,10 @@
+version: '3'
+services:
+  omni-tools:
+    image: iib0011/omni-tools:0.6.0
+    x-runtipi:
+      is_main: true
+      internal_port: 80
+
+x-runtipi:
+  schema_version: 2

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "OmniTools",
+  "id": "omni-tools",
+  "available": true,
+  "short_desc": "Self-hosted collection of browser-based utilities",
+  "author": "iib0011",
+  "port": 8870,
+  "categories": [
+    "utilities"
+  ],
+  "description": "OmniTools is a self-hosted web app with client-side utilities for common everyday tasks, including image, video, PDF, text, list, date, time, math, JSON, CSV, and XML workflows.",
+  "tipi_version": 1,
+  "version": "0.6.0",
+  "source": "https://github.com/iib0011/omni-tools",
+  "website": "https://omnitools.app",
+  "urn": "tipi://omni-tools",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "created_at": 1783530020463,
+  "updated_at": 1783530020463,
+  "form_fields": []
+}

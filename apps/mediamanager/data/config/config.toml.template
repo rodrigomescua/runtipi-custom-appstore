@@ -19,7 +19,7 @@ torrent_directory = "/media/torrents" # this is where MediaManager will search f
 development = false
 
 # Custom Media Libraries
-# These paths should match your volume mounts in docker-compose.yaml
+# These paths should match your volume mounts in docker-compose.yml
 # Example: if you mount "./movies:/media/movies" then use path = "/media/movies/subdirectory"
 #[[misc.tv_libraries]]
 #name = "Live Action"

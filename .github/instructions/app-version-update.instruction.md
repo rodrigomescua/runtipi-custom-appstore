@@ -11,7 +11,7 @@ When updating an app version, ALL of the following must be done together:
 3. Increment `tipi_version` by 1 in `config.json`
 4. Update `updated_at` to current timestamp in milliseconds (`Date.now()`)
 
-**The `version` in config.json and the image tag in docker-compose.yml MUST be character-for-character identical.**
+The `version` in `config.json` and the image tag in `docker-compose.yml` must be character-for-character identical.
 
 Always verify the exact tag format from the actual registry before committing.
-See `.github/copilot-instructions.md` for complete guidelines.
+Follow [AGENTS.md](../../AGENTS.md) for the canonical repository rules.
