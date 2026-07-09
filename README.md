@@ -1,27 +1,20 @@
 # Runtipi Custom App Store
 
-This repository contains custom apps for [Runtipi](https://github.com/runtipi/runtipi). Each app follows the same file contract under `apps/<app-id>/`.
-
 ## Getting Started
 
-1. Install [Node.js](https://nodejs.org/en) if it is not already available.
+1. Install [Node.js](https://nodejs.org/en) if needed.
 2. Install dependencies from the repository root with `bun install`.
-3. Run `bun test` after changing any app files.
+3. Run `bun test` after changing app files.
 
-## Contribution Flow
+## App Contributions
 
-- Keep app changes inside `apps/<app-id>/`.
-- Update `config.json` and `docker-compose.yml` together when changing an image tag.
-- Use `bun scripts/update-config.ts apps/<app-name>/docker-compose.yml` after compose image updates.
-- Follow the canonical rules in [AGENTS.md](./AGENTS.md).
+- Follow [AGENTS.md](../AGENTS.md) for the canonical repository rules.
+- Keep `config.json` and `docker-compose.yml` in sync when updating an app.
+- Use `bun scripts/update-config.ts apps/<app-name>/docker-compose.yml` after image-tag changes.
 
-## App Requests
+## Apps available (47)
 
-If you want a new app added, open a discussion or create a pull request with the required app files. Use the project rules in [AGENTS.md](./AGENTS.md) before submitting.
-
-## Apps available (53)
-
-| Name                                                                         | Description                                                                                        | Port | Dynamic (53) |
+| Name                                                                         | Description                                                                                        | Port | Dynamic (47) |
 | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                            | Self-hosted GPU video compressor                                                                   | 8846 | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                             | Note taking, to-do and moodboard application                                                       | 8831 | yes          |
@@ -46,31 +39,25 @@ If you want a new app added, open a discussion or create a pull request with the
 | [MurkPyRSS](https://github.com/rodrigomescua/murkpyrss)                      | Modern Scraping & Autonomous RSS Generator                                                         | 8865 | yes          |
 | [MurkRSS](https://github.com/rodrigomescua/MurkRSS)                          | Hybrid Scraping & Autonomous RSS Generator                                                         | 8863 | yes          |
 | [Muxarr](https://github.com/KirovAir/muxarr)                                 | Strip unwanted audio and subtitle tracks from media files                                          | 8862 | yes          |
+| [OmniTools](https://github.com/iib0011/omni-tools)                           | Self-hosted collection of browser-based utilities                                                  | 8870 | yes          |
 | [Omoide](https://github.com/EinAeffchen/Omoide)                              | Offline-first photo and video library with AI organization                                         | 8841 | yes          |
 | [Photon](https://github.com/rtuszik/photon-docker)                           | This is an unofficial docker image for Photon                                                      | 8825 | yes          |
 | [Piwigo](https://github.com/Piwigo/Piwigo)                                   | Open-source photo gallery software                                                                 | 8849 | yes          |
 | [PriceBuddy](https://github.com/jez500/pricebuddy)                           | Self-hosted price tracker with notifications                                                       | 8839 | yes          |
 | [qBitWebUI](https://github.com/mkbula/qbitwebui)                             | Modern qBittorrent web interface                                                                   | 8853 | yes          |
-| [Qui](https://github.com/autobrr/qui)                                        | Modern qBittorrent web interface                                                                   | 8852 | yes          |
 | [Razor Finance](https://github.com/rodrigomescua/RazorFinanceDocker)         | Gerenciamento financeiro                                                                           | 8840 | yes          |
 | [Razor IPTV](https://github.com/romesc/RazorIptvDocker)                      | Razor IPTV                                                                                         | 8821 | yes          |
 | [Razor Miniflux](https://github.com/romesc/RazorMinifluxDocker)              | Razor Miniflux                                                                                     | 8822 | yes          |
 | [Razor Miniflux - Restricted](https://github.com/romesc/RazorMinifluxDocker) | Razor Miniflux Restricted                                                                          | 8823 | yes          |
 | [Razor Price History](https://github.com/romesc/RazorPriceHistory)           | Razor Price History                                                                                | 8820 | yes          |
-| [RazorPnews](https://github.com/rodrigomescua/razorpnews)                    | Self-hosted TPDB browser                                                                           | 8851 | yes          |
 | [Razorstash](https://github.com/rodrigomescua/razorstash)                    | Self-hosted StashDB scraper                                                                        | 8851 | yes          |
 | [Recommendarr](https://github.com/fingerthief/recommendarr)                  | AI-powered TV and movie recommendations based on your library                                      | 8827 | yes          |
 | [Reitti](https://github.com/dedicatedcode/reitti)                            | Personal Location Tracking & Analysis - Self-hosted alternative to Google Timeline                 | 8826 | yes          |
 | [RSS-Bridge](https://github.com/RSS-Bridge/rss-bridge)                       | Generate RSS feeds for websites without one                                                        | 8864 | yes          |
 | [Rustavoid](https://github.com/rodrigomescua/Rustavoid)                      | Self-hosted app to register products and companies to avoid                                        | 8856 | yes          |
-| [Rustpnews](https://github.com/rodrigomescua/rustpnews)                      | Self-hosted developer news aggregator and RSS polling service                                      | 8857 | yes          |
-| [Ruststash](https://github.com/rodrigomescua/ruststash)                      | Self-hosted StashDB scrapper                                                                       | 8859 | yes          |
-| [Stash](https://github.com/stashapp/stash)                                   | Organize and serve media.                                                                          | 8847 | yes          |
 | [Stationarr](https://github.com/rroy676/Stationarr)                          | IPTV playlist editor, EPG matcher, and self-hosted companion                                       | 8867 | yes          |
 | [Sure](https://github.com/we-promise/sure)                                   | Self-hosted personal finance app                                                                   | 8866 | yes          |
 | [TrackWatch](https://github.com/emlopezr/trackwatch)                         | Self-hosted Spotify release tracker                                                                | 8834 | yes          |
-| [Tuliprox](https://github.com/euzu/tuliprox)                                 | Powerful IPTV proxy and M3U/Xtream playlist processor                                              | 8855 | yes          |
-| [Tuvix RSS](https://github.com/TechSquidTV/Tuvix-RSS)                        | Self-hosted RSS aggregator                                                                         | 8835 | yes          |
 | [Upsnap](https://github.com/seriousm4x/UpSnap)                               | A simple wake on lan web app written with SvelteKit, Go and PocketBase.                            | 8090 | yes          |
 | [VCompose](https://github.com/zbrave/vcompose)                               | Visual Docker Compose Builder                                                                      | 8861 | yes          |
 | [Wallabag](https://github.com/wallabag/wallabag)                             | Wallabag                                                                                           | 8829 | yes          |
