@@ -12,9 +12,9 @@
 - Keep `config.json` and `docker-compose.yml` in sync when updating an app.
 - Use `bun scripts/update-config.ts apps/<app-name>/docker-compose.yml` after image-tag changes.
 
-## Apps available (47)
+## Apps available (48)
 
-| Name                                                                         | Description                                                                                        | Port | Dynamic (47) |
+| Name                                                                         | Description                                                                                        | Port | Dynamic (48) |
 | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                            | Self-hosted GPU video compressor                                                                   | 8846 | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                             | Note taking, to-do and moodboard application                                                       | 8831 | yes          |
@@ -30,6 +30,7 @@
 | [FileFlows](https://github.com/revenz/FileFlows)                             | File processing automation server for media transcoding and workflow pipelines                     | 8836 | yes          |
 | [GeoPulse](https://github.com/tess1o/geopulse)                               | Self-hosted location tracking and analysis platform                                                | 8844 | yes          |
 | [Glean](https://github.com/LeslieLeung/glean)                                | Self-hosted RSS reader and personal knowledge management                                           | 8845 | yes          |
+| [Ignis](https://github.com/Nystik-gh/ignis)                                  | Run Obsidian as a self-hosted web app. Not remote desktop, an actual web app.                      | 8287 | yes          |
 | [ImageMagick WebGUI](https://github.com/PrzemekSkw/imagemagick-webui)        | Modern web interface for ImageMagick with AI-powered image processing                              | 8848 | yes          |
 | [KitchenOwl](https://github.com/tombursch/kitchenowl)                        | KitchenOwl                                                                                         | 8828 | yes          |
 | [Linkding](https://github.com/sissbruecker/linkding)                         | Self-hosted bookmark manager                                                                       | 8830 | yes          |
