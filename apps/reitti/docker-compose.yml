@@ -22,6 +22,7 @@ services:
     x-runtipi:
       is_main: true
       internal_port: 8080
+      
   reitti_postgis:
     image: postgis/postgis:17-3.5-alpine
     environment:
@@ -47,13 +48,8 @@ services:
       retries: 5
 
   reitti_tile_cache:
-    image: dedicatedcode/reitti-tile-cache:next
+    image: dedicatedcode/reitti-tile-cache:5
     restart: unless-stopped
-    healthcheck:
-      test: wget --quiet --tries=1 --spider http://127.0.0.1/osm/0/0/0.png || exit 1
-      interval: 10s
-      timeout: 5s
-      retries: 5
     volumes:
       - ${APP_DATA_DIR}/data/tile-cache:/var/cache/nginx
 
