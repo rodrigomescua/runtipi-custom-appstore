@@ -1,6 +1,6 @@
 services:
   razorstash:
-    image: ghcr.io/rodrigomescua/razorstash:202607141328
+    image: ghcr.io/rodrigomescua/razorstash:202607150243
     restart: unless-stopped
     volumes:
       - ${APP_DATA_DIR}/data/data:/data
