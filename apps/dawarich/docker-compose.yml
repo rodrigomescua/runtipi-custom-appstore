@@ -35,7 +35,7 @@ services:
 
   # Service 3: Dawarich Web Application (MAIN SERVICE)
   dawarich:
-    image: freikin/dawarich:1.9.2
+    image: freikin/dawarich:1.10.0
     container_name: dawarich
     command:
       - bin/rails
@@ -70,6 +70,7 @@ services:
       # Photon API (reverse geocoding service)
       - PHOTON_API_HOST=${PHOTON_URL}:${PHOTON_PORT}
       - PHOTON_API_USE_HTTPS=false
+      - WEB_CONCURRENCY=1
     volumes:
       # Public files directory
       - ${APP_DATA_DIR}/data/dawarich_public:/var/app/public
@@ -101,7 +102,7 @@ services:
 
   # Service 4: Sidekiq Background Job Worker
   dawarich_sidekiq:
-    image: freikin/dawarich:1.9.2
+    image: freikin/dawarich:1.10.0
     container_name: dawarich_sidekiq
     command:
       - sidekiq
@@ -117,7 +118,7 @@ services:
       - DATABASE_NAME=dawarich_development
       # Application settings
       - APPLICATION_HOSTS=localhost,dawarich.murkmesc.top
-      - BACKGROUND_PROCESSING_CONCURRENCY=10
+      - BACKGROUND_PROCESSING_CONCURRENCY=3
       - APPLICATION_PROTOCOL=http
       # Prometheus metrics
       - PROMETHEUS_EXPORTER_ENABLED=false
