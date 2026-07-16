@@ -1,6 +1,6 @@
 services:
   photon:
-    image: rtuszik/photon-docker:2.3.0
+    image: rtuszik/photon-docker:2.3.1
     environment:
       - UPDATE_STRATEGY=PARALLEL
       - UPDATE_INTERVAL=720h
