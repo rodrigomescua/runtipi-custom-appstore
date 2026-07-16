@@ -1,6 +1,6 @@
 services:
   upsnap:
-    image: ghcr.io/seriousm4x/upsnap:5.4.2
+    image: ghcr.io/seriousm4x/upsnap:5.4.3
     environment:
       - TZ=${TZ}
       - UPSNAP_INTERVAL=*/10 * * * * *
