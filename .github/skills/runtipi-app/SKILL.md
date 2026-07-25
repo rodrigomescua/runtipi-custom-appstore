@@ -11,7 +11,7 @@ Use this workflow for every app change in this repository.
 
 - Read `AGENTS.md` and inspect comparable apps before editing.
 - Use `bun` for commands.
-- Verify the image tag from the actual registry; never assume GitHub release tags match container tags.
+- Verify the exact image tag from the actual registry before editing or approving the app. Never assume GitHub release tags match container tags. Treat a missing or inconclusive registry response as a blocker.
 - Assign new host ports only in `8800-8999` and check existing `config.json` values first.
 
 ## App contract
@@ -24,6 +24,8 @@ Create exactly:
 - `apps/<id>/metadata/logo.jpg`
 
 Compose must be YAML with root `version: '3'`, root `x-runtipi.schema_version: 2`, exactly one `x-runtipi.is_main: true`, and no `ports:` block. Set `internal_port` to the container port. Keep `config.json.version` exactly equal to the main image tag and do not use `latest`.
+
+For Docker Hub, query `https://hub.docker.com/v2/repositories/<namespace>/<repository>/tags` and require the exact tag in the response. Record and compare the exact string, including a `v` prefix. Do not treat a release page, Docker Hub summary, or `latest` alias as tag verification.
 
 Map persistent host paths using only the final container path segment, such as `/config` to `${APP_DATA_DIR}/data/config`. Keep database credentials in compose rather than `form_fields`.
 
@@ -55,4 +57,4 @@ Run:
 bun test
 ```
 
-Before finishing, verify required files, JSON/compose schemas, image/config version equality, port availability, volume naming, logo format/dimensions/margins/background, and that no secrets or `latest` tags were introduced.
+Before finishing, verify required files, JSON/compose schemas, registry tag existence, exact image/config version equality, port availability, volume naming, logo format/dimensions/margins/background, and that no secrets or `latest` tags were introduced. Do not report completion if any check is unverified.
