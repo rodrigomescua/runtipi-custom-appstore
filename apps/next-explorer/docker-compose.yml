@@ -6,7 +6,7 @@ services:
     environment:
       NODE_ENV: production
       PORT: '3000'
-      PUBLIC_URL: ${APP_PROTOCOL:-http}://${APP_LOCAL_DOMAIN}
+      PUBLIC_URL: https://${APP_LOCAL_DOMAIN}
       SESSION_SECRET: ${APP_SESSION_SECRET}
       VOLUME_ROOT: /mnt
       CONFIG_DIR: /config

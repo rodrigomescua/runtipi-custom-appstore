@@ -10,7 +10,7 @@
     "utilities"
   ],
   "description": "NextExplorer is a modern, self-hosted web file explorer with local users and groups, optional OIDC SSO, previews for images, videos and PDFs, inline editing, sharing workflows and fast filename/content search.",
-  "tipi_version": 2,
+  "tipi_version": 3,
   "version": "v2.2.7",
   "source": "https://github.com/nxzai/NextExplorer",
   "exposable": true,
