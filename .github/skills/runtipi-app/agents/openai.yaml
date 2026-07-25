@@ -1,0 +1,4 @@
+interface:
+  display_name: "Runtipi App"
+  short_description: "Create and validate Runtipi custom apps"
+  default_prompt: "Use $runtipi-app to create or audit a Runtipi custom app."

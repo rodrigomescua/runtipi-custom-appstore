@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  next-explorer:
+    image: nxzai/explorer:2.2.7
+    environment:
+      NODE_ENV: production
+      PORT: '3000'
+      PUBLIC_URL: ${APP_PROTOCOL:-http}://${APP_LOCAL_DOMAIN}
+      SESSION_SECRET: ${APP_SESSION_SECRET}
+      VOLUME_ROOT: /mnt
+      CONFIG_DIR: /config
+      CACHE_DIR: /cache
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${APP_DATA_DIR}/data/cache:/cache
+      - ${ROOT_FOLDER_HOST}:/mnt/Runtipi
+    restart: unless-stopped
+    x-runtipi:
+      is_main: true
+      internal_port: 3000
+
+x-runtipi:
+  schema_version: 2

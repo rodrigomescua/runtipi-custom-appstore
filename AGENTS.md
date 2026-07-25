@@ -47,15 +47,32 @@ grep -rh '"port"' apps/*/config.json | grep -oP ':\s*\K\d+' | sort -n | uniq
 ## Logos
 
 - Logo format: 512x512 JPG.
+- Search order: first check the trusted [selfh.st/icons/](https://selfh.st/icons/) catalog, then the project's official website or GitHub repository, and ask the user only if no suitable logo exists.
+- Download the preferred source as PNG when available, then convert it to a 512x512 JPG.
+- Do not use rounded corners or button-like frames; the logo should be the icon itself.
 - Keep margins around 15-20%.
-- Avoid rounded corners and button-like frames.
-- Prefer the official logo source first, then the project site or GitHub, then ask the user if nothing suitable exists.
 - For transparent logos, use a dark gray background for light logos and a very light gray background for dark logos.
 
 ## Validation
 
+- Run `bun install` when dependencies are not installed.
 - Run `bun test` before finishing any app change.
 - Use `bun scripts/update-config.ts apps/<app-name>/docker-compose.yml` after image-tag updates.
+
+Tests verify that required files exist and that `config.json` and `docker-compose.yml` match the Runtipi schemas.
+
+## Additional compose and version rules
+
+- Verify image tags against the actual registry; do not assume GitHub release tags match Docker image tags. Check prefixes such as `v` and inspect the registry or workflow when necessary.
+- Compose services must be YAML objects, not arrays. Environment variables use simple key/value entries, and `depends_on` conditions should use `service_healthy` or `service_started` where dependencies exist.
+- Database credentials must not be collected through `form_fields`; use app-specific defaults in compose.
+- When manually editing a compose file, increment `tipi_version`, update `updated_at` in milliseconds, and keep both files in the same change. Image-only updates made through `bun scripts/update-config.ts` are the exception.
+
+## Automation and common mistakes
+
+Renovate updates Docker images in `apps/*/docker-compose.yml` and uses the config update script to synchronize app versions; database images are excluded.
+
+Before finishing, check for port conflicts, exact config/image version matching, accidental `latest` tags, array-form services or `depends_on`, full container paths in host volume mappings, and timestamps expressed in seconds instead of milliseconds.
 
 ## config.json
 
@@ -87,3 +104,7 @@ Required fields include:
 ## Documentation Rule
 
 This file is the source of truth for agent-facing guidance in this repo. Other instruction files should mirror these rules or point back here instead of introducing conflicting conventions.
+
+## Reusable skill
+
+For creating, updating, or auditing apps, use the repository skill [`runtipi-app`](.github/skills/runtipi-app/SKILL.md). It encodes this contract, including selfh.st-first logo sourcing, deterministic 512x512 JPG processing, Runtipi `random` secrets, versioning, and validation requirements.

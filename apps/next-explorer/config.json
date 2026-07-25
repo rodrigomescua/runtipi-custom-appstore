@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "NextExplorer",
+  "id": "next-explorer",
+  "available": true,
+  "short_desc": "Modern self-hosted file explorer with secure access control.",
+  "author": "nxzai",
+  "port": 8847,
+  "categories": [
+    "utilities"
+  ],
+  "description": "NextExplorer is a modern, self-hosted web file explorer with local users and groups, optional OIDC SSO, previews for images, videos and PDFs, inline editing, sharing workflows and fast filename/content search.",
+  "tipi_version": 1,
+  "version": "2.2.7",
+  "source": "https://github.com/nxzai/NextExplorer",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "created_at": 1784960670516,
+  "updated_at": 1784961272450,
+  "form_fields": [
+    {
+      "env_variable": "APP_SESSION_SECRET",
+      "label": "Session Secret",
+      "type": "random",
+      "required": true,
+      "min": 32,
+      "encoding": "base64",
+      "hint": "Random session secret used to keep user sessions secure"
+    }
+  ],
+  "urn": "tipi://next-explorer"
+}
