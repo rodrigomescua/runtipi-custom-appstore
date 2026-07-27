@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   murkpyrss:
     image: ghcr.io/rodrigomescua/murkpyrss:202607272134
