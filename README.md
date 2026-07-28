@@ -37,7 +37,7 @@
 | [M3U Editor](https://github.com/sparkison/m3u-editor)                        | Full-featured IPTV playlist editor with EPG management                                             | 8833 | yes          |
 | [MediaManager](https://github.com/maxdorninger/MediaManager)                 | Media Manager                                                                                      | 8838 | yes          |
 | [Mermaid Live Editor](https://github.com/mermaid-js/mermaid-live-editor)     | Edit, preview and share mermaid diagrams                                                           | 8854 | yes          |
-| [MurkPyRSS](https://github.com/rodrigomescua/murkpyrss)                      | Modern Scraping & Autonomous RSS Generator                                                         | 8865 | yes          |
+| [MurkPyRSS](https://github.com/rodrigomescua/murkpyrss)                      | RSS generator with custom extractors and AI                                                        | 8865 | yes          |
 | [MurkRSS](https://github.com/rodrigomescua/MurkRSS)                          | Hybrid Scraping & Autonomous RSS Generator                                                         | 8863 | yes          |
 | [Muxarr](https://github.com/KirovAir/muxarr)                                 | Strip unwanted audio and subtitle tracks from media files                                          | 8862 | yes          |
 | [NextExplorer](https://github.com/nxzai/NextExplorer)                        | Modern self-hosted file explorer with secure access control.                                       | 8847 | yes          |
