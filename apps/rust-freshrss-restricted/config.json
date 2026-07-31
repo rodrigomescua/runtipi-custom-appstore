@@ -1,0 +1,105 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "RustFreshRss - Restricted",
+  "id": "rust-freshrss-restricted",
+  "available": true,
+  "short_desc": "RustFreshRss com regras restritas",
+  "author": "Rodrigo Mescua",
+  "port": 8872,
+  "categories": [
+    "featured"
+  ],
+  "description": "Instância separada do RustFreshRss para gerenciar entradas do FreshRSS com regras restritas e cache local SQLite.",
+  "tipi_version": 1,
+  "version": "0.1.2",
+  "source": "https://github.com/rodrigomescua/RustFreshRss",
+  "urn": "tipi://rust-freshrss-restricted",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": [
+    "amd64"
+  ],
+  "created_at": 1785500751809,
+  "updated_at": 1785500751809,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "FreshRSS PostgreSQL Connection String",
+      "max": 300,
+      "min": 3,
+      "default": "host=127.0.0.1 port=5432 user=freshrss password=<password> dbname=freshrss",
+      "placeholder": "host=<host> port=5432 user=<user> password=<password> dbname=freshrss",
+      "required": true,
+      "env_variable": "FRESHRSS_CONNECTIONSTRING"
+    },
+    {
+      "type": "text",
+      "label": "FreshRSS Table Prefix",
+      "max": 120,
+      "min": 1,
+      "default": "rssrodrigo",
+      "required": true,
+      "env_variable": "FRESHRSS_TABLE_PREFIX"
+    },
+    {
+      "type": "text",
+      "label": "FreshRSS TOP Table Prefix",
+      "max": 120,
+      "min": 1,
+      "default": "rssmurkmesc",
+      "required": true,
+      "env_variable": "FRESHRSS_TOP_TABLE_PREFIX"
+    },
+    {
+      "type": "boolean",
+      "label": "Start in TOP mode",
+      "default": false,
+      "env_variable": "IS_TOP"
+    },
+    {
+      "type": "text",
+      "label": "Server Page Size",
+      "required": false,
+      "default": "1000",
+      "max": 5,
+      "min": 1,
+      "env_variable": "SERVER_PAGE_SIZE"
+    },
+    {
+      "type": "text",
+      "label": "Confirm Read Entry",
+      "required": false,
+      "default": "false",
+      "max": 5,
+      "min": 1,
+      "env_variable": "CONFIRM_READ_ENTRY"
+    },
+    {
+      "type": "text",
+      "label": "Restore Read Entries",
+      "required": false,
+      "default": "true",
+      "max": 5,
+      "min": 1,
+      "env_variable": "RESTORE_READ_ENTRIES"
+    },
+    {
+      "type": "text",
+      "label": "Minimum Shingle Size",
+      "required": false,
+      "default": "2",
+      "max": 2,
+      "min": 1,
+      "env_variable": "MIN_SHINGLE_SIZE"
+    },
+    {
+      "type": "text",
+      "label": "Maximum Shingle Size",
+      "required": false,
+      "default": "8",
+      "max": 2,
+      "min": 1,
+      "env_variable": "MAX_SHINGLE_SIZE"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+services:
+  rust-freshrss:
+    image: ghcr.io/rodrigomescua/rustfreshrss:0.1.2
+    environment:
+      FRESHRSS_CONNECTIONSTRING: ${FRESHRSS_CONNECTIONSTRING}
+      FRESHRSS_TABLE_PREFIX: ${FRESHRSS_TABLE_PREFIX}
+      FRESHRSS_TOP_TABLE_PREFIX: ${FRESHRSS_TOP_TABLE_PREFIX}
+      RUSTFRESHRSS_DATABASE_URL: sqlite:///app/data/rustfreshrss.db
+      RUSTFRESHRSS_ENV: production
+      RUST_LOG: ${RUST_LOG:-info}
+      IS_TOP: ${IS_TOP:-false}
+      SERVER_PAGE_SIZE: ${SERVER_PAGE_SIZE:-1000}
+      CONFIRM_READ_ENTRY: ${CONFIRM_READ_ENTRY:-false}
+      RESTORE_READ_ENTRIES: ${RESTORE_READ_ENTRIES:-true}
+      MIN_SHINGLE_SIZE: ${MIN_SHINGLE_SIZE:-2}
+      MAX_SHINGLE_SIZE: ${MAX_SHINGLE_SIZE:-8}
+    volumes:
+      - ${APP_DATA_DIR}/data/data:/app/data
+    restart: unless-stopped
+    x-runtipi:
+      is_main: true
+      internal_port: 8080
+
+x-runtipi:
+  schema_version: 2
