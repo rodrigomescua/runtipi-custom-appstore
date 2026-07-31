@@ -10,8 +10,8 @@
     "featured"
   ],
   "description": "Interface web em Rust para trabalhar com entradas do FreshRSS usando um cache local SQLite, filtros, stars, replacers e skippers.",
-  "tipi_version": 1,
-  "version": "0.1.2",
+  "tipi_version": 2,
+  "version": "0.2.0",
   "source": "https://github.com/rodrigomescua/RustFreshRss",
   "urn": "tipi://rust-freshrss",
   "exposable": true,
@@ -20,7 +20,7 @@
     "amd64"
   ],
   "created_at": 1785500751809,
-  "updated_at": 1785500751809,
+  "updated_at": 1785504540048,
   "form_fields": [
     {
       "type": "text",
