@@ -1,6 +1,6 @@
 services:
   rust-freshrss-restricted:
-    image: ghcr.io/rodrigomescua/rustfreshrss:0.2.1
+    image: ghcr.io/rodrigomescua/rustfreshrss:0.2.2
     environment:
       FRESHRSS_CONNECTIONSTRING: ${FRESHRSS_CONNECTIONSTRING}
       FRESHRSS_TABLE_PREFIX: ${FRESHRSS_TABLE_PREFIX}
