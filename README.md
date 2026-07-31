@@ -12,9 +12,9 @@
 - Keep `config.json` and `docker-compose.yml` in sync when updating an app.
 - Use `bun scripts/update-config.ts apps/<app-name>/docker-compose.yml` after image-tag changes.
 
-## Apps available (49)
+## Apps available (51)
 
-| Name                                                                          | Description                                                                                        | Port | Dynamic (49) |
+| Name                                                                          | Description                                                                                        | Port | Dynamic (51) |
 | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                             | Self-hosted GPU video compressor                                                                   | 8846 | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                              | Note taking, to-do and moodboard application                                                       | 8831 | yes          |
@@ -56,6 +56,8 @@
 | [Recommendarr](https://github.com/fingerthief/recommendarr)                   | AI-powered TV and movie recommendations based on your library                                      | 8827 | yes          |
 | [Reitti](https://github.com/dedicatedcode/reitti)                             | Personal Location Tracking & Analysis - Self-hosted alternative to Google Timeline                 | 8826 | yes          |
 | [RSS-Bridge](https://github.com/RSS-Bridge/rss-bridge)                        | Generate RSS feeds for websites without one                                                        | 8864 | yes          |
+| [RustFreshRss](https://github.com/rodrigomescua/RustFreshRss)                 | Interface Rust para gerenciar entradas do FreshRSS                                                 | 8871 | yes          |
+| [RustFreshRss - Restricted](https://github.com/rodrigomescua/RustFreshRss)    | RustFreshRss com regras restritas                                                                  | 8872 | yes          |
 | [Rustavoid](https://github.com/rodrigomescua/Rustavoid)                       | Self-hosted app to register products and companies to avoid                                        | 8856 | yes          |
 | [Stationarr](https://github.com/rroy676/Stationarr)                           | IPTV playlist editor, EPG matcher, and self-hosted companion                                       | 8867 | yes          |
 | [Sure](https://github.com/we-promise/sure)                                    | Self-hosted personal finance app                                                                   | 8866 | yes          |
