@@ -2,7 +2,7 @@ version: '3'
 
 services:
   yuvomi:
-    image: ghcr.io/ulsklyc/yuvomi:1.75.0
+    image: ghcr.io/ulsklyc/yuvomi:1.75.2
     restart: unless-stopped
     volumes:
       - ${APP_DATA_DIR}/data/data:/data
