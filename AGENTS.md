@@ -21,7 +21,7 @@ This repository is a custom app store for [Runtipi](https://github.com/runtipi/r
 - `config.json.version` must match the main service image tag exactly, character for character.
 - Do not use `latest` image tags.
 - Before creating or finishing an app, verify that the exact image tag exists in its registry. A release version or search result is not proof. Compare the registry tag character-for-character with both `docker-compose.yml` and `config.json.version`; if the registry check cannot be completed, stop and report the blocker.
-- If you edit `docker-compose.yml` manually, update `config.json` in the same change:
+- If any file inside `apps/<app-id>/` is modified, update `config.json` in the same change:
   - increment `tipi_version`
   - update `updated_at` with `Date.now()`
 - Database credentials should be hardcoded in compose, not collected through `form_fields`.
@@ -68,7 +68,7 @@ Tests verify that required files exist and that `config.json` and `docker-compos
 - Treat registry verification as a blocking validation, not a best-effort lookup. For Docker Hub, query `https://hub.docker.com/v2/repositories/<namespace>/<repository>/tags` and confirm the exact tag appears in the response. For GHCR or another registry, use its tag API or an equivalent manifest lookup.
 - Compose services must be YAML objects, not arrays. Environment variables use simple key/value entries, and `depends_on` conditions should use `service_healthy` or `service_started` where dependencies exist.
 - Database credentials must not be collected through `form_fields`; use app-specific defaults in compose.
-- When manually editing a compose file, increment `tipi_version`, update `updated_at` in milliseconds, and keep both files in the same change. Image-only updates made through `bun scripts/update-config.ts` are the exception.
+- Whenever any app file is modified, increment `tipi_version`, update `updated_at` in milliseconds, and keep the metadata change in the same change. This also applies to image-only updates made through `bun scripts/update-config.ts`.
 
 ## Automation and common mistakes
 

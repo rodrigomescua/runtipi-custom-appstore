@@ -45,7 +45,7 @@ Always produce a 512x512 JPG. For a light or transparent logo, use a uniform dar
 
 ## Versioning and validation
 
-When manually editing `docker-compose.yml`, increment `tipi_version` and update `updated_at` with the current `Date.now()` millisecond timestamp. Image-only updates should use:
+Whenever any file inside `apps/<app-id>/` is modified, increment `tipi_version` and update `updated_at` with the current `Date.now()` millisecond timestamp. Keep that metadata change in the same change, including image-only updates made through:
 
 ```bash
 bun scripts/update-config.ts apps/<app-name>/docker-compose.yml
