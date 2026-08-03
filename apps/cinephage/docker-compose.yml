@@ -2,7 +2,7 @@ version: '3'
 
 services:
   cinephage:
-    image: ghcr.io/moldytaint/cinephage:0.14.2
+    image: ghcr.io/moldytaint/cinephage:0.15.0
     environment:
       - BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET}
       - TZ=${TZ}
