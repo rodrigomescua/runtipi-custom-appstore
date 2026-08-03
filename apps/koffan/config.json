@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Koffan",
+  "id": "koffan",
+  "available": true,
+  "short_desc": "Lightweight shared shopping list",
+  "author": "PanSalut",
+  "port": 8800,
+  "categories": ["utilities", "social"],
+  "description": "Koffan is a lightweight, self-hosted shopping list for couples and families, with real-time synchronization, offline support, multiple lists and a mobile-friendly PWA.",
+  "tipi_version": 1,
+  "version": "v2.13.0",
+  "source": "https://github.com/PanSalut/Koffan",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "created_at": 1785711600000,
+  "updated_at": 1785711600000,
+  "form_fields": [
+    {
+      "type": "random",
+      "label": "App Password",
+      "required": true,
+      "env_variable": "KOFFAN_APP_PASSWORD",
+      "hint": "Password used to access the shopping lists",
+      "min": 32,
+      "encoding": "hex"
+    },
+    {
+      "type": "text",
+      "label": "Default Language",
+      "required": false,
+      "env_variable": "KOFFAN_DEFAULT_LANG",
+      "default": "pt",
+      "hint": "Language code, for example pt, en, pl or de"
+    }
+  ],
+  "urn": "tipi://koffan"
+}
