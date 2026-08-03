@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  yuvomi:
+    image: ghcr.io/ulsklyc/yuvomi:1.73.2
+    restart: unless-stopped
+    volumes:
+      - ${APP_DATA_DIR}/data/data:/data
+      - ${APP_DATA_DIR}/data/backups:/backups
+      - ${APP_DATA_DIR}/data/modules:/app/modules
+      - ${APP_DATA_DIR}/data/documents:/documents
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DB_PATH=/data/yuvomi.db
+      - BACKUP_DIR=/backups
+      - SESSION_SECRET=${YUVOMI_SESSION_SECRET}
+      - DB_ENCRYPTION_KEY=${YUVOMI_DB_ENCRYPTION_KEY}
+      - SESSION_SECURE=false
+      - DOCUMENT_STORAGE_LOCAL_ENABLED=false
+      - DOCUMENT_STORAGE_LOCAL_PATH=/documents
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', r => process.exit(r.statusCode === 200 ? 0 : 1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    x-runtipi:
+      is_main: true
+      internal_port: 3000
+
+x-runtipi:
+  schema_version: 2

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Yuvomi",
+  "id": "yuvomi",
+  "available": true,
+  "short_desc": "Self-hosted family planner",
+  "author": "ulsklyc",
+  "port": 8873,
+  "categories": ["utilities", "social"],
+  "description": "Yuvomi is a private, self-hosted family planner for calendars, tasks, shopping lists, budgets, contacts and shared household documents.",
+  "tipi_version": 1,
+  "version": "1.73.2",
+  "source": "https://github.com/ulsklyc/yuvomi",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "created_at": 1785711600000,
+  "updated_at": 1785711600000,
+  "form_fields": [
+    {
+      "type": "random",
+      "label": "Session Secret",
+      "required": true,
+      "env_variable": "YUVOMI_SESSION_SECRET",
+      "hint": "Secret used to sign login sessions",
+      "min": 32,
+      "encoding": "hex"
+    },
+    {
+      "type": "random",
+      "label": "Database Encryption Key",
+      "required": true,
+      "env_variable": "YUVOMI_DB_ENCRYPTION_KEY",
+      "hint": "Permanent AES-256 key; keep a backup because it cannot be recovered",
+      "min": 32,
+      "encoding": "hex"
+    }
+  ],
+  "urn": "tipi://yuvomi"
+}
