@@ -1,6 +1,6 @@
 services:
   razor-miniflux:
-    image: ghcr.io/rodrigomescua/razorminiflux:202608051300
+    image: ghcr.io/rodrigomescua/razorminiflux:202608051315
     environment:
       - FRESHRSS_CONNECTIONSTRING=${FRESHRSS_CONNECTIONSTRING}
       - FRESHRSS_TABLE_PREFIX=${FRESHRSS_TABLE_PREFIX}
