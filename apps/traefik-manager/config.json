@@ -22,7 +22,28 @@
     "arm64"
   ],
   "created_at": 1786046760000,
-  "updated_at": 1786047856225,
-  "form_fields": [],
+  "updated_at": 1786048394281,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "Traefik API URL",
+      "required": true,
+      "env_variable": "TRAEFIK_API_URL",
+      "default": "http://runtipi-reverse-proxy:8080"
+    },
+    {
+      "type": "text",
+      "label": "Certificate Resolver",
+      "required": true,
+      "env_variable": "CERT_RESOLVER",
+      "default": "myresolver"
+    },
+    {
+      "type": "text",
+      "label": "Domains",
+      "required": true,
+      "env_variable": "DOMAINS"
+    }
+  ],
   "urn": "tipi://traefik-manager"
 }
