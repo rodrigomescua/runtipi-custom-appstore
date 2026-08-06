@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Wilik",
+  "id": "wilik",
+  "available": true,
+  "short_desc": "Self-hosted wishlist and gift registry.",
+  "author": "Joost van Opdorp",
+  "port": 8890,
+  "categories": ["utilities", "social"],
+  "description": "Wilik is a self-hosted wishlist and gift registry for organizing wishes and sharing them with others.",
+  "tipi_version": 1,
+  "version": "240a274b0f10f4be885e5180d2c32f201a3300f1",
+  "source": "https://github.com/joostvanopdorp/wilik",
+  "website": "https://github.com/joostvanopdorp/wilik",
+  "urn": "tipi://wilik",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "created_at": 1786049106242,
+  "updated_at": 1786049106242,
+  "form_fields": [
+    {
+      "type": "random",
+      "label": "Secret Key",
+      "required": true,
+      "env_variable": "SECRET_KEY",
+      "min": 32,
+      "encoding": "base64"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+services:
+  backend:
+    image: ghcr.io/joostvanopdorp/wilik-backend:240a274b0f10f4be885e5180d2c32f201a3300f1
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+    volumes:
+      - ${APP_DATA_DIR}/data/instance:/app/instance
+    restart: unless-stopped
+
+  frontend:
+    image: ghcr.io/joostvanopdorp/wilik-frontend:240a274b0f10f4be885e5180d2c32f201a3300f1
+    depends_on:
+      - backend
+    restart: unless-stopped
+    x-runtipi:
+      is_main: true
+      internal_port: 80
+
+x-runtipi:
+  schema_version: 2
