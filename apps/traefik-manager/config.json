@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Traefik Manager",
+  "id": "traefik-manager",
+  "available": true,
+  "short_desc": "Web UI for managing Traefik reverse proxies",
+  "author": "chr0nzz",
+  "port": 8874,
+  "categories": [
+    "utilities",
+    "network"
+  ],
+  "description": "Traefik Manager is a self-hosted web interface for managing routes, middlewares, services, certificates, backups, and monitoring for Traefik reverse proxies.",
+  "tipi_version": 1,
+  "version": "1.9.1",
+  "source": "https://github.com/chr0nzz/traefik-manager",
+  "website": "https://traefik-manager.xyzlab.dev/",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "created_at": 1786046760000,
+  "updated_at": 1786047856225,
+  "form_fields": [],
+  "urn": "tipi://traefik-manager"
+}

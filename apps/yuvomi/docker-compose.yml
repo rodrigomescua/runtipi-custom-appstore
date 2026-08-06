@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   yuvomi:
     image: ghcr.io/ulsklyc/yuvomi:1.80.0

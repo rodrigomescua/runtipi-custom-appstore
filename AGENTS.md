@@ -15,7 +15,7 @@ This repository is a custom app store for [Runtipi](https://github.com/runtipi/r
   - `metadata/description.md`
   - `metadata/logo.jpg`
 - Use `docker-compose.yml` only. Do not create `docker-compose.json` or `docker-compose.yaml`.
-- Compose files must use YAML with root `version: '3'` and root `x-runtipi.schema_version: 2`.
+- Compose files must use YAML with root `x-runtipi.schema_version: 2`; do not include a top-level `version` key.
 - Exactly one service per app may have `x-runtipi.is_main: true`.
 - Never add a `ports:` block to compose files. Runtipi maps the host port from `config.json` to `internal_port`.
 - `config.json.version` must match the main service image tag exactly, character for character.

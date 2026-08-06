@@ -10,7 +10,7 @@
     "media"
   ],
   "description": "Cinephage is a unified self-hosted media management platform that combines discovery, monitoring, indexers, subtitle workflows, and streaming-oriented tooling in a single interface.",
-  "tipi_version": 8,
+  "tipi_version": 9,
   "version": "0.15.0",
   "source": "https://github.com/MoldyTaint/Cinephage",
   "urn": "tipi://cinephage",
@@ -21,7 +21,7 @@
     "arm64"
   ],
   "created_at": 1780152799383,
-  "updated_at": 1785722570586,
+  "updated_at": 1786047186260,
   "form_fields": [
     {
       "type": "random",

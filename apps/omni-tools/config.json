@@ -10,7 +10,7 @@
     "utilities"
   ],
   "description": "OmniTools is a self-hosted web app with client-side utilities for common everyday tasks, including image, video, PDF, text, list, date, time, math, JSON, CSV, and XML workflows.",
-  "tipi_version": 1,
+  "tipi_version": 2,
   "version": "0.6.0",
   "source": "https://github.com/iib0011/omni-tools",
   "website": "https://omnitools.app",
@@ -22,6 +22,6 @@
     "arm64"
   ],
   "created_at": 1783530020463,
-  "updated_at": 1783530020463,
+  "updated_at": 1786047186180,
   "form_fields": []
 }

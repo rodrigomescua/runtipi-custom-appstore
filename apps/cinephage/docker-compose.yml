@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   cinephage:
     image: ghcr.io/moldytaint/cinephage:0.15.0

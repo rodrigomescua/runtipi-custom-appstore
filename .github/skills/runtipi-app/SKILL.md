@@ -23,7 +23,7 @@ Create exactly:
 - `apps/<id>/metadata/description.md`
 - `apps/<id>/metadata/logo.jpg`
 
-Compose must be YAML with root `version: '3'`, root `x-runtipi.schema_version: 2`, exactly one `x-runtipi.is_main: true`, and no `ports:` block. Set `internal_port` to the container port. Keep `config.json.version` exactly equal to the main image tag and do not use `latest`.
+Compose must be YAML with root `x-runtipi.schema_version: 2`, no top-level `version` key, exactly one `x-runtipi.is_main: true`, and no `ports:` block. Set `internal_port` to the container port. Keep `config.json.version` exactly equal to the main image tag and do not use `latest`.
 
 For Docker Hub, query `https://hub.docker.com/v2/repositories/<namespace>/<repository>/tags` and require the exact tag in the response. Record and compare the exact string, including a `v` prefix. Do not treat a release page, Docker Hub summary, or `latest` alias as tag verification.
 

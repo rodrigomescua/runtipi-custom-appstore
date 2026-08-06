@@ -11,7 +11,7 @@
     "utilities"
   ],
   "description": "Degoog is a self-hosted meta search aggregator that queries multiple search engines and combines the results. It features a clean interface, support for extensions and plugins, built-in result indexer, and privacy-focused design with no tracking. Ideal for personal or small team use as a privacy-respecting alternative to commercial search engines.",
-  "tipi_version": 4,
+  "tipi_version": 5,
   "version": "0.23.0",
   "urn": "tipi://degoog",
   "source": "https://github.com/degoog-org/degoog",
@@ -23,7 +23,7 @@
     "arm64"
   ],
   "created_at": 1750298400000,
-  "updated_at": 1783227579562,
+  "updated_at": 1786047186279,
   "form_fields": [
     {
       "type": "password",

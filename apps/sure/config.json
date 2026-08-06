@@ -10,7 +10,7 @@
     "finance"
   ],
   "description": "Sure is a self-hosted personal finance app.",
-  "tipi_version": 2,
+  "tipi_version": 3,
   "version": "0.7.2-alpha.7",
   "source": "https://github.com/we-promise/sure",
   "exposable": true,
@@ -20,7 +20,7 @@
     "arm64"
   ],
   "created_at": 1732627200000,
-  "updated_at": 1781554920732,
+  "updated_at": 1786047186240,
   "form_fields": [],
   "urn": "tipi://sure"
 }

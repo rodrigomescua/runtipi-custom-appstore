@@ -1,0 +1,21 @@
+services:
+  traefik-manager:
+    image: ghcr.io/chr0nzz/traefik-manager:1.9.1
+    environment:
+      - COOKIE_SECURE=false
+      - TRAEFIK_API_URL=http://runtipi-reverse-proxy:8080
+      - CERT_RESOLVER=myresolver
+      - DOMAINS=romesc.uk
+      - CONFIG_PATH=/app/config/dynamic.yml
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/app/config
+      - ${APP_DATA_DIR}/data/backups:/app/backups
+      - ${ROOT_FOLDER_HOST}/traefik/dynamic/tm-routes.yml:/app/config/dynamic.yml
+      - ${ROOT_FOLDER_HOST}/traefik/shared/acme.json:/app/acme.json:ro
+      - ${ROOT_FOLDER_HOST}/traefik/traefik.yml:/app/traefik.yml:ro
+    x-runtipi:
+      is_main: true
+      internal_port: 5000
+
+x-runtipi:
+  schema_version: 2

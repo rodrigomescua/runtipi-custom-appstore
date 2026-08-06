@@ -10,7 +10,7 @@ Validate `apps/*/docker-compose.yml` against [AGENTS.md](../../AGENTS.md).
 
 Check:
 - YAML syntax
-- `version: '3'`
+- no top-level `version` key
 - root `x-runtipi.schema_version: 2`
 - exactly one `x-runtipi.is_main: true`
 - exact match between compose image tag and `config.json.version`

@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   next-explorer:
     image: nxzai/explorer:v2.2.7

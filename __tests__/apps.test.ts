@@ -3,7 +3,7 @@ import { appInfoSchema, dynamicComposeSchema } from '@runtipi/common/schemas'
 import { fromError } from 'zod-validation-error';
 import fs from 'node:fs'
 import path from 'node:path'
-import yaml from 'js-yaml'
+import * as yaml from 'js-yaml'
 
 const getApps = async () => {
   const appsDir = await fs.promises.readdir(path.join(process.cwd(), 'apps'))
@@ -85,3 +85,15 @@ describe("each app should have a valid docker-compose.yml", async () => {
     })
   }
 });
+
+describe("docker-compose files should omit the unsupported top-level version", async () => {
+  const apps = await getApps()
+
+  for (const app of apps) {
+    test(`app ${app} should not define a top-level version`, async () => {
+      const fileContent = await getFile(app, 'docker-compose.yml')
+      const parsed = yaml.load(fileContent || '') as Record<string, unknown>
+      expect(parsed.version).toBeUndefined()
+    })
+  }
+})

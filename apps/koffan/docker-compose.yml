@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   koffan:
     image: ghcr.io/pansalut/koffan:v2.13.0
