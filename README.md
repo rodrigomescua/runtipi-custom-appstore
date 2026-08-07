@@ -12,9 +12,9 @@
 - Keep `config.json` and `docker-compose.yml` in sync when updating an app.
 - Use `bun scripts/update-config.ts apps/<app-name>/docker-compose.yml` after image-tag changes.
 
-## Apps available (53)
+## Apps available (55)
 
-| Name                                                                          | Description                                                                                        | Port | Dynamic (53) |
+| Name                                                                          | Description                                                                                        | Port | Dynamic (55) |
 | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                             | Self-hosted GPU video compressor                                                                   | 8846 | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                              | Note taking, to-do and moodboard application                                                       | 8831 | yes          |
@@ -63,9 +63,11 @@
 | [Stationarr](https://github.com/rroy676/Stationarr)                           | IPTV playlist editor, EPG matcher, and self-hosted companion                                       | 8867 | yes          |
 | [Sure](https://github.com/we-promise/sure)                                    | Self-hosted personal finance app                                                                   | 8866 | yes          |
 | [TrackWatch](https://github.com/emlopezr/trackwatch)                          | Self-hosted Spotify release tracker                                                                | 8834 | yes          |
+| [Traefik Manager](https://github.com/chr0nzz/traefik-manager)                 | Web UI for managing Traefik reverse proxies                                                        | 8874 | yes          |
 | [Upsnap](https://github.com/seriousm4x/UpSnap)                                | A simple wake on lan web app written with SvelteKit, Go and PocketBase.                            | 8090 | yes          |
 | [VCompose](https://github.com/zbrave/vcompose)                                | Visual Docker Compose Builder                                                                      | 8861 | yes          |
 | [Wallabag](https://github.com/wallabag/wallabag)                              | Wallabag                                                                                           | 8829 | yes          |
+| [Wilik](https://github.com/joostvanopdorp/wilik)                              | Self-hosted wishlist and gift registry.                                                            | 8890 | yes          |
 | [Yamtrack](https://github.com/FuzzyGrim/Yamtrack)                             | Yamtrack is a self hosted media tracker for movies, tv shows, anime, manga, video games and books. | 8860 | yes          |
 | [Your Spotify](https://github.com/Yooooomi/your_spotify)                      | Self hosted Spotify tracking dashboard.                                                            | 8850 | yes          |
 | [Yuvomi](https://github.com/ulsklyc/yuvomi)                                   | Self-hosted family planner                                                                         | 8873 | yes          |
