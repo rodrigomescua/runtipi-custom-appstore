@@ -1,6 +1,6 @@
 services:
   byparr:
-    image: ghcr.io/thephaseless/byparr:2.1.0
+    image: ghcr.io/thephaseless/byparr:3.0.0
     environment:
       - LOG_LEVEL=${BYPARR_LOG_LEVEL-info}
       - TZ=${TZ}
