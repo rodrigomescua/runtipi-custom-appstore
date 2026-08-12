@@ -11,7 +11,7 @@
     "ai"
   ],
   "description": "A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search",
-  "tipi_version": 2,
+  "tipi_version": 3,
   "version": "0.33.2",
   "source": "https://github.com/karakeep-app/karakeep",
   "website": "https://karakeep.app",
@@ -29,6 +29,36 @@
       "min": 32,
       "env_variable": "MEILI_MASTER_KEY",
       "encoding": "base64"
+    },
+    {
+      "type": "text",
+      "label": "OpenAI Base URL",
+      "env_variable": "OPENAI_BASE_URL",
+      "required": false
+    },
+    {
+      "type": "text",
+      "label": "OpenAI API Key",
+      "env_variable": "OPENAI_API_KEY",
+      "required": false
+    },
+    {
+      "type": "text",
+      "label": "Inference Text Model",
+      "env_variable": "INFERENCE_TEXT_MODEL",
+      "required": false
+    },
+    {
+      "type": "text",
+      "label": "Inference Image Model",
+      "env_variable": "INFERENCE_IMAGE_MODEL",
+      "required": false
+    },
+    {
+      "type": "text",
+      "label": "Embedding Text Model",
+      "env_variable": "EMBEDDING_TEXT_MODEL",
+      "required": false
     },
     {
       "type": "text",
@@ -50,7 +80,7 @@
     "arm64"
   ],
   "created_at": 1726064280917,
-  "updated_at": 1786541339991,
+  "updated_at": 1786541757651,
   "urn": "tipi://karakeep",
   "min_tipi_version": "4.5.0"
 }
