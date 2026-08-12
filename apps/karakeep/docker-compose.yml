@@ -1,0 +1,73 @@
+x-runtipi:
+  schema_version: 2
+
+services:
+  karakeep:
+    image: ghcr.io/karakeep-app/karakeep:0.33.2
+    container_name: karakeep
+    restart: unless-stopped
+    volumes:
+      - ${APP_DATA_DIR}/data/app:/data
+    x-runtipi:
+      is_main: true
+      internal_port: 3000
+    environment:
+      MEILI_ADDR: http://karakeep-meilisearch:7700
+      BROWSER_WEB_URL: http://karakeep-chrome:9222
+
+      # You almost never want to change the value of the DATA_DIR variable.
+      # If you want to mount a custom directory, change the volume mapping above instead.
+      DATA_DIR: /data # DON'T CHANGE THIS
+
+      INFERENCE_LANG: ${INFERENCE_LANG:-brazilian}
+      INFERENCE_ENABLE_AUTO_TAGGING: ${INFERENCE_ENABLE_AUTO_TAGGING:-false}
+    networks:
+      - tipi_main_network
+    labels:
+      traefik.enable: true
+      traefik.http.middlewares.karakeep-web-redirect.redirectscheme.scheme: https
+      traefik.http.services.karakeep.loadbalancer.server.port: 3000
+      traefik.http.routers.karakeep-insecure.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.karakeep-insecure.entrypoints: web
+      traefik.http.routers.karakeep-insecure.service: karakeep
+      traefik.http.routers.karakeep-insecure.middlewares: karakeep-web-redirect
+      traefik.http.routers.karakeep.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.karakeep.entrypoints: websecure
+      traefik.http.routers.karakeep.service: karakeep
+      traefik.http.routers.karakeep.tls.certresolver: myresolver
+      traefik.http.routers.karakeep-local-insecure.rule: Host(`karakeep.${LOCAL_DOMAIN}`)
+      traefik.http.routers.karakeep-local-insecure.entrypoints: web
+      traefik.http.routers.karakeep-local-insecure.service: karakeep
+      traefik.http.routers.karakeep-local-insecure.middlewares: karakeep-web-redirect
+      traefik.http.routers.karakeep-local.rule: Host(`karakeep.${LOCAL_DOMAIN}`)
+      traefik.http.routers.karakeep-local.entrypoints: websecure
+      traefik.http.routers.karakeep-local.service: karakeep
+      traefik.http.routers.karakeep-local.tls: true
+      runtipi.managed: true
+  karakeep-chrome:
+    image: ghcr.io/karakeep-app/karakeep-chrome:release
+    container_name: karakeep-chrome
+    restart: unless-stopped
+    init: true
+    command:
+      - '--disable-gpu'
+      - '--disable-dev-shm-usage'
+      - '--hide-scrollbars'
+      - '--disable-blink-features=AutomationControlled'
+      - '--window-size=1440,900'
+    networks:
+      - tipi_main_network
+    labels:
+      runtipi.managed: true
+  karakeep-meilisearch:
+    image: getmeili/meilisearch:v1.41.0
+    container_name: karakeep-meilisearch
+    restart: unless-stopped
+    environment:
+      MEILI_NO_ANALYTICS: "true"
+    volumes:
+      - ${APP_DATA_DIR}/data/meili_data:/meili_data
+    networks:
+      - tipi_main_network
+    labels:
+      runtipi.managed: true
