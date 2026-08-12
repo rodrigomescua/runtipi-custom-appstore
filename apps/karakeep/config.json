@@ -11,11 +11,25 @@
     "ai"
   ],
   "description": "A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search",
-  "tipi_version": 1,
+  "tipi_version": 2,
   "version": "0.33.2",
   "source": "https://github.com/karakeep-app/karakeep",
   "website": "https://karakeep.app",
   "form_fields": [
+    {
+      "type": "random",
+      "label": "Nextauth Secret",
+      "min": 32,
+      "env_variable": "NEXTAUTH_SECRET",
+      "encoding": "base64"
+    },
+    {
+      "type": "random",
+      "label": "Meili master key",
+      "min": 32,
+      "env_variable": "MEILI_MASTER_KEY",
+      "encoding": "base64"
+    },
     {
       "type": "text",
       "label": "Inference Language",
@@ -36,7 +50,7 @@
     "arm64"
   ],
   "created_at": 1726064280917,
-  "updated_at": 1786540925994,
+  "updated_at": 1786541339991,
   "urn": "tipi://karakeep",
   "min_tipi_version": "4.5.0"
 }
