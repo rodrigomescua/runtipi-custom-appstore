@@ -3,7 +3,7 @@
 
 services:
   linkding:
-    image: sissbruecker/linkding:1.46.0
+    image: sissbruecker/linkding:1.46.1
     environment:
       # User configuration from form_fields
       - LD_SUPERUSER_NAME=${LD_SUPERUSER_NAME}
