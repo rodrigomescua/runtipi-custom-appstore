@@ -1,6 +1,6 @@
 services:
   filebrowser-quantum:
-    image: gtstef/filebrowser:2.0.0-beta
+    image: gtstef/filebrowser:2.0.1-beta
     volumes:
       - ${APP_DATA_DIR}/data/data:/home/filebrowser/data
       - ${ROOT_FOLDER_HOST}:/server
