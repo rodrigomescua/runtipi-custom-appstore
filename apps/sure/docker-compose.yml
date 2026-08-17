@@ -1,6 +1,6 @@
 services:
   sure:
-    image: ghcr.io/we-promise/sure:0.7.2-alpha.7
+    image: ghcr.io/we-promise/sure:0.7.4-alpha.5
     volumes:
       - ${APP_DATA_DIR}/data/storage:/rails/storage
     restart: unless-stopped
@@ -25,7 +25,7 @@ services:
       internal_port: 3000
 
   sure-worker:
-    image: ghcr.io/we-promise/sure:0.7.2-alpha.7
+    image: ghcr.io/we-promise/sure:0.7.4-alpha.5
     command: bundle exec sidekiq
     volumes:
       - ${APP_DATA_DIR}/data/storage:/rails/storage
