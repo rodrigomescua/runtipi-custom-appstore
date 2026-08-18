@@ -11,8 +11,8 @@
     "social"
   ],
   "description": "Yuvomi is a private, self-hosted family planner for calendars, tasks, shopping lists, budgets, contacts and shared household documents.",
-  "tipi_version": 22,
-  "version": "2.21.1",
+  "tipi_version": 23,
+  "version": "2.22.1",
   "source": "https://github.com/ulsklyc/yuvomi",
   "exposable": true,
   "dynamic_config": true,
@@ -21,7 +21,7 @@
     "arm64"
   ],
   "created_at": 1785711600000,
-  "updated_at": 1787019437982,
+  "updated_at": 1787045528433,
   "form_fields": [
     {
       "type": "random",
