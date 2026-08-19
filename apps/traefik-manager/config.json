@@ -11,8 +11,8 @@
     "network"
   ],
   "description": "Traefik Manager is a self-hosted web interface for managing routes, middlewares, services, certificates, backups, and monitoring for Traefik reverse proxies.",
-  "tipi_version": 3,
-  "version": "1.10.1",
+  "tipi_version": 4,
+  "version": "1.10.2",
   "source": "https://github.com/chr0nzz/traefik-manager",
   "website": "https://traefik-manager.xyzlab.dev/",
   "exposable": true,
@@ -22,7 +22,7 @@
     "arm64"
   ],
   "created_at": 1786046760000,
-  "updated_at": 1786785903168,
+  "updated_at": 1787105980138,
   "form_fields": [
     {
       "type": "text",
