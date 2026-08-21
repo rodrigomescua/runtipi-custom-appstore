@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "Readeck",
+  "id": "readeck",
+  "available": true,
+  "short_desc": "A simple web application to save and read articles later",
+  "author": "Readeck",
+  "port": 8852,
+  "categories": [
+    "books",
+    "utilities"
+  ],
+  "description": "Readeck is a self-hosted read-later application that saves web articles for distraction-free reading, preserves their content, and lets you organize your reading list.",
+  "tipi_version": 1,
+  "version": "0.23.1",
+  "source": "https://codeberg.org/readeck/readeck",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "created_at": 1787263200000,
+  "updated_at": 1787263200000,
+  "form_fields": [],
+  "urn": "tipi://readeck"
+}

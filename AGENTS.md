@@ -49,10 +49,12 @@ grep -rh '"port"' apps/*/config.json | grep -oP ':\s*\K\d+' | sort -n | uniq
 
 - Logo format: 512x512 JPG.
 - Search order: first check the trusted [selfh.st/icons/](https://selfh.st/icons/) catalog, then the project's official website or GitHub repository, and ask the user only if no suitable logo exists.
+- This search order is mandatory: do not assume or use an official-site logo before checking selfh.st. Record the selfh.st asset URL used for the app.
 - Download the preferred source as PNG when available, then convert it to a 512x512 JPG.
 - Do not use rounded corners or button-like frames; the logo should be the icon itself.
 - Keep margins around 15-20%.
 - For transparent logos, use a dark gray background for light logos and a very light gray background for dark logos.
+- Visually inspect the final JPG before finishing. Confirm the icon is centered, has the required margins, uses the intended background, and has no black corners, accidental favicon framing, or excessive whitespace.
 
 ## Validation
 

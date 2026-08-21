@@ -1,0 +1,24 @@
+services:
+  readeck:
+    image: codeberg.org/readeck/readeck:0.23.1
+    environment:
+      READECK_LOG_LEVEL: info
+      READECK_SERVER_HOST: "0.0.0.0"
+      READECK_SERVER_PORT: 8000
+      READECK_LOG_FORMAT: text
+    volumes:
+      - ${APP_DATA_DIR}/data/readeck:/readeck
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "/bin/readeck", "healthcheck", "-config", "config.toml"]
+      interval: 30s
+      timeout: 2s
+      retries: 3
+    x-runtipi:
+      is_main: true
+      internal_port: 8000
+
+x-runtipi:
+  schema_version: 2
