@@ -11,7 +11,7 @@
     "utilities"
   ],
   "description": "html2rss-web turns almost any website into an RSS or JSON feed using automatic scraping, then serves the generated feeds through a web application.",
-  "tipi_version": 2,
+  "tipi_version": 3,
   "version": "1.10.0",
   "source": "https://github.com/html2rss/html2rss-web",
   "exposable": true,
@@ -28,6 +28,14 @@
       "label": "Application Secret Key",
       "required": true,
       "env_variable": "HTML2RSS_SECRET_KEY",
+      "encoding": "base64",
+      "min": 32
+    },
+    {
+      "type": "random",
+      "label": "Health Check Token",
+      "required": true,
+      "env_variable": "HEALTH_CHECK_TOKEN",
       "encoding": "base64",
       "min": 32
     }
