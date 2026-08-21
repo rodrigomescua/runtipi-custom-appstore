@@ -12,9 +12,9 @@
 - Keep `config.json` and `docker-compose.yml` in sync when updating an app.
 - Use `bun scripts/update-config.ts apps/<app-name>/docker-compose.yml` after image-tag changes.
 
-## Apps available (56)
+## Apps available (59)
 
-| Name                                                                          | Description                                                                                        | Port | Dynamic (56) |
+| Name                                                                          | Description                                                                                        | Port | Dynamic (59) |
 | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                             | Self-hosted GPU video compressor                                                                   | 8846 | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                              | Note taking, to-do and moodboard application                                                       | 8831 | yes          |
@@ -30,6 +30,7 @@
 | [FileFlows](https://github.com/revenz/FileFlows)                              | File processing automation server for media transcoding and workflow pipelines                     | 8836 | yes          |
 | [GeoPulse](https://github.com/tess1o/geopulse)                                | Self-hosted location tracking and analysis platform                                                | 8844 | yes          |
 | [Glean](https://github.com/LeslieLeung/glean)                                 | Self-hosted RSS reader and personal knowledge management                                           | 8845 | yes          |
+| [html2rss](https://github.com/html2rss/html2rss-web)                          | Turn websites into RSS and JSON feeds                                                              | 8857 | yes          |
 | [Ignis](https://github.com/Nystik-gh/ignis)                                   | Run Obsidian as a self-hosted web app. Not remote desktop, an actual web app.                      | 8287 | yes          |
 | [ImageMagick WebGUI](https://github.com/PrzemekSkw/imagemagick-webui)         | Modern web interface for ImageMagick with AI-powered image processing                              | 8848 | yes          |
 | [Karakeep](https://github.com/karakeep-app/karakeep)                          | Self-hostable bookmark-everything app                                                              | 8859 | yes          |
@@ -55,6 +56,7 @@
 | [Razor Miniflux - Restricted](https://github.com/rodrigomescua/RazorMiniflux) | Razor Miniflux Restricted                                                                          | 8823 | yes          |
 | [Razor Price History](https://github.com/romesc/RazorPriceHistory)            | Razor Price History                                                                                | 8820 | yes          |
 | [Razorstash](https://github.com/rodrigomescua/razorstash)                     | Self-hosted StashDB scraper                                                                        | 8851 | yes          |
+| [Readeck](https://codeberg.org/readeck/readeck)                               | A simple web application to save and read articles later                                           | 8852 | yes          |
 | [Recommendarr](https://github.com/fingerthief/recommendarr)                   | AI-powered TV and movie recommendations based on your library                                      | 8827 | yes          |
 | [Reitti](https://github.com/dedicatedcode/reitti)                             | Personal Location Tracking & Analysis - Self-hosted alternative to Google Timeline                 | 8826 | yes          |
 | [RSS-Bridge](https://github.com/RSS-Bridge/rss-bridge)                        | Generate RSS feeds for websites without one                                                        | 8864 | yes          |
@@ -69,6 +71,7 @@
 | [VCompose](https://github.com/zbrave/vcompose)                                | Visual Docker Compose Builder                                                                      | 8861 | yes          |
 | [Wallabag](https://github.com/wallabag/wallabag)                              | Wallabag                                                                                           | 8829 | yes          |
 | [Wilik](https://github.com/joostvanopdorp/wilik)                              | Self-hosted wishlist and gift registry.                                                            | 8890 | yes          |
+| [XtreamFilter](https://github.com/SpanishST/xtreamfilter)                     | Xtream proxy and IPTV content filter                                                               | 8855 | yes          |
 | [Yamtrack](https://github.com/FuzzyGrim/Yamtrack)                             | Yamtrack is a self hosted media tracker for movies, tv shows, anime, manga, video games and books. | 8860 | yes          |
 | [Your Spotify](https://github.com/Yooooomi/your_spotify)                      | Self hosted Spotify tracking dashboard.                                                            | 8850 | yes          |
 | [Yuvomi](https://github.com/ulsklyc/yuvomi)                                   | Self-hosted family planner                                                                         | 8873 | yes          |
