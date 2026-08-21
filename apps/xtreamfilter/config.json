@@ -11,7 +11,7 @@
     "automation"
   ],
   "description": "XtreamFilter is a Docker-first Xtream Codes proxy for combining IPTV providers, filtering live, VOD and series content, browsing catalogs, monitoring media and downloading content for local libraries.",
-  "tipi_version": 1,
+  "tipi_version": 2,
   "version": "0.5.12",
   "source": "https://github.com/SpanishST/xtreamfilter",
   "exposable": true,

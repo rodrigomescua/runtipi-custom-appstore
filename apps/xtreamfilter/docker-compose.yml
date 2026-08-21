@@ -2,7 +2,7 @@ services:
   xtreamfilter:
     image: spanishst/xtreamfilter:0.5.12
     environment:
-      TZ: Europe/Paris
+      TZ: ${TZ}
       PUID: 1000
       PGID: 1000
     volumes:
