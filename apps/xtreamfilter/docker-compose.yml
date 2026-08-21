@@ -1,0 +1,17 @@
+services:
+  xtreamfilter:
+    image: spanishst/xtreamfilter:0.5.12
+    environment:
+      TZ: Europe/Paris
+      PUID: 1000
+      PGID: 1000
+    volumes:
+      - ${APP_DATA_DIR}/data/data:/data
+      - ${APP_DATA_DIR}/data/downloads:/downloads
+    restart: unless-stopped
+    x-runtipi:
+      is_main: true
+      internal_port: 5000
+
+x-runtipi:
+  schema_version: 2

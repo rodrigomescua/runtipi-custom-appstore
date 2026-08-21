@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "XtreamFilter",
+  "id": "xtreamfilter",
+  "available": true,
+  "short_desc": "Xtream proxy and IPTV content filter",
+  "author": "SpanishST",
+  "port": 8855,
+  "categories": [
+    "media",
+    "automation"
+  ],
+  "description": "XtreamFilter is a Docker-first Xtream Codes proxy for combining IPTV providers, filtering live, VOD and series content, browsing catalogs, monitoring media and downloading content for local libraries.",
+  "tipi_version": 1,
+  "version": "0.5.12",
+  "source": "https://github.com/SpanishST/xtreamfilter",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "created_at": 1787318357632,
+  "updated_at": 1787318357632,
+  "form_fields": [],
+  "urn": "tipi://xtreamfilter"
+}
