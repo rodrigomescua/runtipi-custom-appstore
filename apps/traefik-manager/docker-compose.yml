@@ -1,6 +1,6 @@
 services:
   traefik-manager:
-    image: ghcr.io/chr0nzz/traefik-manager:1.11.0
+    image: ghcr.io/chr0nzz/traefik-manager:1.11.1
     environment:
       - COOKIE_SECURE=false
       - TRAEFIK_API_URL=${TRAEFIK_API_URL}
