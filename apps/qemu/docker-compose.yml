@@ -1,0 +1,25 @@
+x-runtipi:
+  schema_version: 2
+services:
+  qemu:
+    image: qemux/qemu:7.49
+    restart: always
+    volumes:
+      - ${APP_DATA_DIR}/data/storage:/storage
+    environment:
+      BOOT: ${QEMU_BOOT_URL:-${QEMU_BOOT}}
+      RAM_SIZE: ${QEMU_RAM_GB}G
+      CPU_CORES: ${QEMU_CPU_CORES}
+      DISK_SIZE: ${QEMU_DISK_SIZE_GB}G
+    network_mode: bridge
+    cap_add:
+      - NET_ADMIN
+    stop_grace_period: 2m
+    devices:
+      - /dev/kvm
+      - /dev/net/tun
+    sysctls:
+      net.ipv4.ip_forward: 1
+    x-runtipi:
+      internal_port: 8006
+      is_main: true

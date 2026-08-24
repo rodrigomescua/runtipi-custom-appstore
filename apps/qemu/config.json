@@ -1,0 +1,87 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "QEMU",
+  "id": "qemu",
+  "available": true,
+  "short_desc": "Run Linux virtual machines in your browser",
+  "author": "qemux",
+  "port": 8801,
+  "categories": ["utilities"],
+  "description": "Run virtual machines using QEMU with KVM acceleration and control them through a web-based viewer.",
+  "tipi_version": 1,
+  "version": "7.49",
+  "source": "https://github.com/qemus/qemu",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64"],
+  "created_at": 1787580000000,
+  "updated_at": 1787599835647,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "Operating system",
+      "hint": "Operating system image to download and install",
+      "required": true,
+      "options": [
+        { "label": "Omarchy", "value": "https://iso.omarchy.org/omarchy-4.0.0.iso" },
+        { "label": "Alma Linux", "value": "alma" },
+        { "label": "Alpine Linux", "value": "alpine" },
+        { "label": "Arch Linux", "value": "arch" },
+        { "label": "CachyOS", "value": "cachy" },
+        { "label": "CentOS", "value": "centos" },
+        { "label": "Debian", "value": "debian" },
+        { "label": "Fedora", "value": "fedora" },
+        { "label": "Gentoo", "value": "gentoo" },
+        { "label": "Kali Linux", "value": "kali" },
+        { "label": "Kubuntu", "value": "kubuntu" },
+        { "label": "Linux Mint", "value": "mint" },
+        { "label": "Manjaro", "value": "manjaro" },
+        { "label": "MX Linux", "value": "mx" },
+        { "label": "NixOS", "value": "nixos" },
+        { "label": "OpenSUSE", "value": "suse" },
+        { "label": "Rocky Linux", "value": "rocky" },
+        { "label": "Slackware", "value": "slack" },
+        { "label": "Tails", "value": "tails" },
+        { "label": "Ubuntu Desktop", "value": "ubuntu" },
+        { "label": "Ubuntu Server", "value": "ubuntus" },
+        { "label": "Xubuntu", "value": "xubuntu" },
+        { "label": "ZimaOS", "value": "zima" },
+        { "label": "Zorin OS", "value": "zorin" }
+      ],
+      "env_variable": "QEMU_BOOT"
+    },
+    {
+      "type": "number",
+      "label": "RAM (GB)",
+      "hint": "Memory allocated to the virtual machine",
+      "placeholder": "4",
+      "required": true,
+      "env_variable": "QEMU_RAM_GB"
+    },
+    {
+      "type": "number",
+      "label": "CPU cores",
+      "hint": "CPU cores allocated to the virtual machine",
+      "placeholder": "4",
+      "required": true,
+      "env_variable": "QEMU_CPU_CORES"
+    },
+    {
+      "type": "number",
+      "label": "Disk size (GB)",
+      "hint": "Virtual disk size",
+      "placeholder": "20",
+      "required": true,
+      "env_variable": "QEMU_DISK_SIZE_GB"
+    },
+    {
+      "type": "text",
+      "label": "Custom image URL (optional)",
+      "hint": "Optional URL for an .img, .raw, .iso, .qcow2, .vmdk, .vhd, .vhdx or .vdi image. When provided, it overrides the selected operating system.",
+      "required": false,
+      "placeholder": "https://example.com/image.iso",
+      "env_variable": "QEMU_BOOT_URL"
+    }
+  ],
+  "urn": "tipi://qemu"
+}
