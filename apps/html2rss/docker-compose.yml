@@ -1,6 +1,6 @@
 services:
   html2rss:
-    image: html2rss/web:1.10.0
+    image: html2rss/web:1.10.1
     environment:
       RACK_ENV: production
       PORT: 4000
