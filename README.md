@@ -12,9 +12,9 @@
 - Keep `config.json` and `docker-compose.yml` in sync when updating an app.
 - Use `bun scripts/update-config.ts apps/<app-name>/docker-compose.yml` after image-tag changes.
 
-## Apps available (59)
+## Apps available (60)
 
-| Name                                                                          | Description                                                                                        | Port | Dynamic (59) |
+| Name                                                                          | Description                                                                                        | Port | Dynamic (60) |
 | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                             | Self-hosted GPU video compressor                                                                   | 8846 | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                              | Note taking, to-do and moodboard application                                                       | 8831 | yes          |
@@ -50,6 +50,7 @@
 | [Piwigo](https://github.com/Piwigo/Piwigo)                                    | Open-source photo gallery software                                                                 | 8849 | yes          |
 | [PriceBuddy](https://github.com/jez500/pricebuddy)                            | Self-hosted price tracker with notifications                                                       | 8839 | yes          |
 | [qBitWebUI](https://github.com/mkbula/qbitwebui)                              | Modern qBittorrent web interface                                                                   | 8853 | yes          |
+| [QEMU](https://github.com/qemus/qemu)                                         | Run Linux virtual machines in your browser                                                         | 8801 | yes          |
 | [Razor Finance](https://github.com/rodrigomescua/RazorFinanceDocker)          | Gerenciamento financeiro                                                                           | 8840 | yes          |
 | [Razor IPTV](https://github.com/romesc/RazorIptvDocker)                       | Razor IPTV                                                                                         | 8821 | yes          |
 | [Razor Miniflux](https://github.com/rodrigomescua/RazorMiniflux)              | Razor Miniflux                                                                                     | 8822 | yes          |
