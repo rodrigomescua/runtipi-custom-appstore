@@ -1,6 +1,6 @@
 services:
   readeck:
-    image: codeberg.org/readeck/readeck:0.23.1
+    image: codeberg.org/readeck/readeck:0.23.2
     environment:
       READECK_LOG_LEVEL: info
       READECK_SERVER_HOST: "0.0.0.0"
