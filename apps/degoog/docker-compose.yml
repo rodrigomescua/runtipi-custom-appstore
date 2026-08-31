@@ -1,6 +1,6 @@
 services:
   degoog:
-    image: ghcr.io/degoog-org/degoog:0.24.0
+    image: ghcr.io/degoog-org/degoog:0.25.0
     environment:
       - TZ=${TZ}
       - PUID=1000
