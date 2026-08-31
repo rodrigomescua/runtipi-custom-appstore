@@ -11,8 +11,8 @@
     "utilities"
   ],
   "description": "Readeck is a self-hosted read-later application that saves web articles for distraction-free reading, preserves their content, and lets you organize your reading list.",
-  "tipi_version": 1,
-  "version": "0.23.1",
+  "tipi_version": 2,
+  "version": "0.23.2",
   "source": "https://codeberg.org/readeck/readeck",
   "exposable": true,
   "dynamic_config": true,
@@ -21,7 +21,7 @@
     "arm64"
   ],
   "created_at": 1787263200000,
-  "updated_at": 1787263200000,
+  "updated_at": 1788194640832,
   "form_fields": [],
   "urn": "tipi://readeck"
 }
