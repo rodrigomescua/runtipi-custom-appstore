@@ -11,8 +11,8 @@
     "utilities"
   ],
   "description": "html2rss-web turns almost any website into an RSS or JSON feed using automatic scraping, then serves the generated feeds through a web application.",
-  "tipi_version": 6,
-  "version": "1.11.0",
+  "tipi_version": 7,
+  "version": "1.12.2",
   "source": "https://github.com/html2rss/html2rss-web",
   "exposable": true,
   "dynamic_config": true,
@@ -21,7 +21,7 @@
     "arm64"
   ],
   "created_at": 1787318478281,
-  "updated_at": 1788012656657,
+  "updated_at": 1788633681188,
   "form_fields": [
     {
       "type": "random",
