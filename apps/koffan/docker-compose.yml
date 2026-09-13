@@ -1,6 +1,6 @@
 services:
   koffan:
-    image: ghcr.io/pansalut/koffan:v2.13.1
+    image: ghcr.io/pansalut/koffan:v2.14.0
     restart: unless-stopped
     volumes:
       - ${APP_DATA_DIR}/data/data:/data
