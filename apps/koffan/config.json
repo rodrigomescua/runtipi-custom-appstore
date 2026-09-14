@@ -11,8 +11,8 @@
     "social"
   ],
   "description": "Koffan is a lightweight, self-hosted shopping list for couples and families, with real-time synchronization, offline support, multiple lists and a mobile-friendly PWA.",
-  "tipi_version": 5,
-  "version": "v2.14.0",
+  "tipi_version": 6,
+  "version": "v2.14.1",
   "source": "https://github.com/PanSalut/Koffan",
   "exposable": true,
   "dynamic_config": true,
@@ -21,7 +21,7 @@
     "arm64"
   ],
   "created_at": 1785711600000,
-  "updated_at": 1789306903412,
+  "updated_at": 1789400453281,
   "form_fields": [
     {
       "type": "password",
