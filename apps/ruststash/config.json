@@ -1,11 +1,11 @@
 {
   "$schema": "https://schemas.runtipi.io/v2/app-info.json",
-  "name": "Razorstash",
-  "id": "razorstash",
+  "name": "RustStash",
+  "id": "ruststash",
   "available": true,
   "short_desc": "Self-hosted StashDB scraper",
   "author": "rodrigomescua",
-  "port": 8851,
+  "port": 8802,
   "categories": [
     "utilities",
     "media"
@@ -13,8 +13,8 @@
   "description": "Rust web app that consumes the StashDB GraphQL API and persists local studio/performer reactions in SQLite.",
   "tipi_version": 65,
   "version": "202609161931",
-  "source": "https://github.com/rodrigomescua/razorstash",
-  "urn": "tipi://razorstash",
+  "source": "https://github.com/rodrigomescua/ruststash",
+  "urn": "tipi://ruststash",
   "exposable": true,
   "dynamic_config": true,
   "supported_architectures": [
