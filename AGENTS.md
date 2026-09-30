@@ -22,8 +22,9 @@ This repository is a custom app store for [Runtipi](https://github.com/runtipi/r
 - Do not use `latest` image tags.
 - Before creating or finishing an app, verify that the exact image tag exists in its registry. A release version or search result is not proof. Compare the registry tag character-for-character with both `docker-compose.yml` and `config.json.version`; if the registry check cannot be completed, stop and report the blocker.
 - If any file inside `apps/<app-id>/` is modified, update `config.json` in the same change:
-  - increment `tipi_version`
+  - increment `tipi_version` exactly once per commit that changes that app
   - update `updated_at` with `Date.now()`
+- When making multiple edits to the same app before committing, bump `tipi_version` and refresh `updated_at` only once for that commit. Further edits before the commit do not require another bump; if a later commit changes the app again, bump once in that commit.
 - Database credentials should be hardcoded in compose, not collected through `form_fields`.
 
 ## Ports
@@ -70,7 +71,7 @@ Tests verify that required files exist and that `config.json` and `docker-compos
 - Treat registry verification as a blocking validation, not a best-effort lookup. For Docker Hub, query `https://hub.docker.com/v2/repositories/<namespace>/<repository>/tags` and confirm the exact tag appears in the response. For GHCR or another registry, use its tag API or an equivalent manifest lookup.
 - Compose services must be YAML objects, not arrays. Environment variables use simple key/value entries, and `depends_on` conditions should use `service_healthy` or `service_started` where dependencies exist.
 - Database credentials must not be collected through `form_fields`; use app-specific defaults in compose.
-- Whenever any app file is modified, increment `tipi_version`, update `updated_at` in milliseconds, and keep the metadata change in the same change. This also applies to image-only updates made through `bun scripts/update-config.ts`.
+- For each commit that changes one or more files of an app, increment its `tipi_version` once, update `updated_at` in milliseconds, and include both in that commit. Do not bump repeatedly for edits made before the same commit. This also applies to image-only updates made through `bun scripts/update-config.ts`; run the script at most once per app per commit.
 
 ## Automation and common mistakes
 

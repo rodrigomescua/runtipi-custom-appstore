@@ -45,11 +45,13 @@ Always produce a 512x512 JPG. For a light or transparent logo, use a uniform dar
 
 ## Versioning and validation
 
-Whenever any file inside `apps/<app-id>/` is modified, increment `tipi_version` and update `updated_at` with the current `Date.now()` millisecond timestamp. Keep that metadata change in the same change, including image-only updates made through:
+For each commit that changes one or more files inside `apps/<app-id>/`, increment `tipi_version` exactly once and update `updated_at` with the current `Date.now()` millisecond timestamp. If more edits are made before that commit, do not increment again. Keep the metadata update in that commit, including image-only updates made through:
 
 ```bash
 bun scripts/update-config.ts apps/<app-name>/docker-compose.yml
 ```
+
+Run this script at most once per app per commit; make all image-tag edits first.
 
 Run:
 
