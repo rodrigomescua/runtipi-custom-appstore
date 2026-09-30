@@ -10,7 +10,7 @@
     "finance"
   ],
   "description": "Gerencie contas, transações, orçamentos e patrimônio em uma plataforma financeira privada e auto-hospedada.",
-  "tipi_version": 1,
+  "tipi_version": 2,
   "version": "0.16.2",
   "source": "https://github.com/securo-finance/securo",
   "website": "https://usesecuro.com/",
@@ -22,7 +22,7 @@
     "arm64"
   ],
   "created_at": 1790809696754,
-  "updated_at": 1790810279196,
+  "updated_at": 1790810710870,
   "form_fields": [
     {
       "type": "random",
@@ -39,6 +39,18 @@
       "env_variable": "AGENTS_MCP_JWT_SECRET",
       "min": 32,
       "encoding": "hex"
+    },
+    {
+      "type": "text",
+      "label": "Pluggy Client ID (opcional)",
+      "required": false,
+      "env_variable": "PLUGGY_CLIENT_ID"
+    },
+    {
+      "type": "password",
+      "label": "Pluggy Client Secret (opcional)",
+      "required": false,
+      "env_variable": "PLUGGY_CLIENT_SECRET"
     }
   ]
 }
