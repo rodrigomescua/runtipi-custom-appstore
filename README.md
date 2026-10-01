@@ -12,9 +12,9 @@
 - Keep `config.json` and `docker-compose.yml` in sync when updating an app.
 - Use `bun scripts/update-config.ts apps/<app-name>/docker-compose.yml` after image-tag changes.
 
-## Apps available (61)
+## Apps available (62)
 
-| Name                                                                          | Description                                                                                        | Port | Dynamic (61) |
+| Name                                                                          | Description                                                                                        | Port | Dynamic (62) |
 | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                             | Self-hosted GPU video compressor                                                                   | 8846 | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                              | Note taking, to-do and moodboard application                                                       | 8831 | yes          |
@@ -65,6 +65,7 @@
 | [RustFreshRss - Restricted](https://github.com/rodrigomescua/RustFreshRss)    | RustFreshRss com regras restritas                                                                  | 8872 | yes          |
 | [Rustavoid](https://github.com/rodrigomescua/Rustavoid)                       | Self-hosted app to register products and companies to avoid                                        | 8856 | yes          |
 | [RustStash](https://github.com/rodrigomescua/ruststash)                       | Self-hosted StashDB scraper                                                                        | 8802 | yes          |
+| [Securo](https://github.com/securo-finance/securo)                            | Gerenciador financeiro pessoal auto-hospedado                                                      | 8803 | yes          |
 | [Stationarr](https://github.com/rroy676/Stationarr)                           | IPTV playlist editor, EPG matcher, and self-hosted companion                                       | 8867 | yes          |
 | [Sure](https://github.com/we-promise/sure)                                    | Self-hosted personal finance app                                                                   | 8866 | yes          |
 | [TrackWatch](https://github.com/emlopezr/trackwatch)                          | Self-hosted Spotify release tracker                                                                | 8834 | yes          |
