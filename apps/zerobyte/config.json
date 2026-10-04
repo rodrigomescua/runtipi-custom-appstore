@@ -1,0 +1,44 @@
+{
+  "name": "Zerobyte",
+  "id": "zerobyte",
+  "available": true,
+  "short_desc": "Backup automation for self-hosters.",
+  "author": "nicotsx",
+  "port": 8929,
+  "categories": [
+    "utilities"
+  ],
+  "description": "Zerobyte automates encrypted backups of locally mounted directories using Restic, with scheduling, retention policies, monitoring, and local or cloud storage destinations.",
+  "tipi_version": 1,
+  "version": "v0.43.2",
+  "source": "https://github.com/nicotsx/zerobyte",
+  "exposable": true,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "created_at": 1764341309733,
+  "updated_at": 1791090595608,
+  "dynamic_config": true,
+  "form_fields": [
+    {
+      "type": "random",
+      "label": "Zerobyte App Secret",
+      "min": 32,
+      "env_variable": "ZEROBYTE_APP_SECRET",
+      "required": true,
+      "encoding": "hex",
+      "hint": "Generated encryption secret. Keep it unchanged and save it with your backups."
+    },
+    {
+      "type": "url",
+      "label": "Zerobyte Base URL",
+      "placeholder": "http://192.168.1.100:8929",
+      "required": true,
+      "env_variable": "ZEROBYTE_BASE_URL",
+      "hint": "Exact URL used to open Zerobyte: http://<server-ip>:8929 or https://<your-domain>."
+    }
+  ],
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "urn": "tipi://zerobyte"
+}
