@@ -12,9 +12,9 @@
 - Keep `config.json` and `docker-compose.yml` in sync when updating an app.
 - Use `bun scripts/update-config.ts apps/<app-name>/docker-compose.yml` after image-tag changes.
 
-## Apps available (62)
+## Apps available (63)
 
-| Name                                                                          | Description                                                                                        | Port | Dynamic (62) |
+| Name                                                                          | Description                                                                                        | Port | Dynamic (63) |
 | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                             | Self-hosted GPU video compressor                                                                   | 8846 | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                              | Note taking, to-do and moodboard application                                                       | 8831 | yes          |
@@ -78,3 +78,4 @@
 | [Yamtrack](https://github.com/FuzzyGrim/Yamtrack)                             | Yamtrack is a self hosted media tracker for movies, tv shows, anime, manga, video games and books. | 8860 | yes          |
 | [Your Spotify](https://github.com/Yooooomi/your_spotify)                      | Self hosted Spotify tracking dashboard.                                                            | 8850 | yes          |
 | [Yuvomi](https://github.com/ulsklyc/yuvomi)                                   | Self-hosted family planner                                                                         | 8873 | yes          |
+| [Zerobyte](https://github.com/nicotsx/zerobyte)                               | Backup automation for self-hosters.                                                                | 8929 | yes          |
