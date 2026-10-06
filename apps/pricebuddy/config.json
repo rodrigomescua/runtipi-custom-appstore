@@ -10,18 +10,28 @@
     "utilities"
   ],
   "description": "A self-hostable application that tracks prices and sends you notifications when prices match your preferences. Create and manage stores, track product prices, visualize price history, and get notifications via the app, email or pushover/gotify.",
-  "tipi_version": 28,
+  "tipi_version": 29,
   "version": "v1.0.55",
   "source": "https://github.com/jez500/pricebuddy",
   "website": "https://pricebuddy.jez.me",
   "exposable": true,
   "force_expose": false,
   "dynamic_config": true,
-  "form_fields": [],
+  "form_fields": [
+    {
+      "type": "random",
+      "label": "Application Encryption Key",
+      "required": true,
+      "env_variable": "APP_KEY",
+      "encoding": "base64",
+      "min": 32,
+      "hint": "Persistent Laravel encryption key"
+    }
+  ],
   "supported_architectures": [
     "amd64"
   ],
   "created_at": 1732452278000,
-  "updated_at": 1791253453382,
+  "updated_at": 1791255192491,
   "urn": "tipi://pricebuddy"
 }

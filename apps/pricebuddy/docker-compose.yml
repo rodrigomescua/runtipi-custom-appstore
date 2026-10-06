@@ -5,6 +5,7 @@ services:
       - APP_URL=${APP_PROTOCOL:-http}://${APP_DOMAIN}
       - ASSET_URL=${APP_PROTOCOL:-http}://${APP_DOMAIN}
       - SESSION_SECURE_COOKIE=true
+      - APP_KEY=base64:${APP_KEY}
       - APP_TIMEZONE=${TZ}
       - APP_LOCALE=pt_BR
       - APP_CURRENCY_LOCALE=pt_BR
