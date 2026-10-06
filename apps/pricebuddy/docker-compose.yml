@@ -20,7 +20,8 @@ services:
       - AFFILIATE_ENABLED=true
     volumes:
       - ${APP_DATA_DIR}/data/storage:/app/storage
-      - ${APP_DATA_DIR}/data/env/.env:/app/.env
+    env_file:
+      - ${APP_DATA_DIR}/data/env/.env
     depends_on:
       pricebuddy-db:
         condition: service_healthy
