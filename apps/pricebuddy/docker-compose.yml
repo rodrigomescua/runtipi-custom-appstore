@@ -4,6 +4,7 @@ services:
     environment:
       - APP_URL=${APP_PROTOCOL:-http}://${APP_DOMAIN}
       - ASSET_URL=${APP_PROTOCOL:-http}://${APP_DOMAIN}
+      - SESSION_SECURE_COOKIE=true
       - APP_TIMEZONE=${TZ}
       - APP_LOCALE=pt_BR
       - APP_CURRENCY_LOCALE=pt_BR
@@ -29,6 +30,7 @@ services:
 
   pricebuddy-db:
     image: mysql:8.2
+    command: --skip-log-bin
     environment:
       - MYSQL_DATABASE=pricebuddy
       - MYSQL_USER=pricebuddy

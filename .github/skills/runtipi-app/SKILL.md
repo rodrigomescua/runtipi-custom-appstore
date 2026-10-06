@@ -45,13 +45,13 @@ Always produce a 512x512 JPG. For a light or transparent logo, use a uniform dar
 
 ## Versioning and validation
 
-For each commit that changes one or more files inside `apps/<app-id>/`, increment `tipi_version` exactly once and update `updated_at` with the current `Date.now()` millisecond timestamp. If more edits are made before that commit, do not increment again. Keep the metadata update in that commit, including image-only updates made through:
+For each commit that changes one or more files inside `apps/<app-id>/`, set `tipi_version` to exactly the last committed value plus one and update `updated_at` with the current `Date.now()` millisecond timestamp. Count from `HEAD`, not per edit or assistant turn. For example, if `HEAD` is 25, the value stays 26 through all further uncommitted edits; never bump it to 27 before committing. Before committing, compare with `git show HEAD:apps/<app-id>/config.json`. Keep the metadata update in that commit, including image-only updates made through:
 
 ```bash
 bun scripts/update-config.ts apps/<app-name>/docker-compose.yml
 ```
 
-Run this script at most once per app per commit; make all image-tag edits first.
+Run this script at most once per app per commit; make all image-tag edits first. If it already ran and more edits follow before the commit, do not run it again: preserve the one increment and refresh only `updated_at` if needed.
 
 Run:
 

@@ -21,10 +21,9 @@ This repository is a custom app store for [Runtipi](https://github.com/runtipi/r
 - `config.json.version` must match the main service image tag exactly, character for character.
 - Do not use `latest` image tags.
 - Before creating or finishing an app, verify that the exact image tag exists in its registry. A release version or search result is not proof. Compare the registry tag character-for-character with both `docker-compose.yml` and `config.json.version`; if the registry check cannot be completed, stop and report the blocker.
-- If any file inside `apps/<app-id>/` is modified, update `config.json` in the same change:
-  - increment `tipi_version` exactly once per commit that changes that app
-  - update `updated_at` with `Date.now()`
-- When making multiple edits to the same app before committing, bump `tipi_version` and refresh `updated_at` only once for that commit. Further edits before the commit do not require another bump; if a later commit changes the app again, bump once in that commit.
+- If any file inside `apps/<app-id>/` is modified, update that app's `config.json` in the same commit: increment `tipi_version` once and set `updated_at` to the current `Date.now()` millisecond timestamp.
+- Count increments from the last committed state, not per edit or assistant turn. Example: if `HEAD` has `tipi_version: 25`, keep it at `26` for every additional edit to that app until commit; do not change it to `27`. If the app changes in a later commit, increment once again in that later commit.
+- Before committing, compare against `git show HEAD:apps/<app-id>/config.json`. The working value must be exactly the committed value plus one, regardless of how many uncommitted edits were made.
 - Database credentials should be hardcoded in compose, not collected through `form_fields`.
 
 ## Ports
@@ -71,7 +70,8 @@ Tests verify that required files exist and that `config.json` and `docker-compos
 - Treat registry verification as a blocking validation, not a best-effort lookup. For Docker Hub, query `https://hub.docker.com/v2/repositories/<namespace>/<repository>/tags` and confirm the exact tag appears in the response. For GHCR or another registry, use its tag API or an equivalent manifest lookup.
 - Compose services must be YAML objects, not arrays. Environment variables use simple key/value entries, and `depends_on` conditions should use `service_healthy` or `service_started` where dependencies exist.
 - Database credentials must not be collected through `form_fields`; use app-specific defaults in compose.
-- For each commit that changes one or more files of an app, increment its `tipi_version` once, update `updated_at` in milliseconds, and include both in that commit. Do not bump repeatedly for edits made before the same commit. This also applies to image-only updates made through `bun scripts/update-config.ts`; run the script at most once per app per commit.
+- For each commit that changes one or more files of an app, `tipi_version` must be exactly one higher than the value in the last commit; `updated_at` must be refreshed in milliseconds in that commit. This is one bump per app per commit, never one bump per edit or turn. Check with `git show HEAD:apps/<app-id>/config.json` before committing.
+- Image-only changes follow the same rule. Run `bun scripts/update-config.ts` at most once per app per commit. If it has already run and more edits are made before the commit, do not run it again or manually bump again; preserve the single increment and refresh `updated_at` for the final app state.
 
 ## Automation and common mistakes
 
