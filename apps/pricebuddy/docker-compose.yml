@@ -7,6 +7,10 @@ services:
       - SESSION_SECURE_COOKIE=true
       - APP_KEY=base64:${APP_KEY}
       - APP_TIMEZONE=${TZ}
+      - APP_LOCALE=pt_BR
+      - APP_CURRENCY_LOCALE=pt_BR
+      - APP_FALLBACK_LOCALE=en_US
+      - APP_FAKER_LOCALE=en_US
       - DB_HOST=pricebuddy-db
       - DB_USERNAME=pricebuddy
       - DB_PASSWORD=pricebuddy_password
