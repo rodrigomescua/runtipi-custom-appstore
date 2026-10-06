@@ -10,7 +10,7 @@
     "utilities"
   ],
   "description": "A self-hostable application that tracks prices and sends you notifications when prices match your preferences. Create and manage stores, track product prices, visualize price history, and get notifications via the app, email or pushover/gotify.",
-  "tipi_version": 27,
+  "tipi_version": 28,
   "version": "v1.0.55",
   "source": "https://github.com/jez500/pricebuddy",
   "website": "https://pricebuddy.jez.me",
