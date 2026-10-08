@@ -11,7 +11,7 @@
     "media"
   ],
   "description": "Rust web app that consumes the StashDB GraphQL API and persists local studio/performer reactions in SQLite.",
-  "tipi_version": 107,
+  "tipi_version": 108,
   "version": "202610011941",
   "source": "https://github.com/rodrigomescua/razorstash",
   "urn": "tipi://razorstash",
@@ -31,6 +31,15 @@
       "env_variable": "STASHDB_API_KEY",
       "hint": "Key for accessing the StashDB API",
       "min": 32,
+      "max": 200
+    },
+    {
+      "type": "password",
+      "label": "TPDB API Token",
+      "required": true,
+      "env_variable": "TPDB_API_TOKEN",
+      "hint": "Token for accessing the TPDB API",
+      "min": 16,
       "max": 200
     }
   ]

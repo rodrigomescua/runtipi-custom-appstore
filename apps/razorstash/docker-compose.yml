@@ -7,7 +7,7 @@ services:
     environment:
       - DEBUG=true
       - STASHDB_API_KEY=${STASHDB_API_KEY}
-      - TPDB_API_KEY=${TPDB_API_KEY}
+      - TPDB_API_TOKEN=${TPDB_API_TOKEN}
       - RAZORSTASH_SQLITE_PATH=/data/razorstash.sqlite3
       - TZ=${TZ}
     healthcheck:
