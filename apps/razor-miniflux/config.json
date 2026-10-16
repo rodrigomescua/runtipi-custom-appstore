@@ -10,7 +10,7 @@
     "featured"
   ],
   "description": "Aplicativo para gerenciar feed RSS hospedado no Miniflux.",
-  "tipi_version": 123,
+  "tipi_version": 124,
   "version": "202610161821",
   "source": "https://github.com/rodrigomescua/RazorMiniflux",
   "exposable": true,
@@ -77,14 +77,14 @@
     {
       "type": "text",
       "label": "Exclusive Top hostname",
-      "required": true,
+      "required": false,
       "env_variable": "TOP_MODE_HOST",
       "hint": "Hostname only, without https://, port or path. All other domains use Normal mode."
     },
     {
       "type": "password",
       "label": "Top access PIN",
-      "required": true,
+      "required": false,
       "min": 6,
       "max": 128,
       "env_variable": "TOP_MODE_PIN",
@@ -93,7 +93,7 @@
     {
       "type": "text",
       "label": "Trusted proxy IPs / CIDRs",
-      "required": true,
+      "required": false,
       "env_variable": "TRUSTED_PROXIES",
       "hint": "Exemplos: 192.168.1.10 (um proxy); 192.168.1.10,172.18.0.2 (dois proxies); 172.18.0.0/24 (rede Docker dedicada e confiável). Use os IPs do proxy vistos pelo container, não os IPs dos clientes. Sem URLs ou portas."
     }
