@@ -113,3 +113,10 @@ This file is the source of truth for agent-facing guidance in this repo. Other i
 ## Reusable skill
 
 For creating, updating, or auditing apps, use the repository skill [`runtipi-app`](.github/skills/runtipi-app/SKILL.md). It encodes this contract, including selfh.st-first logo sourcing, deterministic 512x512 JPG processing, Runtipi `random` secrets, versioning, and validation requirements.
+
+## Razor Miniflux dual-mode integration
+
+- Only apps/razor-miniflux is prepared for dual-mode deployment; preserve apps/razor-miniflux-restricted for rollback.
+- The main app requires TOP_MODE_HOST, TOP_MODE_PIN and TRUSTED_PROXIES. Keep the PIN as an administrator-supplied password field without a default; preserve the original Host at the proxy.
+- Keep NORMAL_DATABASE_FILE=RazorMiniflux.db and TOP_DATABASE_FILE=RazorMiniflux-top.db explicit in Compose, in the existing /app/db volume. The user migrates by keeping Normal in place and copying/renaming the stopped Restricted database; no import command or nested directories are required. Preserve pending WAL with the corresponding renamed basename.
+- Pin a published, registry-verified dual-mode image and keep Compose and config.json.version identical. Migration preserves both original SQLite volumes; do not change the Restricted app as part of main-app upgrades.

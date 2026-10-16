@@ -1,23 +1,28 @@
 services:
   razor-miniflux:
-    image: ghcr.io/rodrigomescua/razorminiflux:202610081950
+    image: ghcr.io/rodrigomescua/razorminiflux:202610161821
     environment:
-      - FRESHRSS_CONNECTIONSTRING=${FRESHRSS_CONNECTIONSTRING}
-      - FRESHRSS_TABLE_PREFIX=${FRESHRSS_TABLE_PREFIX}
-      - FRESHRSS_TOP_TABLE_PREFIX=${FRESHRSS_TOP_TABLE_PREFIX}
-      - PAGE_SIZE=${PAGE_SIZE}
-      - SERVER_PAGE_SIZE=${SERVER_PAGE_SIZE}
-      - IS_TOP=${IS_TOP}
-      - MARK_STARRED_READ=${MARK_STARRED_READ}
-      - TZ=${TZ}
-      - ASPNETCORE_ENVIRONMENT=Production
-      - ASPNETCORE_HTTP_PORTS=8080
-      - ENABLE_SPECTOR="false"
+      FRESHRSS_CONNECTIONSTRING: ${FRESHRSS_CONNECTIONSTRING}
+      FRESHRSS_TABLE_PREFIX: ${FRESHRSS_TABLE_PREFIX}
+      FRESHRSS_TOP_TABLE_PREFIX: ${FRESHRSS_TOP_TABLE_PREFIX}
+      PAGE_SIZE: ${PAGE_SIZE}
+      SERVER_PAGE_SIZE: ${SERVER_PAGE_SIZE}
+      MARK_STARRED_READ: ${MARK_STARRED_READ}
+      TZ: ${TZ}
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_HTTP_PORTS: '8080'
+      ENABLE_SPECTOR: 'false'
+      TOP_MODE_HOST: ${TOP_MODE_HOST}
+      TOP_MODE_PIN: ${TOP_MODE_PIN}
+      # Exemplos: 192.168.1.10 | 192.168.1.10,172.18.0.2 | 172.18.0.0/24
+      # Use apenas IPs do proxy ou sua rede Docker dedicada e confiavel.
+      TRUSTED_PROXIES: ${TRUSTED_PROXIES}
+      NORMAL_DATABASE_FILE: RazorMiniflux.db
+      TOP_DATABASE_FILE: RazorMiniflux-top.db
     volumes:
       - ${APP_DATA_DIR}/data/db:/app/db
     x-runtipi:
       is_main: true
       internal_port: 8080
-
 x-runtipi:
   schema_version: 2

@@ -10,8 +10,8 @@
     "featured"
   ],
   "description": "Aplicativo para gerenciar feed RSS hospedado no Miniflux.",
-  "tipi_version": 122,
-  "version": "202610081950",
+  "tipi_version": 123,
+  "version": "202610161821",
   "source": "https://github.com/rodrigomescua/RazorMiniflux",
   "exposable": true,
   "dynamic_config": true,
@@ -19,7 +19,7 @@
     "amd64"
   ],
   "created_at": 1731806736001,
-  "updated_at": 1791489169771,
+  "updated_at": 1792175123458,
   "form_fields": [
     {
       "type": "text",
@@ -67,21 +67,35 @@
     },
     {
       "type": "text",
-      "label": "Flag",
-      "required": false,
-      "default": "false",
-      "max": 5,
-      "min": 1,
-      "env_variable": "IS_TOP"
-    },
-    {
-      "type": "text",
       "label": "Mark Starred as Read",
       "required": false,
       "default": "true",
       "max": 5,
       "min": 1,
       "env_variable": "MARK_STARRED_READ"
+    },
+    {
+      "type": "text",
+      "label": "Exclusive Top hostname",
+      "required": true,
+      "env_variable": "TOP_MODE_HOST",
+      "hint": "Hostname only, without https://, port or path. All other domains use Normal mode."
+    },
+    {
+      "type": "password",
+      "label": "Top access PIN",
+      "required": true,
+      "min": 6,
+      "max": 128,
+      "env_variable": "TOP_MODE_PIN",
+      "hint": "6 to 128 digits. Required only on the exclusive Top hostname."
+    },
+    {
+      "type": "text",
+      "label": "Trusted proxy IPs / CIDRs",
+      "required": true,
+      "env_variable": "TRUSTED_PROXIES",
+      "hint": "Exemplos: 192.168.1.10 (um proxy); 192.168.1.10,172.18.0.2 (dois proxies); 172.18.0.0/24 (rede Docker dedicada e confiável). Use os IPs do proxy vistos pelo container, não os IPs dos clientes. Sem URLs ou portas."
     }
   ],
   "urn": "tipi://razor-miniflux"
