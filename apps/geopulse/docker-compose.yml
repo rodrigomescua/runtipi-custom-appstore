@@ -44,7 +44,7 @@ services:
   geopulse_backend:
     image: tess1o/geopulse-backend:1.39.1-native
     environment:
-      - GEOPULSE_VERSION=1.8.1
+      - GEOPULSE_VERSION=2.0.0
       - GEOPULSE_UI_URL=${APP_PROTOCOL:-http}://${APP_DOMAIN}
       - GEOPULSE_AUTH_SECURE_COOKIES=false
       - GEOPULSE_BACKEND_URL=http://geopulse_backend:8080
@@ -76,7 +76,7 @@ services:
   geopulse:
     image: tess1o/geopulse-ui:1.39.1
     environment:
-      - GEOPULSE_VERSION=1.8.1
+      - GEOPULSE_VERSION=2.0.0
       - GEOPULSE_BACKEND_URL=http://geopulse_backend:8080
       - CLIENT_MAX_BODY_SIZE=1000M
       - TZ=${TZ}
