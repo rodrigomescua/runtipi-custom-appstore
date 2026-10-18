@@ -12,7 +12,7 @@
     "data"
   ],
   "description": "GeoPulse is a self-hosted location tracking and analysis platform that transforms raw GPS data from tracking apps like OwnTracks, Overland, Dawarich or HomeAssistant into organized timelines and insights. It automatically categorizes your location data into stays and trips, providing a clear view of your movement patterns while keeping everything on your own server. Includes integration with Immich to view photos on the timeline map.",
-  "tipi_version": 69,
+  "tipi_version": 70,
   "version": "2.0.0",
   "source": "https://github.com/tess1o/geopulse",
   "exposable": true,

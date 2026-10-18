@@ -1,12 +1,13 @@
 services:
   geopulse_postgres:
-    image: postgis/postgis:17-3.5
+    image: postgis/postgis:18-3.6
+    shm_size: 256mb
     environment:
       - POSTGRES_USER=${GEOPULSE_POSTGRES_USERNAME}
       - POSTGRES_PASSWORD=${GEOPULSE_POSTGRES_PASSWORD}
       - POSTGRES_DB=${GEOPULSE_POSTGRES_DB}
     volumes:
-      - ${APP_DATA_DIR}/data/postgres_data:/var/lib/postgresql/data
+      - ${APP_DATA_DIR}/data/postgres_data:/var/lib/postgresql
     command:
       - postgres
       - "-c"
