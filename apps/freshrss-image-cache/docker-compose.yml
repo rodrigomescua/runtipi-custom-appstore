@@ -1,0 +1,16 @@
+services:
+  freshrss-image-cache:
+    image: ghcr.io/s373r/freshrss-image-cache-service-rs:0.2.6
+    environment:
+      APP_PORT: 3000
+      APP_ACCESS_TOKEN: ${APP_ACCESS_TOKEN}
+      APP_IMAGES_DIR: /usr/src/app/images
+      APP_NO_ANSI_COLORS: "1"
+    volumes:
+      - ${APP_DATA_DIR}/data/images:/usr/src/app/images
+    x-runtipi:
+      is_main: true
+      internal_port: 3000
+
+x-runtipi:
+  schema_version: 2

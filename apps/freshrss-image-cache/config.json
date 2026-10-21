@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "FreshRSS Image Cache",
+  "id": "freshrss-image-cache",
+  "available": true,
+  "short_desc": "Persistent image cache for the FreshRSS image cache plugin.",
+  "author": "s373r",
+  "port": 8875,
+  "categories": [
+    "utilities"
+  ],
+  "description": "A self-hosted disk-backed image cache designed for the FreshRSS Image Cache plugin, including its proactive caching API.",
+  "tipi_version": 1,
+  "version": "0.2.6",
+  "source": "https://github.com/s373r/freshrss-image-cache-service-rs",
+  "urn": "tipi://freshrss-image-cache",
+  "exposable": false,
+  "dynamic_config": true,
+  "supported_architectures": [
+    "amd64"
+  ],
+  "created_at": 1792593707194,
+  "updated_at": 1792593707194,
+  "form_fields": [
+    {
+      "type": "random",
+      "label": "FreshRSS cache access token",
+      "required": true,
+      "env_variable": "APP_ACCESS_TOKEN",
+      "min": 32,
+      "encoding": "base64",
+      "hint": "Use the same value in the FreshRSS image cache plugin."
+    }
+  ]
+}
