@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "weserv/images",
+  "id": "weserv-images",
+  "available": true,
+  "short_desc": "Self-hosted image resizing and optimization service.",
+  "author": "weserv",
+  "port": 8872,
+  "categories": [
+    "utilities",
+    "photography"
+  ],
+  "description": "weserv/images is a self-hosted image proxy that resizes, crops, converts, and optimizes images on demand.",
+  "tipi_version": 1,
+  "version": "5.x",
+  "source": "https://github.com/weserv/images",
+  "urn": "tipi://weserv-images",
+  "exposable": false,
+  "dynamic_config": true,
+  "supported_architectures": [
+    "amd64"
+  ],
+  "created_at": 1792591871763,
+  "updated_at": 1792593101119,
+  "form_fields": []
+}

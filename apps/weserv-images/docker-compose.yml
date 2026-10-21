@@ -1,0 +1,20 @@
+services:
+  weserv-images:
+    image: ghcr.io/weserv/images:5.x
+    command:
+      - /bin/sh
+      - -c
+      - >-
+        sed -i -e 's/inactive=8h/inactive=3d/' -e 's/max_size=250m/max_size=1g/' /etc/nginx/imagesweserv.conf
+        && mkdir -p /dev/shm/proxy_cache
+        && chown nginx:nginx /dev/shm/proxy_cache
+        && exec nginx -g 'daemon off;'
+    shm_size: 1gb
+    volumes:
+      - ${APP_DATA_DIR}/data/proxy_cache:/dev/shm/proxy_cache
+    x-runtipi:
+      is_main: true
+      internal_port: 80
+
+x-runtipi:
+  schema_version: 2
