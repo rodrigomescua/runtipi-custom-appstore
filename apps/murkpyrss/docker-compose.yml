@@ -1,6 +1,6 @@
 services:
   murkpyrss:
-    image: ghcr.io/rodrigomescua/murkpyrss:202610221321
+    image: ghcr.io/rodrigomescua/murkpyrss:202610221335
     restart: always
     environment:
       - TZ=${TZ}
