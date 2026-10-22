@@ -12,8 +12,8 @@
     "featured"
   ],
   "description": "MurkPyRSS generates RSS feeds from websites with native, manual, and AI-generated extractors. It includes FlareSolverr support, isolated Docker execution for custom scripts, and FreshRSS integration.",
-  "tipi_version": 37,
-  "version": "202610221303",
+  "tipi_version": 38,
+  "version": "202610221321",
   "source": "https://github.com/rodrigomescua/murkpyrss",
   "exposable": true,
   "dynamic_config": true,
@@ -21,7 +21,7 @@
     "amd64"
   ],
   "created_at": 1776568800000,
-  "updated_at": 1792674326598,
+  "updated_at": 1792675368066,
   "form_fields": [
     {
       "type": "boolean",
