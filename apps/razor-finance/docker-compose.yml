@@ -1,6 +1,6 @@
 services:
   razor-finance:
-    image: ghcr.io/rodrigomescua/razorfinance:202512080458
+    image: ghcr.io/rodrigomescua/razorfinance:202610270330
     environment:
       - TZ=${TZ}
     volumes:
