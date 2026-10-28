@@ -1,6 +1,6 @@
 services:
   next-explorer:
-    image: nxzai/explorer:v4.0.0
+    image: nxzai/explorer:v4.0.1
     environment:
       NODE_ENV: production
       PORT: '3000'
