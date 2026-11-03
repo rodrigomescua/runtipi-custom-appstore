@@ -5,11 +5,14 @@ services:
       - /bin/sh
       - -c
       - >-
-        sed -i -e 's/inactive=8h/inactive=3d/' -e 's/max_size=250m/max_size=5g/' -e 's/proxy_cache_min_uses 2;/proxy_cache_min_uses 1;/' /etc/nginx/imagesweserv.conf
+        sed -i -e 's/inactive=8h/inactive=3d/' -e 's/max_size=250m/max_size=5g/' -e 's/proxy_cache_min_uses 2;/proxy_cache_min_uses 1;/' -e 's/resolver 8.8.8.8;/resolver 192.168.0.20 ipv6=off;/' /etc/nginx/imagesweserv.conf
+        && sed -i -e '/weserv_deny_ip 10\.0\.0\.0\/8;/d' -e '/weserv_deny_ip 172\.16\.0\.0\/12;/d' -e '/weserv_deny_ip 192\.168\.0\.0\/16;/d' /etc/nginx/nginx.conf
         && mkdir -p /dev/shm/proxy_cache
         && chown nginx:nginx /dev/shm/proxy_cache
         && exec nginx -g 'daemon off;'
     shm_size: 1gb
+    dns:
+      - 192.168.0.20
     volumes:
       - ${APP_DATA_DIR}/data/proxy_cache:/dev/shm/proxy_cache
     x-runtipi:
