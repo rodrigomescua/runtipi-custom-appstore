@@ -2,7 +2,7 @@
 
 weserv/images is a self-hosted image proxy for resizing, cropping, converting, and optimizing images on demand. It is compatible with the weserv/images HTTP API.
 
-The app persists the Nginx image cache in `${APP_DATA_DIR}/data/proxy_cache` and changes the cache inactivity period to 3 days at startup. The cache has a 1 GB maximum size; items may be evicted sooner if the cache fills before the 3-day inactivity period.
+The app persists the Nginx image cache in `${APP_DATA_DIR}/data/proxy_cache` and caches eligible responses on the first request. The cache inactivity period is 3 days and its maximum size is 5 GB; items may be evicted sooner if the cache fills before the 3-day inactivity period.
 
 The service fetches source images from URLs supplied in requests. Keep it on a trusted network and avoid exposing it publicly without an access-control layer.
 
