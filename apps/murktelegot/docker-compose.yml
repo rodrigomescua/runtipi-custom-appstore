@@ -1,0 +1,38 @@
+services:
+  murktelegot:
+    image: ghcr.io/rodrigomescua/murktelegot:0.0.1
+    restart: unless-stopped
+    # Prepare the bind mount, then run the app as the image's unprivileged user.
+    user: "0:0"
+    entrypoint:
+      - python
+      - -c
+      - |
+        import os
+        os.chown('/data', 10001, 10001)
+        os.setgroups([])
+        os.setgid(10001)
+        os.setuid(10001)
+        os.execvp('uvicorn', ['uvicorn', 'app.main:app', '--host', '0.0.0.0', '--port', '8000', '--no-access-log'])
+    environment:
+      APP_USER: ${APP_USER}
+      APP_PASSWORD: ${APP_PASSWORD}
+      TELEGRAM_API_ID: ${TELEGRAM_API_ID}
+      TELEGRAM_API_HASH: ${TELEGRAM_API_HASH}
+      DATA_DIR: /data
+    volumes:
+      - ${APP_DATA_DIR}/data/data:/data
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+    x-runtipi:
+      is_main: true
+      internal_port: 8000
+
+x-runtipi:
+  schema_version: 2

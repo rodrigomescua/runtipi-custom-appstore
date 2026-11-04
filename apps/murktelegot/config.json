@@ -1,0 +1,56 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "MurkTelegot",
+  "id": "murktelegot",
+  "available": true,
+  "short_desc": "Radar pessoal de ofertas do Telegram",
+  "author": "Rodrigo Mescua",
+  "port": 8804,
+  "categories": [
+    "utilities",
+    "finance"
+  ],
+  "description": "Monitore ofertas em grupos e canais do Telegram com regras por palavras-chave e um painel web em português.",
+  "tipi_version": 1,
+  "version": "0.0.1",
+  "source": "https://github.com/rodrigomescua/MurkTelegot",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": [
+    "amd64"
+  ],
+  "created_at": 1793766179584,
+  "updated_at": 1793767297257,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "Usuário do painel",
+      "required": true,
+      "default": "admin",
+      "env_variable": "APP_USER"
+    },
+    {
+      "type": "password",
+      "label": "Senha do painel",
+      "required": true,
+      "min": 12,
+      "env_variable": "APP_PASSWORD",
+      "hint": "Use uma senha exclusiva com pelo menos 12 caracteres."
+    },
+    {
+      "type": "text",
+      "label": "Telegram API ID",
+      "required": true,
+      "env_variable": "TELEGRAM_API_ID",
+      "hint": "Obtenha em https://my.telegram.org/apps."
+    },
+    {
+      "type": "password",
+      "label": "Telegram API hash",
+      "required": true,
+      "env_variable": "TELEGRAM_API_HASH",
+      "hint": "Obtenha em https://my.telegram.org/apps. Não é um token de bot."
+    }
+  ],
+  "urn": "tipi://murktelegot"
+}
