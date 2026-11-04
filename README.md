@@ -12,9 +12,9 @@
 - Keep `config.json` and `docker-compose.yml` in sync when updating an app.
 - Use `bun scripts/update-config.ts apps/<app-name>/docker-compose.yml` after image-tag changes.
 
-## Apps available (65)
+## Apps available (66)
 
-| Name                                                                             | Description                                                                                        | Port | Dynamic (65) |
+| Name                                                                             | Description                                                                                        | Port | Dynamic (66) |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                                | Self-hosted GPU video compressor                                                                   | 8846 | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                                 | Note taking, to-do and moodboard application                                                       | 8831 | yes          |
@@ -43,6 +43,7 @@
 | [Mermaid Live Editor](https://github.com/mermaid-js/mermaid-live-editor)         | Edit, preview and share mermaid diagrams                                                           | 8854 | yes          |
 | [MurkPyRSS](https://github.com/rodrigomescua/murkpyrss)                          | RSS generator with custom extractors and AI                                                        | 8865 | yes          |
 | [MurkRSS](https://github.com/rodrigomescua/MurkRSS)                              | Hybrid Scraping & Autonomous RSS Generator                                                         | 8863 | yes          |
+| [MurkTelegot](https://github.com/rodrigomescua/MurkTelegot)                      | Radar pessoal de ofertas do Telegram                                                               | 8804 | yes          |
 | [Muxarr](https://github.com/KirovAir/muxarr)                                     | Strip unwanted audio and subtitle tracks from media files                                          | 8862 | yes          |
 | [NextExplorer](https://github.com/nxzai/NextExplorer)                            | Modern self-hosted file explorer with secure access control.                                       | 8847 | yes          |
 | [OmniTools](https://github.com/iib0011/omni-tools)                               | Self-hosted collection of browser-based utilities                                                  | 8870 | yes          |
