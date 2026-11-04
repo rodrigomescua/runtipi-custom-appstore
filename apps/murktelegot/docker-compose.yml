@@ -1,6 +1,6 @@
 services:
   murktelegot:
-    image: ghcr.io/rodrigomescua/murktelegot:0.0.5
+    image: ghcr.io/rodrigomescua/murktelegot:0.0.6
     restart: unless-stopped
     # Prepare the bind mount, then run the app as the image's unprivileged user.
     user: "0:0"
