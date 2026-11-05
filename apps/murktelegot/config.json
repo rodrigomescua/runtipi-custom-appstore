@@ -11,8 +11,8 @@
     "finance"
   ],
   "description": "Monitore ofertas em grupos e canais do Telegram com regras por palavras-chave e um painel web em português.",
-  "tipi_version": 17,
-  "version": "0.2.3",
+  "tipi_version": 18,
+  "version": "0.2.4",
   "source": "https://github.com/rodrigomescua/MurkTelegot",
   "exposable": true,
   "dynamic_config": true,
@@ -20,7 +20,7 @@
     "amd64"
   ],
   "created_at": 1793766179584,
-  "updated_at": 1793860974362,
+  "updated_at": 1793863068563,
   "form_fields": [
     {
       "type": "text",
@@ -50,6 +50,14 @@
       "required": true,
       "env_variable": "TELEGRAM_API_HASH",
       "hint": "Obtenha em https://my.telegram.org/apps. Não é um token de bot."
+    },
+    {
+      "type": "text",
+      "label": "URL pública HTTPS do app",
+      "required": false,
+      "default": "",
+      "env_variable": "APP_PUBLIC_URL",
+      "hint": "Origem HTTPS pública, sem caminho. Necessária para imagens Gotify; links de imagem permitem acesso temporário sem login."
     }
   ],
   "urn": "tipi://murktelegot"

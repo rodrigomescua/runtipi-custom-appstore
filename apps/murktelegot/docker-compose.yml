@@ -1,6 +1,6 @@
 services:
   murktelegot:
-    image: ghcr.io/rodrigomescua/murktelegot:0.2.3
+    image: ghcr.io/rodrigomescua/murktelegot:0.2.4
     restart: unless-stopped
     # Prepare the bind mount, then run the app as the image's unprivileged user.
     user: "0:0"
@@ -17,6 +17,7 @@ services:
     environment:
       APP_USER: ${APP_USER}
       APP_PASSWORD: ${APP_PASSWORD}
+      APP_PUBLIC_URL: ${APP_PUBLIC_URL}
       TELEGRAM_API_ID: ${TELEGRAM_API_ID}
       TELEGRAM_API_HASH: ${TELEGRAM_API_HASH}
       DATA_DIR: /data
