@@ -11,8 +11,8 @@
     "finance"
   ],
   "description": "Monitore ofertas em grupos e canais do Telegram com regras por palavras-chave e um painel web em português.",
-  "tipi_version": 41,
-  "version": "0.5.11",
+  "tipi_version": 42,
+  "version": "0.5.12",
   "source": "https://github.com/rodrigomescua/MurkTelegot",
   "exposable": true,
   "dynamic_config": true,
@@ -20,7 +20,7 @@
     "amd64"
   ],
   "created_at": 1793766179584,
-  "updated_at": 1794111653661,
+  "updated_at": 1794172097476,
   "form_fields": [
     {
       "type": "text",
