@@ -11,7 +11,7 @@ Radar pessoal de ofertas do Telegram com painel web em português. Usa sua conta
 
 ## Funcionamento
 
-Requer **AMD64**. Captura novas mensagens e edições; não importa histórico nem garante recuperação das mensagens recebidas enquanto estiver desligado. As regras valem para mensagens e edições futuras. Alertas aparecem no painel, sem notificações externas. Mídias não são baixadas.
+Requer **AMD64**. Captura novas mensagens e edições; ignora mensagens que respondem a outras mensagens no Telegram. Não importa histórico nem garante recuperação das mensagens recebidas enquanto estiver desligado. As regras valem para mensagens e edições futuras. Alertas aparecem no painel, sem notificações externas. Mídias não são baixadas.
 
 O painel usa HTTP Basic: para acesso remoto, configure HTTPS no Runtipi ou use um túnel SSH. Execute apenas uma instância por sessão Telegram.
 
