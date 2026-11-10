@@ -9,8 +9,8 @@
     "utilities"
   ],
   "description": "Zerobyte automates encrypted backups of locally mounted directories using Restic, with scheduling, retention policies, monitoring, and local or cloud storage destinations.",
-  "tipi_version": 3,
-  "version": "v0.44.1",
+  "tipi_version": 4,
+  "version": "v0.44.2",
   "source": "https://github.com/nicotsx/zerobyte",
   "exposable": true,
   "supported_architectures": [
@@ -18,7 +18,7 @@
     "amd64"
   ],
   "created_at": 1764341309733,
-  "updated_at": 1794065155907,
+  "updated_at": 1794270616866,
   "dynamic_config": true,
   "form_fields": [
     {
