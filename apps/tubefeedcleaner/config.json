@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "YouTube Feed Cleaner",
+  "id": "tubefeedcleaner",
+  "available": true,
+  "short_desc": "Clean your YouTube subscriptions feed by matching video titles",
+  "author": "Rodrigo Mescua",
+  "port": 8876,
+  "categories": [
+    "utilities",
+    "automation"
+  ],
+  "description": "Automatically hides YouTube subscription videos matching configured words and phrases, with a web panel for rules and history.",
+  "tipi_version": 1,
+  "version": "1.0.0",
+  "source": "https://github.com/rodrigomescua/TubeFeedCleaner",
+  "exposable": false,
+  "dynamic_config": true,
+  "supported_architectures": [
+    "amd64"
+  ],
+  "created_at": 1794321358654,
+  "updated_at": 1794321358654,
+  "form_fields": [],
+  "urn": "tipi://tubefeedcleaner"
+}
