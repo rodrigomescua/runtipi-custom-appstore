@@ -12,9 +12,9 @@
 - Keep `config.json` and `docker-compose.yml` in sync when updating an app.
 - Use `bun scripts/update-config.ts apps/<app-name>/docker-compose.yml` after image-tag changes.
 
-## Apps available (66)
+## Apps available (67)
 
-| Name                                                                             | Description                                                                                        | Port | Dynamic (66) |
+| Name                                                                             | Description                                                                                        | Port | Dynamic (67) |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---- | ------------ |
 | [8mb.local](https://github.com/JMS1717/8mb.local)                                | Self-hosted GPU video compressor                                                                   | 8846 | yes          |
 | [Blinko](https://github.com/blinko-space/blinko)                                 | Note taking, to-do and moodboard application                                                       | 8831 | yes          |
@@ -72,6 +72,7 @@
 | [Sure](https://github.com/we-promise/sure)                                       | Self-hosted personal finance app                                                                   | 8866 | yes          |
 | [TrackWatch](https://github.com/emlopezr/trackwatch)                             | Self-hosted Spotify release tracker                                                                | 8834 | yes          |
 | [Traefik Manager](https://github.com/chr0nzz/traefik-manager)                    | Web UI for managing Traefik reverse proxies                                                        | 8874 | yes          |
+| [YouTube Feed Cleaner](https://github.com/rodrigomescua/TubeFeedCleaner)         | Clean your YouTube subscriptions feed by matching video titles                                     | 8876 | yes          |
 | [Upsnap](https://github.com/seriousm4x/UpSnap)                                   | A simple wake on lan web app written with SvelteKit, Go and PocketBase.                            | 8090 | yes          |
 | [VCompose](https://github.com/zbrave/vcompose)                                   | Visual Docker Compose Builder                                                                      | 8861 | yes          |
 | [Wallabag](https://github.com/wallabag/wallabag)                                 | Wallabag                                                                                           | 8829 | yes          |
