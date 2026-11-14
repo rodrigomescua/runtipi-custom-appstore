@@ -10,8 +10,8 @@
     "featured"
   ],
   "description": "Wallabag is an open-source, self-hostable application that allows users to save web pages, blog posts, or articles for later reading.",
-  "tipi_version": 14,
-  "version": "2.6.16",
+  "tipi_version": 15,
+  "version": "2.6.17",
   "source": "https://github.com/wallabag/wallabag",
   "exposable": true,
   "dynamic_config": true,
@@ -19,7 +19,7 @@
     "amd64"
   ],
   "created_at": 1744636790001,
-  "updated_at": 1794588109382,
+  "updated_at": 1794606064243,
   "form_fields": [
     {
       "type": "boolean",
