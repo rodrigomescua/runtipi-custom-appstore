@@ -1,6 +1,6 @@
 services:
   xtreamfilter:
-    image: spanishst/xtreamfilter:0.5.15
+    image: spanishst/xtreamfilter:0.5.16
     environment:
       TZ: ${TZ}
       PUID: 1000
