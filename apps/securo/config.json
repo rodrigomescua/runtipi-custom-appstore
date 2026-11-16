@@ -10,8 +10,8 @@
     "finance"
   ],
   "description": "Gerencie contas, transações, orçamentos e patrimônio em uma plataforma financeira privada e auto-hospedada.",
-  "tipi_version": 8,
-  "version": "0.18.0",
+  "tipi_version": 9,
+  "version": "0.19.0",
   "source": "https://github.com/securo-finance/securo",
   "website": "https://usesecuro.com/",
   "urn": "tipi://securo",
@@ -22,7 +22,7 @@
     "arm64"
   ],
   "created_at": 1790809696754,
-  "updated_at": 1794002037999,
+  "updated_at": 1794856696037,
   "form_fields": [
     {
       "type": "random",
