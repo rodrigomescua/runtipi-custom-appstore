@@ -1,0 +1,15 @@
+services:
+  ododash:
+    image: ghcr.io/moshiur-hridoy/ododash:0.52.0
+    restart: unless-stopped
+    volumes:
+      - ${APP_DATA_DIR}/data/data:/app/data
+    environment:
+      DATABASE_URL: sqlite:////app/data/may.db
+      UPLOAD_FOLDER: /app/data/uploads
+    x-runtipi:
+      is_main: true
+      internal_port: 5050
+
+x-runtipi:
+  schema_version: 2

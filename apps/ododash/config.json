@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "name": "OdoDash",
+  "id": "ododash",
+  "available": true,
+  "short_desc": "Self-hosted vehicle, fuel, expense and maintenance tracker",
+  "author": "Moshiur Hridoy",
+  "port": 8805,
+  "categories": [
+    "utilities"
+  ],
+  "description": "OdoDash is a self-hosted dashboard for managing vehicles, fuel and EV charging, expenses, maintenance, trips, reminders and documents.",
+  "tipi_version": 1,
+  "version": "0.52.0",
+  "source": "https://github.com/moshiur-hridoy/OdoDash",
+  "website": "https://moshiur-hridoy.github.io/OdoDash/",
+  "urn": "tipi://ododash",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "created_at": 1795548734901,
+  "updated_at": 1795548734901,
+  "form_fields": []
+}
