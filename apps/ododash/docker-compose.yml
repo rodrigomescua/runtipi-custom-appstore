@@ -1,6 +1,6 @@
 services:
   ododash:
-    image: ghcr.io/moshiur-hridoy/ododash:0.52.0
+    image: ghcr.io/moshiur-hridoy/ododash:0.53.0
     restart: unless-stopped
     volumes:
       - ${APP_DATA_DIR}/data/data:/app/data
